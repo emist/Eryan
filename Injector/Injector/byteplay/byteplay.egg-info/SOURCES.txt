@@ -1,0 +1,10 @@
+byteplay.py
+setup.py
+unittests.py
+byteplay.egg-info/PKG-INFO
+byteplay.egg-info/SOURCES.txt
+byteplay.egg-info/dependency_links.txt
+byteplay.egg-info/top_level.txt
+byteplay.egg-info/zip-safe
+examples/make_constants.py
+examples/make_constants_orig.py

@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Injector", "Injector\Injector.csproj", "{D8765B34-1E92-4C66-A7B8-BACD75E33F3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syringe", "..\Syringe\Syringe.csproj", "{3E3A04B3-9347-4395-A22A-C49C9B38F83C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8765B34-1E92-4C66-A7B8-BACD75E33F3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8765B34-1E92-4C66-A7B8-BACD75E33F3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8765B34-1E92-4C66-A7B8-BACD75E33F3A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D8765B34-1E92-4C66-A7B8-BACD75E33F3A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D8765B34-1E92-4C66-A7B8-BACD75E33F3A}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{D8765B34-1E92-4C66-A7B8-BACD75E33F3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8765B34-1E92-4C66-A7B8-BACD75E33F3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8765B34-1E92-4C66-A7B8-BACD75E33F3A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D8765B34-1E92-4C66-A7B8-BACD75E33F3A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D8765B34-1E92-4C66-A7B8-BACD75E33F3A}.Release|Win32.ActiveCfg = Release|Any CPU
+		{3E3A04B3-9347-4395-A22A-C49C9B38F83C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E3A04B3-9347-4395-A22A-C49C9B38F83C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E3A04B3-9347-4395-A22A-C49C9B38F83C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3E3A04B3-9347-4395-A22A-C49C9B38F83C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3E3A04B3-9347-4395-A22A-C49C9B38F83C}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{3E3A04B3-9347-4395-A22A-C49C9B38F83C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E3A04B3-9347-4395-A22A-C49C9B38F83C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E3A04B3-9347-4395-A22A-C49C9B38F83C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3E3A04B3-9347-4395-A22A-C49C9B38F83C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3E3A04B3-9347-4395-A22A-C49C9B38F83C}.Release|Win32.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
