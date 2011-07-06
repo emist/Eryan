@@ -14,7 +14,7 @@ namespace Eryan
     {
         Thread[] botWindowThreads = new Thread[20];
         WindowHandler[] bots = new WindowHandler[20];
-
+       
         public Client()
         {
        //     InitializeComponent();
@@ -39,17 +39,30 @@ namespace Eryan
             return botWindowThreads[0];
         }
 
-        public WindowHandler getBot(int bot)
+        public WindowHandler getBotByOrder(int bot)
         {
             return bots[bot];
         }
 
+        public WindowHandler getBot(uint processId)
+        {
+            foreach (WindowHandler window in bots)
+            {
+                if (window.getPid() == processId)
+                    return window;
+            }
+            return null;
+        }
 
         public void ShowForm(object firm)
         {
             Application.Run(firm as Form);
         }
 
+        public void update()
+        {
+  
+        }
 
         //Destroy Bot
         public Boolean DestroyBot()

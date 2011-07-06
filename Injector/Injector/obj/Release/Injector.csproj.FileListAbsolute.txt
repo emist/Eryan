@@ -1,0 +1,7 @@
+C:\Documents and Settings\Administrator\Eryan\Injector\Injector\bin\Release\Injector.dll
+C:\Documents and Settings\Administrator\Eryan\Injector\Injector\bin\Release\Injector.pdb
+C:\Documents and Settings\Administrator\Eryan\Injector\Injector\bin\Release\Syringe.dll
+C:\Documents and Settings\Administrator\Eryan\Injector\Injector\bin\Release\Syringe.pdb
+C:\Documents and Settings\Administrator\Eryan\Injector\Injector\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\Eryan\Injector\Injector\obj\Release\Injector.dll
+C:\Documents and Settings\Administrator\Eryan\Injector\Injector\obj\Release\Injector.pdb

@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Eryan
 {
-    class Executor
+    public class Executor
     {            
         [StructLayout(LayoutKind.Sequential)]
         struct MessageStruct
@@ -18,20 +18,20 @@ namespace Eryan
             [CustomMarshalAs(CustomUnmanagedType.LPWStr)]
             public string Caption;
         }
-        static void Main(string[] args)
+
+        public void Inject(String dll, String process)
         {
-            String dll = "C:\\Users\\emist\\Documents\\Visual Studio 2008\\Projects\\InjectDLL\\Debug\\InjectDLL.dll";
+            
+            //String dll = "C:\\Users\\emist\\Documents\\Visual Studio 2008\\Projects\\InjectDLL\\Debug\\InjectDLL.dll";
 
-            Console.WriteLine("Trying to inject dll into notepad.exe");
+            Console.WriteLine("Trying to inject " + dll + " into " + process);
             MessageStruct messageData = new MessageStruct() { Text = "Custom Message", Caption = "Custom Message Box" };
-            using (Injector syringe = new Injector(Process.GetProcessesByName("test")[0]))
-            {
-                syringe.InjectLibrary(dll);
-
-                Console.WriteLine(dll + " injected into notepad, trying to call void Initialise() with no parameters");
-                Console.ReadLine();
-                syringe.CallExport("InjectDLL.dll", "Initialize");
-                Console.WriteLine("Waiting...");
+            Injector syringe = new Injector(Process.GetProcessesByName(process)[0]);
+            syringe.InjectLibrary(dll);
+            Console.WriteLine(dll + " injected into notepad, trying to call void Initialise() with no parameters");
+            Console.ReadLine();
+            syringe.CallExport("InjectDLL.dll", "Initialize");
+            Console.WriteLine("Waiting...");
                // Console.ReadLine();
                // syringe.CallExport("InjectDLL.dll", "process_expression");
                // Console.ReadLine();
@@ -40,8 +40,8 @@ namespace Eryan
                 //syringe.CallExport(dll, "InitWithMessage", messageData);
                 //Console.WriteLine("Waiting...");
                 //Console.ReadLine();
-            }
-            Console.WriteLine("Stub.dll should be ejected");
+            //syringe.EjectLibrary(dll);
+            Console.WriteLine(dll + " should be ejected");
             Console.ReadLine();
         }
     }
