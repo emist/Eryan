@@ -9,28 +9,39 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System;
+using System.Drawing.Drawing2D;
 
 
 
 namespace Eryan
 {
 
-
     public partial class WindowHandler : Form
     {
+        private Utils drawingScreen;
+        //private Utils currentTransparency = new Utils();
+        Executor injector = new Executor();
+        private delegate void showFormDelegate(Form form);
+        private delegate void drawingScreenDelegate();
+        private bool loaded = false;
+        private Font systemFont = new Font("Impact", 16);
+        
+
+
+        //private Eve interaction objects
+        KeyBoard keyboard = new KeyBoard();
+        Mouse mouse = new Mouse();
+
 
         //Events we listen to
         private const uint EVENT_OBJECT_DESTROY = (uint)0x00008001L;
         private const uint EVENT_OBJECT_CREATE = (uint)0x00008000L;
-
-        //Keyboard events
-        private const uint WM_KEYDOWN = (uint)0x100;
-        private const uint WM_CHAR = (uint)0x102;
-        private const uint WM_KEYUP = (uint)0x101;
-        private const uint WM_GETTEXT = (uint)0x000D;
+        private const uint WM_PAINT = 0x000F;
 
         IntPtr m_hhook;
-        
+
+
+       
         private const int SWP_NOOWNERZORDER = 0x200;
         private const int SWP_NOREDRAW = 0x8;
         private const int SWP_NOZORDER = 0x4;
@@ -126,17 +137,27 @@ namespace Eryan
              public int _Bottom;
         }
 
-
+  
+        /*
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            Graphics g = e.Graphics;
+            g.DrawString("LOOOOOOOOOOOL", Font, Brushes.Blue, 50, 75);
+        }
+         */
 
         private Boolean created = false;
         private IntPtr appWin;
         private String exeName = "C:\\Program Files\\CCP\\EVE\\bin\\ExeFile.exe";
         private String processName = "ExeFile";
+        private uint pid = 0;
         public delegate void WinEventDelegate(IntPtr hWinEventHook, uint eventType,
                                          IntPtr hwnd, int idObject, int idChild,
                                          uint dwEventThread, uint dwmsEventTime);
 
         private WinEventDelegate winDel;
+       
 
         //WinApi calls
         
@@ -202,6 +223,9 @@ namespace Eryan
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetWindowRect(HandleRef hwnd, out RECT lpRect);
 
+        [DllImport("user32.dll", SetLastError=true)]
+        static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+
 
         public WindowHandler()
         {
@@ -209,34 +233,19 @@ namespace Eryan
             Load += new EventHandler(Program_Load);
             FormClosing += new FormClosingEventHandler(Program_FormClosing);
             winDel = new WinEventDelegate(HandleWindowChanges);
+            MouseDown += new MouseEventHandler(Form1_MouseDown);
+            drawingScreen = new Utils();
+            
+            //Move += new Form
+            
+     
+            //TransparencyKey = Color.Magenta;
+            //BackColor = Color.Magenta;
+            //Paint += PaintRectangle;
 
         }
- 
-        public void sendKeyPresses(String text)
-        {
-            IntPtr windowHandle;
-            StringBuilder sb = new StringBuilder(500);
 
-
-
-            if (appWin != IntPtr.Zero)
-            {
-                //GetClassName(appWin, sb, sb.Capacity);
-                
-                
-                //MessageBox.Show(this, sb.ToString());
-                //windowHandle = FindWindowEx(appWin, IntPtr.Zero, sb, "");
-
-
-                PostMessage(appWin, WM_KEYDOWN, VkKeyScan('\t'), 0x00140001);
-                PostMessage(appWin, WM_KEYDOWN, VkKeyScan('c'), 0x00140001);
-                //PostMessage(appWin, WM_CHAR, 0x00000000 + (Int32)67, 0x00140001);
-                //PostMessage(appWin, WM_KEYUP, VkKeyScan('\t'), 0xC0140001);
-
-            }
-        }
-                 
-
+      
         protected override void OnSizeChanged(EventArgs e)
         {
             this.Invalidate();
@@ -247,17 +256,46 @@ namespace Eryan
         {
                 m_hhook = SetWinEventHook(EVENT_OBJECT_CREATE,
                 EVENT_OBJECT_DESTROY, IntPtr.Zero, winDel, 0, 0, 0);
-
-
+            
         }
+
 
         private void Program_FormClosing(object sender, FormClosingEventArgs e)
         {
             UnhookWinEvent(m_hhook);
+           
         }
 
 
-         
+        public uint getPid()
+        {
+            uint outpid = 0;
+            GetWindowThreadProcessId(appWin, out outpid);
+            return outpid;
+        }
+
+        //Accessor to the Input Objects
+
+        public KeyBoard getKeyBoard()
+        {
+            return keyboard;
+        }
+
+        public Mouse getMouse()
+        {
+            return mouse;
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            //Rectangle rc = RectangleDrawer.Draw(this);
+            //Console.WriteLine(rc.ToString());
+        }
+
+     
+
+ 
+
 
         private void HandleWindowChanges(IntPtr hWinEventHook, uint eventType,
                                          IntPtr hwnd, int idObject, int idChild,
@@ -267,10 +305,9 @@ namespace Eryan
             if (EVENT_OBJECT_CREATE == eventType)
             {
 
-                          
-                    
-     
-               
+                     
+                 
+                   
 
                     // Mark that control is created
                
@@ -281,40 +318,112 @@ namespace Eryan
                     // Start the remote application
               
                     StringBuilder sb = new StringBuilder(300);
-                    GetWindowText(hwnd, sb, sb.Capacity);
 
-                    if (sb.ToString().Equals("EVE"))
+                    GetWindowText(appWin, sb, sb.Capacity);
+
+                    if (!sb.ToString().Equals("EVE"))
                     {
-                        appWin = hwnd;
 
-                        RECT eveWindowRect = new RECT();
+                        
+                        GetWindowText(hwnd, sb, sb.Capacity);
 
-                        ShowWindow(appWin, ShowWindowCommands.Hide);
-                        // Put it into this form
-                        SetParent(appWin, this.Handle);
+                        if (sb.ToString().Equals("EVE"))
+                        {
+                            appWin = hwnd;
+
+                            RECT eveWindowRect = new RECT();
+
+                            ShowWindow(appWin, ShowWindowCommands.Hide);
+                            // Put it into this form
+
+                            SetParent(appWin, this.Handle);
 
 
-                        // Remove border and whatnot
-                        SetWindowLong(appWin, GWL_STYLE, WS_VISIBLE);
+                            // Remove border and whatnot
+                            SetWindowLong(appWin, GWL_STYLE, WS_VISIBLE);
 
-                        HandleRef windowRef = new HandleRef(this, appWin);
+                            HandleRef windowRef = new HandleRef(this, appWin);
 
-                        GetWindowRect(windowRef, out eveWindowRect);
+                            GetWindowRect(windowRef, out eveWindowRect);
 
-                        // Move the window to overlay it on this window
-                        int eveWindowWidth = eveWindowRect._Right-eveWindowRect._Left;
-                        int eveWindowHeight = eveWindowRect._Bottom - eveWindowRect._Top;
+                            // Move the window to overlay it on this window
+                            int eveWindowWidth = eveWindowRect._Right - eveWindowRect._Left;
+                            int eveWindowHeight = eveWindowRect._Bottom - eveWindowRect._Top;
 
-                        //MoveWindow(appWin, 0, 0, eveWindowWidth-10, eveWindowHeight, true);
-                        this.Width = eveWindowWidth;
-                        this.Height = eveWindowHeight;
+                            //MoveWindow(appWin, 0, 0, eveWindowWidth-10, eveWindowHeight, true);
+
+
+
+
+                            this.Width = eveWindowWidth - 10;
+                            this.Height = eveWindowHeight - 10;
+
+                            this.Size = new Size(this.Width, this.Height);
+                            Point tmpLocation = Location;
+
+
+
+                            keyboard.setWindowHandle(appWin);
+
+                            this.Location = new Point(eveWindowRect._Left, eveWindowRect._Top);
+
+                            loaded = true;
+
+                            handleDrawingScreen();
+
+
+
+                        }
+                        
                     }
-              
-                
+                    else
+                    {
+                        loaded = true;
+                    }
+
 
                  }
                            
 
+        }
+
+
+        public void safeShow(Form form)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke(new showFormDelegate(safeShow), new object[] {form});
+                return;
+            }
+
+            form.Show(this);
+
+        }
+
+        protected Boolean IsVisible()
+        {
+            foreach (Screen scrn in Screen.AllScreens)
+                // You may prefer Intersects(), rather than Contains() <br/>
+                if (scrn.Bounds.IntersectsWith(this.Bounds))
+                    return true;
+
+            return false;
+        }
+
+
+        protected override void OnMove(EventArgs e)
+        {
+
+
+            if (this.IsVisible())
+            {
+                handleDrawingScreen();
+            }
+            
+
+            //base.OnMove(e);
+ 
+        
         }
 
 
@@ -344,10 +453,11 @@ namespace Eryan
 
                     // Get the main handle
                     appWin = p.MainWindowHandle;
+
                 }
                 catch (Exception ex)
                 {
-              
+
                     /*
                     Process temp = null;
                     foreach (Process process in Process.GetProcessesByName(processName))
@@ -375,12 +485,23 @@ namespace Eryan
                 SetWindowLong(appWin, GWL_STYLE, WS_VISIBLE);
 
                 // Move the window to overlay it on this window
-                MoveWindow(appWin, 0, 0, this.Width-10, this.Height, true);
+                MoveWindow(appWin, 0, 0, this.Width, this.Height, true);
+                GetWindowThreadProcessId(appWin, out pid);
+
+
+                //keyboard.setWindowHandle(appWin);
 
             }
 
             base.OnVisibleChanged(e);
+
+
+            if (this.IsVisible())
+            {
+                handleDrawingScreen();
+            }
         }
+
 
         protected override void OnHandleDestroyed(EventArgs e)
         {
@@ -397,9 +518,58 @@ namespace Eryan
                 // Clear internal handle
                 appWin = IntPtr.Zero;
 
+                pid = 0;
+
             }
 
             base.OnHandleDestroyed(e);
+        }
+
+        /*
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            Graphics g = drawingScreen.getGraphicsInstance();
+            g.DrawString("LOOOOL", Font, Brushes.Orange, new Point(0, 0));
+            base.OnPaint(e);
+        }
+        */
+
+        private void handleDrawingScreen()
+        {
+            
+            if(this.InvokeRequired)
+            {
+                this.BeginInvoke(new drawingScreenDelegate(handleDrawingScreen), new object[] {});
+                return;
+            }
+            
+            if (drawingScreen != null)
+                if (drawingScreen.IsVisible())
+                    drawingScreen.hideForm();
+
+            if (!this.IsVisible())
+            {
+                return;
+            }
+
+            drawingScreen.setSize(new Size(this.Size.Width-10, this.Size.Height - 50));
+            drawingScreen.setLocation(new Point(this.Location.X+5, this.Location.Y + 50));
+            drawingScreen.setBackColor(Color.DarkGray);
+            drawingScreen.setTransparencyKey();
+            drawingScreen.setFormBorderStyle(FormBorderStyle.None);
+            drawingScreen.setControlBox(false);
+            drawingScreen.showInTaskbar(false);
+            drawingScreen.setStartPosition(FormStartPosition.Manual);
+            drawingScreen.setAutoScaleMode(AutoScaleMode.None);
+            drawingScreen.bringToFront();
+            drawingScreen.showForm();
+            drawingScreen.setOwner(this);
+            if (loaded)
+            {
+                drawingScreen.drawString("Eryan 2.0", systemFont, new Point(0, 0));
+            }
+            //System.Console.WriteLine(this.Size.ToString());
+                        
         }
 
         protected override void OnResize(EventArgs e)
@@ -411,7 +581,7 @@ namespace Eryan
                
                 // Move the window to overlay it on this window
                 MoveWindow(appWin, 0, 0, this.Width - 10, this.Height, true);
-
+                //Rectangle rc = RectangleDrawer.Draw(this);
                
             }
 
@@ -419,6 +589,26 @@ namespace Eryan
 
 
             MoveWindow(appWin, 0, 0, this.Width - 10, this.Height, true);
+
+            /*
+            if (currentTransparency != null)
+            {
+                //currentTransparency.Hide();
+                currentTransparency.hideForm();
+            }
+            currentTransparency.updatePlexiglass(this);
+            currentTransparency.Owner = this;
+            currentTransparency.bringToFront();
+             */
+
+
+            if (created == true)
+            {
+                handleDrawingScreen();
+            }
+
+           
+
             base.OnResize(e);
 
         }
