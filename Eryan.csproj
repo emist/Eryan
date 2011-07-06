@@ -53,8 +53,14 @@
     <Compile Include="Client.Designer.cs">
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
-    <Compile Include="MiddleMan.cs" />
-    <Compile Include="WinApiWrapper.cs" />
+    <Compile Include="Fetcher.cs" />
+    <Compile Include="InputDevice.cs" />
+    <Compile Include="KeyBoard.cs" />
+    <Compile Include="Mouse.cs">
+    </Compile>
+    <Compile Include="Utils.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="WindowHandler.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -85,6 +92,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="DrawAbleScreenFetcher.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Injector\Injector\Injector.csproj">
+      <Project>{D8765B34-1E92-4C66-A7B8-BACD75E33F3A}</Project>
+      <Name>Injector</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
