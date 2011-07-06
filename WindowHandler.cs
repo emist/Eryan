@@ -11,6 +11,8 @@ using System.Threading;
 using System;
 using System.Drawing.Drawing2D;
 
+//Events need to be changed to handle proper PID selection
+//As it is it wont support multiple eve clients
 
 
 namespace Eryan
@@ -304,19 +306,7 @@ namespace Eryan
 
             if (EVENT_OBJECT_CREATE == eventType)
             {
-
-                     
-                 
-                   
-
-                    // Mark that control is created
-               
-
-                    // Initialize handle value to invalid
-             
-
-                    // Start the remote application
-              
+                             
                     StringBuilder sb = new StringBuilder(300);
 
                     GetWindowText(appWin, sb, sb.Capacity);
@@ -361,15 +351,19 @@ namespace Eryan
                             this.Size = new Size(this.Width, this.Height);
                             Point tmpLocation = Location;
 
-
-
-                            keyboard.setWindowHandle(appWin);
-
                             this.Location = new Point(eveWindowRect._Left, eveWindowRect._Top);
 
                             loaded = true;
 
                             handleDrawingScreen();
+
+                            //Add the screen to global list
+                            DrawAbleScreenFetcher.addScreen(drawingScreen);
+
+                            //Initialize input methods
+                            drawingScreen.setPid(getPid());
+                            keyboard.setWindowHandle(appWin);
+                            mouse.setWindowHandle(appWin);
 
 
 
@@ -419,9 +413,11 @@ namespace Eryan
             {
                 handleDrawingScreen();
             }
+
+            this.Invalidate();
             
 
-            //base.OnMove(e);
+            base.OnMove(e);
  
         
         }
@@ -487,12 +483,15 @@ namespace Eryan
                 // Move the window to overlay it on this window
                 MoveWindow(appWin, 0, 0, this.Width, this.Height, true);
                 GetWindowThreadProcessId(appWin, out pid);
+                drawingScreen.setPid(getPid());
+                mouse.setPid(getPid());
 
-
-                //keyboard.setWindowHandle(appWin);
+                
 
             }
 
+            drawingScreen.setPid(getPid());
+            mouse.setPid(getPid());
             base.OnVisibleChanged(e);
 
 
@@ -500,6 +499,7 @@ namespace Eryan
             {
                 handleDrawingScreen();
             }
+            
         }
 
 
@@ -525,14 +525,17 @@ namespace Eryan
             base.OnHandleDestroyed(e);
         }
 
-        /*
+        
         protected override void OnPaint(PaintEventArgs e)
         {
-            Graphics g = drawingScreen.getGraphicsInstance();
-            g.DrawString("LOOOOL", Font, Brushes.Orange, new Point(0, 0));
+            if (loaded)
+            {
+                drawingScreen.drawString("Eryan 2.0", systemFont, new Point(0, 0));
+            }
+
             base.OnPaint(e);
         }
-        */
+        
 
         private void handleDrawingScreen()
         {
@@ -555,6 +558,7 @@ namespace Eryan
             drawingScreen.setSize(new Size(this.Size.Width-10, this.Size.Height - 50));
             drawingScreen.setLocation(new Point(this.Location.X+5, this.Location.Y + 50));
             drawingScreen.setBackColor(Color.DarkGray);
+            //drawingScreen.setOpacity(0.30);
             drawingScreen.setTransparencyKey();
             drawingScreen.setFormBorderStyle(FormBorderStyle.None);
             drawingScreen.setControlBox(false);
@@ -564,10 +568,7 @@ namespace Eryan
             drawingScreen.bringToFront();
             drawingScreen.showForm();
             drawingScreen.setOwner(this);
-            if (loaded)
-            {
-                drawingScreen.drawString("Eryan 2.0", systemFont, new Point(0, 0));
-            }
+            mouse.setPid(getPid());
             //System.Console.WriteLine(this.Size.ToString());
                         
         }
@@ -581,7 +582,7 @@ namespace Eryan
                
                 // Move the window to overlay it on this window
                 MoveWindow(appWin, 0, 0, this.Width - 10, this.Height, true);
-                //Rectangle rc = RectangleDrawer.Draw(this);
+                
                
             }
 
@@ -590,25 +591,14 @@ namespace Eryan
 
             MoveWindow(appWin, 0, 0, this.Width - 10, this.Height, true);
 
-            /*
-            if (currentTransparency != null)
-            {
-                //currentTransparency.Hide();
-                currentTransparency.hideForm();
-            }
-            currentTransparency.updatePlexiglass(this);
-            currentTransparency.Owner = this;
-            currentTransparency.bringToFront();
-             */
-
-
+ 
             if (created == true)
             {
                 handleDrawingScreen();
             }
 
-           
 
+            this.Invalidate();
             base.OnResize(e);
 
         }
