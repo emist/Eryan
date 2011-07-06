@@ -6,14 +6,11 @@ using System.Runtime.InteropServices;
 
 namespace Eryan
 {
-    public class KeyBoard
+    public class KeyBoard : InputDevice
     {
         private int speed = 500;
-        private IntPtr appWin = IntPtr.Zero;
-        private Random randomizer = new Random();
-
-
-
+        //private IntPtr appWin = IntPtr.Zero;
+        
         //Keyboard events
         private const uint WM_KEYDOWN = (uint)0x100;
         private const uint WM_CHAR = (uint)0x102;
@@ -126,26 +123,23 @@ namespace Eryan
             VK_ZOOM = 0xFB, //Zoom key
         }
 
+        /*
 
         [DllImport("user32.dll", EntryPoint = "PostMessageA", SetLastError = true)]
         private static extern bool PostMessage(IntPtr hwnd, uint Msg, long wParam, long lParam);
-
+        */
 
         [DllImport("user32.dll")]
         static extern short VkKeyScan(char ch);
 
-        public int MakeLParam(int LoWord, int HiWord)
-        {
-            return ((HiWord << 16) | (LoWord & 0xffff));
-        }
 
 
-
+        /*
         public void setWindowHandle(IntPtr hwnd)
         {
             appWin = hwnd;
         }
-
+        */
 
 
         public void pressEnter()
@@ -169,7 +163,7 @@ namespace Eryan
                 foreach (char c in text)
                 {
                     PostMessage(appWin, WM_KEYDOWN, VkKeyScan(c), 0x00140001);
-                    System.Threading.Thread.Sleep(randomizer.Next(minWait, maxWait));
+                    System.Threading.Thread.Sleep(random.Next(minWait, maxWait));
                 }
 
             }
