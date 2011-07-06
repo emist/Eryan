@@ -6,10 +6,14 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 
+//Make the draw methods thread safe
+
 namespace Eryan
 {
     public class Utils : Form
     {
+        uint pid = 0;
+
         //Plexiglass
         private delegate void setPlexiglass(Form form);
         private delegate void closeFormDelegate();
@@ -32,9 +36,22 @@ namespace Eryan
 
         //private Form m_form = new Form();
 
-        public Utils()
+        public Utils(uint pid)
         {
-           int hello = 10;  
+            this.pid = pid;
+        }
+
+        public Utils()
+        { }
+
+        public void setPid(uint pid)
+        {
+            this.pid = pid;
+        }
+
+        public uint getPid()
+        {
+            return pid;
         }
 
         public void drawString(String str, Font f, Point loc, bool antialiasing)
@@ -53,8 +70,14 @@ namespace Eryan
 
         public void drawLine(Pen pen, Point point1, Point point2)
         {
-            Graphics g = this.CreateGraphics();
-            g.DrawLine(pen, point1, point2);
+            try
+            {
+                Graphics g = this.CreateGraphics();
+                g.DrawLine(pen, point1, point2);
+            }
+            catch (Exception e)
+            { }
+               
         }
             
 
