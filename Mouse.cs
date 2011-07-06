@@ -23,6 +23,7 @@ namespace Eryan
         //Windows API messages
         public enum WMessages : int
         {
+            WM_MOUSEMOVE = 	0x200,  //Mouse Move
             WM_LBUTTONDOWN = 0x201, //Left mousebutton down
             WM_LBUTTONUP = 0x202,  //Left mousebutton up
             WM_LBUTTONDBLCLK = 0x203, //Left mousebutton doubleclick
@@ -31,6 +32,8 @@ namespace Eryan
             WM_RBUTTONDBLCLK = 0x206, //Right mousebutton doubleclick
             WM_KEYDOWN = 0x100,  //Key down
             WM_KEYUP = 0x101,   //Key up
+            WM_NCHITTEST = 0x84,
+            WM_SETCURSOR = 0x20,
         }
 
         public Mouse()
@@ -188,14 +191,17 @@ namespace Eryan
                 return;
             }
 
-            PostMessage(appWin, (int)WMessages.WM_LBUTTONDOWN, 0, MakeLParam(p.X, p.Y));
-            PostMessage(appWin, (int)WMessages.WM_LBUTTONUP, 0, MakeLParam(p.X, p.Y));
+            
+            PostMessage(appWin, (int)WMessages.WM_NCHITTEST, 0, MakeLParam(p.X, p.Y));
+            PostMessage(appWin, (int)WMessages.WM_SETCURSOR, 0, MakeLParam(p.X, p.Y));
+            PostMessage(appWin, (int)WMessages.WM_MOUSEMOVE, 0, MakeLParam(p.X, p.Y));
+            
+            
             this.X = p.X;
             this.Y = p.Y;
 
 
             screen.drawLine(Pens.BurlyWood, p, new Point(p.X + 5, p.Y));
-            screen.Invalidate();
         }
 
 
@@ -273,6 +279,9 @@ namespace Eryan
                     System.Threading.Thread.Sleep(30 + random.Next(30));
                     WindMouse(cx, cy, (x+random.Next(randX)), (y + random.Next(randY)), 11, 6, 10/randSpeed, 15/randSpeed, 10*randSpeed, 10*randSpeed);
                 }
+
+                PostMessage(appWin, (int)WMessages.WM_LBUTTONDOWN, 0, MakeLParam(x, y));
+                PostMessage(appWin, (int)WMessages.WM_LBUTTONUP, 0, MakeLParam(x, y));
 
             }
         }
