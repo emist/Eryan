@@ -27,12 +27,18 @@ namespace Eryan
 
             Thread clientThread = client.CreateBot();
 
+            Point location = new Point();
+
             while (clientThread.IsAlive)
             {
                 WindowHandler bot1 = client.getBotByOrder(0);
                 //bot1.getKeyBoard().sendKeyPresses("HelloWorld", 100, 600);
-                bot1.getMouse().moveMouse(new Point(30, 30));
-                //bot1.getMouse().move(new Point(750, 900));
+                //bot1.getMouse().moveMouse(new Point(30, 30));
+
+                if (bot1.getMouse().cursorDistance(new Point(750, 900)) > 5)
+                    bot1.getMouse().move(new Point(750, 900));
+                else
+                    bot1.getMouse().move(new Point(500, 600));
 
 
                 Console.WriteLine("Bot1 pid: " + bot1.getPid());
