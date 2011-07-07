@@ -151,12 +151,12 @@ namespace Eryan
 
         private Boolean created = false;
         private IntPtr appWin;
-        private String exeName = "firefox.exe";
-        private String processName = "firefox";
-        private String title = "Mozilla";
+        //private String exeName = "exeFile";
+        //private String processName = "exeFile";
+        private String title = "EVE";
         
-        //private String exeName = "C:\\Program Files\\CCP\\EVE\\bin\\ExeFile.exe";
-        //private String processName = "ExeFile";
+        private String exeName = "C:\\Program Files\\CCP\\EVE\\bin\\ExeFile.exe";
+        private String processName = "ExeFile";
         private uint pid = 0;
         public delegate void WinEventDelegate(IntPtr hWinEventHook, uint eventType,
                                          IntPtr hwnd, int idObject, int idChild,
@@ -448,6 +448,8 @@ namespace Eryan
                 {
 
                     // Start the process
+                    // MODIFIED FOR DEBUG, PUT BACK IN LATER
+                    
                     p = System.Diagnostics.Process.Start(this.exeName);
 
                     // Wait for process to be created and enter idle condition

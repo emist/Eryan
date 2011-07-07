@@ -24,6 +24,16 @@ namespace Eryan
         [DllImport("user32.dll", SetLastError = true)]
         protected static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
 
+        [DllImport("user32.dll", SetLastError = true)]
+        protected static extern IntPtr FindWindow(IntPtr lpClassName, string lpWindowName);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        protected static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
+
+       
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        protected static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, UInt32 wParam, IntPtr lparam);
+
         public void setWindowHandle(IntPtr hwnd)
         {
             appWin = hwnd;

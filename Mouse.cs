@@ -4,12 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
-
+using System.Runtime.InteropServices;
 
 namespace Eryan
 {
     public class Mouse : InputDevice
     {
+
+        [DllImport(@"C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\mouseDLL\Debug\mouseDLL.dll")]
+        public static extern void dllMoveMouse(IntPtr handle, int x, int y);
+
+        [DllImport(@"C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\mouseDLL\Debug\mouseDLL.dll")]
+        public static extern void dllMouseClick(IntPtr handle, int x, int y);
 
         Utils screen = null;
         ZiadSpace.Util.BitHelper bh = new ZiadSpace.Util.BitHelper();
@@ -23,7 +29,7 @@ namespace Eryan
         int missChance = 10;
 
         //Windows API messages
-        public enum WMessages : int
+        public enum WMessages : uint
         {
             WM_MOUSEMOVE = 	0x200,  //Mouse Move
             WM_LBUTTONDOWN = 0x201, //Left mousebutton down
@@ -186,6 +192,7 @@ namespace Eryan
 
         public void moveMouse(Point p)
         {
+           
             screen = fetchScreen(getPid());
             if (screen == null)
             {
@@ -194,29 +201,31 @@ namespace Eryan
                 return;
             }
 
+            
             if (appWin == IntPtr.Zero)
             {
                 Console.WriteLine("Mouse appWin is null: " + getPid());
+                return ;
             }
-
+            
 
             this.X = p.X;
             this.Y = p.Y;
 
-
-
-            long coord = 0x009803CE;
-
-            
+       
 
             //PostMessage(appWin, (int)WMessages.WM_NCHITTEST, 0, 0x009803CE);
             //SendMessage(appWin, (int)WMessages.WM_SETCURSOR, (long)appWin, ZiadSpace.Util.BitHelper.MakeLong(300, 200));
-            PostMessage(appWin, (int)WMessages.WM_MOUSEMOVE, 0, ZiadSpace.Util.BitHelper.MakeDword(300, 200));
+            //PostMessage(hWndCalc, (int)WMessages.WM_MOUSEMOVE, 0, ZiadSpace.Util.BitHelper.MakeDword(300, 200));
 
-            //PostMessage(appWin, (int)WMessages.WM_LBUTTONDOWN, 0, 0x009803CE);
-            //PostMessage(appWin, (int)WMessages.WM_LBUTTONUP, 0, 0x009803CE);
+            //PostMessage(hWndCalc, (int)WMessages.WM_LBUTTONDOWN, 0, ZiadSpace.Util.BitHelper.MakeDword(300, 200));
+            //PostMessage(hWndCalc, (int)WMessages.WM_LBUTTONUP, 0, ZiadSpace.Util.BitHelper.MakeDword(300,200));
 
             screen.drawLine(Pens.BurlyWood, p, new Point(p.X + 5, p.Y));
+            //dllMoveMouse(appWin, X, Y);
+            dllMouseClick(appWin, X, Y);
+            
+
         }
 
 
