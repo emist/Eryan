@@ -151,12 +151,17 @@ namespace Eryan
 
         private Boolean created = false;
         private IntPtr appWin;
+
+        //private String exeName = "calc.exe";
+        //private String processName = "calculator";
+        //private String title = "Calculator";
+
         //private String exeName = "exeFile";
-        //private String processName = "exeFile";
+        private String processName = "exeFile";
         private String title = "EVE";
         
         private String exeName = "C:\\Program Files\\CCP\\EVE\\bin\\ExeFile.exe";
-        private String processName = "ExeFile";
+        //private String processName = "ExeFile";
         private uint pid = 0;
         public delegate void WinEventDelegate(IntPtr hWinEventHook, uint eventType,
                                          IntPtr hwnd, int idObject, int idChild,
@@ -241,7 +246,7 @@ namespace Eryan
             winDel = new WinEventDelegate(HandleWindowChanges);
             MouseDown += new MouseEventHandler(Form1_MouseDown);
             drawingScreen = new Utils();
-            this.Size = new Size(500, 900);
+            this.Size = new Size(800, 900);
             //Move += new Form
             
      
@@ -298,9 +303,42 @@ namespace Eryan
             //Console.WriteLine(rc.ToString());
         }
 
-     
 
- 
+
+
+        private void initialize()
+        {
+            RECT eveWindowRect = new RECT();
+            HandleRef windowRef = new HandleRef(this, appWin);
+
+            GetWindowRect(windowRef, out eveWindowRect);
+
+            // Move the window to overlay it on this window
+            int eveWindowWidth = eveWindowRect._Right - eveWindowRect._Left;
+            int eveWindowHeight = eveWindowRect._Bottom - eveWindowRect._Top;
+
+            //MoveWindow(appWin, 0, 0, eveWindowWidth-10, eveWindowHeight, true);
+
+
+            Console.WriteLine("Eve width = " + eveWindowWidth);
+
+            if (eveWindowHeight > 10 && eveWindowWidth > 10)
+            {
+                this.Width = eveWindowWidth;
+                this.Height = eveWindowHeight;
+            }
+
+            loaded = true;
+
+            //Add the screen to global list
+            DrawAbleScreenFetcher.addScreen(drawingScreen);
+
+            //Initialize input methods
+            drawingScreen.setPid(getPid());
+            mouse.setPid(getPid());
+            keyboard.setWindowHandle(appWin);
+            mouse.setWindowHandle(appWin);
+        }
 
 
         private void HandleWindowChanges(IntPtr hWinEventHook, uint eventType,
@@ -325,7 +363,7 @@ namespace Eryan
                         {
                             appWin = hwnd;
 
-                            RECT eveWindowRect = new RECT();
+                            
 
                             ShowWindow(appWin, ShowWindowCommands.Hide);
                             // Put it into this form
@@ -336,42 +374,11 @@ namespace Eryan
                             // Remove border and whatnot
                             SetWindowLong(appWin, GWL_STYLE, WS_VISIBLE);
 
-                            HandleRef windowRef = new HandleRef(this, appWin);
-
-                            GetWindowRect(windowRef, out eveWindowRect);
-
-                            // Move the window to overlay it on this window
-                            int eveWindowWidth = eveWindowRect._Right - eveWindowRect._Left;
-                            int eveWindowHeight = eveWindowRect._Bottom - eveWindowRect._Top;
-
-                            //MoveWindow(appWin, 0, 0, eveWindowWidth-10, eveWindowHeight, true);
-
-
-
-
-                            this.Width = eveWindowWidth - 10;
-                            this.Height = eveWindowHeight - 10;
-
-                            this.Size = new Size(this.Width, this.Height);
-                            Point tmpLocation = Location;
-
-                            this.Location = new Point(eveWindowRect._Left, eveWindowRect._Top);
-
-                            loaded = true;
+                            //this.Location = new Point(eveWindowRect._Left, eveWindowRect._Top);
 
                             handleDrawingScreen();
-
-                            //Add the screen to global list
-                            DrawAbleScreenFetcher.addScreen(drawingScreen);
-
-                            //Initialize input methods
-                            drawingScreen.setPid(getPid());
-                            mouse.setPid(getPid());
-                            keyboard.setWindowHandle(appWin);
-                            mouse.setWindowHandle(appWin);
-
-
-
+                            initialize();
+                           
                         }
                         
                     }
@@ -458,23 +465,8 @@ namespace Eryan
                     // Get the main handle
                     appWin = p.MainWindowHandle;
 
-                    HandleRef windowRef = new HandleRef(this, appWin);
-
-                    GetWindowRect(windowRef, out eveWindowRect);
-
-                    // Move the window to overlay it on this window
-                    int eveWindowWidth = eveWindowRect._Right - eveWindowRect._Left;
-                    int eveWindowHeight = eveWindowRect._Bottom - eveWindowRect._Top;
-
-                    //MoveWindow(appWin, 0, 0, eveWindowWidth-10, eveWindowHeight, true);
-
-
-
-
-                    this.Width = eveWindowWidth - 10;
-                    this.Height = eveWindowHeight - 10;
-
-                    this.Size = new Size(this.Width, this.Height);
+                    
+                    //this.Size = new Size(this.Width, this.Height);
 
                 }
                 catch (Exception ex)
@@ -509,46 +501,24 @@ namespace Eryan
                 // Move the window to overlay it on this window
                 MoveWindow(appWin, 0, 0, this.Width, this.Height, true);
                 GetWindowThreadProcessId(appWin, out pid);
-                drawingScreen.setPid(getPid());
-                mouse.setPid(getPid());
-                mouse.setWindowHandle(appWin);
 
-                //Add the screen to global list
-                DrawAbleScreenFetcher.addScreen(drawingScreen);
-
+                initialize();
                 
 
             }
 
-            HandleRef windowRef1 = new HandleRef(this, appWin);
-
-            GetWindowRect(windowRef1, out eveWindowRect);
-
-            // Move the window to overlay it on this window
-            int eveWindowWidth1 = eveWindowRect._Right - eveWindowRect._Left;
-            int eveWindowHeight1 = eveWindowRect._Bottom - eveWindowRect._Top;
-
-            //MoveWindow(appWin, 0, 0, eveWindowWidth-10, eveWindowHeight, true);
-
-
-
-
-            this.Width = eveWindowWidth1 - 10;
-            this.Height = eveWindowHeight1 - 10;
-
-            this.Size = new Size(this.Width, this.Height);
-
-            drawingScreen.setPid(getPid());
-            mouse.setPid(getPid());
-            mouse.setWindowHandle(appWin);
-
-            base.OnVisibleChanged(e);
-
+            initialize();
 
             if (this.IsVisible())
             {
                 handleDrawingScreen();
             }
+
+
+            this.Invalidate();
+            base.OnVisibleChanged(e);
+
+
             
         }
 
@@ -618,7 +588,7 @@ namespace Eryan
             drawingScreen.bringToFront();
             drawingScreen.showForm();
             drawingScreen.setOwner(this);
-            mouse.setPid(getPid());
+            
             //System.Console.WriteLine(this.Size.ToString());
                         
         }
