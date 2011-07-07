@@ -10,12 +10,17 @@ namespace Eryan
 {
     public class Mouse : InputDevice
     {
+        String dll1 = "C:\\Documents and Settings\\Administrator\\My Documents\\Visual Studio 2008\\Projects\\mouseDLL\\Debug\\mouseDLL.dll";
+        String dll = "C:\\Users\\emist\\mouseDLL\\Debug\\mouseDLL.dll";
 
-        [DllImport(@"C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\mouseDLL\Debug\mouseDLL.dll")]
+        [DllImport(@"C:\\Users\\emist\\BlackDLL\\mouseDLL\\Debug\\mouseDLL.dll")]
         public static extern void dllMoveMouse(IntPtr handle, int x, int y);
 
-        [DllImport(@"C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\mouseDLL\Debug\mouseDLL.dll")]
+        [DllImport(@"C:\\Users\\emist\\BlackDLL\\mouseDLL\\Debug\\mouseDLL.dll")]
         public static extern void dllMouseClick(IntPtr handle, int x, int y);
+
+        [DllImport(@"C:\\Users\\emist\\BlackDLL\\mouseDLL\\Debug\\mouseDLL.dll")]
+        public static extern void dllCalcTest(IntPtr handle);
 
         Utils screen = null;
         ZiadSpace.Util.BitHelper bh = new ZiadSpace.Util.BitHelper();
@@ -196,15 +201,15 @@ namespace Eryan
             screen = fetchScreen(getPid());
             if (screen == null)
             {
-                Console.WriteLine("screen is null");
-                Console.WriteLine("Mouse PID: " + getPid());
+               // Console.WriteLine("screen is null");
+               // Console.WriteLine("Mouse PID: " + getPid());
                 return;
             }
 
             
             if (appWin == IntPtr.Zero)
             {
-                Console.WriteLine("Mouse appWin is null: " + getPid());
+                //Console.WriteLine("Mouse appWin is null1: " + getPid());
                 return ;
             }
             
@@ -223,7 +228,9 @@ namespace Eryan
 
             screen.drawLine(Pens.BurlyWood, p, new Point(p.X + 5, p.Y));
             //dllMoveMouse(appWin, X, Y);
-            dllMouseClick(appWin, X, Y);
+            //dllMouseClick(appWin, X, Y);
+
+            dllMoveMouse(appWin, p.X, p.Y);
             
 
         }
@@ -235,6 +242,11 @@ namespace Eryan
                 if (cursorLocation().Y >= y - 5 && cursorLocation().Y <= y + 5)
                     return true;
             return false;
+        }
+
+        public int cursorDistance(Point p)
+        {
+            return (int)hypot(p.X, this.X, p.Y, this.Y);
         }
 
         public void move(int speed, int x, int y, int randX, int randY, int afterOffset)
@@ -250,10 +262,12 @@ namespace Eryan
             {
 
                 screen = fetchScreen(getPid());
+
+
                 if (screen == null)
                 {
-                    Console.WriteLine("screen is null");
-                    Console.WriteLine("Mouse PID: " + getPid());
+                 //   Console.WriteLine("screen is null");
+                 //   Console.WriteLine("Mouse PID: " + getPid());
                     return;
                 }
 
