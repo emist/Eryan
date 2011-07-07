@@ -23,6 +23,11 @@ namespace Eryan
         {
             lock (screens)
             {
+                foreach (Utils s in screens)
+                {
+                    if (s.Equals(screen))
+                        return;
+                }
                 screens.Add(screen);
             }
         }

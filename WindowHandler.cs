@@ -151,8 +151,12 @@ namespace Eryan
 
         private Boolean created = false;
         private IntPtr appWin;
-        private String exeName = "C:\\Program Files\\CCP\\EVE\\bin\\ExeFile.exe";
-        private String processName = "ExeFile";
+        private String exeName = "firefox.exe";
+        private String processName = "firefox";
+        private String title = "Mozilla";
+        
+        //private String exeName = "C:\\Program Files\\CCP\\EVE\\bin\\ExeFile.exe";
+        //private String processName = "ExeFile";
         private uint pid = 0;
         public delegate void WinEventDelegate(IntPtr hWinEventHook, uint eventType,
                                          IntPtr hwnd, int idObject, int idChild,
@@ -237,7 +241,7 @@ namespace Eryan
             winDel = new WinEventDelegate(HandleWindowChanges);
             MouseDown += new MouseEventHandler(Form1_MouseDown);
             drawingScreen = new Utils();
-            
+            this.Size = new Size(500, 900);
             //Move += new Form
             
      
@@ -311,13 +315,13 @@ namespace Eryan
 
                     GetWindowText(appWin, sb, sb.Capacity);
 
-                    if (!sb.ToString().Equals("EVE"))
+                    if (!sb.ToString().Contains(title))
                     {
 
                         
                         GetWindowText(hwnd, sb, sb.Capacity);
 
-                        if (sb.ToString().Equals("EVE"))
+                        if (sb.ToString().Contains(title))
                         {
                             appWin = hwnd;
 
@@ -362,6 +366,7 @@ namespace Eryan
 
                             //Initialize input methods
                             drawingScreen.setPid(getPid());
+                            mouse.setPid(getPid());
                             keyboard.setWindowHandle(appWin);
                             mouse.setWindowHandle(appWin);
 
@@ -425,6 +430,7 @@ namespace Eryan
 
         protected override void OnVisibleChanged(EventArgs e)
         {
+            RECT eveWindowRect = new RECT();
 
             // If control needs to be initialized/created
             if (created == false)
@@ -449,6 +455,24 @@ namespace Eryan
 
                     // Get the main handle
                     appWin = p.MainWindowHandle;
+
+                    HandleRef windowRef = new HandleRef(this, appWin);
+
+                    GetWindowRect(windowRef, out eveWindowRect);
+
+                    // Move the window to overlay it on this window
+                    int eveWindowWidth = eveWindowRect._Right - eveWindowRect._Left;
+                    int eveWindowHeight = eveWindowRect._Bottom - eveWindowRect._Top;
+
+                    //MoveWindow(appWin, 0, 0, eveWindowWidth-10, eveWindowHeight, true);
+
+
+
+
+                    this.Width = eveWindowWidth - 10;
+                    this.Height = eveWindowHeight - 10;
+
+                    this.Size = new Size(this.Width, this.Height);
 
                 }
                 catch (Exception ex)
@@ -485,13 +509,37 @@ namespace Eryan
                 GetWindowThreadProcessId(appWin, out pid);
                 drawingScreen.setPid(getPid());
                 mouse.setPid(getPid());
+                mouse.setWindowHandle(appWin);
+
+                //Add the screen to global list
+                DrawAbleScreenFetcher.addScreen(drawingScreen);
 
                 
 
             }
 
+            HandleRef windowRef1 = new HandleRef(this, appWin);
+
+            GetWindowRect(windowRef1, out eveWindowRect);
+
+            // Move the window to overlay it on this window
+            int eveWindowWidth1 = eveWindowRect._Right - eveWindowRect._Left;
+            int eveWindowHeight1 = eveWindowRect._Bottom - eveWindowRect._Top;
+
+            //MoveWindow(appWin, 0, 0, eveWindowWidth-10, eveWindowHeight, true);
+
+
+
+
+            this.Width = eveWindowWidth1 - 10;
+            this.Height = eveWindowHeight1 - 10;
+
+            this.Size = new Size(this.Width, this.Height);
+
             drawingScreen.setPid(getPid());
             mouse.setPid(getPid());
+            mouse.setWindowHandle(appWin);
+
             base.OnVisibleChanged(e);
 
 

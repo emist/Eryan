@@ -28,6 +28,8 @@ namespace Eryan
         private delegate void FormStartPositionDelegate(FormStartPosition pos);
         private delegate void AutoScaleModeDelegate(AutoScaleMode mode);
         private delegate void FormBorderStyleDelegate(FormBorderStyle style);
+        private delegate IntPtr ptrDelegate();
+
 
 
         //public BackgroundWorker bw = new BackgroundWorker();
@@ -52,6 +54,12 @@ namespace Eryan
         public uint getPid()
         {
             return pid;
+        }
+
+        public override bool Equals(Object a)
+        {
+            
+            return this.pid == ((Utils)a).pid;
         }
 
         public void drawString(String str, Font f, Point loc, bool antialiasing)
@@ -80,6 +88,8 @@ namespace Eryan
                
         }
             
+
+
 
         /*
         protected override void OnPaint(PaintEventArgs e)
@@ -192,6 +202,21 @@ namespace Eryan
             System.Console.WriteLine("COlor = :" + color);
             this.BackColor = color;
         }
+
+
+        public IntPtr getHandle()
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke(new ptrDelegate(getHandle), new object[] {  });
+                return IntPtr.Zero;
+            }
+
+
+
+            return this.Handle;
+        }
+
 
         public void setOpacity(double opacity)
         {

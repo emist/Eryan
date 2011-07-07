@@ -5,12 +5,14 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
+
 namespace Eryan
 {
     public class Mouse : InputDevice
     {
 
         Utils screen = null;
+        ZiadSpace.Util.BitHelper bh = new ZiadSpace.Util.BitHelper();
 
 
         //Mouse state
@@ -181,6 +183,7 @@ namespace Eryan
 
         }
 
+
         public void moveMouse(Point p)
         {
             screen = fetchScreen(getPid());
@@ -191,15 +194,27 @@ namespace Eryan
                 return;
             }
 
-            
-            PostMessage(appWin, (int)WMessages.WM_NCHITTEST, 0, MakeLParam(p.X, p.Y));
-            PostMessage(appWin, (int)WMessages.WM_SETCURSOR, 0, MakeLParam(p.X, p.Y));
-            PostMessage(appWin, (int)WMessages.WM_MOUSEMOVE, 0, MakeLParam(p.X, p.Y));
-            
-            
+            if (appWin == IntPtr.Zero)
+            {
+                Console.WriteLine("Mouse appWin is null: " + getPid());
+            }
+
+
             this.X = p.X;
             this.Y = p.Y;
 
+
+
+            long coord = 0x009803CE;
+
+            
+
+            //PostMessage(appWin, (int)WMessages.WM_NCHITTEST, 0, 0x009803CE);
+            //SendMessage(appWin, (int)WMessages.WM_SETCURSOR, (long)appWin, ZiadSpace.Util.BitHelper.MakeLong(300, 200));
+            PostMessage(appWin, (int)WMessages.WM_MOUSEMOVE, 0, ZiadSpace.Util.BitHelper.MakeDword(300, 200));
+
+            //PostMessage(appWin, (int)WMessages.WM_LBUTTONDOWN, 0, 0x009803CE);
+            //PostMessage(appWin, (int)WMessages.WM_LBUTTONUP, 0, 0x009803CE);
 
             screen.drawLine(Pens.BurlyWood, p, new Point(p.X + 5, p.Y));
         }
@@ -280,8 +295,8 @@ namespace Eryan
                     WindMouse(cx, cy, (x+random.Next(randX)), (y + random.Next(randY)), 11, 6, 10/randSpeed, 15/randSpeed, 10*randSpeed, 10*randSpeed);
                 }
 
-                PostMessage(appWin, (int)WMessages.WM_LBUTTONDOWN, 0, MakeLParam(x, y));
-                PostMessage(appWin, (int)WMessages.WM_LBUTTONUP, 0, MakeLParam(x, y));
+ //               PostMessage(appWin, (int)WMessages.WM_LBUTTONDOWN, 0, MakeLParam(x, y));
+ //               PostMessage(appWin, (int)WMessages.WM_LBUTTONUP, 0, MakeLParam(x, y));
 
             }
         }
