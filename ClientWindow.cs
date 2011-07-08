@@ -27,7 +27,7 @@ namespace Eryan
 
 
             this.tabControl1.TabPages[0].Controls.Add(form);
-            this.tabControl1.Size = new Size(800, 900);
+            //this.tabControl1.Size = new Size(800, 900);
             //this.tabControl1.TabPages[0].Size = new Size(800, 900);
         }
 
@@ -60,37 +60,54 @@ namespace Eryan
 
         protected override void OnVisibleChanged(EventArgs e)
         {
-            base.OnVisibleChanged(e);
             if (bots.Count > 0)
             {
-                Utils util = DrawAbleScreenFetcher.fetch(bots[0].getHandle().getPid());
-                util.setLocation(new Point(this.Location.X + 5, this.Location.Y + 50));
+                WindowHandler tmp = bots[0].getHandle();
+                if (tmp != null)
+                {
+                    Utils util = DrawAbleScreenFetcher.fetch(tmp.getPid());
+                    if(util != null)
+                        util.setLocation(new Point(this.Location.X + 5, this.Location.Y + 50));
+                }
             }
             this.tabControl1.Size = this.Size;
+            base.OnVisibleChanged(e);
         }
 
         protected override void OnMove(EventArgs e)
         {
-            base.OnResize(e);
+            
             if (bots.Count > 0)
             {
-                Utils util = DrawAbleScreenFetcher.fetch(bots[0].getHandle().getPid());
-                util.setLocation(new Point(this.Location.X+5, this.Location.Y+50));
+                WindowHandler tmp = bots[0].getHandle();
+                if (tmp != null)
+                {
+                    Utils util = DrawAbleScreenFetcher.fetch(tmp.getPid());
+                    if(util != null)
+                        util.setLocation(new Point(this.Location.X + 5, this.Location.Y + 50));
+                }
             }
 
             this.tabControl1.Size = this.Size;
+            base.OnMove(e);
         }
 
         protected override void OnResize(EventArgs e)
         {
-            base.OnResize(e);
+         
             if (bots.Count > 0)
             {
-                Utils util = DrawAbleScreenFetcher.fetch(bots[0].getHandle().getPid());
-                util.setLocation(new Point(this.Location.X + 5, this.Location.Y + 50));
+                WindowHandler tmp = bots[0].getHandle();
+                if (tmp != null)
+                {
+                    Utils util = DrawAbleScreenFetcher.fetch(tmp.getPid());
+                    if(util != null)
+                        util.setLocation(new Point(this.Location.X + 5, this.Location.Y + 50));
+                }
             }
 
             this.tabControl1.Size = this.Size;
+            base.OnResize(e);
         }
 
         private void InitializeComponent()

@@ -251,17 +251,15 @@ namespace Eryan
             winDel = new WinEventDelegate(HandleWindowChanges);
             MouseDown += new MouseEventHandler(Form1_MouseDown);
             drawingScreen = new Utils();
-            this.Size = new Size(800, 900);
+            this.Size = new Size(700, 600);
             //Move += new Form
             //this.AutoSize = true;
-     
-            //TransparencyKey = Color.Magenta;
-            //BackColor = Color.Magenta;
-            //Paint += PaintRectangle;
+
+            //CheckForIllegalCrossThreadCalls = false;
+            
 
         }
 
-      
         protected override void OnSizeChanged(EventArgs e)
         {
             this.Invalidate();
@@ -372,14 +370,17 @@ namespace Eryan
             GetWindowText(appWin, sb, sb.Capacity);
 
             if (sb.ToString().Contains("EVE"))
+            {               
                 loaded = true;
+            }
 
         #if DEBUG
             ;
         #else
             inject();
         #endif
-           
+
+            
         }
 
 
@@ -590,6 +591,7 @@ namespace Eryan
                 drawingScreen.drawString("Eryan 2.0", systemFont, new Point(0, 0));
             }
 
+            //this.Invalidate();
             base.OnPaint(e);
         }
         
@@ -615,8 +617,8 @@ namespace Eryan
             drawingScreen.setSize(new Size(this.Size.Width-10, this.Size.Height - 50));
             //drawingScreen.setLocation(new Point(this.Location.X+5, this.Location.Y + 50));
             drawingScreen.setBackColor(Color.DarkGray);
-            //drawingScreen.setOpacity(0.60);
-            drawingScreen.setTransparencyKey();
+            drawingScreen.setOpacity(0.60);
+            //drawingScreen.setTransparencyKey();
             drawingScreen.setFormBorderStyle(FormBorderStyle.None);
             drawingScreen.setControlBox(false);
             drawingScreen.showInTaskbar(false);

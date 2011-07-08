@@ -47,11 +47,13 @@ namespace Eryan
             bot.bringToFront();
             bot.setTopLevel(false);
             bot.setVisible(true);
+            
             bot.setFormBorderStyle(FormBorderStyle.None);
             bot.setDockStyle(DockStyle.Fill);
-            
 
-            cw.addControlToTab(bot);
+            cw.tabControl1.TabPages[0].Controls.Add(bot);
+
+            //cw.addControlToTab(bot);
             //botThread.Start(bot);
             
         }
@@ -78,6 +80,7 @@ namespace Eryan
 
         public void update()
         {
+
 
             if (bot.getMouse().cursorDistance(new Point(750, 900)) > 5)
                 bot.getMouse().move(new Point(750, 900));

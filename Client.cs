@@ -12,12 +12,19 @@ namespace Eryan
     static class Eryan
     {
 
+        static ClientWindow cWindow;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         /// 
 
-        
+
+
+        public static void createWindow()
+        {
+            cWindow = new ClientWindow();
+            Application.Run(cWindow);
+        }
 
         public static void SpawnForm(object firm)
         {
@@ -31,20 +38,33 @@ namespace Eryan
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            
+            
+            Thread ClientThread = new Thread(new ThreadStart(createWindow));
+            ClientThread.Start();
 
-            ClientWindow cWindow = new ClientWindow();
-            Thread ClientThread = new Thread(new ParameterizedThreadStart(SpawnForm));
-            ClientThread.Start(cWindow);
+
+            
+
+            //Thread ClientThread = new Thread(new ParameterizedThreadStart(SpawnForm));
+            //ClientThread.Start(cWindow);
 
             Point location = new Point();
-     
+
+            while (cWindow == null)
+            {
+                Thread.Sleep(300);
+            }
+
             cWindow.createBot();
 
+            
             while(cWindow.getBots().Count < 1)
                 Thread.Sleep(100);
 
             Bot bot1 = cWindow.getBots()[0];
-
+            
+            
             //WindowHandler BotHandle = bot1.getHandle();
 
 
@@ -61,7 +81,7 @@ namespace Eryan
 
                 System.Threading.Thread.Sleep(1000);
             }
-
+            
 
         }
 
