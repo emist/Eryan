@@ -28,6 +28,7 @@ namespace Eryan
         private delegate void FormStartPositionDelegate(FormStartPosition pos);
         private delegate void AutoScaleModeDelegate(AutoScaleMode mode);
         private delegate void FormBorderStyleDelegate(FormBorderStyle style);
+        private delegate void DockStyleDelegate(DockStyle style);
         private delegate IntPtr ptrDelegate();
 
 
@@ -56,11 +57,6 @@ namespace Eryan
             return pid;
         }
 
-        public override bool Equals(Object a)
-        {
-            
-            return this.pid == ((Utils)a).pid;
-        }
 
         public void drawString(String str, Font f, Point loc, bool antialiasing)
         {
@@ -173,13 +169,6 @@ namespace Eryan
         }
 
 
-        public void bwSetLocation(object sender, DoWorkEventArgs e)
-        {
-            System.Console.WriteLine("BW set location" + e.Argument);
-            this.Location = (Point)e.Argument;
-        }
-
-
         public void setLocation(Point loc)
         {
             if (this.InvokeRequired)
@@ -255,6 +244,31 @@ namespace Eryan
             this.ShowInTaskbar = show;
         }
 
+        public void setTopLevel(bool isTop)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke(new booleanDelegate(setTopLevel), new object[] { isTop });
+                return;
+            }
+
+
+            this.TopLevel = isTop;
+        }
+
+        public void setVisible(bool visible)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke(new booleanDelegate(setVisible), new object[] { visible });
+                return;
+            }
+
+
+            this.Visible = visible;
+        }
+
+
         public void setStartPosition(FormStartPosition position)
         {
             if (this.InvokeRequired)
@@ -290,6 +304,17 @@ namespace Eryan
   
 
             this.FormBorderStyle = style;
+        }
+
+        public void setDockStyle(DockStyle style)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke(new DockStyleDelegate(setDockStyle), new object[] { style });
+                return;
+            }
+
+            this.Dock = style;
         }
 
 

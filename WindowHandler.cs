@@ -18,7 +18,7 @@ using System.Drawing.Drawing2D;
 namespace Eryan
 {
 
-    public partial class WindowHandler : Form
+    public partial class WindowHandler : Utils
     {
         private Utils drawingScreen;
         //private Utils currentTransparency = new Utils();
@@ -238,6 +238,11 @@ namespace Eryan
         static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
 
 
+        public override bool Equals(object obj)
+        {
+            return obj is WindowHandler && this == (WindowHandler)obj;
+        }
+
         public WindowHandler()
         {
             InitializeComponent();
@@ -248,7 +253,7 @@ namespace Eryan
             drawingScreen = new Utils();
             this.Size = new Size(800, 900);
             //Move += new Form
-            
+            //this.AutoSize = true;
      
             //TransparencyKey = Color.Magenta;
             //BackColor = Color.Magenta;
@@ -608,9 +613,9 @@ namespace Eryan
             }
 
             drawingScreen.setSize(new Size(this.Size.Width-10, this.Size.Height - 50));
-            drawingScreen.setLocation(new Point(this.Location.X+5, this.Location.Y + 50));
+            //drawingScreen.setLocation(new Point(this.Location.X+5, this.Location.Y + 50));
             drawingScreen.setBackColor(Color.DarkGray);
-            //drawingScreen.setOpacity(0.30);
+            //drawingScreen.setOpacity(0.60);
             drawingScreen.setTransparencyKey();
             drawingScreen.setFormBorderStyle(FormBorderStyle.None);
             drawingScreen.setControlBox(false);
@@ -654,6 +659,9 @@ namespace Eryan
             base.OnResize(e);
 
         }
+
+        //Threadsafe form properties modifier
+
 
     }
 }

@@ -10,12 +10,13 @@ using System.Threading;
 
 namespace Eryan
 {
-    public partial class Bot
+    public partial class Bot 
     {
 
         Thread botThread;
-        WindowHandler bot; 
+        WindowHandler bot;
 
+        private delegate void clientWindowDelegate(ClientWindow cw);
         //Thread[] botWindowThreads = new Thread[20];
         //WindowHandler[] bots = new WindowHandler[20];
 
@@ -27,6 +28,10 @@ namespace Eryan
             
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Bot && this == (Bot)obj;
+        }
 
         private void Program_Load(object sender, EventArgs e)
         {
@@ -34,17 +39,24 @@ namespace Eryan
         }
 
 
-
-
-        public Thread CreateBot()
+        public void initializeBot(ClientWindow cw)
         {
-            botThread = new Thread(new ParameterizedThreadStart(ShowForm));
+            
+            //botThread = new Thread(new ParameterizedThreadStart(SpawnForm));
             bot = new WindowHandler();
-            botThread.Start(bot);
-            return botThread;
+            bot.bringToFront();
+            bot.setTopLevel(false);
+            bot.setVisible(true);
+            bot.setFormBorderStyle(FormBorderStyle.None);
+            bot.setDockStyle(DockStyle.Fill);
+            
+
+            cw.addControlToTab(bot);
+            //botThread.Start(bot);
+            
         }
 
-        public WindowHandler getBot()
+        public WindowHandler getHandle()
         {
             return bot;
         }
@@ -54,7 +66,12 @@ namespace Eryan
             return bot.getPid();
         }
 
-        public void ShowForm(object firm)
+        public Thread getThread()
+        {
+            return botThread;
+        }
+
+        public void SpawnForm(object firm)
         {
             Application.Run(firm as Form);
         }

@@ -51,10 +51,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitHelper.cs" />
-    <Compile Include="Client.cs">
+    <Compile Include="Bot.cs">
     </Compile>
-    <Compile Include="Client.Designer.cs">
-      <DependentUpon>Client.cs</DependentUpon>
+    <Compile Include="Bot.Designer.cs">
+      <DependentUpon>Bot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BotFetcher.cs" />
+    <Compile Include="ClientWindow.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="InputDevice.cs" />
     <Compile Include="KeyBoard.cs" />
@@ -69,8 +73,17 @@
     <Compile Include="WindowHandler.Designer.cs">
       <DependentUpon>WindowHandler.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bot.cs" />
+    <Compile Include="Client.cs">
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Bot.resx">
+      <DependentUpon>Bot.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientWindow.resx">
+      <DependentUpon>ClientWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -84,6 +97,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,6 +113,10 @@
     <ProjectReference Include="Injector\Injector\Injector.csproj">
       <Project>{D8765B34-1E92-4C66-A7B8-BACD75E33F3A}</Project>
       <Name>Injector</Name>
+    </ProjectReference>
+    <ProjectReference Include="Syringe\Syringe.csproj">
+      <Project>{3E3A04B3-9347-4395-A22A-C49C9B38F83C}</Project>
+      <Name>Syringe</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
