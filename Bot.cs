@@ -70,17 +70,6 @@ namespace Eryan
             return true;
         }
 
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // Bot
-            // 
-            this.ClientSize = new System.Drawing.Size(292, 268);
-            this.Name = "Bot";
-            this.ResumeLayout(false);
-
-        }
 
     }
 }
