@@ -38,36 +38,29 @@ namespace Eryan
 
             Point location = new Point();
      
-            Bot bot1 = cWindow.createBot();
+            cWindow.createBot();
 
-            while (bot1 == null)
+            while(cWindow.getBots().Count < 1)
                 Thread.Sleep(100);
+
+            Bot bot1 = cWindow.getBots()[0];
 
             //WindowHandler BotHandle = bot1.getHandle();
 
 
-            /*
-
+            
             while (true)
             {
                 
-                //bot1.getKeyBoard().sendKeyPresses("HelloWorld", 100, 600);
-                //bot1.getMouse().moveMouse(new Point(30, 30));
-                if (bot1 != null)
+                if ( bot1 != null)
                 {
-                    if (BotHandle.getMouse().cursorDistance(new Point(750, 900)) > 5)
-                        BotHandle.getMouse().move(new Point(750, 900));
-                    else
-                        BotHandle.getMouse().move(new Point(500, 600));
-
-
-                    Console.WriteLine("Bot1 pid: " + bot1.getPid());
+                    bot1.update();
                 }
-            */
+            
 
 
                 System.Threading.Thread.Sleep(1000);
-            //}
+            }
 
 
         }

@@ -78,7 +78,13 @@ namespace Eryan
 
         public void update()
         {
-  
+
+            if (bot.getMouse().cursorDistance(new Point(750, 900)) > 5)
+                bot.getMouse().move(new Point(750, 900));
+            else
+                bot.getMouse().move(new Point(500, 600));
+
+            Console.WriteLine("Bot pid = " + getPid());
         }
 
         //Destroy Bot

@@ -198,7 +198,7 @@ namespace Eryan
             screen = fetchScreen(getPid());
             if (screen == null)
             {
-               // Console.WriteLine("screen is null");
+               //Console.WriteLine("screen is null");
                // Console.WriteLine("Mouse PID: " + getPid());
                 return;
             }
@@ -214,8 +214,8 @@ namespace Eryan
             this.X = p.X;
             this.Y = p.Y;
 
-       
 
+            
             //PostMessage(appWin, (int)WMessages.WM_NCHITTEST, 0, 0x009803CE);
             //SendMessage(appWin, (int)WMessages.WM_SETCURSOR, (long)appWin, ZiadSpace.Util.BitHelper.MakeLong(300, 200));
             //PostMessage(hWndCalc, (int)WMessages.WM_MOUSEMOVE, 0, ZiadSpace.Util.BitHelper.MakeDword(300, 200));

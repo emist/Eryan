@@ -31,6 +31,11 @@ namespace Eryan
             //this.tabControl1.TabPages[0].Size = new Size(800, 900);
         }
 
+        public List<Bot> getBots()
+        {
+            return bots;
+        }
+
         public Bot createBot()
         {
             if (this.InvokeRequired)
