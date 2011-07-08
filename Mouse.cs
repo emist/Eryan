@@ -10,16 +10,13 @@ namespace Eryan
 {
     public class Mouse : InputDevice
     {
-        String dll1 = "C:\\Documents and Settings\\Administrator\\My Documents\\Visual Studio 2008\\Projects\\mouseDLL\\Debug\\mouseDLL.dll";
-        String dll = "C:\\Users\\emist\\mouseDLL\\Debug\\mouseDLL.dll";
-
-        [DllImport(@"C:\\Users\\emist\\BlackDLL\\mouseDLL\\Debug\\mouseDLL.dll")]
+        [DllImport(@"C:\\mouseDLL.dll")]
         public static extern void dllMoveMouse(IntPtr handle, int x, int y);
 
-        [DllImport(@"C:\\Users\\emist\\BlackDLL\\mouseDLL\\Debug\\mouseDLL.dll")]
+        [DllImport(@"C:\\mouseDLL.dll")]
         public static extern void dllMouseClick(IntPtr handle, int x, int y);
 
-        [DllImport(@"C:\\Users\\emist\\BlackDLL\\mouseDLL\\Debug\\mouseDLL.dll")]
+        [DllImport(@"C:\\mouseDLL.dll")]
         public static extern void dllCalcTest(IntPtr handle);
 
         Utils screen = null;
