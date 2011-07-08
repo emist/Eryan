@@ -9,7 +9,11 @@ using System.Diagnostics;
 namespace Eryan
 {
     public class Executor
-    {            
+    {
+        Injector syringe;
+
+
+
         [StructLayout(LayoutKind.Sequential)]
         struct MessageStruct
         {
@@ -19,6 +23,11 @@ namespace Eryan
             public string Caption;
         }
 
+        public Injector getSyringe()
+        {
+            return syringe;
+        }
+
         public void Inject(String dll, String process)
         {
             
@@ -26,23 +35,10 @@ namespace Eryan
 
             Console.WriteLine("Trying to inject " + dll + " into " + process);
             MessageStruct messageData = new MessageStruct() { Text = "Custom Message", Caption = "Custom Message Box" };
-            Injector syringe = new Injector(Process.GetProcessesByName(process)[0]);
+            syringe = new Injector(Process.GetProcessesByName(process)[0]);
             syringe.InjectLibrary(dll);
-            Console.WriteLine(dll + " injected into notepad, trying to call void Initialise() with no parameters");
-            Console.ReadLine();
-            syringe.CallExport("InjectDLL.dll", "Initialize");
-            Console.WriteLine("Waiting...");
-               // Console.ReadLine();
-               // syringe.CallExport("InjectDLL.dll", "process_expression");
-               // Console.ReadLine();
-                //Console.WriteLine("Trying to call InitWithMessage( PVOID ) with custom data {0}", messageData);
-                //Console.ReadLine();
-                //syringe.CallExport(dll, "InitWithMessage", messageData);
-                //Console.WriteLine("Waiting...");
-                //Console.ReadLine();
-            //syringe.EjectLibrary(dll);
-            Console.WriteLine(dll + " should be ejected");
-            Console.ReadLine();
+            Console.WriteLine(dll + " injected into " + process);
+         
         }
     }
 
