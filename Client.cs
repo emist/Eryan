@@ -1,73 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using System.Drawing;
+using System.Runtime.InteropServices;
+
 
 namespace Eryan
 {
-    public partial class Client 
+    static class Eryan
     {
-        Thread[] botWindowThreads = new Thread[20];
-        WindowHandler[] bots = new WindowHandler[20];
-       
-        public Client()
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        /// 
+
+
+
+
+
+        [STAThread]
+        static void Main()
         {
-       //     InitializeComponent();
-
-//            Load += new EventHandler(Program_Load);
-            
-        }
 
 
-        private void Program_Load(object sender, EventArgs e)
-        {
-            CreateBot();
-        }
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
-        //Stub
-        public Thread CreateBot()
-        {
-            botWindowThreads[0] = new Thread(new ParameterizedThreadStart(ShowForm));
-            bots[0] = new WindowHandler();
-            botWindowThreads[0].Start(bots[0]);
-            
-            return botWindowThreads[0];
-        }
 
-        public WindowHandler getBotByOrder(int bot)
-        {
-            return bots[bot];
-        }
+            Bot bot1 = new Bot();
 
-        public WindowHandler getBot(uint processId)
-        {
-            foreach (WindowHandler window in bots)
+
+            Thread bot1Thread = bot1.CreateBot();
+
+            Point location = new Point();
+
+            WindowHandler BotHandle = bot1.getBot();
+
+            while (bot1Thread.IsAlive)
             {
-                if (window.getPid() == processId)
-                    return window;
+                
+                //bot1.getKeyBoard().sendKeyPresses("HelloWorld", 100, 600);
+                //bot1.getMouse().moveMouse(new Point(30, 30));
+
+                if (BotHandle.getMouse().cursorDistance(new Point(750, 900)) > 5)
+                    BotHandle.getMouse().move(new Point(750, 900));
+                else
+                    BotHandle.getMouse().move(new Point(500, 600));
+
+
+                Console.WriteLine("Bot1 pid: " + bot1.getPid());
+
+
+
+                System.Threading.Thread.Sleep(1000);
             }
-            return null;
-        }
 
-        public void ShowForm(object firm)
-        {
-            Application.Run(firm as Form);
-        }
-
-        public void update()
-        {
-  
-        }
-
-        //Destroy Bot
-        public Boolean DestroyBot()
-        {
-            return true;
         }
 
     }
