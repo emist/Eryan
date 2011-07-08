@@ -304,6 +304,30 @@ namespace Eryan
         }
 
 
+        private void inject()
+        {
+            if (injector.getSyringe() == null && loaded)
+            {
+                try
+                {
+                    injector.Inject(dll, processName);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+
+                try
+                {
+                    injector.getSyringe().CallExport(dll, "atLogin");
+                    //injector.getSyringe().CallExport(dll, "process_expression");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("atLogin not found");
+                }
+            }
+        }
 
 
         private void initialize()
@@ -345,29 +369,12 @@ namespace Eryan
             if (sb.ToString().Contains("EVE"))
                 loaded = true;
 
-            if (injector.getSyringe() == null && loaded)
-            {
-                try
-                {
-                    injector.Inject(dll, processName);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
-
-                try
-                {
-                    injector.getSyringe().CallExport(dll, "atLogin");
-                    //injector.getSyringe().CallExport(dll, "process_expression");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("atLogin not found");
-                }
-            }
-            
-            
+        #if DEBUG
+            ;
+        #else
+            inject();
+        #endif
+           
         }
 
 
@@ -412,12 +419,7 @@ namespace Eryan
                         }
                         
                     }
-                    else
-                    {
-                        loaded = true;
-                    }
-
-
+                  
                  }
                            
 
