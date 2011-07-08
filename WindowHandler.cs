@@ -27,7 +27,7 @@ namespace Eryan
         private delegate void drawingScreenDelegate();
         private bool loaded = false;
         private Font systemFont = new Font("Impact", 16);
-        
+        private String dll = "C:\\Black.dll";
 
 
         //private Eve interaction objects
@@ -152,9 +152,9 @@ namespace Eryan
         private Boolean created = false;
         private IntPtr appWin;
 
-        //private String exeName = "calc.exe";
-        //private String processName = "calculator";
-        //private String title = "Calculator";
+        //private String exeName = "test.exe";
+        //private String processName = "test";
+        //private String title = "";
 
         //private String exeName = "exeFile";
         private String processName = "exeFile";
@@ -328,7 +328,6 @@ namespace Eryan
                 this.Height = eveWindowHeight;
             }
 
-            loaded = true;
 
             //Add the screen to global list
             DrawAbleScreenFetcher.addScreen(drawingScreen);
@@ -338,6 +337,37 @@ namespace Eryan
             mouse.setPid(getPid());
             keyboard.setWindowHandle(appWin);
             mouse.setWindowHandle(appWin);
+
+            StringBuilder sb = new StringBuilder(300);
+
+            GetWindowText(appWin, sb, sb.Capacity);
+
+            if (sb.ToString().Contains("EVE"))
+                loaded = true;
+
+            if (injector.getSyringe() == null && loaded)
+            {
+                try
+                {
+                    injector.Inject(dll, processName);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+
+                try
+                {
+                    injector.getSyringe().CallExport(dll, "atLogin");
+                    //injector.getSyringe().CallExport(dll, "process_expression");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("atLogin not found");
+                }
+            }
+            
+            
         }
 
 
