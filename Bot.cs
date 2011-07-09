@@ -43,7 +43,7 @@ namespace Eryan
         {
             
             //botThread = new Thread(new ParameterizedThreadStart(SpawnForm));
-            bot = new WindowHandler();
+            bot = new WindowHandler(cw);
             bot.bringToFront();
             bot.setTopLevel(false);
             bot.setVisible(true);
@@ -52,6 +52,7 @@ namespace Eryan
             bot.setDockStyle(DockStyle.Fill);
 
             cw.tabControl1.TabPages[0].Controls.Add(bot);
+            cw.tabControl1.TabPages[0].Text = "Bot";
 
             //cw.addControlToTab(bot);
             //botThread.Start(bot);
@@ -81,12 +82,12 @@ namespace Eryan
         public void update()
         {
 
-
+            
             if (bot.getMouse().cursorDistance(new Point(750, 900)) > 5)
                 bot.getMouse().move(new Point(750, 900));
             else
                 bot.getMouse().move(new Point(500, 600));
-
+            
             Console.WriteLine("Bot pid = " + getPid());
         }
 

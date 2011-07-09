@@ -60,10 +60,15 @@
     <Compile Include="ClientWindow.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Event.cs" />
+    <Compile Include="BaseSubject.cs" />
+    <Compile Include="EryanEventHandler.cs" />
     <Compile Include="InputDevice.cs" />
     <Compile Include="KeyBoard.cs" />
     <Compile Include="Mouse.cs">
     </Compile>
+    <Compile Include="Observer.cs" />
+    <Compile Include="Subject.cs" />
     <Compile Include="Utils.cs">
       <SubType>Form</SubType>
     </Compile>

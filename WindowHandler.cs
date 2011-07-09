@@ -21,6 +21,7 @@ namespace Eryan
     public partial class WindowHandler : Utils
     {
         private Utils drawingScreen;
+        private ClientWindow cw;
         //private Utils currentTransparency = new Utils();
         Executor injector = new Executor();
         private delegate void showFormDelegate(Form form);
@@ -152,16 +153,15 @@ namespace Eryan
         private Boolean created = false;
         private IntPtr appWin;
 
-        //private String exeName = "test.exe";
-        //private String processName = "test";
-        //private String title = "";
-
-        //private String exeName = "exeFile";
-        private String processName = "exeFile";
-        private String title = "EVE";
+        /*
+        private String exeName = "test.exe";
+        private String processName = "test";
+        private String title = "";
+        */
         
+        private String title = "EVE";
         private String exeName = "C:\\Program Files\\CCP\\EVE\\bin\\ExeFile.exe";
-        //private String processName = "ExeFile";
+        private String processName = "ExeFile";
         private uint pid = 0;
         public delegate void WinEventDelegate(IntPtr hWinEventHook, uint eventType,
                                          IntPtr hwnd, int idObject, int idChild,
@@ -243,7 +243,7 @@ namespace Eryan
             return obj is WindowHandler && this == (WindowHandler)obj;
         }
 
-        public WindowHandler()
+        public WindowHandler(ClientWindow cw)
         {
             InitializeComponent();
             Load += new EventHandler(Program_Load);
@@ -251,7 +251,11 @@ namespace Eryan
             winDel = new WinEventDelegate(HandleWindowChanges);
             MouseDown += new MouseEventHandler(Form1_MouseDown);
             drawingScreen = new Utils();
-            this.Size = new Size(700, 600);
+            
+            //this.Size = new Size(700, 600);
+            this.cw = cw;
+
+
             //Move += new Form
             //this.AutoSize = true;
 
@@ -309,8 +313,10 @@ namespace Eryan
 
         private void inject()
         {
-            if (injector.getSyringe() == null && loaded)
+            Console.WriteLine("outer inject");
+            if (injector != null && loaded)
             {
+                Console.WriteLine("Inside inject");
                 try
                 {
                     injector.Inject(dll, processName);
@@ -322,12 +328,16 @@ namespace Eryan
 
                 try
                 {
-                    injector.getSyringe().CallExport(dll, "atLogin");
-                    //injector.getSyringe().CallExport(dll, "process_expression");
+                    if (injector.getSyringe() != null)
+                    {
+                        //injector.getSyringe().CallExport(dll, "atLogin");
+                        //injector.getSyringe().CallExport(dll, "process_expression");
+                        //injector.getSyringe().CallExport(dll, "startServer");
+                    }
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("atLogin not found");
+                    Console.WriteLine("Function not found in the dll");
                 }
             }
         }
@@ -337,6 +347,10 @@ namespace Eryan
         {
             RECT eveWindowRect = new RECT();
             HandleRef windowRef = new HandleRef(this, appWin);
+
+            if (this.IsVisible())
+                this.Hide();
+            this.Show();
 
             GetWindowRect(windowRef, out eveWindowRect);
 
@@ -373,14 +387,13 @@ namespace Eryan
             {               
                 loaded = true;
             }
+            cw.Size = new Size(900, 800);
 
         #if DEBUG
             ;
         #else
-            inject();
+                inject();
         #endif
-
-            
         }
 
 
@@ -417,8 +430,11 @@ namespace Eryan
                             // Remove border and whatnot
                             SetWindowLong(appWin, GWL_STYLE, WS_VISIBLE);
 
+              
                             //this.Location = new Point(eveWindowRect._Left, eveWindowRect._Top);
 
+
+                            
                             handleDrawingScreen();
                             initialize();
                            
@@ -464,7 +480,7 @@ namespace Eryan
                 handleDrawingScreen();
             }
 
-            this.Invalidate();
+            //cw.Invalidate();
             
 
             base.OnMove(e);
@@ -475,18 +491,15 @@ namespace Eryan
 
         protected override void OnVisibleChanged(EventArgs e)
         {
+
+            
             RECT eveWindowRect = new RECT();
 
             // If control needs to be initialized/created
             if (created == false)
             {
 
-                // Mark that control is created
-                created = true;
-
-                // Initialize handle value to invalid
-                appWin = IntPtr.Zero;
-
+                
                 // Start the remote application
                 Process p = null;
                 try
@@ -503,6 +516,12 @@ namespace Eryan
                     // Get the main handle
                     appWin = p.MainWindowHandle;
 
+                    // Mark that control is created
+                    created = true;
+
+                    // Initialize handle value to invalid
+                    appWin = IntPtr.Zero;
+
                     
                     //this.Size = new Size(this.Width, this.Height);
 
@@ -510,7 +529,7 @@ namespace Eryan
                 catch (Exception ex)
                 {
 
-                    /*
+                /*  
                     Process temp = null;
                     foreach (Process process in Process.GetProcessesByName(processName))
                     {
@@ -527,12 +546,13 @@ namespace Eryan
                     }
                     else    
                         MessageBox.Show(this, ex.Message, "Error");
-                     */
+                  */   
                 }
 
                 // Put it into this form
                 SetParent(appWin, this.Handle);
-
+                
+            
                 // Remove border and whatnot
                 SetWindowLong(appWin, GWL_STYLE, WS_VISIBLE);
 
@@ -540,12 +560,15 @@ namespace Eryan
                 MoveWindow(appWin, 0, 0, this.Width, this.Height, true);
                 GetWindowThreadProcessId(appWin, out pid);
 
-                initialize();
+
+
                 
+                initialize();
+               
 
             }
-
-            initialize();
+            
+          
 
             if (this.IsVisible())
             {
@@ -614,11 +637,13 @@ namespace Eryan
                 return;
             }
 
-            drawingScreen.setSize(new Size(this.Size.Width-10, this.Size.Height - 50));
+            
+            drawingScreen.setOwner(this);
+            drawingScreen.setSize(new Size(this.Size.Width-5, this.Size.Height-30));
             //drawingScreen.setLocation(new Point(this.Location.X+5, this.Location.Y + 50));
             drawingScreen.setBackColor(Color.DarkGray);
-            drawingScreen.setOpacity(0.60);
-            //drawingScreen.setTransparencyKey();
+            //drawingScreen.setOpacity(0.60);
+            drawingScreen.setTransparencyKey();
             drawingScreen.setFormBorderStyle(FormBorderStyle.None);
             drawingScreen.setControlBox(false);
             drawingScreen.showInTaskbar(false);
@@ -626,7 +651,8 @@ namespace Eryan
             drawingScreen.setAutoScaleMode(AutoScaleMode.None);
             drawingScreen.bringToFront();
             drawingScreen.showForm();
-            drawingScreen.setOwner(this);
+
+
             
             //System.Console.WriteLine(this.Size.ToString());
                         

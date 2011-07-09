@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 
 namespace Eryan
 {
-    static class Eryan
+    static class Client
     {
 
         static ClientWindow cWindow;

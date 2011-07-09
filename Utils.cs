@@ -188,7 +188,7 @@ namespace Eryan
                 return;
             }
 
-            System.Console.WriteLine("COlor = :" + color);
+            //System.Console.WriteLine("COlor = :" + color);
             this.BackColor = color;
         }
 
@@ -216,7 +216,7 @@ namespace Eryan
             }
 
 
-            System.Console.WriteLine("Opacity = :" + opacity);
+            //System.Console.WriteLine("Opacity = :" + opacity);
             this.Opacity = opacity;
         }
 
@@ -228,7 +228,7 @@ namespace Eryan
                 return;
             }
 
-            System.Console.WriteLine("ControlBox = :" + ControlBox);
+            //System.Console.WriteLine("ControlBox = :" + ControlBox);
             this.ControlBox = show;
         }
         
