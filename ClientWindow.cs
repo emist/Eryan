@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Eryan
 {
-    public class ClientWindow : Form
+    public class ClientWindow : Utils
     {
         public TabPage tabPage1;
         public TabControl tabControl1;
@@ -52,7 +52,9 @@ namespace Eryan
 
         public ClientWindow()
         {
+            
             InitializeComponent();
+            this.Size = new Size(700, 800);
             this.AutoSize = true;
             this.tabControl1.TabPages[0].AutoScroll = true;
             
