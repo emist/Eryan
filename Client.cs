@@ -56,19 +56,35 @@ namespace Eryan
                 Thread.Sleep(300);
             }
 
-            cWindow.createBot();
+            Executor injector = new Executor();
+            String dll = "C:\\Black.dll";
+            injector.Inject(dll, "ExeFile");
+
+            if (injector.getSyringe() == null)
+                return;
+
+            injector.getSyringe().CallExport(dll, "startServer");
+
+            while (true)
+            {
+                Thread.Sleep(5000);
+            }
+
+
+            //cWindow.createBot();
 
             
-            while(cWindow.getBots().Count < 1)
-                Thread.Sleep(100);
+            //while(cWindow.getBots().Count < 1)
+            //    Thread.Sleep(100);
 
-            Bot bot1 = cWindow.getBots()[0];
+            //Bot bot1 = cWindow.getBots()[0];
             
             
             //WindowHandler BotHandle = bot1.getHandle();
 
 
-            
+
+            /*
             while (true)
             {
                 
@@ -81,7 +97,7 @@ namespace Eryan
 
                 System.Threading.Thread.Sleep(1000);
             }
-            
+            */
 
         }
 

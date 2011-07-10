@@ -159,9 +159,12 @@ namespace Eryan
         private String title = "";
         */
         
+        
         private String title = "EVE";
         private String exeName = "C:\\Program Files\\CCP\\EVE\\bin\\ExeFile.exe";
         private String processName = "ExeFile";
+        
+
         private uint pid = 0;
         public delegate void WinEventDelegate(IntPtr hWinEventHook, uint eventType,
                                          IntPtr hwnd, int idObject, int idChild,
@@ -332,6 +335,8 @@ namespace Eryan
                     {
                         //injector.getSyringe().CallExport(dll, "atLogin");
                         //injector.getSyringe().CallExport(dll, "process_expression");
+                        //injector.getSyringe().CallExport(dll, "startServer");
+                        //injector.getSyringe().CallExport(dll, "waitLoaded");
                         //injector.getSyringe().CallExport(dll, "startServer");
                     }
                 }
