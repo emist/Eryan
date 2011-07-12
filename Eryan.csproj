@@ -64,6 +64,7 @@
     <Compile Include="BaseSubject.cs" />
     <Compile Include="EryanEventHandler.cs" />
     <Compile Include="InputDevice.cs" />
+    <Compile Include="IPC\Pipe.cs" />
     <Compile Include="KeyBoard.cs" />
     <Compile Include="Mouse.cs">
     </Compile>
