@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using eveobjects;
 
 namespace Eryan.Wrappers
 {
     public class BooleanResponse : Response
     {
         bool data = false;
-        byte[] input;
+        eveobjects.Interaface eveobject;
+
+
+
         public BooleanResponse(byte[] input)
         {
-            this.input = input;
+            eveobject = eveobjects.Interaface.CreateBuilder().MergeFrom(input).Build();
+            //Console.WriteLine(eveobject.Name);
         }
         public override void HandleResponse()
         {
-            string output = Encoding.ASCII.GetString(input, 0, Array.IndexOf(input, (byte)0));
-            output =output.Trim();
-            //Console.WriteLine("HandleResponse: " + output);
-            data = output.Equals("True");
+
+            data = eveobject.Name.Contains("proto");
         }
         public override Object Data
         {

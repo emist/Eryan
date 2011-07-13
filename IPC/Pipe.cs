@@ -5,6 +5,8 @@ using System.Text;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.IO.Pipes;
+
 
 //"\\\\.\\pipe\\TestChannel"
 
@@ -25,6 +27,7 @@ namespace Eryan.IPC
         [DllImport("kernel32.dll")]
         static extern bool WaitNamedPipe(string lpNamedPipeName, uint nTimeOut);
 
+        
         [DllImport("Kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         public static extern IntPtr CreateFile(
            string fileName,
@@ -38,12 +41,15 @@ namespace Eryan.IPC
         IntPtr npipe;
         String pipeName;
 
+        
+
+
         public Pipe(String name)
         {
             pipeName = name;
         }
 
-        public byte[] pipeClient()
+        public byte[] pipeClient(string inputFunc)
         {
             const short FILE_ATTRIBUTE_NORMAL = 0x80;
             const short INVALID_HANDLE_VALUE = -1;
@@ -53,12 +59,16 @@ namespace Eryan.IPC
             const uint CREATE_ALWAYS = 2;
             const uint OPEN_EXISTING = 3;
 
+         
+   
 
+           
             if (!WaitNamedPipe(pipeName, 25000))
             {
                 Console.WriteLine("Error: cannot wait for the named pipe.");
-                return null;
+                return null;   
             }
+         
 
             npipe = CreateFile(pipeName,
                                 FileAccess.ReadWrite,
@@ -70,24 +80,40 @@ namespace Eryan.IPC
                 return null;
             }
 
+
+            Console.WriteLine("Connecting to pipe");
+
+            byte [] bytes = Encoding.ASCII.GetBytes(inputFunc);
+            uint bread;
+
             NativeOverlapped n = new NativeOverlapped();
             byte[] buf = new byte[300];
 
-            uint bread;
-
-            if (!WriteFile(npipe, Encoding.ASCII.GetBytes("login"), (uint)Encoding.ASCII.GetBytes("login").Length, out bread, ref n))
+            if (!WriteFile(npipe, Encoding.ASCII.GetBytes(inputFunc), (uint)Encoding.ASCII.GetBytes(inputFunc).Length, out bread, ref n))
             {
                 Console.WriteLine("Error writing the named pipe\n");
                 return null;
             }
-            if (ReadFile(npipe, buf, 1024, out bread, IntPtr.Zero))
-            {
-                buf[bread] = (byte)0;
 
-                string output = Encoding.ASCII.GetString(buf, 0, Array.IndexOf(buf, (byte)0));
-                output = output.Trim();
-                Console.WriteLine("Received: '" + output + "'");
-            }
+            Console.WriteLine("Writing to server");
+
+            byte[] recvdata = new byte[500];
+            int index = 0;
+
+            Console.WriteLine("Reading from server");
+            
+
+            ReadFile(npipe, buf, 1024, out bread, IntPtr.Zero);
+            
+            byte[] tempbuf = new byte[bread];
+
+
+            for (int i = 0; i< bread-1; i++)
+                tempbuf[i] = buf[i];
+
+
+
+            buf = tempbuf;
 
             return buf;
         }

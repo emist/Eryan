@@ -5,6 +5,10 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
+using Syringe;
+using System.Text;
+using System.IO;
 
 
 namespace Eryan
@@ -12,6 +16,7 @@ namespace Eryan
     static class Client
     {
 
+       
         static ClientWindow cWindow;
         /// <summary>
         /// The main entry point for the application.
@@ -31,9 +36,11 @@ namespace Eryan
             Application.Run(firm as Form);
         }
 
+      
         [STAThread]
         static void Main()
         {
+
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -60,9 +67,30 @@ namespace Eryan
             String dll = "C:\\Black.dll";
             injector.Inject(dll, "ExeFile");
 
+            //injector.Inject(dll, "ExeFile");
+
             if (injector.getSyringe() == null)
                 return;
 
+
+
+            
+         
+
+            //injector.getSyringe().CallExport(dll, "atLogin", messageData);
+
+            //Console.WriteLine(messageData.Text);
+
+
+            injector.getSyringe().CallExport(dll, "dropServer");
+
+            IPC.Pipe pipe = new IPC.Pipe("\\\\.\\pipe\\TestChannel");
+
+            Wrappers.Response resp = new Wrappers.BooleanResponse(pipe.pipeClient("atLogin"));
+            resp.HandleResponse();
+
+            Console.WriteLine(resp.Data);
+           
             injector.getSyringe().CallExport(dll, "startServer");
 
             while (true)
