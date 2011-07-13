@@ -1,0 +1,6 @@
+package eveobjects;
+
+message Interaface {
+	required string name = 1;
+	required int32 position = 2;
+}
