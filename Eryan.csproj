@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.ProtocolBuffers, Version=2.3.0.277, Culture=neutral, PublicKeyToken=17b3b1f090c3ea48, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ProtocolBuffers\bin\Debug\Google.ProtocolBuffers.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -68,6 +72,7 @@
     <Compile Include="KeyBoard.cs" />
     <Compile Include="Mouse.cs">
     </Compile>
+    <Compile Include="Objects.cs" />
     <Compile Include="Observer.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="Utils.cs">
@@ -113,6 +118,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="DrawAbleScreenFetcher.cs" />
+    <Compile Include="Wrappers\BooleanResponse.cs" />
+    <Compile Include="Wrappers\Response.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Injector\Injector\Injector.csproj">
