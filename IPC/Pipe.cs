@@ -85,11 +85,12 @@ namespace Eryan.IPC
 
             byte [] bytes = Encoding.ASCII.GetBytes(inputFunc);
             uint bread;
+            uint bsent;
 
             NativeOverlapped n = new NativeOverlapped();
             byte[] buf = new byte[300];
 
-            if (!WriteFile(npipe, Encoding.ASCII.GetBytes(inputFunc), (uint)Encoding.ASCII.GetBytes(inputFunc).Length, out bread, ref n))
+            if (!WriteFile(npipe, Encoding.ASCII.GetBytes(inputFunc), (uint)Encoding.ASCII.GetBytes(inputFunc).Length, out bsent, ref n))
             {
                 Console.WriteLine("Error writing the named pipe\n");
                 return null;
@@ -108,7 +109,7 @@ namespace Eryan.IPC
             byte[] tempbuf = new byte[bread];
 
 
-            for (int i = 0; i< bread-1; i++)
+            for (int i = 0; i<bread; i++)
                 tempbuf[i] = buf[i];
 
 
