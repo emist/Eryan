@@ -42,66 +42,51 @@ namespace Eryan
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            /*
             Thread ClientThread = new Thread(new ThreadStart(createWindow));
             ClientThread.Start();
-
-
-            
-
-            //Thread ClientThread = new Thread(new ParameterizedThreadStart(SpawnForm));
-            //ClientThread.Start(cWindow);
-
-            Point location = new Point();
 
             while (cWindow == null)
             {
                 Thread.Sleep(300);
             }
 
+             */ 
             /////DEBUGGING STUFF
 
-            /*
+ 
 
             Executor injector = new Executor();
             String dll = "C:\\Black.dll";
             injector.Inject(dll, "ExeFile");
 
-            //injector.Inject(dll, "ExeFile");
-
             if (injector.getSyringe() == null)
                 return;
 
-
-
-            
-         
-
-            //injector.getSyringe().CallExport(dll, "atLogin", messageData);
-
-            //Console.WriteLine(messageData.Text);
-
-
             injector.getSyringe().CallExport(dll, "dropServer");
 
-            Pipe pipe = new Pipe("\\\\.\\pipe\\TestChannel");
+
+            Communicator comm = new Communicator("\\\\.\\pipe\\TestChannel");
 
 
-            FunctionCallFactory factory = new FunctionCallFactory();
-
-            
-            Response resp = new InterfaceResponse(pipe.pipeClient(factory.build(FunctionCallFactory.FINDBYNAME, "username")));
-            resp.HandleResponse();
-
-            Console.WriteLine(resp.Data);
-           
             injector.getSyringe().CallExport(dll, "startServer");
+
+            Response resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYNAME, "username", Response.RESPONSES.INTERFACERESPONSE);
+            if (resp == null)
+                return;
+
+            resp.HandleResponse();
+            
+            
+            Console.WriteLine("Response name " + ((List<string>)resp.Data)[0]) ;
 
             while (true)
             {
-                Thread.Sleep(5000);
+                Thread.Sleep(1000);
             }
-            */
 
+
+            /*
             cWindow.createBot();
 
             
@@ -126,7 +111,7 @@ namespace Eryan
             
                 System.Threading.Thread.Sleep(1000);
             }
-            
+            */            
 
         }
 

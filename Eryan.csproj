@@ -54,6 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseSubject.cs" />
+    <Compile Include="Factories\ResponseFactory.cs" />
+    <Compile Include="IPC\Communicator.cs" />
     <Compile Include="Util\BitHelper.cs" />
     <Compile Include="Bot.cs">
     </Compile>
@@ -65,7 +68,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Event.cs" />
-    <Compile Include="BaseSubject.cs" />
     <Compile Include="EryanEventHandler.cs" />
     <Compile Include="Factories\FunctionCallFactory.cs" />
     <Compile Include="Input\InputDevice.cs" />
