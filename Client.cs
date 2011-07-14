@@ -93,12 +93,18 @@ namespace Eryan
 
 
 
-            Response resp = new BooleanResponse(pipe.pipeClient(factory.build(FunctionCallFactory.ATLOGIN)));
-            resp.HandleResponse();
+           // Response resp = new BooleanResponse(pipe.pipeClient(factory.build(FunctionCallFactory.ATLOGIN)));
+           // resp.HandleResponse();
 
-            Console.WriteLine(resp.Data);
+           // Console.WriteLine(resp.Data);
 
-            resp = new BooleanResponse(pipe.pipeClient(factory.build(FunctionCallFactory.ATLOGIN)));
+            
+
+           
+
+            
+
+            Response resp = new InterfaceResponse(pipe.pipeClient(factory.build(FunctionCallFactory.FINDBYNAME, "username")));
             resp.HandleResponse();
 
             Console.WriteLine(resp.Data);
