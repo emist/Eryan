@@ -10,6 +10,8 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System;
 using System.Drawing.Drawing2D;
+using Eryan.Input;
+
 
 //Events need to be changed to handle proper PID selection
 //As it is it wont support multiple eve clients
@@ -18,6 +20,9 @@ using System.Drawing.Drawing2D;
 namespace Eryan
 {
 
+    /// <summary>
+    /// The Handler for a Bot's Window
+    /// </summary>
     public partial class WindowHandler : Utils
     {
         private Utils drawingScreen;
@@ -159,7 +164,6 @@ namespace Eryan
         private String title = "";
         */
         
-        
         private String title = "EVE";
         private String exeName = "C:\\Program Files\\CCP\\EVE\\bin\\ExeFile.exe";
         private String processName = "ExeFile";
@@ -267,27 +271,43 @@ namespace Eryan
 
         }
 
+
+        /// <summary>
+        /// OnSizeChanged redraw
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnSizeChanged(EventArgs e)
         {
             this.Invalidate();
             base.OnSizeChanged(e);
         }
 
+        /// <summary>
+        /// OnLoad inject windows hooks to keep track of creation/destruction of EVE windows
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Program_Load(object sender, EventArgs e)
         {
                 m_hhook = SetWinEventHook(EVENT_OBJECT_CREATE,
-                EVENT_OBJECT_DESTROY, IntPtr.Zero, winDel, 0, 0, 0);
-            
+                EVENT_OBJECT_DESTROY, IntPtr.Zero, winDel, 0, 0, 0);    
         }
 
-
+        /// <summary>
+        /// Unhook
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Program_FormClosing(object sender, FormClosingEventArgs e)
         {
             UnhookWinEvent(m_hhook);
-           
         }
 
 
+        /// <summary>
+        /// Find out the EVE process' PID
+        /// </summary>
+        /// <returns>The PID of the EVE process</returns>
         public uint getPid()
         {
             uint outpid = 0;
@@ -297,11 +317,20 @@ namespace Eryan
 
         //Accessor to the Input Objects
 
+        
+        /// <summary>
+        /// Return the keyboard device associated with this window
+        /// </summary>
+        /// <returns>Keyboard device associated with this window</returns>
         public KeyBoard getKeyBoard()
         {
             return keyboard;
         }
 
+        /// <summary>
+        /// Return the mouse device associated with this window
+        /// </summary>
+        /// <returns>The mouse device associated with this window</returns>
         public Mouse getMouse()
         {
             return mouse;
@@ -314,12 +343,13 @@ namespace Eryan
         }
 
 
+        /// <summary>
+        /// Put Black.dll in the EVE process' memory
+        /// </summary>
         private void inject()
         {
-            Console.WriteLine("outer inject");
             if (injector != null && loaded)
             {
-                Console.WriteLine("Inside inject");
                 try
                 {
                     injector.Inject(dll, processName);
@@ -333,11 +363,10 @@ namespace Eryan
                 {
                     if (injector.getSyringe() != null)
                     {
-                        //injector.getSyringe().CallExport(dll, "atLogin");
-                        //injector.getSyringe().CallExport(dll, "process_expression");
+                        
+                        
                         //injector.getSyringe().CallExport(dll, "startServer");
-                        //injector.getSyringe().CallExport(dll, "waitLoaded");
-                        //injector.getSyringe().CallExport(dll, "startServer");
+                        injector.getSyringe().CallExport(dll, "dropServer");
                     }
                 }
                 catch (Exception e)
@@ -348,6 +377,9 @@ namespace Eryan
         }
 
 
+        /// <summary>
+        /// Eat the EVE window and inject
+        /// </summary>
         private void initialize()
         {
             RECT eveWindowRect = new RECT();
@@ -402,6 +434,16 @@ namespace Eryan
         }
 
 
+        /// <summary>
+        /// Unused I think
+        /// </summary>
+        /// <param name="hWinEventHook"></param>
+        /// <param name="eventType"></param>
+        /// <param name="hwnd"></param>
+        /// <param name="idObject"></param>
+        /// <param name="idChild"></param>
+        /// <param name="dwEventThread"></param>
+        /// <param name="dwmsEventTime"></param>
         private void HandleWindowChanges(IntPtr hWinEventHook, uint eventType,
                                          IntPtr hwnd, int idObject, int idChild,
                                          uint dwEventThread, uint dwmsEventTime)
@@ -452,23 +494,13 @@ namespace Eryan
 
         }
 
-
-        public void safeShow(Form form)
-        {
-            if (this.InvokeRequired)
-            {
-                this.BeginInvoke(new showFormDelegate(safeShow), new object[] {form});
-                return;
-            }
-
-            form.Show(this);
-
-        }
-
+        /// <summary>
+        /// Check if the WindowHandler is visible
+        /// </summary>
+        /// <returns>True if visible</returns>
         protected Boolean IsVisible()
         {
             foreach (Screen scrn in Screen.AllScreens)
-                // You may prefer Intersects(), rather than Contains() <br/>
                 if (scrn.Bounds.IntersectsWith(this.Bounds))
                     return true;
 
@@ -476,6 +508,10 @@ namespace Eryan
         }
 
 
+        /// <summary>
+        /// OnMove update the drawing screen position
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMove(EventArgs e)
         {
 
@@ -484,15 +520,14 @@ namespace Eryan
             {
                 handleDrawingScreen();
             }
-
-            //cw.Invalidate();
             
-
             base.OnMove(e);
- 
-        
         }
 
+        /// <summary>
+        /// OnVisibleChanged update the drawing screen 
+        /// </summary>
+        /// <param name="e"></param>
 
         protected override void OnVisibleChanged(EventArgs e)
         {
@@ -588,7 +623,10 @@ namespace Eryan
             
         }
 
-
+        /// <summary>
+        /// OnHandleDestroyed cleanup EVE
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnHandleDestroyed(EventArgs e)
         {
             // Stop the application
@@ -623,7 +661,9 @@ namespace Eryan
             base.OnPaint(e);
         }
         
-
+        /// <summary>
+        /// Update the drawing screen
+        /// </summary>
         private void handleDrawingScreen()
         {
             
@@ -663,6 +703,10 @@ namespace Eryan
                         
         }
 
+        /// <summary>
+        /// OnResize update the drawing screen and EVE client
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnResize(EventArgs e)
         {
    
@@ -692,9 +736,6 @@ namespace Eryan
             base.OnResize(e);
 
         }
-
-        //Threadsafe form properties modifier
-
 
     }
 }

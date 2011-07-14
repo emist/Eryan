@@ -5,13 +5,28 @@ using System.Text;
 
 namespace Eryan.Wrappers
 {
+    /// <summary>
+    /// Abstract response, all Responses inherit from this
+    /// </summary>
     public abstract class Response
     {
         Object data;
 
+
+        public struct RESPONSES
+        {
+            public const string INTERFACERESPONSE = "InterfaceResponse";
+        }
+
+        /// <summary>
+        /// Implement in subclass
+        /// </summary>
         public virtual void HandleResponse()
         { }
 
+        /// <summary>
+        /// Returns the representation of all the Response's data
+        /// </summary>
         public virtual Object Data
         {
             get
