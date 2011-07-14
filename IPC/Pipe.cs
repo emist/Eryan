@@ -12,6 +12,9 @@ using System.IO.Pipes;
 
 namespace Eryan.IPC
 {
+    /// <summary>
+    /// Named pipe representation
+    /// </summary>
     class Pipe
     {
 
@@ -43,12 +46,20 @@ namespace Eryan.IPC
 
         
 
-
+        /// <summary>
+        /// Constructs a pipe with the given name
+        /// </summary>
+        /// <param name="name">Name of the pipe to build</param>
         public Pipe(String name)
         {
             pipeName = name;
         }
 
+        /// <summary>
+        /// Calls functions on Black
+        /// </summary>
+        /// <param name="fcall">The functionCall object representing the function to be called</param>
+        /// <returns>The byte representation of the Response object</returns>
         public byte[] pipeClient(eveobjects.functionCall fcall)
         {
             const short FILE_ATTRIBUTE_NORMAL = 0x80;
@@ -58,8 +69,8 @@ namespace Eryan.IPC
             const uint CREATE_NEW = 1;
             const uint CREATE_ALWAYS = 2;
             const uint OPEN_EXISTING = 3;
-           
-            if (!WaitNamedPipe(pipeName, 25000))
+
+            if (!WaitNamedPipe(pipeName, 0xffffffff))
             {
                 Console.WriteLine("Error: cannot wait for the named pipe.");
                 return null;   
@@ -112,6 +123,20 @@ namespace Eryan.IPC
             buf = tempbuf;
 
             return buf;
+        }
+
+        /// <summary>
+        /// Check if the pipe is ready for reading/writing
+        /// </summary>
+        /// <returns>True is ready, false if not</returns>
+        public bool isReady()
+        {
+            if (!WaitNamedPipe(pipeName, 0xffffffff))
+            {
+                Console.WriteLine("Error: cannot wait for the named pipe.");
+                return false;
+            }
+            return true;
         }
 
     }

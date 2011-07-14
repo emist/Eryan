@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Eryan
 {
+    /// <summary>
+    /// Abstract Event
+    /// </summary>
     public interface Event
     {
         void process();

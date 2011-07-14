@@ -12,11 +12,12 @@ namespace Eryan.IPC
         Pipe pipe;
         string name;
         FunctionCallFactory factory;
+        ResponseFactory rfactory;
 
-        public struct calls
+        public struct CALLS
         {
-            public const string ATLOGIN = FunctionCallFactory.calls.ATLOGIN;
-            public const string FINDBYNAME = FunctionCallFactory.calls.FINDBYNAME;
+            public const string ATLOGIN = FunctionCallFactory.CALLS.ATLOGIN;
+            public const string FINDBYNAME = FunctionCallFactory.CALLS.FINDBYNAME;
         }
 
 
@@ -28,6 +29,8 @@ namespace Eryan.IPC
         public Communicator(string name)
         {
             pipe = new Pipe(name);
+            factory = new FunctionCallFactory();
+            rfactory = new ResponseFactory();
         }
 
         /// <summary>
@@ -42,9 +45,10 @@ namespace Eryan.IPC
         /// <summary>
         /// Make the call
         /// </summary>
-        /// <param name="callName">Constant function represenation as given in calls struct.</param>
+        /// <param name="call">Constant function represenation as given in calls struct.</param>
+        /// <param name="responsetype">The expected response as defined in Responses.RESPONSETYPE</param>
         /// <returns>The response or null if failed.</returns>
-        public Response sendCall(string call)
+        public Response sendCall(string call, string responsetype)
         {
             byte [] response;
             Response resp;
@@ -54,16 +58,8 @@ namespace Eryan.IPC
             }
 
             response = pipe.pipeClient(factory.build(call));
-            try
-            {
-                resp = new InterfaceResponse(response);
-            }
-            catch (Google.ProtocolBuffers.UninitializedMessageException e)
-            {
-                Console.WriteLine("Uninitalized values");
-                return null;
-            }
-
+            resp = rfactory.build(response, responsetype);
+            
             return resp;
 
         }
@@ -73,8 +69,9 @@ namespace Eryan.IPC
         /// </summary>
         /// <param name="call">The function name as represented in calls struct</param>
         /// <param name="param">The parameter to send</param>
+        /// <param name="responsetype">The response type expected as defined in Responses.RESPONSETYPE</param>
         /// <returns>The response object or null if failed</returns>
-        public Response sendCall(string call, string param)
+        public Response sendCall(string call, string param, string responsetype)
         {
             byte[] response;
             Response resp;
@@ -84,18 +81,9 @@ namespace Eryan.IPC
             }
 
             response = pipe.pipeClient(factory.build(call, param));
-            try
-            {
-                resp = new InterfaceResponse(response);
-            }
-            catch (Google.ProtocolBuffers.UninitializedMessageException e)
-            {
-                Console.WriteLine("Uninitalized values");
-                return null;
-            }
-
+            resp = rfactory.build(response, responsetype);
+          
             return resp;
-
         }
 
     }

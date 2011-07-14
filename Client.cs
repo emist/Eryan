@@ -20,25 +20,20 @@ namespace Eryan
 
        
         static ClientWindow cWindow;
+
         /// <summary>
-        /// The main entry point for the application.
+        /// Spawns the Eryan Client on a new thread
         /// </summary>
-        /// 
-
-
-
         public static void createWindow()
         {
             cWindow = new ClientWindow();
             Application.Run(cWindow);
         }
 
-        public static void SpawnForm(object firm)
-        {
-            Application.Run(firm as Form);
-        }
+        /// <summary>
+        /// The main entry point of the application
+        /// </summary>
 
-      
         [STAThread]
         static void Main()
         {
@@ -47,8 +42,6 @@ namespace Eryan
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            
-            
             Thread ClientThread = new Thread(new ThreadStart(createWindow));
             ClientThread.Start();
 
@@ -64,6 +57,10 @@ namespace Eryan
             {
                 Thread.Sleep(300);
             }
+
+            /////DEBUGGING STUFF
+
+            /*
 
             Executor injector = new Executor();
             String dll = "C:\\Black.dll";
@@ -91,19 +88,7 @@ namespace Eryan
 
             FunctionCallFactory factory = new FunctionCallFactory();
 
-
-
-           // Response resp = new BooleanResponse(pipe.pipeClient(factory.build(FunctionCallFactory.ATLOGIN)));
-           // resp.HandleResponse();
-
-           // Console.WriteLine(resp.Data);
-
             
-
-           
-
-            
-
             Response resp = new InterfaceResponse(pipe.pipeClient(factory.build(FunctionCallFactory.FINDBYNAME, "username")));
             resp.HandleResponse();
 
@@ -115,22 +100,22 @@ namespace Eryan
             {
                 Thread.Sleep(5000);
             }
+            */
 
-
-            //cWindow.createBot();
+            cWindow.createBot();
 
             
-            //while(cWindow.getBots().Count < 1)
-            //    Thread.Sleep(100);
+            while(cWindow.getBots().Count < 1)
+                Thread.Sleep(100);
 
-            //Bot bot1 = cWindow.getBots()[0];
+            Bot bot1 = cWindow.getBots()[0];
             
             
-            //WindowHandler BotHandle = bot1.getHandle();
+            WindowHandler BotHandle = bot1.getHandle();
 
 
 
-            /*
+            
             while (true)
             {
                 
@@ -139,11 +124,9 @@ namespace Eryan
                     bot1.update();
                 }
             
-
-
                 System.Threading.Thread.Sleep(1000);
             }
-            */
+            
 
         }
 

@@ -7,6 +7,10 @@ using System.Drawing;
 
 namespace Eryan
 {
+
+    /// <summary>
+    /// The Eryan Client window, handles the adding and removing of bot windows/loading scripts/etc.
+    /// </summary>
     public class ClientWindow : Utils
     {
         public TabPage tabPage1;
@@ -17,6 +21,10 @@ namespace Eryan
         private delegate Bot createBotDelegate();
 
 
+        /// <summary>
+        /// Thread-safe way to add a WindowHandler to its controltab
+        /// </summary>
+        /// <param name="form">The instance of WindowHandler to add</param>
         public void addControlToTab(Utils form)
         {
             if (this.InvokeRequired)
@@ -31,11 +39,20 @@ namespace Eryan
             //this.tabControl1.TabPages[0].Size = new Size(800, 900);
         }
 
+
+        /// <summary>
+        /// Getter for the Bot list.
+        /// </summary>
+        /// <returns>Returns a List of Bot</returns>
         public List<Bot> getBots()
         {
             return bots;
         }
 
+        /// <summary>
+        /// Thread-safe Bot creator
+        /// </summary>
+        /// <returns>The reference to the bot created</returns>
         public Bot createBot()
         {
             if (this.InvokeRequired)
@@ -57,9 +74,12 @@ namespace Eryan
             this.Size = new Size(700, 800);
             this.AutoSize = true;
             this.tabControl1.TabPages[0].AutoScroll = true;
-            
         }
 
+        /// <summary>
+        /// Updates the location of the drawable area
+        /// </summary>
+        /// <param name="e">EventArgs for the event</param>
         protected override void OnVisibleChanged(EventArgs e)
         {
             if (bots.Count > 0)
@@ -76,6 +96,10 @@ namespace Eryan
             base.OnVisibleChanged(e);
         }
 
+        /// <summary>
+        /// Updates the location of the drawable area
+        /// </summary>
+        /// <param name="e">EventArgs for the event</param>
         protected override void OnMove(EventArgs e)
         {
             
@@ -93,7 +117,10 @@ namespace Eryan
             this.tabControl1.Size = this.Size;
             base.OnMove(e);
         }
-
+        /// <summary>
+        /// Updates the location of the drawable area
+        /// </summary>
+        /// <param name="e">EventArgs for the event</param>
         protected override void OnResize(EventArgs e)
         {
          
