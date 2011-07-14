@@ -86,7 +86,10 @@ namespace Eryan
 
             IPC.Pipe pipe = new IPC.Pipe("\\\\.\\pipe\\TestChannel");
 
-            Wrappers.Response resp = new Wrappers.BooleanResponse(pipe.pipeClient("atLogin"));
+
+            Factories.FunctionCallFactory factory = new Factories.FunctionCallFactory();
+
+            Wrappers.Response resp = new Wrappers.BooleanResponse(pipe.pipeClient(factory.build("atLogin")));
             resp.HandleResponse();
 
             Console.WriteLine(resp.Data);

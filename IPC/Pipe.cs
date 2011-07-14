@@ -49,7 +49,7 @@ namespace Eryan.IPC
             pipeName = name;
         }
 
-        public byte[] pipeClient(string inputFunc)
+        public byte[] pipeClient(eveobjects.functionCall fcall)
         {
             const short FILE_ATTRIBUTE_NORMAL = 0x80;
             const short INVALID_HANDLE_VALUE = -1;
@@ -58,10 +58,6 @@ namespace Eryan.IPC
             const uint CREATE_NEW = 1;
             const uint CREATE_ALWAYS = 2;
             const uint OPEN_EXISTING = 3;
-
-         
-   
-
            
             if (!WaitNamedPipe(pipeName, 25000))
             {
@@ -83,14 +79,16 @@ namespace Eryan.IPC
 
             Console.WriteLine("Connecting to pipe");
 
-            byte [] bytes = Encoding.ASCII.GetBytes(inputFunc);
+            
             uint bread;
             uint bsent;
+            byte [] buf = new byte[700];
 
             NativeOverlapped n = new NativeOverlapped();
-            byte[] buf = new byte[300];
+            
+            
 
-            if (!WriteFile(npipe, Encoding.ASCII.GetBytes(inputFunc), (uint)Encoding.ASCII.GetBytes(inputFunc).Length, out bsent, ref n))
+            if (!WriteFile(npipe, fcall.ToByteArray() , (uint)fcall.SerializedSize , out bsent, ref n))
             {
                 Console.WriteLine("Error writing the named pipe\n");
                 return null;
@@ -99,7 +97,6 @@ namespace Eryan.IPC
             Console.WriteLine("Writing to server");
 
             byte[] recvdata = new byte[500];
-            int index = 0;
 
             Console.WriteLine("Reading from server");
             
@@ -111,8 +108,6 @@ namespace Eryan.IPC
 
             for (int i = 0; i<bread; i++)
                 tempbuf[i] = buf[i];
-
-
 
             buf = tempbuf;
 

@@ -8,20 +8,17 @@ namespace Eryan.Wrappers
 {
     public class BooleanResponse : Response
     {
-        bool data = false;
-        eveobjects.Interaface eveobject;
-
-
+        Boolean data = true;
+        eveobjects.BooleanObject booleanObject;
 
         public BooleanResponse(byte[] input)
         {
-            eveobject = eveobjects.Interaface.CreateBuilder().MergeFrom(input).Build();
-            //Console.WriteLine(eveobject.Name);
+            booleanObject = eveobjects.BooleanObject.CreateBuilder().MergeFrom(input).Build();
+            Console.WriteLine(booleanObject.Istrue);
         }
         public override void HandleResponse()
         {
-
-            data = eveobject.Name.Contains("proto");
+            data = booleanObject.Istrue;
         }
         public override Object Data
         {
