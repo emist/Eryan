@@ -120,6 +120,7 @@
     </Compile>
     <Compile Include="DrawAbleScreenFetcher.cs" />
     <Compile Include="Wrappers\BooleanResponse.cs" />
+    <Compile Include="Wrappers\InterfaceResponse.cs" />
     <Compile Include="Wrappers\Response.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,9 @@ using System.Diagnostics;
 using Syringe;
 using System.Text;
 using System.IO;
-
+using Eryan.Factories;
+using Eryan.IPC;
+using Eryan.Wrappers;
 
 namespace Eryan
 {
@@ -84,12 +86,19 @@ namespace Eryan
 
             injector.getSyringe().CallExport(dll, "dropServer");
 
-            IPC.Pipe pipe = new IPC.Pipe("\\\\.\\pipe\\TestChannel");
+            Pipe pipe = new Pipe("\\\\.\\pipe\\TestChannel");
 
 
-            Factories.FunctionCallFactory factory = new Factories.FunctionCallFactory();
+            FunctionCallFactory factory = new FunctionCallFactory();
 
-            Wrappers.Response resp = new Wrappers.BooleanResponse(pipe.pipeClient(factory.build("atLogin")));
+
+
+            Response resp = new BooleanResponse(pipe.pipeClient(factory.build(FunctionCallFactory.ATLOGIN)));
+            resp.HandleResponse();
+
+            Console.WriteLine(resp.Data);
+
+            resp = new BooleanResponse(pipe.pipeClient(factory.build(FunctionCallFactory.ATLOGIN)));
             resp.HandleResponse();
 
             Console.WriteLine(resp.Data);
