@@ -54,13 +54,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BitHelper.cs" />
+    <Compile Include="Util\BitHelper.cs" />
     <Compile Include="Bot.cs">
     </Compile>
     <Compile Include="Bot.Designer.cs">
       <DependentUpon>Bot.cs</DependentUpon>
     </Compile>
-    <Compile Include="BotFetcher.cs" />
+    <Compile Include="Singleton\BotFetcher.cs" />
     <Compile Include="ClientWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,15 +68,15 @@
     <Compile Include="BaseSubject.cs" />
     <Compile Include="EryanEventHandler.cs" />
     <Compile Include="Factories\FunctionCallFactory.cs" />
-    <Compile Include="InputDevice.cs" />
+    <Compile Include="Input\InputDevice.cs" />
     <Compile Include="IPC\Pipe.cs" />
-    <Compile Include="KeyBoard.cs" />
-    <Compile Include="Mouse.cs">
+    <Compile Include="Input\KeyBoard.cs" />
+    <Compile Include="Input\Mouse.cs">
     </Compile>
     <Compile Include="Objects.cs" />
     <Compile Include="Observer.cs" />
     <Compile Include="Subject.cs" />
-    <Compile Include="Utils.cs">
+    <Compile Include="Util\Utils.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WindowHandler.cs">
@@ -118,7 +118,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="DrawAbleScreenFetcher.cs" />
+    <Compile Include="Singleton\DrawAbleScreenFetcher.cs" />
     <Compile Include="Wrappers\BooleanResponse.cs" />
     <Compile Include="Wrappers\InterfaceResponse.cs" />
     <Compile Include="Wrappers\Response.cs" />
