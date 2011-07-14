@@ -29,13 +29,13 @@ namespace eveobjects {
     static Objects() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           "Cg1vYmplY3RzLnByb3RvEgpldmVvYmplY3RzIh8KDUJvb2xlYW5PYmplY3QS" + 
-          "DgoGaXN0cnVlGAEgAigIIkgKDGZ1bmN0aW9uQ2FsbBIMCgRuYW1lGAEgAigJ" + 
-          "EhQKDHJlc3BvbnNldHlwZRgCIAIoCRIUCgxzdHJwYXJhbWV0ZXIYAyABKAki" + 
-          "0gEKCUludGVyZmFjZRIMCgRuYW1lGAEgAigJEhAKCHRvcGxlZnRYGAIgAigF" + 
-          "EhAKCHRvcGxlZnRZGAMgAigFEhYKDmhhc0Nsb3NlQnV0dG9uGAQgASgIEhUK" + 
-          "DWNsb3NlVG9wTGVmdFgYBSABKAUSFQoNY2xvc2VUb3BMZWZ0WRgGIAEoBRIZ" + 
-          "ChFoYXNDb250aW51ZUJ1dHRvbhgHIAEoCBIYChBjb250aW51ZVRvcExlZnRY" + 
-          "GAggASgFEhgKEGNvbnRpbnVlVG9wTGVmdFkYCSABKAU=");
+          "DgoGaXN0cnVlGAEgAigIIjIKDGZ1bmN0aW9uQ2FsbBIMCgRuYW1lGAEgAigJ" + 
+          "EhQKDHN0cnBhcmFtZXRlchgCIAEoCSLSAQoJSW50ZXJmYWNlEgwKBG5hbWUY" + 
+          "ASACKAkSEAoIdG9wbGVmdFgYAiACKAUSEAoIdG9wbGVmdFkYAyACKAUSFgoO" + 
+          "aGFzQ2xvc2VCdXR0b24YBCABKAgSFQoNY2xvc2VUb3BMZWZ0WBgFIAEoBRIV" + 
+          "Cg1jbG9zZVRvcExlZnRZGAYgASgFEhkKEWhhc0NvbnRpbnVlQnV0dG9uGAcg" + 
+          "ASgIEhgKEGNvbnRpbnVlVG9wTGVmdFgYCCABKAUSGAoQY29udGludWVUb3BM" + 
+          "ZWZ0WRgJIAEoBQ==");
       pbd::FileDescriptor.InternalDescriptorAssigner assigner = delegate(pbd::FileDescriptor root) {
         descriptor = root;
         internal__static_eveobjects_BooleanObject__Descriptor = Descriptor.MessageTypes[0];
@@ -45,7 +45,7 @@ namespace eveobjects {
         internal__static_eveobjects_functionCall__Descriptor = Descriptor.MessageTypes[1];
         internal__static_eveobjects_functionCall__FieldAccessorTable = 
             new pb::FieldAccess.FieldAccessorTable<global::eveobjects.functionCall, global::eveobjects.functionCall.Builder>(internal__static_eveobjects_functionCall__Descriptor,
-                new string[] { "Name", "Responsetype", "Strparameter", });
+                new string[] { "Name", "Strparameter", });
         internal__static_eveobjects_Interface__Descriptor = Descriptor.MessageTypes[2];
         internal__static_eveobjects_Interface__FieldAccessorTable = 
             new pb::FieldAccess.FieldAccessorTable<global::eveobjects.Interface, global::eveobjects.Interface.Builder>(internal__static_eveobjects_Interface__Descriptor,
@@ -308,17 +308,7 @@ namespace eveobjects {
       get { return name_; }
     }
     
-    public const int ResponsetypeFieldNumber = 2;
-    private bool hasResponsetype;
-    private string responsetype_ = "";
-    public bool HasResponsetype {
-      get { return hasResponsetype; }
-    }
-    public string Responsetype {
-      get { return responsetype_; }
-    }
-    
-    public const int StrparameterFieldNumber = 3;
+    public const int StrparameterFieldNumber = 2;
     private bool hasStrparameter;
     private string strparameter_ = "";
     public bool HasStrparameter {
@@ -331,7 +321,6 @@ namespace eveobjects {
     public override bool IsInitialized {
       get {
         if (!hasName) return false;
-        if (!hasResponsetype) return false;
         return true;
       }
     }
@@ -341,11 +330,8 @@ namespace eveobjects {
       if (HasName) {
         output.WriteString(1, Name);
       }
-      if (HasResponsetype) {
-        output.WriteString(2, Responsetype);
-      }
       if (HasStrparameter) {
-        output.WriteString(3, Strparameter);
+        output.WriteString(2, Strparameter);
       }
       UnknownFields.WriteTo(output);
     }
@@ -360,11 +346,8 @@ namespace eveobjects {
         if (HasName) {
           size += pb::CodedOutputStream.ComputeStringSize(1, Name);
         }
-        if (HasResponsetype) {
-          size += pb::CodedOutputStream.ComputeStringSize(2, Responsetype);
-        }
         if (HasStrparameter) {
-          size += pb::CodedOutputStream.ComputeStringSize(3, Strparameter);
+          size += pb::CodedOutputStream.ComputeStringSize(2, Strparameter);
         }
         size += UnknownFields.SerializedSize;
         memoizedSerializedSize = size;
@@ -461,9 +444,6 @@ namespace eveobjects {
         if (other.HasName) {
           Name = other.Name;
         }
-        if (other.HasResponsetype) {
-          Responsetype = other.Responsetype;
-        }
         if (other.HasStrparameter) {
           Strparameter = other.Strparameter;
         }
@@ -504,10 +484,6 @@ namespace eveobjects {
               break;
             }
             case 18: {
-              Responsetype = input.ReadString();
-              break;
-            }
-            case 26: {
               Strparameter = input.ReadString();
               break;
             }
@@ -532,25 +508,6 @@ namespace eveobjects {
       public Builder ClearName() {
         result.hasName = false;
         result.name_ = "";
-        return this;
-      }
-      
-      public bool HasResponsetype {
-        get { return result.HasResponsetype; }
-      }
-      public string Responsetype {
-        get { return result.Responsetype; }
-        set { SetResponsetype(value); }
-      }
-      public Builder SetResponsetype(string value) {
-        pb::ThrowHelper.ThrowIfNull(value, "value");
-        result.hasResponsetype = true;
-        result.responsetype_ = value;
-        return this;
-      }
-      public Builder ClearResponsetype() {
-        result.hasResponsetype = false;
-        result.responsetype_ = "";
         return this;
       }
       
