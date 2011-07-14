@@ -6,7 +6,8 @@ message BooleanObject {
 
 message functionCall{
 	required string name = 1;
-	optional string strparameter = 2;
+	required string responsetype = 2;
+	optional string strparameter = 3;
 }
 
 message Interface{
