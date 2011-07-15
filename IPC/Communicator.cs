@@ -14,11 +14,7 @@ namespace Eryan.IPC
         FunctionCallFactory factory;
         ResponseFactory rfactory;
 
-        public struct CALLS
-        {
-            public const string ATLOGIN = FunctionCallFactory.CALLS.ATLOGIN;
-            public const string FINDBYNAMELOGIN = FunctionCallFactory.CALLS.FINDBYNAMELOGIN;
-        }
+ 
 
 
         
