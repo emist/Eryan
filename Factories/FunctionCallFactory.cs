@@ -18,6 +18,8 @@ namespace Eryan.Factories
         {
             public const string ATLOGIN = "atLogin";
             public const string FINDBYNAMELOGIN = "findByNameLogin";
+            public const string FINDBYTEXTLOGIN = "findByTextLogin";
+            public const string FINDBYTEXTMENU = "findByTextMenu";
         }
 
        /// <summary>
