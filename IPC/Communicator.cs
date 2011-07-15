@@ -17,7 +17,7 @@ namespace Eryan.IPC
         public struct CALLS
         {
             public const string ATLOGIN = FunctionCallFactory.CALLS.ATLOGIN;
-            public const string FINDBYNAME = FunctionCallFactory.CALLS.FINDBYNAME;
+            public const string FINDBYNAMELOGIN = FunctionCallFactory.CALLS.FINDBYNAMELOGIN;
         }
 
 

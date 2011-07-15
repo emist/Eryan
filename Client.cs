@@ -71,7 +71,7 @@ namespace Eryan
 
             injector.getSyringe().CallExport(dll, "startServer");
 
-            Response resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYNAME, "username", Response.RESPONSES.INTERFACERESPONSE);
+            Response resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYNAMELOGIN, "username", Response.RESPONSES.INTERFACERESPONSE);
             if (resp == null)
                 return;
 

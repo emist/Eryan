@@ -122,7 +122,7 @@ namespace Eryan
                     return;
                 }
 
-                resp = com.sendCall(FunctionCallFactory.CALLS.FINDBYNAME, "username", Response.RESPONSES.INTERFACERESPONSE);
+                resp = com.sendCall(FunctionCallFactory.CALLS.FINDBYNAMELOGIN, "username", Response.RESPONSES.INTERFACERESPONSE);
                 if (resp == null)
                     return;
                 

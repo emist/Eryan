@@ -17,7 +17,7 @@ namespace Eryan.Factories
         public struct CALLS
         {
             public const string ATLOGIN = "atLogin";
-            public const string FINDBYNAME = "findByName";
+            public const string FINDBYNAMELOGIN = "findByNameLogin";
         }
 
        /// <summary>
