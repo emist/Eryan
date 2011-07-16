@@ -10,6 +10,7 @@ using System.Threading;
 using Eryan.Wrappers;
 using Eryan.IPC;
 using Eryan.Factories;
+using Eryan.InputHandler;
 
 
 namespace Eryan
@@ -21,6 +22,10 @@ namespace Eryan
         WindowHandler bot;
         Response resp;
         Communicator com;
+        MenuHandler menuHandler;
+        
+        //This needs to go when the buttons get implemented properly
+        ClientWindow cw;
 
         bool responseSet = false;
 
@@ -57,10 +62,11 @@ namespace Eryan
 
             cw.tabControl1.TabPages[0].Controls.Add(bot);
             cw.tabControl1.TabPages[0].Text = "Bot";
-        
 
+            this.cw = cw;
             //DEBUGGING STUFF
             com = new Communicator("\\\\.\\pipe\\TestChannel");
+            menuHandler = new MenuHandler(bot.getMouse(), com);
             
         }
 
@@ -106,34 +112,31 @@ namespace Eryan
         /// </summary>
         public void update()
         {
+            if (!cw.running)
+            {
+                Console.WriteLine("Not running");
+                return;
+            }
 
+            Console.WriteLine("Bot running");
 
             /*
              * BS DEBUGGING STUFF
              */
 
+
+            menuHandler.select("planets");   
+            menuHandler.select("bourynes I");
+            menuHandler.click("warp to within 0 m");
+                       
+
             
-
-            if (!responseSet)
-            {
-                if(!com.connect())
-                {
-                    Thread.Sleep(10000);
-                    return;
-                }
-
-                resp = com.sendCall(FunctionCallFactory.CALLS.FINDBYNAMELOGIN, "username", Response.RESPONSES.INTERFACERESPONSE);
-                if (resp == null)
-                    return;
-                
-                resp.HandleResponse();
-                responseSet = true;
-            }
-
+            /*
             if (bot.getMouse().cursorDistance(new Point( ((InterfaceResponse)resp).X, ((InterfaceResponse)resp).Y)) > 5)
                 bot.getMouse().move(new Point( ((InterfaceResponse)resp).X, ((InterfaceResponse)resp).Y));
             else
                 bot.getMouse().move(new Point(500, 600));
+             */
             
             Console.WriteLine("Bot pid = " + getPid());
         }

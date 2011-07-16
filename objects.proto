@@ -14,11 +14,16 @@ message Interface{
 	required int32 topleftX = 2;
 	required int32 topleftY = 3;
 	
-	optional bool hasCloseButton = 4;
-	optional int32 closeTopLeftX = 5;
-	optional int32 closeTopLeftY = 6;
+	required int32 width = 4;
+	required int32 height = 5;	
 
-	optional bool hasContinueButton = 7;
-	optional int32 continueTopLeftX = 8;
-	optional int32 continueTopLeftY = 9;
+	optional bool hasCloseButton = 6;
+	optional int32 closeTopLeftX = 7;
+	optional int32 closeTopLeftY = 8;
+
+	optional bool hasContinueButton = 9;
+	optional int32 continueTopLeftX = 10;
+	optional int32 continueTopLeftY = 11;
+
+	
 }

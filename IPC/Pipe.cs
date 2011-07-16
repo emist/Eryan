@@ -53,14 +53,11 @@ namespace Eryan.IPC
         public Pipe(String name)
         {
             pipeName = name;
+            
+
         }
 
-        /// <summary>
-        /// Calls functions on Black
-        /// </summary>
-        /// <param name="fcall">The functionCall object representing the function to be called</param>
-        /// <returns>The byte representation of the Response object</returns>
-        public byte[] pipeClient(eveobjects.functionCall fcall)
+        public bool initialize()
         {
             const short FILE_ATTRIBUTE_NORMAL = 0x80;
             const short INVALID_HANDLE_VALUE = -1;
@@ -70,59 +67,77 @@ namespace Eryan.IPC
             const uint CREATE_ALWAYS = 2;
             const uint OPEN_EXISTING = 3;
 
-            if (!WaitNamedPipe(pipeName, 0xffffffff))
+            Console.WriteLine("Waiting for pipe");
+            if (!WaitNamedPipe(pipeName, 2500))
             {
                 Console.WriteLine("Error: cannot wait for the named pipe.");
-                return null;   
+                Console.WriteLine(Marshal.GetLastWin32Error());
+                return false;
             }
-         
+
 
             npipe = CreateFile(pipeName,
-                                FileAccess.ReadWrite,
-                                0, IntPtr.Zero, FileMode.OpenOrCreate, 0, IntPtr.Zero);
+                    FileAccess.ReadWrite,
+                    0, IntPtr.Zero, FileMode.OpenOrCreate, 0, IntPtr.Zero);
+
+
 
             if ((int)npipe == INVALID_HANDLE_VALUE)
             {
                 Console.WriteLine("Error: cannot open named pipe\n");
-                return null;
+                return false;
             }
+            return true;
 
-
-            Console.WriteLine("Connecting to pipe");
-
-            
-            uint bread;
-            uint bsent;
-            byte [] buf = new byte[700];
-
-            NativeOverlapped n = new NativeOverlapped();
-            
-            
-
-            if (!WriteFile(npipe, fcall.ToByteArray() , (uint)fcall.SerializedSize , out bsent, ref n))
+        }
+        /// <summary>
+        /// Calls functions on Black
+        /// </summary>
+        /// <param name="fcall">The functionCall object representing the function to be called</param>
+        /// <returns>The byte representation of the Response object</returns>
+        public byte[] pipeClient(eveobjects.functionCall fcall)
+        {
+            lock (this)
             {
-                Console.WriteLine("Error writing the named pipe\n");
-                return null;
+
+
+                Console.WriteLine("Connecting to pipe");
+
+
+                uint bread;
+                uint bsent;
+                byte[] buf = new byte[700];
+
+                NativeOverlapped n = new NativeOverlapped();
+
+
+
+                Console.WriteLine("Writing to server");
+
+                if (!WriteFile(npipe, fcall.ToByteArray(), (uint)fcall.SerializedSize, out bsent, ref n))
+                {
+                    Console.WriteLine("Error writing the named pipe\n");
+                    return null;
+                }
+
+                byte[] recvdata = new byte[500];
+
+                Console.WriteLine("Reading from server");
+
+
+                ReadFile(npipe, buf, 1024, out bread, IntPtr.Zero);
+
+                byte[] tempbuf = new byte[bread];
+
+
+                for (int i = 0; i < bread; i++)
+                    tempbuf[i] = buf[i];
+
+                buf = tempbuf;
+
+
+                return buf;
             }
-
-            Console.WriteLine("Writing to server");
-
-            byte[] recvdata = new byte[500];
-
-            Console.WriteLine("Reading from server");
-            
-
-            ReadFile(npipe, buf, 1024, out bread, IntPtr.Zero);
-            
-            byte[] tempbuf = new byte[bread];
-
-
-            for (int i = 0; i<bread; i++)
-                tempbuf[i] = buf[i];
-
-            buf = tempbuf;
-
-            return buf;
         }
 
         /// <summary>
@@ -131,11 +146,15 @@ namespace Eryan.IPC
         /// <returns>True is ready, false if not</returns>
         public bool isReady()
         {
-            if (!WaitNamedPipe(pipeName, 0xffffffff))
+            //Console.WriteLine("Waiting on pipe");
+            /*
+            if (!WaitNamedPipe(pipeName, 2500))
             {
                 Console.WriteLine("Error: cannot wait for the named pipe.");
+                Console.WriteLine(Marshal.GetLastWin32Error());
                 return false;
             }
+             */
             return true;
         }
 

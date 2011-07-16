@@ -25,6 +25,11 @@ namespace Eryan.Factories
                 Console.WriteLine("Uninitalized values");
                 return null;
             }
+            catch (Google.ProtocolBuffers.InvalidProtocolBufferException e)
+            {
+                Console.WriteLine("Empty response");
+                return null;
+            }
         }
 
     }

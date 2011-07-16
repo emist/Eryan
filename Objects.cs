@@ -30,12 +30,12 @@ namespace eveobjects {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           "Cg1vYmplY3RzLnByb3RvEgpldmVvYmplY3RzIh8KDUJvb2xlYW5PYmplY3QS" + 
           "DgoGaXN0cnVlGAEgAigIIjIKDGZ1bmN0aW9uQ2FsbBIMCgRuYW1lGAEgAigJ" + 
-          "EhQKDHN0cnBhcmFtZXRlchgCIAEoCSLSAQoJSW50ZXJmYWNlEgwKBG5hbWUY" + 
-          "ASACKAkSEAoIdG9wbGVmdFgYAiACKAUSEAoIdG9wbGVmdFkYAyACKAUSFgoO" + 
-          "aGFzQ2xvc2VCdXR0b24YBCABKAgSFQoNY2xvc2VUb3BMZWZ0WBgFIAEoBRIV" + 
-          "Cg1jbG9zZVRvcExlZnRZGAYgASgFEhkKEWhhc0NvbnRpbnVlQnV0dG9uGAcg" + 
-          "ASgIEhgKEGNvbnRpbnVlVG9wTGVmdFgYCCABKAUSGAoQY29udGludWVUb3BM" + 
-          "ZWZ0WRgJIAEoBQ==");
+          "EhQKDHN0cnBhcmFtZXRlchgCIAEoCSLxAQoJSW50ZXJmYWNlEgwKBG5hbWUY" + 
+          "ASACKAkSEAoIdG9wbGVmdFgYAiACKAUSEAoIdG9wbGVmdFkYAyACKAUSDQoF" + 
+          "d2lkdGgYBCACKAUSDgoGaGVpZ2h0GAUgAigFEhYKDmhhc0Nsb3NlQnV0dG9u" + 
+          "GAYgASgIEhUKDWNsb3NlVG9wTGVmdFgYByABKAUSFQoNY2xvc2VUb3BMZWZ0" + 
+          "WRgIIAEoBRIZChFoYXNDb250aW51ZUJ1dHRvbhgJIAEoCBIYChBjb250aW51" + 
+          "ZVRvcExlZnRYGAogASgFEhgKEGNvbnRpbnVlVG9wTGVmdFkYCyABKAU=");
       pbd::FileDescriptor.InternalDescriptorAssigner assigner = delegate(pbd::FileDescriptor root) {
         descriptor = root;
         internal__static_eveobjects_BooleanObject__Descriptor = Descriptor.MessageTypes[0];
@@ -49,7 +49,7 @@ namespace eveobjects {
         internal__static_eveobjects_Interface__Descriptor = Descriptor.MessageTypes[2];
         internal__static_eveobjects_Interface__FieldAccessorTable = 
             new pb::FieldAccess.FieldAccessorTable<global::eveobjects.Interface, global::eveobjects.Interface.Builder>(internal__static_eveobjects_Interface__Descriptor,
-                new string[] { "Name", "TopleftX", "TopleftY", "HasCloseButton", "CloseTopLeftX", "CloseTopLeftY", "HasContinueButton", "ContinueTopLeftX", "ContinueTopLeftY", });
+                new string[] { "Name", "TopleftX", "TopleftY", "Width", "Height", "HasCloseButton", "CloseTopLeftX", "CloseTopLeftY", "HasContinueButton", "ContinueTopLeftX", "ContinueTopLeftY", });
         return null;
       };
       pbd::FileDescriptor.InternalBuildGeneratedFileFrom(descriptorData,
@@ -587,7 +587,27 @@ namespace eveobjects {
       get { return topleftY_; }
     }
     
-    public const int HasCloseButtonFieldNumber = 4;
+    public const int WidthFieldNumber = 4;
+    private bool hasWidth;
+    private int width_ = 0;
+    public bool HasWidth {
+      get { return hasWidth; }
+    }
+    public int Width {
+      get { return width_; }
+    }
+    
+    public const int HeightFieldNumber = 5;
+    private bool hasHeight;
+    private int height_ = 0;
+    public bool HasHeight {
+      get { return hasHeight; }
+    }
+    public int Height {
+      get { return height_; }
+    }
+    
+    public const int HasCloseButtonFieldNumber = 6;
     private bool hasHasCloseButton;
     private bool hasCloseButton_ = false;
     public bool HasHasCloseButton {
@@ -597,7 +617,7 @@ namespace eveobjects {
       get { return hasCloseButton_; }
     }
     
-    public const int CloseTopLeftXFieldNumber = 5;
+    public const int CloseTopLeftXFieldNumber = 7;
     private bool hasCloseTopLeftX;
     private int closeTopLeftX_ = 0;
     public bool HasCloseTopLeftX {
@@ -607,7 +627,7 @@ namespace eveobjects {
       get { return closeTopLeftX_; }
     }
     
-    public const int CloseTopLeftYFieldNumber = 6;
+    public const int CloseTopLeftYFieldNumber = 8;
     private bool hasCloseTopLeftY;
     private int closeTopLeftY_ = 0;
     public bool HasCloseTopLeftY {
@@ -617,7 +637,7 @@ namespace eveobjects {
       get { return closeTopLeftY_; }
     }
     
-    public const int HasContinueButtonFieldNumber = 7;
+    public const int HasContinueButtonFieldNumber = 9;
     private bool hasHasContinueButton;
     private bool hasContinueButton_ = false;
     public bool HasHasContinueButton {
@@ -627,7 +647,7 @@ namespace eveobjects {
       get { return hasContinueButton_; }
     }
     
-    public const int ContinueTopLeftXFieldNumber = 8;
+    public const int ContinueTopLeftXFieldNumber = 10;
     private bool hasContinueTopLeftX;
     private int continueTopLeftX_ = 0;
     public bool HasContinueTopLeftX {
@@ -637,7 +657,7 @@ namespace eveobjects {
       get { return continueTopLeftX_; }
     }
     
-    public const int ContinueTopLeftYFieldNumber = 9;
+    public const int ContinueTopLeftYFieldNumber = 11;
     private bool hasContinueTopLeftY;
     private int continueTopLeftY_ = 0;
     public bool HasContinueTopLeftY {
@@ -652,6 +672,8 @@ namespace eveobjects {
         if (!hasName) return false;
         if (!hasTopleftX) return false;
         if (!hasTopleftY) return false;
+        if (!hasWidth) return false;
+        if (!hasHeight) return false;
         return true;
       }
     }
@@ -667,23 +689,29 @@ namespace eveobjects {
       if (HasTopleftY) {
         output.WriteInt32(3, TopleftY);
       }
+      if (HasWidth) {
+        output.WriteInt32(4, Width);
+      }
+      if (HasHeight) {
+        output.WriteInt32(5, Height);
+      }
       if (HasHasCloseButton) {
-        output.WriteBool(4, HasCloseButton);
+        output.WriteBool(6, HasCloseButton);
       }
       if (HasCloseTopLeftX) {
-        output.WriteInt32(5, CloseTopLeftX);
+        output.WriteInt32(7, CloseTopLeftX);
       }
       if (HasCloseTopLeftY) {
-        output.WriteInt32(6, CloseTopLeftY);
+        output.WriteInt32(8, CloseTopLeftY);
       }
       if (HasHasContinueButton) {
-        output.WriteBool(7, HasContinueButton);
+        output.WriteBool(9, HasContinueButton);
       }
       if (HasContinueTopLeftX) {
-        output.WriteInt32(8, ContinueTopLeftX);
+        output.WriteInt32(10, ContinueTopLeftX);
       }
       if (HasContinueTopLeftY) {
-        output.WriteInt32(9, ContinueTopLeftY);
+        output.WriteInt32(11, ContinueTopLeftY);
       }
       UnknownFields.WriteTo(output);
     }
@@ -704,23 +732,29 @@ namespace eveobjects {
         if (HasTopleftY) {
           size += pb::CodedOutputStream.ComputeInt32Size(3, TopleftY);
         }
+        if (HasWidth) {
+          size += pb::CodedOutputStream.ComputeInt32Size(4, Width);
+        }
+        if (HasHeight) {
+          size += pb::CodedOutputStream.ComputeInt32Size(5, Height);
+        }
         if (HasHasCloseButton) {
-          size += pb::CodedOutputStream.ComputeBoolSize(4, HasCloseButton);
+          size += pb::CodedOutputStream.ComputeBoolSize(6, HasCloseButton);
         }
         if (HasCloseTopLeftX) {
-          size += pb::CodedOutputStream.ComputeInt32Size(5, CloseTopLeftX);
+          size += pb::CodedOutputStream.ComputeInt32Size(7, CloseTopLeftX);
         }
         if (HasCloseTopLeftY) {
-          size += pb::CodedOutputStream.ComputeInt32Size(6, CloseTopLeftY);
+          size += pb::CodedOutputStream.ComputeInt32Size(8, CloseTopLeftY);
         }
         if (HasHasContinueButton) {
-          size += pb::CodedOutputStream.ComputeBoolSize(7, HasContinueButton);
+          size += pb::CodedOutputStream.ComputeBoolSize(9, HasContinueButton);
         }
         if (HasContinueTopLeftX) {
-          size += pb::CodedOutputStream.ComputeInt32Size(8, ContinueTopLeftX);
+          size += pb::CodedOutputStream.ComputeInt32Size(10, ContinueTopLeftX);
         }
         if (HasContinueTopLeftY) {
-          size += pb::CodedOutputStream.ComputeInt32Size(9, ContinueTopLeftY);
+          size += pb::CodedOutputStream.ComputeInt32Size(11, ContinueTopLeftY);
         }
         size += UnknownFields.SerializedSize;
         memoizedSerializedSize = size;
@@ -823,6 +857,12 @@ namespace eveobjects {
         if (other.HasTopleftY) {
           TopleftY = other.TopleftY;
         }
+        if (other.HasWidth) {
+          Width = other.Width;
+        }
+        if (other.HasHeight) {
+          Height = other.Height;
+        }
         if (other.HasHasCloseButton) {
           HasCloseButton = other.HasCloseButton;
         }
@@ -886,26 +926,34 @@ namespace eveobjects {
               break;
             }
             case 32: {
-              HasCloseButton = input.ReadBool();
+              Width = input.ReadInt32();
               break;
             }
             case 40: {
-              CloseTopLeftX = input.ReadInt32();
+              Height = input.ReadInt32();
               break;
             }
             case 48: {
-              CloseTopLeftY = input.ReadInt32();
+              HasCloseButton = input.ReadBool();
               break;
             }
             case 56: {
-              HasContinueButton = input.ReadBool();
+              CloseTopLeftX = input.ReadInt32();
               break;
             }
             case 64: {
-              ContinueTopLeftX = input.ReadInt32();
+              CloseTopLeftY = input.ReadInt32();
               break;
             }
             case 72: {
+              HasContinueButton = input.ReadBool();
+              break;
+            }
+            case 80: {
+              ContinueTopLeftX = input.ReadInt32();
+              break;
+            }
+            case 88: {
               ContinueTopLeftY = input.ReadInt32();
               break;
             }
@@ -966,6 +1014,42 @@ namespace eveobjects {
       public Builder ClearTopleftY() {
         result.hasTopleftY = false;
         result.topleftY_ = 0;
+        return this;
+      }
+      
+      public bool HasWidth {
+        get { return result.HasWidth; }
+      }
+      public int Width {
+        get { return result.Width; }
+        set { SetWidth(value); }
+      }
+      public Builder SetWidth(int value) {
+        result.hasWidth = true;
+        result.width_ = value;
+        return this;
+      }
+      public Builder ClearWidth() {
+        result.hasWidth = false;
+        result.width_ = 0;
+        return this;
+      }
+      
+      public bool HasHeight {
+        get { return result.HasHeight; }
+      }
+      public int Height {
+        get { return result.Height; }
+        set { SetHeight(value); }
+      }
+      public Builder SetHeight(int value) {
+        result.hasHeight = true;
+        result.height_ = value;
+        return this;
+      }
+      public Builder ClearHeight() {
+        result.hasHeight = false;
+        result.height_ = 0;
         return this;
       }
       

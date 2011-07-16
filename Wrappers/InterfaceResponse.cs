@@ -10,7 +10,7 @@ namespace Eryan.Wrappers
     {
         List<string> data;
         string name;
-        int x, y;
+        int x, y, height, width;
         Interface interfaceObject;
 
 
@@ -20,10 +20,13 @@ namespace Eryan.Wrappers
         /// <param name="input">The byte representation of the reply</param>
         public InterfaceResponse(byte[] input)
         {
+          
             interfaceObject = Interface.CreateBuilder().MergeFrom(input).Build();
             Console.WriteLine(interfaceObject.Name);
             Console.WriteLine(interfaceObject.TopleftX);
             Console.WriteLine(interfaceObject.TopleftY);
+            Console.WriteLine(interfaceObject.Width);
+            Console.WriteLine(interfaceObject.Height);
         }
 
 
@@ -33,8 +36,10 @@ namespace Eryan.Wrappers
         public override void HandleResponse()
         {
             name = interfaceObject.Name;
-            x = interfaceObject.TopleftY;
-            y = interfaceObject.TopleftX;
+            y = interfaceObject.TopleftY;
+            x = interfaceObject.TopleftX;
+            width = interfaceObject.Width;
+            height = interfaceObject.Height;
             data = new List<string>();
             data.Add(name);
             data.Add(x + "");
@@ -83,6 +88,22 @@ namespace Eryan.Wrappers
             get
             {
                 return y;
+            }
+        }
+
+        public int Width
+        {
+            get
+            {
+                return width;
+            }
+        }
+
+        public int Height
+        {
+            get
+            {
+                return height;
             }
         }
     }

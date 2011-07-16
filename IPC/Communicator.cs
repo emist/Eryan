@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using Eryan.Factories;
 using Eryan.Wrappers;
+using System.Threading;
 
 namespace Eryan.IPC
 {
-    class Communicator
+    public class Communicator
     {
         Pipe pipe;
         string name;
         FunctionCallFactory factory;
         ResponseFactory rfactory;
-
+        Boolean initialized = false;
  
 
 
@@ -27,6 +28,7 @@ namespace Eryan.IPC
             pipe = new Pipe(name);
             factory = new FunctionCallFactory();
             rfactory = new ResponseFactory();
+            initialized = pipe.initialize();
         }
 
         /// <summary>
@@ -35,6 +37,11 @@ namespace Eryan.IPC
         /// <returns>True if ready, false otherwise</returns>
         public bool connect()
         {
+            if (!initialized)
+            {
+                initialized = pipe.initialize();
+            }
+            //Thread.Sleep(100); 
             return pipe.isReady();
         }
 
@@ -53,6 +60,7 @@ namespace Eryan.IPC
                 return null;
             }
 
+            
             response = pipe.pipeClient(factory.build(call));
             resp = rfactory.build(response, responsetype);
             
@@ -78,7 +86,7 @@ namespace Eryan.IPC
 
             response = pipe.pipeClient(factory.build(call, param));
             resp = rfactory.build(response, responsetype);
-          
+
             return resp;
         }
 

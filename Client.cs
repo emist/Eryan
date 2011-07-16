@@ -42,7 +42,7 @@ namespace Eryan
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            /*
+            
             Thread ClientThread = new Thread(new ThreadStart(createWindow));
             ClientThread.Start();
 
@@ -51,11 +51,11 @@ namespace Eryan
                 Thread.Sleep(300);
             }
 
-             */ 
+            
             /////DEBUGGING STUFF
 
  
-
+            /*
             Executor injector = new Executor();
             String dll = "C:\\Black.dll";
             injector.Inject(dll, "ExeFile");
@@ -66,12 +66,31 @@ namespace Eryan
             injector.getSyringe().CallExport(dll, "dropServer");
 
 
-            Communicator comm = new Communicator("\\\\.\\pipe\\TestChannel");
+            //Communicator comm = new Communicator("\\\\.\\pipe\\TestChannel");
 
 
             injector.getSyringe().CallExport(dll, "startServer");
 
+            /*
             Response resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYNAMELOGIN, "username", Response.RESPONSES.INTERFACERESPONSE);
+            if (resp == null)
+                return;
+
+            
+            resp.HandleResponse();
+            */
+
+            /*
+            Response resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYTEXTLOGIN, "Username", Response.RESPONSES.INTERFACERESPONSE);
+            if (resp == null)
+                return;
+
+            resp.HandleResponse();
+            */
+
+
+            /*
+            Response resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYTEXTMENU, "BOURYNES VII - ASTEROID BELT 1", Response.RESPONSES.INTERFACERESPONSE);
             if (resp == null)
                 return;
 
@@ -84,9 +103,9 @@ namespace Eryan
             {
                 Thread.Sleep(1000);
             }
+            */
 
-
-            /*
+            
             cWindow.createBot();
 
             
@@ -111,7 +130,7 @@ namespace Eryan
             
                 System.Threading.Thread.Sleep(1000);
             }
-            */            
+            
 
         }
 

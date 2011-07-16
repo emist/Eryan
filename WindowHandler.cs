@@ -34,7 +34,7 @@ namespace Eryan
         private bool loaded = false;
         private Font systemFont = new Font("Impact", 16);
         private String dll = "C:\\Black.dll";
-
+        private Boolean running = false;
 
         //private Eve interaction objects
         KeyBoard keyboard = new KeyBoard();
@@ -258,9 +258,28 @@ namespace Eryan
             winDel = new WinEventDelegate(HandleWindowChanges);
             MouseDown += new MouseEventHandler(Form1_MouseDown);
             drawingScreen = new Utils();
-            
+
+            Process p = null;
+
+            p = System.Diagnostics.Process.Start(this.exeName);
+
+            // Wait for process to be created and enter idle condition
+            p.WaitForInputIdle();
+
+            // Get the main handle
+            appWin = p.MainWindowHandle;
+
+            // Mark that control is created
+            created = true;
+
+            // Initialize handle value to invalid
+            appWin = IntPtr.Zero;
+
+
+
             //this.Size = new Size(700, 600);
             this.cw = cw;
+            
 
 
             //Move += new Form
@@ -271,6 +290,14 @@ namespace Eryan
 
         }
 
+
+        public Boolean Running
+        {
+            get
+            {
+                return running;
+            }
+        }
 
         /// <summary>
         /// OnSizeChanged redraw
@@ -365,7 +392,7 @@ namespace Eryan
                     {
                         
                         
-                        //injector.getSyringe().CallExport(dll, "startServer");
+                        injector.getSyringe().CallExport(dll, "startServer");
                         injector.getSyringe().CallExport(dll, "dropServer");
                     }
                 }
@@ -424,8 +451,9 @@ namespace Eryan
             {               
                 loaded = true;
             }
-            cw.Size = new Size(900, 800);
+           // cw.Size = new Size(900, 800);
 
+            cw.Invalidate();
         #if DEBUG
             ;
         #else
@@ -545,6 +573,7 @@ namespace Eryan
                 try
                 {
 
+                    /*
                     // Start the process
                     // MODIFIED FOR DEBUG, PUT BACK IN LATER
                     
@@ -561,7 +590,7 @@ namespace Eryan
 
                     // Initialize handle value to invalid
                     appWin = IntPtr.Zero;
-
+                    */
                     
                     //this.Size = new Size(this.Width, this.Height);
 
