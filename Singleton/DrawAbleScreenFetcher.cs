@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using Eryan.Util;
 
-namespace Eryan
+namespace Eryan.Singleton
 {
     /// <summary>
     /// Singleton to keep track of all the drawabale screens
     /// </summary>
     public static class DrawAbleScreenFetcher
     {
-        private static List<Utils> screens = new List<Utils>();
+        private static List<DrawableScreen> screens = new List<DrawableScreen>();
         private static ReaderWriterLock rwlock = new ReaderWriterLock();
         
         /// <summary>
@@ -19,13 +20,13 @@ namespace Eryan
         /// </summary>
         /// <param name="pid">The EVE process' pid</param>
         /// <returns>The drawable area if it exists</returns>
-        public static Utils fetch(uint pid)
+        public static DrawableScreen fetch(uint pid)
         {
             int timeout = 300;
             rwlock.AcquireReaderLock(timeout);
             try
             {
-                foreach (Utils util in screens)
+                foreach (DrawableScreen util in screens)
                 {
                     if (util.getPid() == pid)
                         return util;
@@ -43,13 +44,13 @@ namespace Eryan
         /// Register a drawable area with the singleton
         /// </summary>
         /// <param name="screen">The drawable area to register</param>
-        public static void addScreen(Utils screen)
+        public static void addScreen(DrawableScreen screen)
         {
             int timeout = 300;
             rwlock.AcquireWriterLock(timeout);
             try
             {
-                foreach (Utils s in screens)
+                foreach (DrawableScreen s in screens)
                 {
                     if (s.Equals(screen))
                         return;

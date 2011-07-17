@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace Eryan
+namespace Eryan.Singleton
 {
     /// <summary>
     /// Singleton to keep track of all running bots

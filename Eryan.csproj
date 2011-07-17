@@ -56,6 +56,8 @@
   <ItemGroup>
     <Compile Include="BaseSubject.cs" />
     <Compile Include="Factories\ResponseFactory.cs" />
+    <Compile Include="InputHandler\MenuHandler.cs" />
+    <Compile Include="Input\PreciseMouse.cs" />
     <Compile Include="IPC\Communicator.cs" />
     <Compile Include="Util\BitHelper.cs" />
     <Compile Include="Bot.cs">
@@ -78,6 +80,9 @@
     <Compile Include="Objects.cs" />
     <Compile Include="Observer.cs" />
     <Compile Include="Subject.cs" />
+    <Compile Include="Util\DrawableScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Util\Utils.cs">
       <SubType>Form</SubType>
     </Compile>

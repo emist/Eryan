@@ -66,7 +66,7 @@ namespace Eryan
             this.cw = cw;
             //DEBUGGING STUFF
             com = new Communicator("\\\\.\\pipe\\TestChannel");
-            menuHandler = new MenuHandler(bot.getMouse(), com);
+            menuHandler = new MenuHandler(bot.PMOUSE, com);
             
         }
 
@@ -114,22 +114,23 @@ namespace Eryan
         {
             if (!cw.running)
             {
-                Console.WriteLine("Not running");
+                //Console.WriteLine("Not running");
                 return;
             }
 
-            Console.WriteLine("Bot running");
+            //Console.WriteLine("Bot running");
 
             /*
              * BS DEBUGGING STUFF
              */
 
 
-            menuHandler.select("planets");   
-            menuHandler.select("bourynes I");
-            menuHandler.click("warp to within 0 m");
-                       
+            //menuHandler.select("planets");   
+            //menuHandler.select("bourynes III");
+            //menuHandler.click("warp to within 0 m");
 
+            bot.getMouse().move(new Point(300, 300));
+            bot.getMouse().click(false);
             
             /*
             if (bot.getMouse().cursorDistance(new Point( ((InterfaceResponse)resp).X, ((InterfaceResponse)resp).Y)) > 5)
