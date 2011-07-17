@@ -17,21 +17,21 @@ namespace Eryan.Input
         public static extern void dllMoveMouse(IntPtr handle, int x, int y);
 
         [DllImport(@"C:\\mouseDLL.dll")]
-        public static extern void dllMouseClick(IntPtr handle, int x, int y);
+        public static extern void dllMouseClick(IntPtr handle, bool left, int x, int y);
 
         [DllImport(@"C:\\mouseDLL.dll")]
         public static extern void dllCalcTest(IntPtr handle);
 
-        Utils screen = null;
+        protected Utils screen = null;
         ZiadSpace.Util.BitHelper bh = new ZiadSpace.Util.BitHelper();
 
 
         //Mouse state
-        int X = 0, Y = 0;
-        int speed = 4;
-        int defRandX = 1;
-        int defRandY = 1;
-        int missChance = 10;
+        protected int X = 0, Y = 0;
+        protected int speed = 4;
+        protected int defRandX = 1;
+        protected int defRandY = 1;
+        protected int missChance = 10;
 
         //Windows API messages
         public enum WMessages : uint
@@ -49,6 +49,32 @@ namespace Eryan.Input
             WM_SETCURSOR = 0x20,
         }
 
+        public uint Pid
+        {
+            get
+            {
+                return pid;
+            }
+        }
+
+        public int MissChance
+        {
+            get
+            {
+                return missChance;
+            }
+            set
+            {
+                missChance = value;
+            }
+        }
+
+        public double GetRandomNumber(double minimum, double maximum)
+        {
+            return random.NextDouble() * (maximum - minimum) + minimum;
+        }
+
+
         public Mouse()
         {
         }
@@ -62,7 +88,15 @@ namespace Eryan.Input
             return X;
         }
 
-       
+
+        public IntPtr APPWIN
+        {
+            get
+            {
+                return appWin;
+            }
+        }
+
         /// <summary>
         /// Get mouse position on the Y axis
         /// </summary>
@@ -71,6 +105,21 @@ namespace Eryan.Input
         {
             return Y;
         }
+
+           
+
+        public int Speed
+        {
+            get
+            {
+                return speed;
+            }
+            set
+            {
+                speed = value;
+            }
+        }
+
 
         /// <summary>
         /// Gets the mouse speed
@@ -116,7 +165,8 @@ namespace Eryan.Input
         /// <param name="move_after">How much it should move after clicking</param>
         public void click(int x, int y, bool leftClick, int move_after)
         {
-            dllMouseClick(appWin, x, y);
+            Console.WriteLine("Clicking X,Y " + X + "," + Y);
+            dllMouseClick(appWin, leftClick, x, y);
             //move mouse after
         }
 
@@ -204,6 +254,9 @@ namespace Eryan.Input
         /// <param name="maxStep"></param>
         /// <param name="targetArea"></param>
 
+
+        
+
         public void WindMouse(int xs, int ys, int xe, int ye, double gravity, double wind, double minWait, double maxWait, double maxStep, double targetArea)
         {
             double veloX = 0, veloY = 0, windX = 1, windY = 1, veloMag, dist, randomDist, lastDist, step;
@@ -280,13 +333,14 @@ namespace Eryan.Input
             screen = fetchScreen(getPid());
             if (screen == null)
             {
+                Console.WriteLine("Screen is null");
                 return;
             }
 
             
             if (appWin == IntPtr.Zero)
             {
-                //Console.WriteLine("Mouse appWin is null1: " + getPid());
+                Console.WriteLine("Mouse appWin is null1: " + getPid());
                 return ;
             }
             
@@ -353,6 +407,8 @@ namespace Eryan.Input
             double a = 0, b = 0, c = 0, randSpeed = 0;
             bool miss = false;
 
+            
+
             cx = cursorLocation().X;
             cy = cursorLocation().Y;
 
@@ -364,8 +420,8 @@ namespace Eryan.Input
 
                 if (screen == null)
                 {
-                 //   Console.WriteLine("screen is null");
-                 //   Console.WriteLine("Mouse PID: " + getPid());
+                    Console.WriteLine("screen is null");
+                    Console.WriteLine("Mouse PID: " + getPid());
                     return;
                 }
 
@@ -386,6 +442,8 @@ namespace Eryan.Input
                 else
                     seg = 5;
 
+                Console.WriteLine("Seg = " + seg);
+
                 f = (int)Math.Round(a / seg);
                 g = (int)Math.Round(b / seg);
 
@@ -396,8 +454,8 @@ namespace Eryan.Input
                     if (randSpeed == 0)
                         randSpeed = 0.1;
 
-                    nx = (cursorLocation().X + (f * e)) + random.Next(randX);
-                    ny = (cursorLocation().Y + (g * e)) + random.Next(randY);
+                    nx = (cursorLocation().X + (f * e)) + random.Next(randX, randX);
+                    ny = (cursorLocation().Y + (g * e)) + random.Next(randY, randY);
 
                     if (miss)
                     {
