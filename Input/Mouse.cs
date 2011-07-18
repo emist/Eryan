@@ -323,6 +323,31 @@ namespace Eryan.Input
 
         }
 
+        public int x
+        {
+            get
+            {
+                return X;
+            }
+            set
+            {
+                X = value;
+            }
+        }
+
+        public int y
+        {
+            get
+            {
+                return Y;
+            }
+            set
+            {
+                Y = value;
+            }
+        }
+
+
         /// <summary>
         /// Move the mouse to Point p
         /// </summary>

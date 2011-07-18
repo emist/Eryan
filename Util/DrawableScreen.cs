@@ -30,7 +30,12 @@ namespace Eryan.Util
         {
             pm = wh.PMOUSE;
             if (cw.AllowInput)
+            {
                 dllMoveMouse(pm.APPWIN, e.X, e.Y);
+                pm.x = e.X;
+                pm.y = e.Y;
+            }
+                
             base.OnMouseMove(e);
         }
 
@@ -41,9 +46,9 @@ namespace Eryan.Util
             if (cw.AllowInput)
             {
                 if (e.Button.Equals(MouseButtons.Left))
-                    pm.click(true);
+                    pm.click(pm.getX(), pm.getY(), true, 0);
                 else if (e.Button.Equals(MouseButtons.Right))
-                    pm.click(false);
+                    pm.click(pm.getX(), pm.getY(), false, 0);
                 base.OnMouseClick(e);
             }
         }

@@ -11,7 +11,8 @@ using System.Threading;
 using System;
 using System.Drawing.Drawing2D;
 using Eryan.Input;
-
+using Eryan.Singleton;
+using Eryan.Util;
 
 //Events need to be changed to handle proper PID selection
 //As it is it wont support multiple eve clients
@@ -25,7 +26,9 @@ namespace Eryan
     /// </summary>
     public partial class WindowHandler : Utils
     {
-        private Utils drawingScreen;
+
+        private DrawableScreen drawingScreen;
+        //private DrawableScreen drawingScreen;
         private ClientWindow cw;
         //private Utils currentTransparency = new Utils();
         Executor injector = new Executor();
@@ -36,9 +39,13 @@ namespace Eryan
         private String dll = "C:\\Black.dll";
         private Boolean running = false;
 
+       
+
+
         //private Eve interaction objects
         KeyBoard keyboard = new KeyBoard();
         Mouse mouse = new Mouse();
+        PreciseMouse pmouse = new PreciseMouse();
 
 
         //Events we listen to
@@ -253,11 +260,13 @@ namespace Eryan
         public WindowHandler(ClientWindow cw)
         {
             InitializeComponent();
+            drawingScreen = new DrawableScreen(cw, this);
+            //drawingScreen = new Utils();
             Load += new EventHandler(Program_Load);
             FormClosing += new FormClosingEventHandler(Program_FormClosing);
             winDel = new WinEventDelegate(HandleWindowChanges);
             MouseDown += new MouseEventHandler(Form1_MouseDown);
-            drawingScreen = new Utils();
+            
 
             Process p = null;
 
@@ -403,6 +412,16 @@ namespace Eryan
             }
         }
 
+        
+        public PreciseMouse PMOUSE
+        {
+            get
+            {
+                return pmouse;
+            }
+        }
+        
+
 
         /// <summary>
         /// Eat the EVE window and inject
@@ -433,13 +452,14 @@ namespace Eryan
                 this.Height = eveWindowHeight;
             }
 
-
             //Add the screen to global list
             DrawAbleScreenFetcher.addScreen(drawingScreen);
 
             //Initialize input methods
             drawingScreen.setPid(getPid());
             mouse.setPid(getPid());
+            pmouse.setPid(getPid());
+            pmouse.setWindowHandle(appWin);
             keyboard.setWindowHandle(appWin);
             mouse.setWindowHandle(appWin);
 
@@ -509,9 +529,9 @@ namespace Eryan
                             //this.Location = new Point(eveWindowRect._Left, eveWindowRect._Top);
 
 
-                            
-                            handleDrawingScreen();
                             initialize();
+                            handleDrawingScreen();
+                            
                            
                         }
                         
@@ -711,13 +731,20 @@ namespace Eryan
                 return;
             }
 
-            
+            if (drawingScreen == null)
+            {
+                Console.WriteLine("drawingScreen is null");
+            }
+
+
             drawingScreen.setOwner(this);
-            drawingScreen.setSize(new Size(this.Size.Width-5, this.Size.Height-30));
+            drawingScreen.setSize(new Size(this.Size.Width, this.Size.Height));
+            drawingScreen.setLocation(new Point(cw.Location.X+10, cw.Location.Y+80));
             //drawingScreen.setLocation(new Point(this.Location.X+5, this.Location.Y + 50));
-            drawingScreen.setBackColor(Color.DarkGray);
-            //drawingScreen.setOpacity(0.60);
-            drawingScreen.setTransparencyKey();
+            //drawingScreen.setBackColor(Color.Transparent);
+            drawingScreen.setBackColor(Color.Gray);
+            drawingScreen.setOpacity(0.10);
+            //drawingScreen.setTransparencyKey();
             drawingScreen.setFormBorderStyle(FormBorderStyle.None);
             drawingScreen.setControlBox(false);
             drawingScreen.showInTaskbar(false);
