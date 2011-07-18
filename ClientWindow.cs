@@ -79,16 +79,16 @@ namespace Eryan
         {
             if (isMouse)
             {
-                Console.WriteLine("Input");
-                mouseInput.Text = "No Input";
-                bots[0].getHandle().setOpacity(0.00);
+                Console.WriteLine("Stopping Input");
+                mouseInput.Text = "Input";
+                
                 this.Invalidate();
             }
             else
             {
-                Console.WriteLine("No Input");
-                mouseInput.Text = "Input";
-                bots[0].getHandle().setOpacity(0.10);
+                Console.WriteLine("Starting Input");
+                mouseInput.Text = "No Input";
+                
                 this.Invalidate();
             }
             isMouse = !isMouse;
