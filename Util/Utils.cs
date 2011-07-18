@@ -41,7 +41,9 @@ namespace Eryan
         }
 
         public Utils()
-        { }
+        {
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+        }
 
         public void setPid(uint pid)
         {

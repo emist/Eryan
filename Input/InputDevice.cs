@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
+using Eryan.Singleton;
+
 
 namespace Eryan.Input
 {
@@ -60,7 +62,7 @@ namespace Eryan.Input
             return DrawAbleScreenFetcher.fetch(pid);
         }
 
-        protected uint getPid()
+        public uint getPid()
         {
             return pid;
         }
