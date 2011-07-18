@@ -7,23 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using System.Reflection;
+
 using Eryan.Wrappers;
 using Eryan.IPC;
 using Eryan.Factories;
 using Eryan.InputHandler;
-
+using Eryan.Script;
 
 namespace Eryan
 {
     public partial class Bot 
     {
+      
 
         Thread botThread;
         WindowHandler bot;
         Response resp;
         Communicator com;
         MenuHandler menuHandler;
-        
+        Scriptable script;
+
+
         //This needs to go when the buttons get implemented properly
         ClientWindow cw;
 
@@ -67,7 +72,7 @@ namespace Eryan
             //DEBUGGING STUFF
             com = new Communicator("\\\\.\\pipe\\TestChannel");
             menuHandler = new MenuHandler(bot.PMOUSE, com);
-            
+            script = loadScript("C:\\Users\\emist\\Eryan\\Scripts\\testScript.dll");
         }
 
         /// <summary>
@@ -107,6 +112,43 @@ namespace Eryan
         }
 
 
+        public Scriptable loadScript(string name)
+        {
+
+            Assembly assembly = null;
+
+            try
+            {
+                assembly = Assembly.LoadFrom(name);
+            }
+            catch (System.IO.FileNotFoundException e)
+            {
+                Console.WriteLine("Assembly " + name + "couldn't be found");
+                return null;
+            }
+
+
+
+            if (assembly == null)
+            {
+                Console.WriteLine("Couldn't load assembly");
+            }
+
+            Type script = assembly.GetType("testScript.Script");
+
+            if (script == null)
+            {
+                Console.WriteLine("Script Type is null");
+                return null;
+            }
+
+            Scriptable scriptInstance = (Scriptable)Activator.CreateInstance(script);
+
+            this.script = scriptInstance;
+            return scriptInstance;
+        }
+        
+
         /// <summary>
         /// Bot's logic loop
         /// </summary>
@@ -118,19 +160,26 @@ namespace Eryan
                 return;
             }
 
+            if (script == null)
+                return;
+
             //Console.WriteLine("Bot running");
 
             /*
              * BS DEBUGGING STUFF
              */
 
+            /*
+            menuHandler.select("planets");   
+            menuHandler.select("bourynes III");
+            menuHandler.click("warp to within 0 m");
+            */
 
-            //menuHandler.select("planets");   
-            //menuHandler.select("bourynes III");
-            //menuHandler.click("warp to within 0 m");
-
-            bot.getMouse().move(new Point(300, 300));
-            bot.getMouse().click(false);
+            script.run();
+             
+            
+            //bot.getMouse().move(new Point(300, 300));
+            //bot.getMouse().click(false);
             
             /*
             if (bot.getMouse().cursorDistance(new Point( ((InterfaceResponse)resp).X, ((InterfaceResponse)resp).Y)) > 5)
