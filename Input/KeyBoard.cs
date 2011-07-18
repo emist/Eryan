@@ -167,6 +167,20 @@ namespace Eryan.Input
         }
 
         /// <summary>
+        /// Sends the given keypress to the EVE client
+        /// </summary>
+        /// <param name="key">The character to send</param>
+        public void sendChar(char key)
+        {
+
+            if (appWin != IntPtr.Zero)
+            {
+
+                PostMessage(appWin, WM_KEYDOWN, VkKeyScan(key), 0x00140001);
+            }
+        }
+
+        /// <summary>
         /// Sends keypresses to the EVE client with a static wait between keypresses
         /// </summary>
         /// <param name="text">The text to send</param>

@@ -192,6 +192,14 @@ namespace Eryan
             base.OnResize(e);
         }
 
+        public Boolean AllowInput
+        {
+            get
+            {
+                return isMouse;
+            }
+        }
+
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
