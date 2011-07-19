@@ -15,6 +15,7 @@ using Eryan.Factories;
 using Eryan.InputHandler;
 using Eryan.Script;
 using Eryan.UI;
+using Eryan.Input;
 
 
 namespace Eryan
@@ -30,13 +31,13 @@ namespace Eryan
         Thread botThread;
         WindowHandler bot;
         Response resp;
-        Communicator com;
-        MenuHandler menuHandler;
+        public Communicator com;
+        public MenuHandler menuHandler;
         Scriptable script;
-        public Boolean running = false;
+        public Boolean running = true;
         Assembly assembly;
         public Boolean paused = true;
-
+        public Boolean initialized = false;
 
         //This needs to go when the buttons get implemented properly
         ClientWindow cw;
@@ -80,7 +81,7 @@ namespace Eryan
             this.cw = cw;
             //DEBUGGING STUFF
             com = new Communicator("\\\\.\\pipe\\TestChannel");
-            menuHandler = new MenuHandler(bot.PMOUSE, com);
+            menuHandler = new MenuHandler(bot.MOUSE, bot.PMOUSE, com);
             script = loadScript("C:\\Users\\emist\\Eryan\\Scripts\\TestScript.dll");
         }
 
@@ -147,6 +148,7 @@ namespace Eryan
                 Console.WriteLine("Couldn't load assembly");
             }
 
+            
             Type script = assembly.GetType("Script.Script");
 
             if (script == null)
@@ -167,6 +169,7 @@ namespace Eryan
         /// </summary>
         public void update()
         {
+            
 
             if (paused)
             {
@@ -181,6 +184,12 @@ namespace Eryan
             {
                 script = null;
                 return;
+            }
+
+            if (!initialized)
+            {
+                script.initializeInputs(null, null, menuHandler);
+                initialized = !initialized;
             }
 
             //Console.WriteLine("Bot running");
