@@ -12,6 +12,9 @@ using System.Threading;
 
 namespace Eryan.InputHandler
 {
+    /// <summary>
+    /// Handles the menu interactions
+    /// </summary>
     public class MenuHandler
     {
         Mouse m;

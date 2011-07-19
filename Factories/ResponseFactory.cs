@@ -7,6 +7,9 @@ using eveobjects;
 
 namespace Eryan.Factories
 {
+    /// <summary>
+    /// Builds reponse objects to interpret the responses comming from the EVE client
+    /// </summary>
     class ResponseFactory
     {
         public Response build(byte[] response, string responsetype)

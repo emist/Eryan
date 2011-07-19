@@ -8,6 +8,9 @@ using System.Threading;
 
 namespace Eryan.IPC
 {
+    /// <summary>
+    /// Handles the communications between Eryan and the Eve client
+    /// </summary>
     public class Communicator
     {
         Pipe pipe;

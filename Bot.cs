@@ -15,8 +15,13 @@ using Eryan.Factories;
 using Eryan.InputHandler;
 using Eryan.Script;
 
+
 namespace Eryan
 {
+
+    /// <summary>
+    /// Bot routines
+    /// </summary>
     public partial class Bot 
     {
       
@@ -27,6 +32,9 @@ namespace Eryan
         Communicator com;
         MenuHandler menuHandler;
         Scriptable script;
+        public Boolean running = false;
+        Assembly assembly;
+        public Boolean paused = true;
 
 
         //This needs to go when the buttons get implemented properly
@@ -72,7 +80,7 @@ namespace Eryan
             //DEBUGGING STUFF
             com = new Communicator("\\\\.\\pipe\\TestChannel");
             menuHandler = new MenuHandler(bot.PMOUSE, com);
-            script = loadScript("C:\\Users\\emist\\Eryan\\Scripts\\testScript.dll");
+            script = loadScript("C:\\Users\\emist\\Eryan\\Scripts\\TestScript.dll");
         }
 
         /// <summary>
@@ -112,10 +120,16 @@ namespace Eryan
         }
 
 
+        /// <summary>
+        /// Loads the script assembly
+        /// </summary>
+        /// <param name="name">Name of the assembly to be loaded, namespace must be Script and main class must be named Script</param>
+        /// <returns></returns>
+
         public Scriptable loadScript(string name)
         {
 
-            Assembly assembly = null;
+            assembly = null;
 
             try
             {
@@ -127,14 +141,12 @@ namespace Eryan
                 return null;
             }
 
-
-
             if (assembly == null)
             {
                 Console.WriteLine("Couldn't load assembly");
             }
 
-            Type script = assembly.GetType("testScript.Script");
+            Type script = assembly.GetType("Script.Script");
 
             if (script == null)
             {
@@ -154,7 +166,8 @@ namespace Eryan
         /// </summary>
         public void update()
         {
-            if (!cw.running)
+
+            if (paused)
             {
                 //Console.WriteLine("Not running");
                 return;
@@ -162,6 +175,12 @@ namespace Eryan
 
             if (script == null)
                 return;
+
+            if (!running)
+            {
+                script = null;
+                return;
+            }
 
             //Console.WriteLine("Bot running");
 
@@ -174,6 +193,9 @@ namespace Eryan
             menuHandler.select("bourynes III");
             menuHandler.click("warp to within 0 m");
             */
+
+
+            //Loaded script needs to be on its own thread.
 
             script.run();
              
