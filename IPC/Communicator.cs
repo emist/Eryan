@@ -65,6 +65,10 @@ namespace Eryan.IPC
 
             
             response = pipe.pipeClient(factory.build(call));
+            if (response == null)
+            {
+                Console.WriteLine("Response is Null");
+            }
             resp = rfactory.build(response, responsetype);
             
             return resp;
