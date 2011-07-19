@@ -12,6 +12,7 @@ using System.IO;
 using Eryan.Factories;
 using Eryan.IPC;
 using Eryan.Wrappers;
+using Eryan.UI;
 
 namespace Eryan
 {

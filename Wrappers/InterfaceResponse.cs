@@ -6,6 +6,10 @@ using eveobjects;
 
 namespace Eryan.Wrappers
 {
+
+    /// <summary>
+    /// Wrapper to interface call responses
+    /// </summary>
     class InterfaceResponse : Response
     {
         List<string> data;

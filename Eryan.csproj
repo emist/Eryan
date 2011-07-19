@@ -23,6 +23,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Eryan.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -59,6 +60,7 @@
     <Compile Include="InputHandler\MenuHandler.cs" />
     <Compile Include="Input\PreciseMouse.cs" />
     <Compile Include="IPC\Communicator.cs" />
+    <Compile Include="Script\Scriptable.cs" />
     <Compile Include="Util\BitHelper.cs" />
     <Compile Include="Bot.cs">
     </Compile>
@@ -66,7 +68,7 @@
       <DependentUpon>Bot.cs</DependentUpon>
     </Compile>
     <Compile Include="Singleton\BotFetcher.cs" />
-    <Compile Include="ClientWindow.cs">
+    <Compile Include="UI\ClientWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Event.cs" />
@@ -86,10 +88,10 @@
     <Compile Include="Util\Utils.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowHandler.cs">
+    <Compile Include="UI\WindowHandler.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowHandler.Designer.cs">
+    <Compile Include="UI\WindowHandler.Designer.cs">
       <DependentUpon>WindowHandler.cs</DependentUpon>
     </Compile>
     <Compile Include="Client.cs">
@@ -99,7 +101,7 @@
       <DependentUpon>Bot.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClientWindow.resx">
+    <EmbeddedResource Include="UI\ClientWindow.resx">
       <DependentUpon>ClientWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -108,7 +110,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WindowHandler.resx">
+    <EmbeddedResource Include="UI\WindowHandler.resx">
       <DependentUpon>WindowHandler.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -116,6 +118,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -139,6 +142,9 @@
       <Project>{3E3A04B3-9347-4395-A22A-C49C9B38F83C}</Project>
       <Name>Syringe</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

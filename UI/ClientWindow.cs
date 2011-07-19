@@ -74,7 +74,8 @@ namespace Eryan.UI
             }
             else
             {
-                Console.WriteLine("Script Loaded");
+                Console.WriteLine("Resuming Script");
+                stopScriptBtn.Text = "Pause Script";
                 bots[0].paused = false;
                 //add unloading script code here
             }

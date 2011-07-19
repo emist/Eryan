@@ -6,9 +6,14 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Eryan.Input;
+using Eryan.UI;
 
 namespace Eryan.Util
 {
+    /// <summary>
+    /// The Eryan overlay, for internal use
+    /// </summary>
+    
     public class DrawableScreen : Utils
     {
         WindowHandler wh;
