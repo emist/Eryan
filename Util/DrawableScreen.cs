@@ -8,6 +8,9 @@ using System.Runtime.InteropServices;
 using Eryan.Input;
 using Eryan.UI;
 
+
+//Catch on key down events
+
 namespace Eryan.Util
 {
     /// <summary>
@@ -16,6 +19,8 @@ namespace Eryan.Util
     
     public class DrawableScreen : Utils
     {
+
+
         WindowHandler wh;
         ClientWindow cw;
         PreciseMouse pm;
@@ -57,6 +62,7 @@ namespace Eryan.Util
                 base.OnMouseClick(e);
             }
         }
+
 
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
