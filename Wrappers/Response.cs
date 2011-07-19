@@ -16,6 +16,7 @@ namespace Eryan.Wrappers
         public struct RESPONSES
         {
             public const string INTERFACERESPONSE = "InterfaceResponse";
+            public const string BOOLEANRESPONSE = "BooleanResponse";
         }
 
         /// <summary>

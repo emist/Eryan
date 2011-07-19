@@ -22,7 +22,7 @@ namespace Eryan.Wrappers
         public BooleanResponse(byte[] input)
         {
             booleanObject = BooleanObject.CreateBuilder().MergeFrom(input).Build();
-            //Console.WriteLine(booleanObject.Istrue);
+            Console.WriteLine(booleanObject.Istrue);
         }
 
         /// <summary>
