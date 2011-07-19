@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Eryan.Input;
+using Eryan.InputHandler;
 
 namespace Eryan.Script
 {
@@ -9,14 +11,25 @@ namespace Eryan.Script
     /// Scriptable interface must be implemented by all Eryan scripts
     /// </summary>
 
-    public interface Scriptable
+    public abstract class Scriptable
     {
+        public Mouse m;
+        public PreciseMouse pm;
+        public MenuHandler menuHandler;
 
-        Boolean onStart();
 
-        Boolean onFinish();
+        public void initializeInputs(PreciseMouse pm, Mouse m, MenuHandler mh)
+        {
+            this.m = m;
+            this.pm = pm;
+            this.menuHandler = mh;
+        }
 
-        int run();
+        public abstract Boolean onStart();
+
+        public abstract Boolean onFinish();
+
+        public abstract int run();
 
     }
    
