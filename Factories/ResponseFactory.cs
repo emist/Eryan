@@ -20,6 +20,10 @@ namespace Eryan.Factories
                 {
                     return new InterfaceResponse(response);
                 }
+                if (responsetype.Equals(Response.RESPONSES.BOOLEANRESPONSE))
+                {
+                    return new BooleanResponse(response);
+                }
 
                 return null;
             }
