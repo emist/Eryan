@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
 
+//Implement holding down a key
+
 namespace Eryan.Input
 {
     /// <summary>
@@ -141,6 +143,8 @@ namespace Eryan.Input
             }
         }
 
+
+
         /// <summary>
         /// Sends a string of keys to the Eve Client with a random wait
         /// </summary>
@@ -175,7 +179,6 @@ namespace Eryan.Input
 
             if (appWin != IntPtr.Zero)
             {
-
                 PostMessage(appWin, WM_KEYDOWN, VkKeyScan(key), 0x00140001);
             }
         }
