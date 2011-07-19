@@ -26,7 +26,9 @@ namespace Eryan.UI
         private Boolean isMouse = false;
         private Button loadScriptBtn;
         private Button stopScriptBtn;
-    
+        private OpenFileDialog sDialog;
+
+
         private delegate void formDelegate(Utils form);
         private delegate Bot createBotDelegate();
         public Boolean running = false;
@@ -92,6 +94,7 @@ namespace Eryan.UI
             if (bots[0].running)
             {
                 Console.WriteLine("Stopping Script");
+                bots[0].scriptName = null;
                 runButton.Text = "Run Script";
                 bots[0].running = false;
             }
@@ -162,7 +165,8 @@ namespace Eryan.UI
             runButton.Click += runButton_Click;
             mouseInput.Click += mouseInput_Click;
             stopScriptBtn.Click += stopScriptBtn_Click;
-           
+            sDialog = new OpenFileDialog();
+
         }
 
         /// <summary>
@@ -319,6 +323,7 @@ namespace Eryan.UI
             this.loadScriptBtn.TabIndex = 2;
             this.loadScriptBtn.Text = "Load Script";
             this.loadScriptBtn.UseVisualStyleBackColor = true;
+            this.loadScriptBtn.Click += new System.EventHandler(this.loadScriptBtn_Click);
             // 
             // stopScriptBtn
             // 
@@ -356,6 +361,15 @@ namespace Eryan.UI
         private void ClientWindow_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void loadScriptBtn_Click(object sender, EventArgs e)
+        {
+            if (sDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                bots[0].scriptName = sDialog.FileName;
+                Console.WriteLine(bots[0].scriptName);
+            }
         }
 
         

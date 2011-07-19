@@ -45,6 +45,7 @@ namespace Eryan
 
             
             Thread ClientThread = new Thread(new ThreadStart(createWindow));
+            ClientThread.SetApartmentState(ApartmentState.STA);
             ClientThread.Start();
 
             while (cWindow == null)

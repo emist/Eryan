@@ -166,10 +166,12 @@ namespace Eryan.UI
         private IntPtr appWin;
 
         /*
-        private String exeName = "test.exe";
-        private String processName = "test";
-        private String title = "";
+        private String exeName = "C:\\Games\\Perpetuum\\Perpetuum.exe";
+        private String processName = "Perpetuum";
+        private String title = "Perpetuum";
         */
+        
+
         
         private String title = "EVE";
         private String exeName = "C:\\Program Files\\CCP\\EVE\\bin\\ExeFile.exe";
@@ -479,7 +481,7 @@ namespace Eryan.UI
 
             GetWindowText(appWin, sb, sb.Capacity);
 
-            if (sb.ToString().Contains("EVE"))
+            if (sb.ToString().Contains(title))
             {               
                 loaded = true;
             }
