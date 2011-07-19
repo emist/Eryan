@@ -89,7 +89,7 @@ namespace Eryan.UI
 
         private void runButton_Click(object sender, System.EventArgs e)
         {
-            if (!bots[0].running)
+            if (bots[0].running)
             {
                 Console.WriteLine("Stopping Script");
                 runButton.Text = "Run Script";
@@ -324,9 +324,9 @@ namespace Eryan.UI
             // 
             this.stopScriptBtn.Location = new System.Drawing.Point(92, 0);
             this.stopScriptBtn.Name = "stopScriptBtn";
-            this.stopScriptBtn.Size = new System.Drawing.Size(75, 23);
+            this.stopScriptBtn.Size = new System.Drawing.Size(95, 23);
             this.stopScriptBtn.TabIndex = 3;
-            this.stopScriptBtn.Text = "Stop Script";
+            this.stopScriptBtn.Text = "Resume Script";
             this.stopScriptBtn.UseVisualStyleBackColor = true;
             // 
             // ClientWindow

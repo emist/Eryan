@@ -410,7 +410,21 @@ namespace Eryan.UI
             }
         }
 
-        
+
+        /// <summary>
+        /// Returns this WindowHandler's Mouse reference
+        /// </summary>
+        public Mouse MOUSE
+        {
+            get
+            {
+                return mouse;
+            }
+        }
+
+        /// <summary>
+        /// Returns this WindowHandler's PreciseMouse reference
+        /// </summary>
         public PreciseMouse PMOUSE
         {
             get
