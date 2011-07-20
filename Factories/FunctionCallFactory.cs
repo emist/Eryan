@@ -11,9 +11,10 @@ namespace Eryan.Factories
     public class FunctionCallFactory
     {
         eveobjects.functionCall function;
-
-        //Function calls this builder builds
-
+        
+        /// <summary>
+        /// Function calls name constant table
+        /// </summary>
         public struct CALLS
         {
             public const string ATLOGIN = "atLogin";

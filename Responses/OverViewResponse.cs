@@ -7,6 +7,9 @@ using Eryan.Wrappers;
 
 namespace Eryan.Responses
 {
+    /// <summary>
+    /// Wraps an overview Response from the client
+    /// </summary>
     public class OverViewResponse : Response
     {
         List<OverViewEntry> data;
