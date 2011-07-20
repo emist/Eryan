@@ -21,7 +21,8 @@ namespace Eryan.Factories
             public const string FINDBYTEXTLOGIN = "findByTextLogin";
             public const string FINDBYTEXTMENU = "findByTextMenu";
             public const string GETINFLIGHTINTERFACE = "getInflightInterface";
-            public const string ISMENUOPEN = "isMenuOpen"; 
+            public const string ISMENUOPEN = "isMenuOpen";
+            public const string GETOVERVIEWITEMS = "getOverViewItems";
         }
 
        /// <summary>
