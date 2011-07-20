@@ -106,7 +106,7 @@ namespace Eryan.IPC
 
                 uint bread;
                 uint bsent;
-                byte[] buf = new byte[700];
+                byte[] buf = new byte[10000];
 
                 NativeOverlapped n = new NativeOverlapped();
 
@@ -125,7 +125,7 @@ namespace Eryan.IPC
                 Console.WriteLine("Reading from server");
 
 
-                ReadFile(npipe, buf, 1024, out bread, IntPtr.Zero);
+                ReadFile(npipe, buf, 10000, out bread, IntPtr.Zero);
 
                 byte[] tempbuf = new byte[bread];
 
