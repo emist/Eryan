@@ -9,6 +9,18 @@ message functionCall{
 	optional string strparameter = 2;
 }
 
+message overview{
+	repeated label overviewEntry = 1;
+}
+
+message label{
+	required string text = 1;
+	required int32 topLeftX = 2;
+	required int32 topLeftY = 3;
+	required int32 width = 4;
+	required int32 height = 5;
+}
+
 message Interface{
 	required string name = 1;
 	required int32 topleftX = 2;
