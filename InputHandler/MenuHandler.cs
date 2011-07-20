@@ -67,6 +67,11 @@ namespace Eryan.InputHandler
             
         }
 
+        public bool warpToZero()
+        {
+            return click("warp to within 0 m");
+        }
+
         public bool select(string menuItem)
         {
 
@@ -101,8 +106,10 @@ namespace Eryan.InputHandler
                 pm.x = m.x;
                 pm.y = m.y;
 
-                m.click(false);
                 Thread.Sleep(300);
+                m.click(false);
+                Thread.Sleep(200);
+                
             }
             
             InterfaceResponse resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYTEXTMENU, menuItem.ToUpper(), Response.RESPONSES.INTERFACERESPONSE);
@@ -166,10 +173,25 @@ namespace Eryan.InputHandler
             Thread.Sleep(600);
 
             pm.click(true);
-
-
             return true;
         }
+
+        public Mouse MOUSE
+        {
+            get
+            {
+                return m;
+            }
+        }
+
+        public PreciseMouse PMOUSE
+        {
+            get
+            {
+                return pm;
+            }
+        }
+                
 
     }
 }
