@@ -57,7 +57,9 @@
   <ItemGroup>
     <Compile Include="BaseSubject.cs" />
     <Compile Include="Factories\ResponseFactory.cs" />
+    <Compile Include="InputHandler\InputHandler.cs" />
     <Compile Include="InputHandler\MenuHandler.cs" />
+    <Compile Include="InputHandler\OverviewHandler.cs" />
     <Compile Include="Input\PreciseMouse.cs" />
     <Compile Include="IPC\Communicator.cs" />
     <Compile Include="Script\Scriptable.cs" />
@@ -140,6 +142,9 @@
     <Compile Include="Responses\InterfaceResponse.cs" />
     <Compile Include="Responses\OverViewResponse.cs" />
     <Compile Include="Responses\Response.cs" />
+    <Compile Include="Wrappers\OverViewEntry.cs" />
+    <Compile Include="Wrappers\SolarSystem.cs" />
+    <Compile Include="Wrappers\Stargate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Injector\Injector\Injector.csproj">
