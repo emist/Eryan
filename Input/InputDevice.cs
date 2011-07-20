@@ -50,18 +50,31 @@ namespace Eryan.Input
             appWin = hwnd;
         }
 
-
+        /// <summary>
+        /// Build the LPARAM, internal winAPI parameter
+        /// </summary>
+        /// <param name="LoWord"></param>
+        /// <param name="HiWord"></param>
+        /// <returns></returns>
         protected int MakeLParam(int LoWord, int HiWord)
         {
             return ((HiWord << 16) | (LoWord & 0xffff));
         }
 
-
+        /// <summary>
+        /// Get the bot's drawable screen reference
+        /// </summary>
+        /// <param name="pid">The bot's attached pid</param>
+        /// <returns>The drawing screen</returns>
         protected Utils fetchScreen(uint pid)
         {
             return DrawAbleScreenFetcher.fetch(pid);
         }
 
+        /// <summary>
+        /// Gets the pid that the bot who owns this inputdevice is attached to
+        /// </summary>
+        /// <returns>The attached pid</returns>
         public uint getPid()
         {
             return pid;

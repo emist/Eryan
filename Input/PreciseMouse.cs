@@ -12,7 +12,7 @@ namespace Eryan.Input
 
     public class PreciseMouse : Mouse
     {
-        Mouse m;
+        
 
         public PreciseMouse()
         {
