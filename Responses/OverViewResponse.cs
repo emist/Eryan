@@ -19,6 +19,7 @@ namespace Eryan.Responses
         public OverViewResponse(byte[] input)
         {
             OverViewObject = overview.CreateBuilder().MergeFrom(input).Build();
+            data = new List<label>();
         }
 
 
