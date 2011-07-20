@@ -95,6 +95,7 @@ namespace Eryan.UI
             {
                 Console.WriteLine("Stopping Script");
                 bots[0].scriptName = null;
+                bots[0].script = null;
                 runButton.Text = "Run Script";
                 bots[0].running = false;
             }
