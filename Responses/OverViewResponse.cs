@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using eveobjects;
+using Eryan.Wrappers;
 
 namespace Eryan.Responses
 {
     public class OverViewResponse : Response
     {
-        List<label> data;
+        List<OverViewEntry> data;
         overview OverViewObject;
 
 
@@ -19,7 +20,7 @@ namespace Eryan.Responses
         public OverViewResponse(byte[] input)
         {
             OverViewObject = overview.CreateBuilder().MergeFrom(input).Build();
-            data = new List<label>();
+            data = new List<OverViewEntry>();
         }
 
 
@@ -30,7 +31,8 @@ namespace Eryan.Responses
         {
             foreach (label lab in OverViewObject.OverviewEntryList)
             {
-                data.Add(lab);
+                
+                data.Add(new OverViewEntry(lab.Text, lab.TopLeftY, lab.TopLeftX, lab.Height, lab.Width));
                 Console.WriteLine(lab.Text);
                 Console.WriteLine(lab.TopLeftX);
                 Console.WriteLine(lab.TopLeftY);
