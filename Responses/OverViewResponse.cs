@@ -6,7 +6,7 @@ using eveobjects;
 
 namespace Eryan.Responses
 {
-    class OverViewResponse : Response
+    public class OverViewResponse : Response
     {
         List<label> data;
         overview OverViewObject;
