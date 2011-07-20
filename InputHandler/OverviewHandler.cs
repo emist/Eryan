@@ -16,12 +16,10 @@ namespace Eryan.InputHandler
     /// <summary>
     /// Handles the interaction with the overview
     /// </summary>
-    public class OverviewHandler
+    public class OverviewHandler : InputHandler
     {
         List<OverViewEntry> entries;
-        Mouse m;
-        PreciseMouse pm;
-        Communicator com;
+
 
         /// <summary>
         /// Constructor
@@ -33,7 +31,7 @@ namespace Eryan.InputHandler
         {
             this.m = m;
             this.pm = pm;
-            this.com = com;
+            this.comm = com;
         }
 
         /// <summary>
@@ -42,7 +40,7 @@ namespace Eryan.InputHandler
         /// <returns>True if success, false otherwise</returns>
         public bool readOverView()
         {
-            OverViewResponse resp = (OverViewResponse)com.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWITEMS, Response.RESPONSES.OVERVIEWRESPONSE);
+            OverViewResponse resp = (OverViewResponse)comm.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWITEMS, Response.RESPONSES.OVERVIEWRESPONSE);
             if (resp == null)
             {
                 return false;
@@ -64,7 +62,10 @@ namespace Eryan.InputHandler
             {
                 m.moveMouse(new Point(entries[rowNum].X, entries[rowNum].Y));
                 Thread.Sleep(200);
+                synchronizeMouse(m);
                 m.click(false);
+
+                
                 return true;
             }
             return false;

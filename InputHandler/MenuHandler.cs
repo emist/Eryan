@@ -15,11 +15,8 @@ namespace Eryan.InputHandler
     /// <summary>
     /// Handles the menu interactions
     /// </summary>
-    public class MenuHandler
+    public class MenuHandler : InputHandler
     {
-        Mouse m;
-        Communicator comm;
-        PreciseMouse pm;
         Random random;
 
         public struct MENUITEMS
@@ -53,9 +50,6 @@ namespace Eryan.InputHandler
             public const string BOOKMARKLOCATION = "Bookmark Location";
 
         }
-
-
-
         
         public MenuHandler(Mouse m, PreciseMouse pm, Communicator com)
         {
@@ -88,9 +82,6 @@ namespace Eryan.InputHandler
 
             menuOpen.HandleResponse();
 
-
-
-            
             if (!(Boolean)menuOpen.Data)
             {
                 InterfaceResponse inflight = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETINFLIGHTINTERFACE, Response.RESPONSES.INTERFACERESPONSE);
@@ -117,12 +108,7 @@ namespace Eryan.InputHandler
                 return false;
 
             resp.HandleResponse();
-        
-
             pm.MissChance = 100;
-
-
-
             pm.Speed = 5;
 
             //m.move(new Point(resp.X + random.Next(resp.Height - 2, resp.Height / 2), resp.Y + random.Next(resp.Width, resp.Width / 2)));
@@ -132,8 +118,7 @@ namespace Eryan.InputHandler
             pm.move(10, resp.Width/2 + resp.X, resp.Y + 5, 0, 0, 0);
 
             //Synchronize both mouse devices
-            m.x = pm.x;
-            m.y = m.y;
+            synchronizePreciseMouse(pm);
             
             return true;
         }
@@ -167,31 +152,12 @@ namespace Eryan.InputHandler
 
 
             //Synchronize both mouse devices
-            m.x = pm.x;
-            m.y = m.y;
-
+            synchronizePreciseMouse(pm);
+           
             Thread.Sleep(600);
 
             pm.click(true);
             return true;
         }
-
-        public Mouse MOUSE
-        {
-            get
-            {
-                return m;
-            }
-        }
-
-        public PreciseMouse PMOUSE
-        {
-            get
-            {
-                return pm;
-            }
-        }
-                
-
     }
 }
