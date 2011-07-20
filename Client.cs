@@ -11,7 +11,7 @@ using System.Text;
 using System.IO;
 using Eryan.Factories;
 using Eryan.IPC;
-using Eryan.Wrappers;
+using Eryan.Responses;
 using Eryan.UI;
 
 namespace Eryan

@@ -61,11 +61,14 @@
     <Compile Include="Input\PreciseMouse.cs" />
     <Compile Include="IPC\Communicator.cs" />
     <Compile Include="Script\Scriptable.cs" />
+    <Compile Include="UI\ScriptBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ScriptBrowser.Designer.cs">
+      <DependentUpon>ScriptBrowser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Util\BitHelper.cs" />
     <Compile Include="Bot.cs">
-    </Compile>
-    <Compile Include="Bot.Designer.cs">
-      <DependentUpon>Bot.cs</DependentUpon>
     </Compile>
     <Compile Include="Singleton\BotFetcher.cs" />
     <Compile Include="UI\ClientWindow.cs">
@@ -110,6 +113,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\ScriptBrowser.resx">
+      <DependentUpon>ScriptBrowser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\WindowHandler.resx">
       <DependentUpon>WindowHandler.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -129,9 +136,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Singleton\DrawAbleScreenFetcher.cs" />
-    <Compile Include="Wrappers\BooleanResponse.cs" />
-    <Compile Include="Wrappers\InterfaceResponse.cs" />
-    <Compile Include="Wrappers\Response.cs" />
+    <Compile Include="Responses\BooleanResponse.cs" />
+    <Compile Include="Responses\InterfaceResponse.cs" />
+    <Compile Include="Responses\OverViewResponse.cs" />
+    <Compile Include="Responses\Response.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Injector\Injector\Injector.csproj">
@@ -144,7 +152,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Scripts\" />
+    <Folder Include="Script\Scripts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
