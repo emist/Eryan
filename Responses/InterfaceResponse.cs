@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using eveobjects;
 
-namespace Eryan.Wrappers
+namespace Eryan.Responses
 {
 
     /// <summary>

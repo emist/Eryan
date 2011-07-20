@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Eryan.Wrappers
+namespace Eryan.Responses
 {
     /// <summary>
     /// Abstract response, all Responses inherit from this
