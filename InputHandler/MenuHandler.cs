@@ -21,6 +21,41 @@ namespace Eryan.InputHandler
         Communicator comm;
         PreciseMouse pm;
         Random random;
+
+        public struct MENUITEMS
+        {
+            public const string RESETCAMERA = "Reset Camera";
+            public const string SHOWSOLARSYSTEMINMAPBROWSER = "Show Solar System in Mapbrowser";
+            public const string ASTEROIDBELTS = "Asteroid Belts";
+            public const string PLANETS = "Planets";
+            public const string STARGATES = "Stargates";
+            public const string STATIONS = "Stations";
+            public const string HIDEROUTE = "Hide Route";
+            public const string BELT1 = "Asteroid Belt 1";
+            public const string BELT2 = "Asteroid Belt 2";
+            public const string BELT3 = "Asteroid Belt 3";
+            public const string BELT4 = "Asteroid Belt 4";
+            public const string BELT5 = "Asteroid Belt 5";
+            public const string BELT6 = "Asteroid Belt 6";
+            public const string BELT7 = "Asteroid Belt 7";
+            public const string BELT8 = "Asteroid Belt 8";
+            public const string BELT9 = "Asteroid Belt 9";
+            public const string BELT10 = "Asteroid Belt 10";
+            public const string BELT11 = "Asteroid Belt 11";
+            public const string BELT12 = "Asteroid Belt 12";
+            public const string BELT13 = "Asteroid Belt 13";
+            public const string BELT14 = "Asteroid Belt 14";
+            public const string APPROACH = "Approach";
+            public const string LOOKAT = "Look At";
+            public const string LOCKTARGET = "Lock Target";
+            public const string SHOWINFO = "Show Info";
+            public const string ADDWAYPOINT = "Add Waypoint";
+            public const string BOOKMARKLOCATION = "Bookmark Location";
+
+        }
+
+
+
         
         public MenuHandler(Mouse m, PreciseMouse pm, Communicator com)
         {
