@@ -1,0 +1,1380 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Eryan</name>
+    </assembly>
+    <members>
+        <member name="T:Eryan.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Eryan.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Eryan.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Eryan.Input.InputDevice">
+            <summary>
+            Superclass for all input devices
+            </summary>
+        </member>
+        <member name="M:Eryan.Input.InputDevice.setWindowHandle(System.IntPtr)">
+            <summary>
+            Associate this device to a windows handler
+            </summary>
+            <param name="hwnd"></param>
+        </member>
+        <member name="M:Eryan.Input.InputDevice.setPid(System.UInt32)">
+            <summary>
+            Associate this device to an EVE process id.
+            </summary>
+            <param name="pid">The EVE process id to associate to</param>
+        </member>
+        <member name="T:ZiadSpace.Util.BitHelper">
+            <summary>
+            Helps perform certain operations on primative types
+            that deal with bits
+            </summary>
+        </member>
+        <member name="F:ZiadSpace.Util.BitHelper.BIT_SIZE_BYTE">
+            <summary>
+            The max number of bits in byte
+            </summary>
+        </member>
+        <member name="F:ZiadSpace.Util.BitHelper.BIT_SIZE_SHORT">
+            <summary>
+            The max number of bits in short 
+            </summary>
+        </member>
+        <member name="F:ZiadSpace.Util.BitHelper.BIT_SIZE_INT">
+            <summary>
+            The max number of bits in int
+            </summary>
+        </member>
+        <member name="F:ZiadSpace.Util.BitHelper.BIT_SIZE_LONG">
+            <summary>
+            The max number of bits in long
+            </summary>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.#ctor">
+            <summary>
+            Private constructor
+            </summary>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SizeOf(System.Byte)">
+            <summary>
+            Gets the size of the input value in bits
+            </summary>
+            <param name="pInput">The input value</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Byte,System.Int32)">
+            <summary>
+            Gets the bits from a number as a number.
+            </summary>
+            <param name="pInput">The input value.</param>
+            <param name="pStart">The start position.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Byte,System.Int32,System.Boolean)">
+            <summary>
+            Gets the bits.
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pStartIndex">Start index of the p.</param>
+            <param name="pShift">if set to <c>true</c> [p shift].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Byte,System.Int32,System.Int32)">
+            <summary>
+            Gets the bits.
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pStartIndex">Start index of the p.</param>
+            <param name="pLength">Length of the p.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Byte,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Gets a number in the specified range of bits
+            </summary>
+            <param name="pStart"></param>
+            <param name="pEnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBits(System.Byte,System.Byte,System.Int32)">
+            <summary>
+            Sets the bits.
+            </summary>
+            <param name="pDest">The p dest.</param>
+            <param name="pSource">The p source.</param>
+            <param name="pSourceIndex">Index of the p source.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBits(System.Byte,System.Byte,System.Int32,System.Int32)">
+            <summary>
+            Sets the bits.
+            </summary>
+            <param name="pDest">The p dest.</param>
+            <param name="pSource">The p source.</param>
+            <param name="pSourceIndex">Index of the p source.</param>
+            <param name="pLength">Length of the p.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBits(System.Byte,System.Byte,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sets the bits.
+            </summary>
+            <param name="pDest">The dest.</param>
+            <param name="pSource">The source.</param>
+            <param name="pSourceIndex">Index of the source.</param>
+            <param name="pDestIndex">Index of the dest.</param>
+            <param name="pLength">Length to read.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.IsBitSet(System.Byte,System.Int32)">
+            <summary>
+            Determines whether [is bit set] [the specified p input].
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pPosition">The p position.</param>
+            <returns>
+            	<c>true</c> if [is bit set] [the specified p input]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.ChangeBit(System.Byte,System.Int32)">
+            <summary>
+            Changes the value of the bit at the specified positon
+            </summary>
+            <param name="pInput"></param>
+            <param name="pPosition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBit(System.Byte,System.Int32,System.Boolean)">
+            <summary>
+            Sets the value of a bit
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pPosition">The p position.</param>
+            <param name="pOn">if set to <c>true</c> [p on].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.IsNegative(System.Int16)">
+            <summary>
+            Checks to see if number is less than 0.
+            </summary>
+            <param name="pInputValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.ChangeSign(System.Int16)">
+            <summary>
+            Changes the value from positive to negative and vis versa
+            </summary>
+            <param name="pInputValue">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SizeOf(System.Int16)">
+            <summary>
+            Gets the size of the input value in bits
+            </summary>
+            <param name="pInput">The input value</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Int16,System.Int32)">
+            <summary>
+            Gets the bits from a number as a number.
+            </summary>
+            <param name="pInput">The input value.</param>
+            <param name="pStart">The start position.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Int16,System.Int32,System.Boolean)">
+            <summary>
+            Gets the bits.
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pStartIndex">Start index of the p.</param>
+            <param name="pShift">if set to <c>true</c> [p shift].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Int16,System.Int32,System.Int32)">
+            <summary>
+            Gets the bits.
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pStartIndex">Start index of the p.</param>
+            <param name="pLength">Length of the p.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Int16,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Gets a number in the specified range of bits
+            </summary>
+            <param name="pStart"></param>
+            <param name="pEnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBits(System.Int16,System.Int16,System.Int32)">
+            <summary>
+            Sets the bits.
+            </summary>
+            <param name="pDest">The p dest.</param>
+            <param name="pSource">The p source.</param>
+            <param name="pSourceIndex">Index of the p source.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBits(System.Int16,System.Int16,System.Int32,System.Int32)">
+            <summary>
+            Sets the bits.
+            </summary>
+            <param name="pDest">The p dest.</param>
+            <param name="pSource">The p source.</param>
+            <param name="pSourceIndex">Index of the p source.</param>
+            <param name="pLength">Length of the p.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBits(System.Int16,System.Int16,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sets the bits.
+            </summary>
+            <param name="pDest">The dest.</param>
+            <param name="pSource">The source.</param>
+            <param name="pSourceIndex">Index of the source.</param>
+            <param name="pDestIndex">Index of the dest.</param>
+            <param name="pLength">Length to read.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.IsBitSet(System.Int16,System.Int32)">
+            <summary>
+            Determines whether [is bit set] [the specified p input].
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pPosition">The p position.</param>
+            <returns>
+            	<c>true</c> if [is bit set] [the specified p input]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.ChangeBit(System.Int16,System.Int32)">
+            <summary>
+            Changes the value of the bit at the specified positon
+            </summary>
+            <param name="pInput"></param>
+            <param name="pPosition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBit(System.Int16,System.Int32,System.Boolean)">
+            <summary>
+            Sets the value of a bit
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pPosition">The p position.</param>
+            <param name="pOn">if set to <c>true</c> [p on].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.IsNegative(System.Int32)">
+            <summary>
+            Checks to see if number is less than 0.
+            </summary>
+            <param name="pInputValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.ChangeSign(System.Int32)">
+            <summary>
+            Changes the value from positive to negative and vis versa
+            </summary>
+            <param name="pInputValue">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SizeOf(System.Int32)">
+            <summary>
+            Gets the size of the input value in bits
+            </summary>
+            <param name="pInput">The input value</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Int32,System.Int32)">
+            <summary>
+            Gets the bits from a number as a number.
+            </summary>
+            <param name="pInput">The input value.</param>
+            <param name="pStart">The start position.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Gets the bits.
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pStartIndex">Start index of the p.</param>
+            <param name="pShift">if set to <c>true</c> [p shift].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Gets the bits.
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pStartIndex">Start index of the p.</param>
+            <param name="pLength">Length of the p.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Gets a number in the specified range of bits
+            </summary>
+            <param name="pStart"></param>
+            <param name="pEnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBits(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sets the bits.
+            </summary>
+            <param name="pDest">The p dest.</param>
+            <param name="pSource">The p source.</param>
+            <param name="pSourceIndex">Index of the p source.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBits(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sets the bits.
+            </summary>
+            <param name="pDest">The p dest.</param>
+            <param name="pSource">The p source.</param>
+            <param name="pSourceIndex">Index of the p source.</param>
+            <param name="pLength">Length of the p.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBits(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sets the bits.
+            </summary>
+            <param name="pDest">The dest.</param>
+            <param name="pSource">The source.</param>
+            <param name="pSourceIndex">Index of the source.</param>
+            <param name="pDestIndex">Index of the dest.</param>
+            <param name="pLength">Length to read.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.IsBitSet(System.Int32,System.Int32)">
+            <summary>
+            Determines whether [is bit set] [the specified p input].
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pPosition">The p position.</param>
+            <returns>
+            	<c>true</c> if [is bit set] [the specified p input]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.ChangeBit(System.Int32,System.Int32)">
+            <summary>
+            Changes the value of the bit at the specified positon
+            </summary>
+            <param name="pInput"></param>
+            <param name="pPosition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBit(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Sets the value of a bit
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pPosition">The p position.</param>
+            <param name="pOn">if set to <c>true</c> [p on].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.IsNegative(System.Int64)">
+            <summary>
+            Checks to see if number is less than 0.
+            </summary>
+            <param name="pInputValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.ChangeSign(System.Int64)">
+            <summary>
+            Changes the value from positive to negative and vis versa
+            </summary>
+            <param name="pInputValue">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SizeOf(System.Int64)">
+            <summary>
+            Gets the size of the input value in bits
+            </summary>
+            <param name="pInput">The input value</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Int64,System.Int32)">
+            <summary>
+            Gets the bits from a number as a number.
+            </summary>
+            <param name="pInput">The input value.</param>
+            <param name="pStart">The start position.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Int64,System.Int32,System.Boolean)">
+            <summary>
+            Gets the bits.
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pStartIndex">Start index of the p.</param>
+            <param name="pShift">if set to <c>true</c> [p shift].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Int64,System.Int32,System.Int32)">
+            <summary>
+            Gets the bits.
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pStartIndex">Start index of the p.</param>
+            <param name="pLength">Length of the p.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.GetBits(System.Int64,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Gets a number in the specified range of bits
+            </summary>
+            <param name="pStart"></param>
+            <param name="pEnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBits(System.Int64,System.Int64,System.Int32)">
+            <summary>
+            Sets the bits.
+            </summary>
+            <param name="pDest">The p dest.</param>
+            <param name="pSource">The p source.</param>
+            <param name="pSourceIndex">Index of the p source.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBits(System.Int64,System.Int64,System.Int32,System.Int32)">
+            <summary>
+            Sets the bits.
+            </summary>
+            <param name="pDest">The p dest.</param>
+            <param name="pSource">The p source.</param>
+            <param name="pSourceIndex">Index of the p source.</param>
+            <param name="pLength">Length of the p.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBits(System.Int64,System.Int64,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sets the bits.
+            </summary>
+            <param name="pDest">The dest.</param>
+            <param name="pSource">The source.</param>
+            <param name="pSourceIndex">Index of the source.</param>
+            <param name="pDestIndex">Index of the dest.</param>
+            <param name="pLength">Length to read.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.IsBitSet(System.Int64,System.Int32)">
+            <summary>
+            Determines whether [is bit set] [the specified p input].
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pPosition">The p position.</param>
+            <returns>
+            	<c>true</c> if [is bit set] [the specified p input]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.ChangeBit(System.Int64,System.Int32)">
+            <summary>
+            Changes the value of the bit at the specified positon
+            </summary>
+            <param name="pInput"></param>
+            <param name="pPosition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.SetBit(System.Int64,System.Int32,System.Boolean)">
+            <summary>
+            Sets the value of a bit
+            </summary>
+            <param name="pInput">The p input.</param>
+            <param name="pPosition">The p position.</param>
+            <param name="pOn">if set to <c>true</c> [p on].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.HiDword(System.Int64)">
+            <summary>
+            The return value is the high-order double word of the specified value.
+            </summary>
+            <param name="pDWord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.LoDword(System.Int64)">
+            <summary>
+            The return value is the low-order word of the specified value.
+            </summary>
+            <param name="pDWord">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.HiWord(System.Int32)">
+            <summary>
+            The return value is the high-order word of the specified value.
+            </summary>
+            <param name="pDWord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.LoWord(System.Int32)">
+            <summary>
+            The return value is the low-order word of the specified value.
+            </summary>
+            <param name="pDWord">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.HiByte(System.Int16)">
+            <summary>
+            The return value is the high-order byte of the specified value.
+            </summary>
+            <param name="pWord">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.LoByte(System.Int16)">
+            <summary>
+            The return value is the low-order byte of the specified value.
+            </summary>
+            <param name="pWord">The value</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.MakeLong(System.Int32,System.Int32)">
+            <summary>
+            Makes a 64 bit long from two 32 bit integers
+            </summary>
+            <param name="pValueLow">The low order value.</param>
+            <param name="pValueHigh">The high order value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.MakeDword(System.Int16,System.Int16)">
+            <summary>
+            Makes a 32 bit integer from two 16 bit shorts
+            </summary>
+            <param name="pValueLow">The low order value.</param>
+            <param name="pValueHigh">The high order value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZiadSpace.Util.BitHelper.MakeWord(System.Byte,System.Byte)">
+            <summary>
+            Makes a 16 bit short from two bytes
+            </summary>
+            <param name="pValueLow">The low order value.</param>
+            <param name="pValueHigh">The high order value.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Eryan.Factories.FunctionCallFactory">
+            <summary>
+            This class builds functionCall objects
+            </summary>
+        </member>
+        <member name="M:Eryan.Factories.FunctionCallFactory.build(System.String)">
+            <summary>
+            Builds a functionCall object with no parameters
+            </summary>
+            <param name="function">The function name to be called</param>
+            <returns>The serializeable functionCall object</returns>
+        </member>
+        <member name="M:Eryan.Factories.FunctionCallFactory.build(System.String,System.String)">
+            <summary>
+            Builds a functionCall object with one parameter
+            </summary>
+            <param name="function">The function name to be called</param>
+            <param name="arg">The parameter to pass with the functionCall object</param>
+            <returns>The serializeable functionCall object</returns>
+        </member>
+        <member name="M:Eryan.Factories.FunctionCallFactory.build(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Builds a functionCall object with a variable argument list
+            </summary>
+            <param name="function">The function name to be called</param>
+            <param name="arguments">A List of Strings containing the parameters to pass with the functionCall object</param>
+            <returns>The serializeable functionCall object</returns>
+        </member>
+        <member name="T:Eryan.Singleton.BotFetcher">
+            <summary>
+            Singleton to keep track of all running bots
+            </summary>
+        </member>
+        <member name="M:Eryan.Singleton.BotFetcher.fetch(System.UInt32)">
+            <summary>
+            Fetches a bot based on PID
+            </summary>
+            <param name="pid">The PID of the EVE process the bot is attached to</param>
+            <returns>A bot reference if a bot is found, null if not</returns>
+        </member>
+        <member name="M:Eryan.Singleton.BotFetcher.addBot(Eryan.Bot)">
+            <summary>
+            Registers a bot with the singleton
+            </summary>
+            <param name="b">The reference to the bot to be registered</param>
+        </member>
+        <member name="T:Eryan.Responses.Response">
+            <summary>
+            Abstract response, all Responses inherit from this
+            </summary>
+        </member>
+        <member name="M:Eryan.Responses.Response.HandleResponse">
+            <summary>
+            Implement in subclass
+            </summary>
+        </member>
+        <member name="P:Eryan.Responses.Response.Data">
+            <summary>
+            Returns the representation of all the Response's data
+            </summary>
+        </member>
+        <member name="T:Eryan.IPC.Pipe">
+            <summary>
+            Named pipe representation
+            </summary>
+        </member>
+        <member name="M:Eryan.IPC.Pipe.#ctor(System.String)">
+            <summary>
+            Constructs a pipe with the given name
+            </summary>
+            <param name="name">Name of the pipe to build</param>
+        </member>
+        <member name="M:Eryan.IPC.Pipe.pipeClient(eveobjects.functionCall)">
+            <summary>
+            Calls functions on Black
+            </summary>
+            <param name="fcall">The functionCall object representing the function to be called</param>
+            <returns>The byte representation of the Response object</returns>
+        </member>
+        <member name="M:Eryan.IPC.Pipe.isReady">
+            <summary>
+            Check if the pipe is ready for reading/writing
+            </summary>
+            <returns>True is ready, false if not</returns>
+        </member>
+        <member name="M:Eryan.Client.createWindow">
+            <summary>
+            Spawns the Eryan Client on a new thread
+            </summary>
+        </member>
+        <member name="M:Eryan.Client.Main">
+            <summary>
+            The main entry point of the application
+            </summary>
+        </member>
+        <member name="T:Eryan.Util.DrawableScreen">
+            <summary>
+            The Eryan overlay, for internal use
+            </summary>
+        </member>
+        <member name="T:Eryan.Utils">
+            <summary>
+            Thread-safe form implementation
+            </summary>
+        </member>
+        <member name="T:Eryan.Bot">
+            <summary>
+            Bot routines
+            </summary>
+        </member>
+        <member name="M:Eryan.Bot.Equals(System.Object)">
+            <summary>
+            Check if obj is the same object in memory as this, used solely for the BotFetcher
+            </summary>
+            <param name="obj">Other object reference</param>
+            <returns>True if obj is us, false otherwise</returns>
+        </member>
+        <member name="M:Eryan.Bot.initializeBot(Eryan.UI.ClientWindow)">
+            <summary>
+            Initializes the bot by creating a new WindowHandler and adding it as a tab to the ClientWindow
+            </summary>
+            <param name="cw">A reference to the ClientWindow</param>
+        </member>
+        <member name="M:Eryan.Bot.getHandle">
+            <summary>
+            Gets a reference to the handler in charge of this bot
+            </summary>
+            <returns>Returns a reference to the WindowHandler in charge of this bot</returns>
+        </member>
+        <member name="M:Eryan.Bot.getPid">
+            <summary>
+            Get the PID associated with this bot(The EVE process)
+            </summary>
+            <returns>The PID associated with this bot.</returns>
+        </member>
+        <member name="M:Eryan.Bot.getThread">
+            <summary>
+            Gets the reference to this bot's thread.
+            </summary>
+            <returns>Reference to the bot's thread.</returns>
+        </member>
+        <member name="M:Eryan.Bot.SpawnForm(System.Object)">
+            <summary>
+            Unusued
+            </summary>
+            <param name="firm"></param>
+        </member>
+        <member name="M:Eryan.Bot.loadScript(System.String)">
+            <summary>
+            Loads the script assembly
+            </summary>
+            <param name="name">Name of the assembly to be loaded, namespace must be Script and main class must be named Script</param>
+            <returns></returns>
+        </member>
+        <member name="M:Eryan.Bot.update">
+            <summary>
+            Bot's logic loop
+            </summary>
+        </member>
+        <member name="M:Eryan.Bot.DestroyBot">
+            <summary>
+            Cleanup the bot
+            </summary>
+            <returns>Whether the bot was cleaned up successfully</returns>
+        </member>
+        <member name="M:Eryan.Responses.OverViewResponse.#ctor(System.Byte[])">
+            <summary>
+            Concrete response for Interface replies
+            </summary>
+            <param name="input">The byte representation of the reply</param>
+        </member>
+        <member name="M:Eryan.Responses.OverViewResponse.HandleResponse">
+            <summary>
+            Initializes the data elements
+            </summary>
+        </member>
+        <member name="P:Eryan.Responses.OverViewResponse.Data">
+            <summary>
+            List represenation of the data
+            </summary>
+        </member>
+        <member name="T:Eryan.Responses.InterfaceResponse">
+            <summary>
+            Wrapper to interface call responses
+            </summary>
+        </member>
+        <member name="M:Eryan.Responses.InterfaceResponse.#ctor(System.Byte[])">
+            <summary>
+            Concrete response for Interface replies
+            </summary>
+            <param name="input">The byte representation of the reply</param>
+        </member>
+        <member name="M:Eryan.Responses.InterfaceResponse.HandleResponse">
+            <summary>
+            Initializes the data elements
+            </summary>
+        </member>
+        <member name="P:Eryan.Responses.InterfaceResponse.Data">
+            <summary>
+            List represenation of the data
+            </summary>
+        </member>
+        <member name="P:Eryan.Responses.InterfaceResponse.Name">
+            <summary>
+            Getter for the name of this interface
+            </summary>
+        </member>
+        <member name="P:Eryan.Responses.InterfaceResponse.X">
+            <summary>
+            Getter for the X position of this interface
+            </summary>
+        </member>
+        <member name="P:Eryan.Responses.InterfaceResponse.Y">
+            <summary>
+            Getter for the Y position of this interface
+            </summary>
+        </member>
+        <member name="T:Eryan.Input.Mouse">
+            <summary>
+            Mouse input device
+            </summary>
+        </member>
+        <member name="M:Eryan.Input.Mouse.getX">
+            <summary>
+            Get mouse position on the X axis
+            </summary>
+            <returns>The X coordinate of the mouse cursor</returns>
+        </member>
+        <member name="M:Eryan.Input.Mouse.getY">
+            <summary>
+            Get mouse position on the Y axis
+            </summary>
+            <returns>The Y coordinate of the mouse cursor</returns>
+        </member>
+        <member name="M:Eryan.Input.Mouse.getSpeed">
+            <summary>
+            Gets the mouse speed
+            </summary>
+            <returns>The current mouse speed</returns>
+        </member>
+        <member name="M:Eryan.Input.Mouse.cursorLocation">
+            <summary>
+            The current cursor location
+            </summary>
+            <returns>A point relative to the EVE window</returns>
+        </member>
+        <member name="M:Eryan.Input.Mouse.click(System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Clicks the given coordinates
+            </summary>
+            <param name="x">The position in the x axis to click</param>
+            <param name="y">The position in the y axis to click</param>
+            <param name="leftClick">Whether its a left click or right click</param>
+            <param name="move_after">How much it should move after clicking</param>
+        </member>
+        <member name="M:Eryan.Input.Mouse.move(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Move the mouse to the given coordinates with randomization
+            </summary>
+            <param name="x">The position in the x axis to move to</param>
+            <param name="y">The position in the y axis to move to</param>
+            <param name="randX">The random deviation along the X axis</param>
+            <param name="randY">The random deviation along the Y axis</param>
+        </member>
+        <member name="M:Eryan.Input.Mouse.move(System.Int32,System.Drawing.Point)">
+            <summary>
+            Move the mouse to a poitn with the given speed
+            </summary>
+            <param name="speed">The speed at which to move</param>
+            <param name="p">The point to move to</param>
+        </member>
+        <member name="M:Eryan.Input.Mouse.move(System.Drawing.Point)">
+            <summary>
+            Mouse the mouse to the point
+            </summary>
+            <param name="p">Point to move to</param>
+        </member>
+        <member name="M:Eryan.Input.Mouse.move(System.Drawing.Point,System.Int32,System.Int32)">
+            <summary>
+            Move the mouse to the given point with the given randomization
+            </summary>
+            <param name="p">The point to move to</param>
+            <param name="randX">The deviation along the X axis</param>
+            <param name="randY">The deviation along the Y axis</param>
+        </member>
+        <member name="M:Eryan.Input.Mouse.move(System.Drawing.Point,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Move the mouse to the given point with randomization and movement after
+            </summary>
+            <param name="p">The point to move</param>
+            <param name="randX">The deviation along the X axis</param>
+            <param name="randY">The deviation along the Y axis</param>
+            <param name="afterOffset">How much to move by after it gets there</param>
+        </member>
+        <member name="M:Eryan.Input.Mouse.hypot(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Gets the hypotenuse of the triangle made by two points
+            </summary>
+            <param name="xs">X coordinate of point 1</param>
+            <param name="xe">X coordinate of point 2</param>
+            <param name="ys">Y coordinate of point 1</param>
+            <param name="ye">Y coordinate of point 2</param>
+            <returns>The hypotenuse</returns>
+        </member>
+        <member name="M:Eryan.Input.Mouse.WindMouse(System.Int32,System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Insane mouse logic
+            </summary>
+            <param name="xs"></param>
+            <param name="ys"></param>
+            <param name="xe"></param>
+            <param name="ye"></param>
+            <param name="gravity"></param>
+            <param name="wind"></param>
+            <param name="minWait"></param>
+            <param name="maxWait"></param>
+            <param name="maxStep"></param>
+            <param name="targetArea"></param>
+        </member>
+        <member name="M:Eryan.Input.Mouse.moveMouse(System.Drawing.Point)">
+            <summary>
+            Move the mouse to Point p
+            </summary>
+            <param name="p">The point to move the mouse to</param>
+        </member>
+        <member name="M:Eryan.Input.Mouse.atPosition(System.Int32,System.Int32)">
+            <summary>
+            Check whether the mouse it at the given x and y coordinates
+            </summary>
+            <param name="x">X coordinate to check</param>
+            <param name="y">Y coordinate to check</param>
+            <returns>Returns true if the mouse is within the 5 pixel square of the given coordinates</returns>
+        </member>
+        <member name="M:Eryan.Input.Mouse.cursorDistance(System.Drawing.Point)">
+            <summary>
+            Get how far the mouse is from the given point
+            </summary>
+            <param name="p">The point to test against</param>
+            <returns>The distance between the mouse and the given point</returns>
+        </member>
+        <member name="M:Eryan.Input.Mouse.move(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            More insane mouse logic
+            </summary>
+            <param name="speed"></param>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="randX"></param>
+            <param name="randY"></param>
+            <param name="afterOffset"></param>
+        </member>
+        <member name="T:Eryan.Script.Scriptable">
+            <summary>
+            Scriptable interface must be implemented by all Eryan scripts
+            </summary>
+        </member>
+        <member name="T:Eryan.Input.PreciseMouse">
+            <summary>
+            More precise implementation of Mouse class, for interactions that require more accuraccy, at the expense of randomization.
+            </summary>
+        </member>
+        <member name="T:Eryan.Subject">
+            <summary>
+            Generic Event disptacher
+            </summary>
+        </member>
+        <member name="M:Eryan.Subject.registerObserver(Eryan.Observer)">
+            <summary>
+            Adding an observer to the dispatcher
+            </summary>
+            <param name="o">The observer to add</param>
+        </member>
+        <member name="M:Eryan.Subject.removeObserver(Eryan.Observer)">
+            <summary>
+            Removing an observer from the dispatcher
+            </summary>
+            <param name="o">The observer to remove</param>
+        </member>
+        <member name="M:Eryan.Subject.notifyObservers">
+            <summary>
+            Dispatch event to the observers
+            </summary>
+        </member>
+        <member name="T:Eryan.Event">
+            <summary>
+            Abstract Event
+            </summary>
+        </member>
+        <member name="T:Eryan.EryanEventHandler">
+            <summary>
+            Event dispatcher, unused
+            </summary>
+        </member>
+        <member name="M:Eryan.EryanEventHandler.dispatch(Eryan.Event)">
+            <summary>
+            Dispatch an event to the listeners
+            </summary>
+            <param name="e">Event to dispatch</param>
+        </member>
+        <member name="T:Eryan.IPC.Communicator">
+            <summary>
+            Handles the communications between Eryan and the Eve client
+            </summary>
+        </member>
+        <member name="M:Eryan.IPC.Communicator.#ctor(System.String)">
+            <summary>
+            Constructs a communicator out of the given pipe-name
+            </summary>
+            <param name="name">The pipe to build</param>
+        </member>
+        <member name="M:Eryan.IPC.Communicator.connect">
+            <summary>
+            Checks if the pipe is ready, might block
+            </summary>
+            <returns>True if ready, false otherwise</returns>
+        </member>
+        <member name="M:Eryan.IPC.Communicator.sendCall(System.String,System.String)">
+            <summary>
+            Make the call
+            </summary>
+            <param name="call">Constant function represenation as given in calls struct.</param>
+            <param name="responsetype">The expected response as defined in Responses.RESPONSETYPE</param>
+            <returns>The response or null if failed.</returns>
+        </member>
+        <member name="M:Eryan.IPC.Communicator.sendCall(System.String,System.String,System.String)">
+            <summary>
+            Make a call with one parameter
+            </summary>
+            <param name="call">The function name as represented in calls struct</param>
+            <param name="param">The parameter to send</param>
+            <param name="responsetype">The response type expected as defined in Responses.RESPONSETYPE</param>
+            <returns>The response object or null if failed</returns>
+        </member>
+        <member name="T:Eryan.Singleton.DrawAbleScreenFetcher">
+            <summary>
+            Singleton to keep track of all the drawabale screens
+            </summary>
+        </member>
+        <member name="M:Eryan.Singleton.DrawAbleScreenFetcher.fetch(System.UInt32)">
+            <summary>
+            Fetch the drawable area attached to an EVE process
+            </summary>
+            <param name="pid">The EVE process' pid</param>
+            <returns>The drawable area if it exists</returns>
+        </member>
+        <member name="M:Eryan.Singleton.DrawAbleScreenFetcher.addScreen(Eryan.Util.DrawableScreen)">
+            <summary>
+            Register a drawable area with the singleton
+            </summary>
+            <param name="screen">The drawable area to register</param>
+        </member>
+        <member name="T:Eryan.Factories.ResponseFactory">
+            <summary>
+            Builds reponse objects to interpret the responses comming from the EVE client
+            </summary>
+        </member>
+        <member name="T:Eryan.UI.WindowHandler">
+            <summary>
+            The Handler for a Bot's Window
+            </summary>
+        </member>
+        <member name="F:Eryan.UI.WindowHandler.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.OnSizeChanged(System.EventArgs)">
+            <summary>
+            OnSizeChanged redraw
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.Program_Load(System.Object,System.EventArgs)">
+            <summary>
+            OnLoad inject windows hooks to keep track of creation/destruction of EVE windows
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.Program_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+            <summary>
+            Unhook
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.getPid">
+            <summary>
+            Find out the EVE process' PID
+            </summary>
+            <returns>The PID of the EVE process</returns>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.getKeyBoard">
+            <summary>
+            Return the keyboard device associated with this window
+            </summary>
+            <returns>Keyboard device associated with this window</returns>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.getMouse">
+            <summary>
+            Return the mouse device associated with this window
+            </summary>
+            <returns>The mouse device associated with this window</returns>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.inject">
+            <summary>
+            Put Black.dll in the EVE process' memory
+            </summary>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.initialize">
+            <summary>
+            Eat the EVE window and inject
+            </summary>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.HandleWindowChanges(System.IntPtr,System.UInt32,System.IntPtr,System.Int32,System.Int32,System.UInt32,System.UInt32)">
+            <summary>
+            Unused I think
+            </summary>
+            <param name="hWinEventHook"></param>
+            <param name="eventType"></param>
+            <param name="hwnd"></param>
+            <param name="idObject"></param>
+            <param name="idChild"></param>
+            <param name="dwEventThread"></param>
+            <param name="dwmsEventTime"></param>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.IsVisible">
+            <summary>
+            Check if the WindowHandler is visible
+            </summary>
+            <returns>True if visible</returns>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.OnMove(System.EventArgs)">
+            <summary>
+            OnMove update the drawing screen position
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.OnVisibleChanged(System.EventArgs)">
+            <summary>
+            OnVisibleChanged update the drawing screen 
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.OnHandleDestroyed(System.EventArgs)">
+            <summary>
+            OnHandleDestroyed cleanup EVE
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.handleDrawingScreen">
+            <summary>
+            Update the drawing screen
+            </summary>
+        </member>
+        <member name="M:Eryan.UI.WindowHandler.OnResize(System.EventArgs)">
+            <summary>
+            OnResize update the drawing screen and EVE client
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="P:Eryan.UI.WindowHandler.MOUSE">
+            <summary>
+            Returns this WindowHandler's Mouse reference
+            </summary>
+        </member>
+        <member name="P:Eryan.UI.WindowHandler.PMOUSE">
+            <summary>
+            Returns this WindowHandler's PreciseMouse reference
+            </summary>
+        </member>
+        <member name="F:Eryan.UI.WindowHandler.ShowWindowCommands.Hide">
+            <summary>
+            Hides the window and activates another window.
+            </summary>
+        </member>
+        <member name="F:Eryan.UI.WindowHandler.ShowWindowCommands.Normal">
+            <summary>
+            Activates and displays a window. If the window is minimized or
+            maximized, the system restores it to its original size and position.
+            An application should specify this flag when displaying the window
+            for the first time.
+            </summary>
+        </member>
+        <member name="F:Eryan.UI.WindowHandler.ShowWindowCommands.ShowMinimized">
+            <summary>
+            Activates the window and displays it as a minimized window.
+            </summary>
+        </member>
+        <member name="F:Eryan.UI.WindowHandler.ShowWindowCommands.Maximize">
+            <summary>
+            Maximizes the specified window.
+            </summary>
+        </member>
+        <member name="F:Eryan.UI.WindowHandler.ShowWindowCommands.ShowMaximized">
+            <summary>
+            Activates the window and displays it as a maximized window.
+            </summary>      
+        </member>
+        <member name="F:Eryan.UI.WindowHandler.ShowWindowCommands.ShowNoActivate">
+            <summary>
+            Displays a window in its most recent size and position. This value
+            is similar to <see cref="!:Win32.ShowWindowCommand.Normal"/>, except
+            the window is not activated.
+            </summary>
+        </member>
+        <member name="F:Eryan.UI.WindowHandler.ShowWindowCommands.Show">
+            <summary>
+            Activates the window and displays it in its current size and position.
+            </summary>
+        </member>
+        <member name="F:Eryan.UI.WindowHandler.ShowWindowCommands.Minimize">
+            <summary>
+            Minimizes the specified window and activates the next top-level
+            window in the Z order.
+            </summary>
+        </member>
+        <member name="F:Eryan.UI.WindowHandler.ShowWindowCommands.ShowMinNoActive">
+            <summary>
+            Displays the window as a minimized window. This value is similar to
+            <see cref="!:Win32.ShowWindowCommand.ShowMinimized"/>, except the
+            window is not activated.
+            </summary>
+        </member>
+        <member name="F:Eryan.UI.WindowHandler.ShowWindowCommands.ShowNA">
+            <summary>
+            Displays the window in its current size and position. This value is
+            similar to <see cref="!:Win32.ShowWindowCommand.Show"/>, except the
+            window is not activated.
+            </summary>
+        </member>
+        <member name="F:Eryan.UI.WindowHandler.ShowWindowCommands.Restore">
+            <summary>
+            Activates and displays the window. If the window is minimized or
+            maximized, the system restores it to its original size and position.
+            An application should specify this flag when restoring a minimized window.
+            </summary>
+        </member>
+        <member name="F:Eryan.UI.WindowHandler.ShowWindowCommands.ShowDefault">
+            <summary>
+            Sets the show state based on the SW_* value specified in the
+            STARTUPINFO structure passed to the CreateProcess function by the
+            program that started the application.
+            </summary>
+        </member>
+        <member name="F:Eryan.UI.WindowHandler.ShowWindowCommands.ForceMinimize">
+            <summary>
+             <b>Windows 2000/XP:</b> Minimizes a window, even if the thread
+            that owns the window is not responding. This flag should only be
+            used when minimizing windows from a different thread.
+            </summary>
+        </member>
+        <member name="F:Eryan.UI.ScriptBrowser.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Eryan.UI.ScriptBrowser.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Eryan.UI.ScriptBrowser.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Eryan.UI.ClientWindow">
+            <summary>
+            The Eryan Client window, handles the adding and removing of bot windows/loading scripts/etc.
+            </summary>
+        </member>
+        <member name="M:Eryan.UI.ClientWindow.addControlToTab(Eryan.Utils)">
+            <summary>
+            Thread-safe way to add a WindowHandler to its controltab
+            </summary>
+            <param name="form">The instance of WindowHandler to add</param>
+        </member>
+        <member name="M:Eryan.UI.ClientWindow.getBots">
+            <summary>
+            Getter for the Bot list.
+            </summary>
+            <returns>Returns a List of Bot</returns>
+        </member>
+        <member name="M:Eryan.UI.ClientWindow.runButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Run/Stop button
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Eryan.UI.ClientWindow.mouseInput_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the input button
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Eryan.UI.ClientWindow.createBot">
+            <summary>
+            Thread-safe Bot creator
+            </summary>
+            <returns>The reference to the bot created</returns>
+        </member>
+        <member name="M:Eryan.UI.ClientWindow.OnVisibleChanged(System.EventArgs)">
+            <summary>
+            Updates the location of the drawable area
+            </summary>
+            <param name="e">EventArgs for the event</param>
+        </member>
+        <member name="M:Eryan.UI.ClientWindow.OnMove(System.EventArgs)">
+            <summary>
+            Updates the location of the drawable area
+            </summary>
+            <param name="e">EventArgs for the event</param>
+        </member>
+        <member name="M:Eryan.UI.ClientWindow.OnResize(System.EventArgs)">
+            <summary>
+            Updates the location of the drawable area
+            </summary>
+            <param name="e">EventArgs for the event</param>
+        </member>
+        <member name="P:Eryan.UI.ClientWindow.AllowInput">
+            <summary>
+            Returns if user input is enabled
+            </summary>
+        </member>
+        <member name="T:Eryan.Input.KeyBoard">
+            <summary>
+            Keyboard input device
+            </summary>
+        </member>
+        <member name="M:Eryan.Input.KeyBoard.pressEnter">
+            <summary>
+            Sends an Enter key to EVE
+            </summary>
+        </member>
+        <member name="M:Eryan.Input.KeyBoard.sendKeyPresses(System.String,System.Int32,System.Int32)">
+            <summary>
+            Sends a string of keys to the Eve Client with a random wait
+            </summary>
+            <param name="text">The string to enter</param>
+            <param name="minWait">The minimum time to wait between keypresses in miliseconds</param>
+            <param name="maxWait">The maximum time to wait between keypresses in miliseconds</param>
+        </member>
+        <member name="M:Eryan.Input.KeyBoard.sendChar(System.Char)">
+            <summary>
+            Sends the given keypress to the EVE client
+            </summary>
+            <param name="key">The character to send</param>
+        </member>
+        <member name="M:Eryan.Input.KeyBoard.sendKeyPresses(System.String)">
+            <summary>
+            Sends keypresses to the EVE client with a static wait between keypresses
+            </summary>
+            <param name="text">The text to send</param>
+        </member>
+        <member name="T:Eryan.Responses.BooleanResponse">
+            <summary>
+            Concrete Response for boolean replies
+            </summary>
+        </member>
+        <member name="M:Eryan.Responses.BooleanResponse.#ctor(System.Byte[])">
+            <summary>
+            Creates a BooleanResponse object from its byte representation
+            </summary>
+            <param name="input">Byte representation of the object</param>
+        </member>
+        <member name="M:Eryan.Responses.BooleanResponse.HandleResponse">
+            <summary>
+            Initializes the response variables
+            </summary>
+        </member>
+        <member name="P:Eryan.Responses.BooleanResponse.Data">
+            <summary>
+            Accessor for the data private variable
+            </summary>
+        </member>
+        <member name="T:Eryan.Observer">
+            <summary>
+            Generic Event Listener
+            </summary>
+        </member>
+        <member name="M:Eryan.Observer.update(Eryan.Event)">
+            <summary>
+            All observers must implement this
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="T:Eryan.InputHandler.MenuHandler">
+            <summary>
+            Handles the menu interactions
+            </summary>
+        </member>
+    </members>
+</doc>
