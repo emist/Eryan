@@ -29,16 +29,18 @@ namespace Eryan.Factories
                     return new OverViewResponse(response);
                 }
 
+                Console.WriteLine("Unidentified Response, not Built");
+
                 return null;
             }
             catch (Google.ProtocolBuffers.UninitializedMessageException e)
             {
-                Console.WriteLine("Uninitalized values");
+                Console.WriteLine(e.ToString());
                 return null;
             }
             catch (Google.ProtocolBuffers.InvalidProtocolBufferException e)
             {
-                Console.WriteLine("Empty response");
+                Console.WriteLine(e.ToString());
                 return null;
             }
         }
