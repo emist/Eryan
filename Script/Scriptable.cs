@@ -18,13 +18,15 @@ namespace Eryan.Script
         public PreciseMouse pm;
         public MenuHandler menuHandler;
         public Communicator comm;
+        public OverviewHandler overViewHandler;
 
-        public void initializeInputs(PreciseMouse pm, Mouse m, MenuHandler mh, Communicator comm)
+        public void initializeInputs(PreciseMouse pm, Mouse m, MenuHandler mh, Communicator comm, OverviewHandler over)
         {
             this.m = m;
             this.pm = pm;
             this.menuHandler = mh;
             this.comm = comm;
+            this.overViewHandler = over;
         }
 
         public abstract Boolean onStart();
