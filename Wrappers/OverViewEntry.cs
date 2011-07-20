@@ -6,7 +6,10 @@ using System.Text.RegularExpressions;
 
 namespace Eryan.Wrappers
 {
-    class OverViewEntry
+    /// <summary>
+    /// Wraps an overview entry
+    /// </summary>
+    public class OverViewEntry
     {
         List<string> sections;
         Regex tokenizer;
@@ -22,6 +25,10 @@ namespace Eryan.Wrappers
             parseEntry(unparsedEntry);
         }
 
+        /// <summary>
+        /// Tokenize the entry into sections
+        /// </summary>
+        /// <param name="unparsedEntry">The unparsed overview entry from the client</param>
         public void parseEntry(string unparsedEntry)
         {
             tokenizer = new Regex(@"<t>");
@@ -40,5 +47,50 @@ namespace Eryan.Wrappers
 
             
         }
+
+        /// <summary>
+        /// Returns the X coordinate of this entry
+        /// </summary>
+        public int X
+        {
+            get
+            {
+                return absoluteLeft;
+            }
+        }
+        
+        /// <summary>
+        /// Returns the Y coordinate of this entry
+        /// </summary>
+        public int Y
+        {
+            get
+            {
+                return absoluteTop;
+            }
+        }
+
+        /// <summary>
+        /// Returns the width of this entry
+        /// </summary>
+        public int Width
+        {
+            get
+            {
+                return width;
+            }
+        }
+
+        /// <summary>
+        /// Returns the height of this entry
+        /// </summary>
+        public int Height
+        {
+            get
+            {
+                return height;
+            }
+        }
+
     }
 }
