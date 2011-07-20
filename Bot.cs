@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Reflection;
 
-using Eryan.Wrappers;
+using Eryan.Responses;
 using Eryan.IPC;
 using Eryan.Factories;
 using Eryan.InputHandler;
@@ -33,11 +33,13 @@ namespace Eryan
         Response resp;
         public Communicator com;
         public MenuHandler menuHandler;
-        Scriptable script;
+        public Scriptable script;
         public Boolean running = true;
         Assembly assembly;
         public Boolean paused = true;
         public Boolean initialized = false;
+        public Boolean input = false;
+        public string scriptName;
 
         //This needs to go when the buttons get implemented properly
         ClientWindow cw;
@@ -82,7 +84,6 @@ namespace Eryan
             //DEBUGGING STUFF
             com = new Communicator("\\\\.\\pipe\\TestChannel");
             menuHandler = new MenuHandler(bot.MOUSE, bot.PMOUSE, com);
-            script = loadScript("C:\\Users\\emist\\Eryan\\Scripts\\TestScript.dll");
         }
 
         /// <summary>
@@ -178,7 +179,11 @@ namespace Eryan
             }
 
             if (script == null)
+            {
+                if(scriptName != null)
+                    script = loadScript(this.scriptName);
                 return;
+            }
 
             if (!running)
             {
@@ -188,7 +193,7 @@ namespace Eryan
 
             if (!initialized)
             {
-                script.initializeInputs(null, null, menuHandler);
+                script.initializeInputs(null, null, menuHandler, com);
                 initialized = !initialized;
             }
 
@@ -207,7 +212,7 @@ namespace Eryan
 
             //Loaded script needs to be on its own thread.
 
-            script.run();
+            Thread.Sleep(script.run());
              
             
             //bot.getMouse().move(new Point(300, 300));
