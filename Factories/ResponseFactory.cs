@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Eryan.Wrappers;
+using Eryan.Responses;
 using eveobjects;
 
 namespace Eryan.Factories
@@ -23,6 +23,10 @@ namespace Eryan.Factories
                 if (responsetype.Equals(Response.RESPONSES.BOOLEANRESPONSE))
                 {
                     return new BooleanResponse(response);
+                }
+                if (responsetype.Equals(Response.RESPONSES.OVERVIEWRESPONSE))
+                {
+                    return new OverViewResponse(response);
                 }
 
                 return null;
