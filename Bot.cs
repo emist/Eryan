@@ -35,6 +35,7 @@ namespace Eryan
         public MenuHandler menuHandler;
         public Scriptable script;
         public Boolean running = true;
+        public OverviewHandler over;
         Assembly assembly;
         public Boolean paused = true;
         public Boolean initialized = false;
@@ -84,6 +85,7 @@ namespace Eryan
             //DEBUGGING STUFF
             com = new Communicator("\\\\.\\pipe\\TestChannel");
             menuHandler = new MenuHandler(bot.MOUSE, bot.PMOUSE, com);
+            over = new OverviewHandler(bot.MOUSE, bot.PMOUSE, com);
         }
 
         /// <summary>
@@ -193,7 +195,7 @@ namespace Eryan
 
             if (!initialized)
             {
-                script.initializeInputs(null, null, menuHandler, com);
+                script.initializeInputs(null, null, menuHandler, com, over);
                 initialized = !initialized;
             }
 
