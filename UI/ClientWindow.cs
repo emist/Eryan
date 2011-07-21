@@ -154,6 +154,9 @@ namespace Eryan.UI
             return bots[0];
         }
 
+        /// <summary>
+        /// Create the ClientWindow intance
+        /// </summary>
         public ClientWindow()
         {
             
