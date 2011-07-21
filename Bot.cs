@@ -8,6 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using System.Reflection;
+using System.IO;
+using System.Security.Policy;
+using System.Reflection;
+
+
 
 using Eryan.Responses;
 using Eryan.IPC;
@@ -16,6 +21,7 @@ using Eryan.InputHandler;
 using Eryan.Script;
 using Eryan.UI;
 using Eryan.Input;
+using Eryan.Util;
 
 
 namespace Eryan
@@ -41,6 +47,10 @@ namespace Eryan
         public Boolean initialized = false;
         public Boolean input = false;
         public string scriptName;
+        AppDomain ad2;
+        String AsmName = @"UserClass";
+        
+
 
         //This needs to go when the buttons get implemented properly
         ClientWindow cw;
@@ -86,6 +96,7 @@ namespace Eryan
             com = new Communicator("\\\\.\\pipe\\TestChannel");
             menuHandler = new MenuHandler(bot.MOUSE, bot.PMOUSE, com);
             over = new OverviewHandler(bot.MOUSE, bot.PMOUSE, com);
+            
         }
 
         /// <summary>
@@ -135,20 +146,21 @@ namespace Eryan
         {
 
             assembly = null;
-
+            
             try
             {
-                assembly = Assembly.LoadFrom(name);
+                assembly = Assembly.Load(loadFile(name));
             }
             catch (System.IO.FileNotFoundException e)
             {
-                Console.WriteLine("Assembly " + name + "couldn't be found");
+                Console.WriteLine(e.ToString());
                 return null;
             }
 
             if (assembly == null)
             {
                 Console.WriteLine("Couldn't load assembly");
+                return null; 
             }
 
             
@@ -164,8 +176,35 @@ namespace Eryan
 
             this.script = scriptInstance;
             return scriptInstance;
+            
+            
         }
-        
+
+        /// <summary>
+        /// Unload the userDomain
+        /// </summary>
+        public void unloadUserDomain()
+        {
+            scriptName = null;
+            script = null;
+            running = false;
+        }
+
+
+        public byte[] loadFile(string filename)
+        {
+
+            FileStream fs = new FileStream(filename, FileMode.Open);
+
+            byte[] buffer = new byte[(int)fs.Length];
+
+            fs.Read(buffer, 0, buffer.Length);
+
+            fs.Close();
+
+            return buffer;
+
+        }
 
         /// <summary>
         /// Bot's logic loop
@@ -189,7 +228,7 @@ namespace Eryan
 
             if (!running)
             {
-                script = null;
+                Console.WriteLine("Not running, Click Run");
                 return;
             }
 
