@@ -10,7 +10,7 @@ namespace Eryan.Responses
     /// <summary>
     /// Wrapper to interface call responses
     /// </summary>
-    class InterfaceResponse : Response
+    public class InterfaceResponse : Response
     {
         List<string> data;
         string name;
