@@ -54,15 +54,15 @@ namespace Eryan.Factories
             /// </summary>
             public const string GETTARGETLIST = "getTargetList";
 
+            /// <summary>
+            /// Call to get the data of the given Highslot
+            /// </summary>
+            public const string GETHIGHSLOT = "getHighSlot";
 
-            public const string GETFIRSTHIGHSLOT = "getFirstHighSlot";
-            public const string GETSECONDHIGHSLOT = "getSecondHighSlot";
-            public const string GETTHIRDHIGHSLOT = "getThirdHighSlot";
-            public const string GETFOURTHHIGHSLOT = "getFourthHighSlot";
-            public const string GETFIFTHHIGHSLOT = "getFifthHighSlot";
-            public const string GETSIXTHHIGHSLOT = "getSixthHighSlot";
-            public const string GETSEVENTHHIGHSLOT = "getSeventhHighSlot";
-            public const string GETEIGHTHHIGHSLOT = "getEigthHighSlot";
+            /// <summary>
+            /// Call to get the status of the given high slot
+            /// </summary>
+            public const string ISHIGHSLOTACTIVE = "isHighSlotActive";
         }
 
        /// <summary>
