@@ -10,9 +10,6 @@ using System.Threading;
 using System.Reflection;
 using System.IO;
 using System.Security.Policy;
-using System.Reflection;
-
-
 
 using Eryan.Responses;
 using Eryan.IPC;
@@ -162,7 +159,6 @@ namespace Eryan
                 Console.WriteLine("Couldn't load assembly");
                 return null; 
             }
-
             
             Type script = assembly.GetType("Script.Script");
 
@@ -234,7 +230,7 @@ namespace Eryan
 
             if (!initialized)
             {
-                script.initializeInputs(null, null, menuHandler, com, over);
+                script.initializeInputs(bot.PMOUSE, bot.MOUSE, menuHandler, com, over);
                 initialized = !initialized;
             }
 
