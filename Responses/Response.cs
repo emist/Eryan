@@ -18,6 +18,7 @@ namespace Eryan.Responses
             public const string INTERFACERESPONSE = "InterfaceResponse";
             public const string BOOLEANRESPONSE = "BooleanResponse";
             public const string OVERVIEWRESPONSE = "OverViewResponse";
+            public const string TARGETRESPONSE = "TargetResponse";
         }
 
         /// <summary>

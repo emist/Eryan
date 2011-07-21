@@ -28,6 +28,10 @@ namespace Eryan.Factories
                 {
                     return new OverViewResponse(response);
                 }
+                if (responsetype.Equals(Response.RESPONSES.TARGETRESPONSE))
+                {
+                    return new TargetListResponse(response);
+                }
 
                 Console.WriteLine("Unidentified Response, not Built");
 
