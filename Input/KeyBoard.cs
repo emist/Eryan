@@ -144,6 +144,21 @@ namespace Eryan.Input
         }
 
 
+        public void keyDown(char key)
+        {
+            if (appWin != IntPtr.Zero)
+            {
+                PostMessage(appWin, WM_KEYDOWN, VkKeyScan(key), 0x0014001);
+            }
+        }
+
+        public void keyUp(char key)
+        {
+            if (appWin != IntPtr.Zero)
+            {
+                PostMessage(appWin, WM_KEYUP, VkKeyScan(key), 0x0014001);
+            }
+        }
 
         /// <summary>
         /// Sends a string of keys to the Eve Client with a random wait
