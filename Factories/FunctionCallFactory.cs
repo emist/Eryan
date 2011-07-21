@@ -53,6 +53,16 @@ namespace Eryan.Factories
             /// Call to get the list of currently targeted things
             /// </summary>
             public const string GETTARGETLIST = "getTargetList";
+
+
+            public const string GETFIRSTHIGHSLOT = "getFirstHighSlot";
+            public const string GETSECONDHIGHSLOT = "getSecondHighSlot";
+            public const string GETTHIRDHIGHSLOT = "getThirdHighSlot";
+            public const string GETFOURTHHIGHSLOT = "getFourthHighSlot";
+            public const string GETFIFTHHIGHSLOT = "getFifthHighSlot";
+            public const string GETSIXTHHIGHSLOT = "getSixthHighSlot";
+            public const string GETSEVENTHHIGHSLOT = "getSeventhHighSlot";
+            public const string GETEIGHTHHIGHSLOT = "getEigthHighSlot";
         }
 
        /// <summary>
