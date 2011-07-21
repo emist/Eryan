@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder Utilities" version="1.9.3.0" projectFile="C:\Users\emist\Eryan\Docs\EryanDocs.shfbproj" started="7/21/2011 11:57:38 AM">
+<shfbBuild product="Sandcastle Help File Builder Utilities" version="1.9.3.0" projectFile="C:\Users\emist\Eryan\Docs\EryanDocs.shfbproj" started="7/21/2011 12:46:37 PM">
 <buildStep step="Initializing">
 </buildStep>
 <buildStep step="FindingTools">
@@ -19,11 +19,11 @@ Copying XML comments files
 </buildStep>
 <buildStep step="GenerateSharedContent">
 Generating shared content files (en-US, English (United States))...
-    Last step completed in 00:00:00.1553
+    Last step completed in 00:00:00.1299
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
-    Last step completed in 00:00:00.0254
+    Last step completed in 00:00:00.0049
 </buildStep>
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
@@ -31,23 +31,23 @@ Generating reflection information...
   MrefBuilder (v2.6.10621.1)
   Copyright c Microsoft 2006
   Info: Loaded 1 assemblies for reflection and 0 dependency assemblies.
-  Info: Wrote information on 13 namespaces, 58 types, and 920 members
+  Info: Wrote information on 13 namespaces, 58 types, and 927 members
   XslTransform (v2.6.10621.1)
   Copyright c Microsoft 2005-2006
   Info: Applying XSL transformation &#39;C:\Program Files\Sandcastle\ProductionTransforms\MergeDuplicates.xsl&#39;.
   reflection.all -&gt; reflection.org
-    Last step completed in 00:00:12.2109
+    Last step completed in 00:00:08.8057
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00.0059
+    Last step completed in 00:00:00.0186
 </buildStep>
 <buildStep step="ApplyVisibilityProperties">
 Applying visibility properties to reflection information file
     0 attribute nodes removed
     0 explicit interface implementations removed
     249 local and base class EII elements removed
-    Last step completed in 00:00:01.4355
+    Last step completed in 00:00:01.1143
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
@@ -55,19 +55,19 @@ Transforming reflection output...
   XslTransform (v2.6.10621.1)
   Copyright c Microsoft 2005-2006
   Info: Applying XSL transformation &#39;C:\Program Files\Sandcastle\ProductionTransforms\ApplyVSDocModel.xsl&#39;.
-  reflection.org -&gt; C:\Users\emist\AppData\Local\Temp\tmpF266.tmp
+  reflection.org -&gt; C:\Users\emist\AppData\Local\Temp\tmpB4C6.tmp
   Info: Applying XSL transformation &#39;C:\Program Files\Sandcastle\ProductionTransforms\AddGuidFilenames.xsl&#39;.
-  C:\Users\emist\AppData\Local\Temp\tmpF266.tmp -&gt; reflection.xml
+  C:\Users\emist\AppData\Local\Temp\tmpB4C6.tmp -&gt; reflection.xml
   XslTransform (v2.6.10621.1)
   Copyright c Microsoft 2005-2006
   Info: Applying XSL transformation &#39;C:\Program Files\Sandcastle\ProductionTransforms\ReflectionToManifest.xsl&#39;.
   reflection.xml -&gt; manifest.xml
-    Last step completed in 00:00:31.6934
+    Last step completed in 00:00:15.7432
 </buildStep>
 <buildStep step="ModifyHelpTopicFilenames">
 Modifying help topic filenames in reflection information file
     No changes required
-    Last step completed in 00:00:00.8672
+    Last step completed in 00:00:00.6895
 </buildStep>
 <buildStep step="CopyStandardContent">
 Copying standard help content...
@@ -285,12 +285,12 @@ C:\Program Files\Sandcastle\Presentation\vs2005\scripts\script_manifold.js -&gt;
 C:\Program Files\Sandcastle\Presentation\vs2005\scripts\SplitScreen.js -&gt; C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\scripts\SplitScreen.js
 C:\Program Files\Sandcastle\Presentation\vs2005\styles\Presentation.css -&gt; C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\styles\Presentation.css
 C:\Program Files\Sandcastle\Presentation\vs2005\styles\Whidbey\presentation.css -&gt; C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\styles\Whidbey\presentation.css
-    Last step completed in 00:00:03.7451
+    Last step completed in 00:00:03.6631
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
 No additional content to copy
-    Last step completed in 00:00:00.0088
+    Last step completed in 00:00:00.0166
 </buildStep>
 <buildStep step="MergeTablesOfContents">
 Merging conceptual and additional tables of contents...
@@ -304,17 +304,17 @@ Generating intermediate table of contents file...
   Info: Applying XSL transformation &#39;C:\Program Files\Sandcastle\ProductionTransforms\CreateVSToc.xsl&#39;.
   reflection.xml -&gt; toc.xml
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:04.9639
+    Last step completed in 00:00:03.0039
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
-    Last step completed in 00:00:00.0518
+    Last step completed in 00:00:00.0635
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
 C:\Users\emist\Eryan\Docs\Help\Working\sandcastle.config
-    Last step completed in 00:00:00.8242
+    Last step completed in 00:00:00.4463
 </buildStep>
 <buildStep step="BuildReferenceTopics">
 Building reference help topics...
@@ -326,7 +326,7 @@ Building reference help topics...
   Info: CopyFromIndexComponent: Instantiating component.
   Info: CopyFromIndexComponent: Searching for files that match &#39;*.xml&#39;.
   Info: CopyFromIndexComponent: Searching for files that match &#39;reflection.xml&#39;.
-  Info: CopyFromIndexComponent: Indexed 204091 elements in 409 files.
+  Info: CopyFromIndexComponent: Indexed 204098 elements in 409 files.
   Info: CopyFromIndexComponent: Loaded 0 copy components.
   Info: CopyFromIndexComponent: Instantiating component.
   Info: CopyFromIndexComponent: Loaded 0 copy components.
@@ -451,7 +451,7 @@ Building reference help topics...
   Info: ResolveReferenceLinksComponent2: Creating MSDN URL resolver.
   Info: ResolveReferenceLinksComponent2: Searching directory &#39;C:\Program Files\Sandcastle\Data\Reflection&#39; for targets files of the form &#39;*.xml&#39;.
   Info: ResolveReferenceLinksComponent2: Searching directory &#39;C:\Users\emist\Eryan\Docs\Help\Working&#39; for targets files of the form &#39;reflection.xml&#39;.
-  Info: ResolveReferenceLinksComponent2: Loaded 204091 reference targets.
+  Info: ResolveReferenceLinksComponent2: Loaded 204098 reference targets.
   Info: SaveComponent: Instantiating component.
   Info: MultiFormatOutputComponent: Loading components for Website format
   Info: SharedContentComponent: Instantiating component.
@@ -495,7 +495,7 @@ Building reference help topics...
   Info: ResolveReferenceLinksComponent2: Creating MSDN URL resolver.
   Info: ResolveReferenceLinksComponent2: Searching directory &#39;C:\Program Files\Sandcastle\Data\Reflection&#39; for targets files of the form &#39;*.xml&#39;.
   Info: ResolveReferenceLinksComponent2: Searching directory &#39;C:\Users\emist\Eryan\Docs\Help\Working&#39; for targets files of the form &#39;reflection.xml&#39;.
-  Info: ResolveReferenceLinksComponent2: Loaded 204091 reference targets.
+  Info: ResolveReferenceLinksComponent2: Loaded 204098 reference targets.
   Info: SaveComponent: Instantiating component.
   Info: BuildAssembler: Building topic N:Eryan
   Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for N:Eryan
@@ -825,6 +825,18 @@ Building reference help topics...
   Info: BuildAssembler: Building topic M:Eryan.Input.Mouse.dllCalcTest(System.IntPtr)
   Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Eryan.Input.Mouse.dllCalcTest(System.IntPtr)
   Warn: ShowMissingComponent: Missing &lt;param name=&quot;handle&quot;/&gt; documentation for M:Eryan.Input.Mouse.dllCalcTest(System.IntPtr)
+  Info: BuildAssembler: Building topic M:Eryan.Input.Mouse.dllMouseButtonDown(System.IntPtr,System.Boolean,System.Int32,System.Int32)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Eryan.Input.Mouse.dllMouseButtonDown(System.IntPtr,System.Boolean,System.Int32,System.Int32)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;handle&quot;/&gt; documentation for M:Eryan.Input.Mouse.dllMouseButtonDown(System.IntPtr,System.Boolean,System.Int32,System.Int32)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;left&quot;/&gt; documentation for M:Eryan.Input.Mouse.dllMouseButtonDown(System.IntPtr,System.Boolean,System.Int32,System.Int32)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;x&quot;/&gt; documentation for M:Eryan.Input.Mouse.dllMouseButtonDown(System.IntPtr,System.Boolean,System.Int32,System.Int32)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;y&quot;/&gt; documentation for M:Eryan.Input.Mouse.dllMouseButtonDown(System.IntPtr,System.Boolean,System.Int32,System.Int32)
+  Info: BuildAssembler: Building topic M:Eryan.Input.Mouse.dllMouseButtonUp(System.IntPtr,System.Boolean,System.Int32,System.Int32)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Eryan.Input.Mouse.dllMouseButtonUp(System.IntPtr,System.Boolean,System.Int32,System.Int32)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;handle&quot;/&gt; documentation for M:Eryan.Input.Mouse.dllMouseButtonUp(System.IntPtr,System.Boolean,System.Int32,System.Int32)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;left&quot;/&gt; documentation for M:Eryan.Input.Mouse.dllMouseButtonUp(System.IntPtr,System.Boolean,System.Int32,System.Int32)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;x&quot;/&gt; documentation for M:Eryan.Input.Mouse.dllMouseButtonUp(System.IntPtr,System.Boolean,System.Int32,System.Int32)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;y&quot;/&gt; documentation for M:Eryan.Input.Mouse.dllMouseButtonUp(System.IntPtr,System.Boolean,System.Int32,System.Int32)
   Info: BuildAssembler: Building topic M:Eryan.Input.Mouse.dllMouseClick(System.IntPtr,System.Boolean,System.Int32,System.Int32)
   Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Eryan.Input.Mouse.dllMouseClick(System.IntPtr,System.Boolean,System.Int32,System.Int32)
   Warn: ShowMissingComponent: Missing &lt;param name=&quot;handle&quot;/&gt; documentation for M:Eryan.Input.Mouse.dllMouseClick(System.IntPtr,System.Boolean,System.Int32,System.Int32)
@@ -844,6 +856,10 @@ Building reference help topics...
   Info: BuildAssembler: Building topic M:Eryan.Input.Mouse.getSpeed
   Info: BuildAssembler: Building topic M:Eryan.Input.Mouse.getX
   Info: BuildAssembler: Building topic M:Eryan.Input.Mouse.getY
+  Info: BuildAssembler: Building topic M:Eryan.Input.Mouse.holdLeftButton
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Eryan.Input.Mouse.holdLeftButton
+  Info: BuildAssembler: Building topic M:Eryan.Input.Mouse.holdRightButton
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Eryan.Input.Mouse.holdRightButton
   Info: BuildAssembler: Building topic M:Eryan.Input.Mouse.hypot(System.Double,System.Double,System.Double,System.Double)
   Info: BuildAssembler: Building topic F:Eryan.Input.Mouse.missChance
   Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for F:Eryan.Input.Mouse.missChance
@@ -864,6 +880,10 @@ Building reference help topics...
   Info: BuildAssembler: Building topic M:Eryan.Input.Mouse.moveMouse(System.Drawing.Point)
   Info: BuildAssembler: Building topic P:Eryan.Input.Mouse.Pid
   Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Eryan.Input.Mouse.Pid
+  Info: BuildAssembler: Building topic M:Eryan.Input.Mouse.releaseLeftButton
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Eryan.Input.Mouse.releaseLeftButton
+  Info: BuildAssembler: Building topic M:Eryan.Input.Mouse.releaseRightButton
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Eryan.Input.Mouse.releaseRightButton
   Info: BuildAssembler: Building topic F:Eryan.Input.Mouse.screen
   Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for F:Eryan.Input.Mouse.screen
   Info: BuildAssembler: Building topic F:Eryan.Input.Mouse.speed
@@ -1251,12 +1271,15 @@ Building reference help topics...
   Info: BuildAssembler: Building topic M:Eryan.Util.DrawableScreen.OnKeyPress(System.Windows.Forms.KeyPressEventArgs)
   Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Eryan.Util.DrawableScreen.OnKeyPress(System.Windows.Forms.KeyPressEventArgs)
   Warn: ShowMissingComponent: Missing &lt;param name=&quot;e&quot;/&gt; documentation for M:Eryan.Util.DrawableScreen.OnKeyPress(System.Windows.Forms.KeyPressEventArgs)
-  Info: BuildAssembler: Building topic M:Eryan.Util.DrawableScreen.OnMouseClick(System.Windows.Forms.MouseEventArgs)
-  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Eryan.Util.DrawableScreen.OnMouseClick(System.Windows.Forms.MouseEventArgs)
-  Warn: ShowMissingComponent: Missing &lt;param name=&quot;e&quot;/&gt; documentation for M:Eryan.Util.DrawableScreen.OnMouseClick(System.Windows.Forms.MouseEventArgs)
+  Info: BuildAssembler: Building topic M:Eryan.Util.DrawableScreen.OnMouseDown(System.Windows.Forms.MouseEventArgs)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Eryan.Util.DrawableScreen.OnMouseDown(System.Windows.Forms.MouseEventArgs)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;e&quot;/&gt; documentation for M:Eryan.Util.DrawableScreen.OnMouseDown(System.Windows.Forms.MouseEventArgs)
   Info: BuildAssembler: Building topic M:Eryan.Util.DrawableScreen.OnMouseMove(System.Windows.Forms.MouseEventArgs)
   Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Eryan.Util.DrawableScreen.OnMouseMove(System.Windows.Forms.MouseEventArgs)
   Warn: ShowMissingComponent: Missing &lt;param name=&quot;e&quot;/&gt; documentation for M:Eryan.Util.DrawableScreen.OnMouseMove(System.Windows.Forms.MouseEventArgs)
+  Info: BuildAssembler: Building topic M:Eryan.Util.DrawableScreen.OnMouseUp(System.Windows.Forms.MouseEventArgs)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Eryan.Util.DrawableScreen.OnMouseUp(System.Windows.Forms.MouseEventArgs)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;e&quot;/&gt; documentation for M:Eryan.Util.DrawableScreen.OnMouseUp(System.Windows.Forms.MouseEventArgs)
   Info: BuildAssembler: Building topic N:Eryan.Wrappers
   Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for N:Eryan.Wrappers
   Info: BuildAssembler: Building topic T:Eryan.Wrappers.OverViewEntry
@@ -9895,14 +9918,14 @@ Building reference help topics...
   Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:ZiadSpace.Util.BitHelper.SizeOf(System.Int32)
   Info: BuildAssembler: Building topic M:ZiadSpace.Util.BitHelper.SizeOf(System.Int64)
   Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:ZiadSpace.Util.BitHelper.SizeOf(System.Int64)
-  Info: Processed 1235 topics
-    Last step completed in 00:08:45.4004
+  Info: Processed 1242 topics
+    Last step completed in 00:07:59.9131
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
 
 Clearing any prior web output
-    Last step completed in 00:00:03.2852
+    Last step completed in 00:00:03.0908
 </buildStep>
 <buildStep step="ExtractingHtmlInfo">
 Extracting HTML info for HTML Help 1 and/or website...
@@ -9914,29 +9937,29 @@ E-Mail: Eric@EWoodruff.us
 Using LCID &#39;1033&#39;, code page &#39;65001&#39;, encoding charset &#39;UTF-8&#39;.
 
 Processing Help 1 files in C:\Users\emist\Eryan\Docs\Help\Working\Output\HtmlHelp1
-Processed 1235 HTML files
+Processed 1242 HTML files
 Sorting keywords and generating See Also indices
 Saving HTML Help 1 keyword index to C:\Users\emist\Eryan\Docs\Help\Working\Documentation.hhk
 Saving HTML Help 1 table of contents to C:\Users\emist\Eryan\Docs\Help\Working\Documentation.hhc
 
 Processing website files in C:\Users\emist\Eryan\Docs\Help\Working\Output\Website
-Processed 1235 HTML files
+Processed 1242 HTML files
 Sorting keywords and generating See Also indices
 Saving website keyword index to C:\Users\emist\Eryan\Docs\Help\Working\WebKI.xml
 Saving website table of contents to C:\Users\emist\Eryan\Docs\Help\Working\WebTOC.xml
-    Last step completed in 00:00:17.3838
+    Last step completed in 00:00:26.7158
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Generating HTML Help 1 table of contents file...
-    Last step completed in 00:00:00.0059
+    Last step completed in 00:00:00.0195
 </buildStep>
 <buildStep step="GenerateHelpFileIndex">
 Generating HTML Help 1 index file...
-    Last step completed in 00:00:00.0156
+    Last step completed in 00:00:00.0186
 </buildStep>
 <buildStep step="GenerateHelpProject">
 Generating HTML Help 1 project file...
-    Last step completed in 00:00:00.1904
+    Last step completed in 00:00:00.0918
 </buildStep>
 <buildStep step="CompilingHelpFile">
 Compiling HTML Help 1 file...
@@ -9951,11 +9974,11 @@ Compiling HTML Help 1 file...
   
   
   
-  Compile time: 0 minutes, 35 seconds
+  Compile time: 0 minutes, 33 seconds
   
-  1,237	Topics
+  1,244	Topics
   
-  16,923	Local links
+  17,023	Local links
   
   0	Internet links
   
@@ -9965,20 +9988,20 @@ Compiling HTML Help 1 file...
   
   
   
-  Created c:\Users\emist\Eryan\Docs\Help\Working\Output\HtmlHelp1\Documentation.chm, 1,976,239 bytes
+  Created c:\Users\emist\Eryan\Docs\Help\Working\Output\HtmlHelp1\Documentation.chm, 1,997,491 bytes
   
-  Compression decreased file by 16,072,914 bytes.
+  Compression decreased file by 16,144,517 bytes.
   
-    Last step completed in 00:00:37.8613
+    Last step completed in 00:00:37.6748
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Generating website table of contents file...
-    Last step completed in 00:00:00.0303
+    Last step completed in 00:00:00.0146
 </buildStep>
 <buildStep step="GenerateFullTextIndex">
 Generating full-text index for the website...
 
-    Last step completed in 00:00:17.3613
+    Last step completed in 00:00:18.9775
 </buildStep>
 <buildStep step="CopyingWebsiteFiles">
 Copying website files to output folder...
@@ -10088,6 +10111,7 @@ C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\105db2d6-ecf1-82f7-f2
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\10b73c6e-e1e1-4c25-99d0-8f8d258f8dc2.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\10b73c6e-e1e1-4c25-99d0-8f8d258f8dc2.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\111a5b46-e9af-d15b-94ab-de2591328d23.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\111a5b46-e9af-d15b-94ab-de2591328d23.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\113e6220-9601-8a7a-7663-037c9439fccf.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\113e6220-9601-8a7a-7663-037c9439fccf.htm
+C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\1158019b-e214-95b5-b8b7-d393b589cb47.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\1158019b-e214-95b5-b8b7-d393b589cb47.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\11bb7d64-9a9a-2736-b0a0-44d085d1d138.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\11bb7d64-9a9a-2736-b0a0-44d085d1d138.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\11c65e0d-bd16-b0e5-2e5c-10bb036719a4.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\11c65e0d-bd16-b0e5-2e5c-10bb036719a4.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\1214379c-e80a-18ce-6dfe-1b1d34d8e2a9.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\1214379c-e80a-18ce-6dfe-1b1d34d8e2a9.htm
@@ -10284,6 +10308,7 @@ C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\3b8921d2-692f-2cdb-6c
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\3ba731dd-3495-2c95-f6ad-29173b13b442.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\3ba731dd-3495-2c95-f6ad-29173b13b442.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\3bcf767f-d473-4ae2-ef04-2523af84b1da.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\3bcf767f-d473-4ae2-ef04-2523af84b1da.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\3bd771e5-536b-2b4e-7796-07ba3eed2264.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\3bd771e5-536b-2b4e-7796-07ba3eed2264.htm
+C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\3bdd2afb-9fea-4bbc-7d4d-1a6d9e97d346.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\3bdd2afb-9fea-4bbc-7d4d-1a6d9e97d346.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\3be15a47-34b3-35ac-11a8-0ad268a6a34a.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\3be15a47-34b3-35ac-11a8-0ad268a6a34a.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\3beecebc-9d89-2497-7e89-23c6c069d17d.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\3beecebc-9d89-2497-7e89-23c6c069d17d.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\3c08b831-d7c5-259c-cbce-2257b0f2196b.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\3c08b831-d7c5-259c-cbce-2257b0f2196b.htm
@@ -10466,6 +10491,7 @@ C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\61f2149d-9b98-f97f-af
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\622efc63-ec2f-d06b-7158-5bafc71835b0.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\622efc63-ec2f-d06b-7158-5bafc71835b0.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\628b4001-b11b-195d-6df2-893634081d37.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\628b4001-b11b-195d-6df2-893634081d37.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\62a091cf-9373-40d4-42f7-fd8c44eb9cda.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\62a091cf-9373-40d4-42f7-fd8c44eb9cda.htm
+C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\62d3f5e2-3713-7b95-2d26-13c2c479cb3c.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\62d3f5e2-3713-7b95-2d26-13c2c479cb3c.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\630d3ec4-9b73-f7ff-f49f-480c7dbf996d.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\630d3ec4-9b73-f7ff-f49f-480c7dbf996d.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\63a15e8f-6ee6-db99-82bf-9be4fb4a3d0d.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\63a15e8f-6ee6-db99-82bf-9be4fb4a3d0d.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\63e89aa1-dda7-9f70-a38e-bb24b50e96e7.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\63e89aa1-dda7-9f70-a38e-bb24b50e96e7.htm
@@ -10529,7 +10555,6 @@ C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\6edc9a6a-805e-85fa-93
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\6efcbf5c-6562-90b0-0af9-6087f33fa497.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\6efcbf5c-6562-90b0-0af9-6087f33fa497.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\6f53157f-02b5-a748-f4fd-0691b7b58fff.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\6f53157f-02b5-a748-f4fd-0691b7b58fff.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\6f880222-e5b3-0590-6ebc-1c44fdcca104.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\6f880222-e5b3-0590-6ebc-1c44fdcca104.htm
-C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\6fdb4e53-3311-634a-47ba-4e191f898d32.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\6fdb4e53-3311-634a-47ba-4e191f898d32.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\6fec8378-afe5-1e24-da3f-2a987aa6826c.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\6fec8378-afe5-1e24-da3f-2a987aa6826c.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\7004d5a7-69a2-fc55-9984-fae64287b9a7.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\7004d5a7-69a2-fc55-9984-fae64287b9a7.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\7048b507-902c-0922-f36b-3dff76a3810a.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\7048b507-902c-0922-f36b-3dff76a3810a.htm
@@ -10550,6 +10575,7 @@ C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\735268bb-4b4a-f1ee-15
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\739d052d-c651-5be4-faeb-d3716637d67a.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\739d052d-c651-5be4-faeb-d3716637d67a.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\73cea493-bd77-2727-98be-5e0554377057.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\73cea493-bd77-2727-98be-5e0554377057.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\73f0e484-9250-92ae-d52f-96db84d80f3c.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\73f0e484-9250-92ae-d52f-96db84d80f3c.htm
+C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\74027bb3-877f-4d46-43de-a94e54a5c045.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\74027bb3-877f-4d46-43de-a94e54a5c045.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\745a0334-9292-16e0-5fa0-4dce9f79c695.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\745a0334-9292-16e0-5fa0-4dce9f79c695.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\749642b7-0057-0911-0b66-9d417644c3db.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\749642b7-0057-0911-0b66-9d417644c3db.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\74a5ae0a-882b-cde9-b88a-a10b7fdce01a.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\74a5ae0a-882b-cde9-b88a-a10b7fdce01a.htm
@@ -10605,6 +10631,7 @@ C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\7fa4c92c-dce0-ff6d-b3
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\7fbc485d-a718-986c-904a-1f433f218100.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\7fbc485d-a718-986c-904a-1f433f218100.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\7fcd334b-0c60-c37c-3142-38274425a3ed.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\7fcd334b-0c60-c37c-3142-38274425a3ed.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\8019c8e0-423a-c48b-8c9b-0c376e755e64.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\8019c8e0-423a-c48b-8c9b-0c376e755e64.htm
+C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\809c494f-832f-9e9a-2734-9010b614a51a.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\809c494f-832f-9e9a-2734-9010b614a51a.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\80c3a06f-cef8-4f71-8f05-920454991705.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\80c3a06f-cef8-4f71-8f05-920454991705.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\80d8e4e4-49be-3a43-5152-bef3a9f393aa.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\80d8e4e4-49be-3a43-5152-bef3a9f393aa.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\80e8d43f-f558-4663-0488-1528a77e9fb4.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\80e8d43f-f558-4663-0488-1528a77e9fb4.htm
@@ -10635,6 +10662,7 @@ C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\85b03613-9734-0141-6c
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\85f84c7a-c526-99e6-c6bf-d3e6ec0dd976.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\85f84c7a-c526-99e6-c6bf-d3e6ec0dd976.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\8692f32b-ffd6-a485-72c1-ce886a5ce454.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\8692f32b-ffd6-a485-72c1-ce886a5ce454.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\86d96e85-cd8f-d3a5-38e3-315c7535a684.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\86d96e85-cd8f-d3a5-38e3-315c7535a684.htm
+C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\86e4e137-a48b-67f2-1d07-718446b3139e.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\86e4e137-a48b-67f2-1d07-718446b3139e.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\8711f606-b651-f14b-c0bb-4e1a5ec2252d.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\8711f606-b651-f14b-c0bb-4e1a5ec2252d.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\872ac0ed-7087-741e-f76d-297280324bc3.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\872ac0ed-7087-741e-f76d-297280324bc3.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\8775c88e-5fa3-9fa1-b421-b0b41f18a81f.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\8775c88e-5fa3-9fa1-b421-b0b41f18a81f.htm
@@ -11084,6 +11112,7 @@ C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\e156b3f3-f16a-ca79-c9
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\e163061d-5da0-3ba6-421a-9a2b67e1908b.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\e163061d-5da0-3ba6-421a-9a2b67e1908b.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\e16b60de-fbd3-b22e-edc8-fc50754cc156.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\e16b60de-fbd3-b22e-edc8-fc50754cc156.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\e1735b59-aabc-8bd2-b999-6c7c7edc94cb.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\e1735b59-aabc-8bd2-b999-6c7c7edc94cb.htm
+C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\e1a06250-310c-ca8d-4922-18987c069319.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\e1a06250-310c-ca8d-4922-18987c069319.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\e1da7c2f-f153-5bab-cd66-5554d262752f.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\e1da7c2f-f153-5bab-cd66-5554d262752f.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\e26af46e-f974-8104-3f80-37ec19cc121c.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\e26af46e-f974-8104-3f80-37ec19cc121c.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\e29bba05-e50e-1237-d5ae-dc67a4df0dc5.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\e29bba05-e50e-1237-d5ae-dc67a4df0dc5.htm
@@ -11150,6 +11179,7 @@ C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\eebd012d-6819-c58b-7b
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\eeeaa30f-9935-48de-3fba-5978480e0faf.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\eeeaa30f-9935-48de-3fba-5978480e0faf.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\ef2481f1-3951-63bb-4406-2fcdef2502d8.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\ef2481f1-3951-63bb-4406-2fcdef2502d8.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\ef3fd57c-4472-57ea-1a51-12b9ef106441.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\ef3fd57c-4472-57ea-1a51-12b9ef106441.htm
+C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\ef458bbf-4a0d-8ff3-0ee4-4b14ae33563d.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\ef458bbf-4a0d-8ff3-0ee4-4b14ae33563d.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\efbc4c94-b881-cac1-5ab9-f29874a9d469.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\efbc4c94-b881-cac1-5ab9-f29874a9d469.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\f047c67f-1342-b8aa-9589-ac22a79198e4.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\f047c67f-1342-b8aa-9589-ac22a79198e4.htm
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\html\f04ed9cf-a565-9b33-bd23-85d69fff1e3c.htm -&gt; C:\Users\emist\Eryan\Docs\Help\html\f04ed9cf-a565-9b33-bd23-85d69fff1e3c.htm
@@ -11351,15 +11381,15 @@ C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\scripts\script_manifold.js
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\scripts\SplitScreen.js -&gt; C:\Users\emist\Eryan\Docs\Help\scripts\SplitScreen.js
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\styles\Presentation.css -&gt; C:\Users\emist\Eryan\Docs\Help\styles\Presentation.css
 C:\Users\emist\Eryan\Docs\Help\Working\Output\Website\styles\Whidbey\presentation.css -&gt; C:\Users\emist\Eryan\Docs\Help\styles\Whidbey\presentation.css
-    Last step completed in 00:00:43.2607
+    Last step completed in 00:00:39.7510
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:03.6357
+    Last step completed in 00:00:02.4668
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 07/21/2011 12:09 PM.  Total time: 00:11:45.8740
+Build completed successfully at 07/21/2011 12:57 PM.  Total time: 00:10:43.2754
 
 </buildStep>
 </shfbBuild>
