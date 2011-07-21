@@ -14,8 +14,19 @@ namespace Eryan.Input
     /// </summary>
     public class InputDevice
     {
+        /// <summary>
+        /// Window Handle that this input device is attached to
+        /// </summary>
         protected IntPtr appWin = IntPtr.Zero;
+
+        /// <summary>
+        /// Random number generator to be shared among subclasses
+        /// </summary>
         protected Random random = new Random();
+
+        /// <summary>
+        /// The pid of the EVE process this device is attached to
+        /// </summary>
         protected uint pid = 0;
 
 

@@ -20,6 +20,12 @@ namespace Eryan.Input
         public static extern void dllMouseClick(IntPtr handle, bool left, int x, int y);
 
         [DllImport(@"C:\\mouseDLL.dll")]
+        public static extern void dllMouseButtonDown(IntPtr handle, bool left, int x, int y);
+
+        [DllImport(@"C:\\mouseDLL.dll")]
+        public static extern void dllMouseButtonUp(IntPtr handle, bool left, int x, int y);
+
+        [DllImport(@"C:\\mouseDLL.dll")]
         public static extern void dllCalcTest(IntPtr handle);
 
         protected Utils screen = null;
@@ -55,6 +61,26 @@ namespace Eryan.Input
             {
                 return pid;
             }
+        }
+
+        public void releaseLeftButton()
+        {
+            dllMouseButtonUp(appWin, true, x, y);
+        }
+
+        public void releaseRightButton()
+        {
+            dllMouseButtonUp(appWin, false, x, y);
+        }
+
+        public void holdLeftButton()
+        {
+            dllMouseButtonDown(appWin, true, x, y);
+        }
+
+        public void holdRightButton()
+        {
+            dllMouseButtonDown(appWin, false, x, y);
         }
 
         public int MissChance
