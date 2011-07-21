@@ -64,13 +64,42 @@ namespace Eryan.InputHandler
                 Thread.Sleep(200);
                 synchronizeMouse(m);
                 m.click(false);
-
-                
+                Thread.Sleep(200);
                 return true;
             }
             return false;
         }
 
+        /// <summary>
+        /// Read an overview row
+        /// </summary>
+        /// <param name="rowNum">The row number in the overview</param>
+        /// <returns>The contents of the overview row</returns>
+        public string readRow(int rowNum)
+        {
+            if (entries.Count < rowNum)
+                return entries[rowNum].ToString();
+            return null;
+        }
 
+        /// <summary>
+        /// Interact with the first overview row that contains "content"
+        /// </summary>
+        /// <param name="content">The string to look for in the overview</param>
+        /// <returns>True if interacted, false otherwise</returns>
+        public bool interactRow(string content)
+        {
+            int i = 0;
+            foreach (OverViewEntry entry in entries)
+            {
+                if (entry.ToString().Contains(content))
+                {
+                    interactRow(i);
+                    return true;
+                }
+                i++;
+            }
+            return false;
+        }
     }
 }

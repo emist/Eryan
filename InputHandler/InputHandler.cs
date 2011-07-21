@@ -14,7 +14,6 @@ namespace Eryan.InputHandler
         protected Communicator comm;
         protected PreciseMouse pm;
         
-        
         public Mouse MOUSE
         {
             get
