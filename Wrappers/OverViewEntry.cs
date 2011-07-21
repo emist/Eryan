@@ -34,8 +34,14 @@ namespace Eryan.Wrappers
             tokenizer = new Regex(@"<t>");
             string[] splitString = tokenizer.Split(unparsedEntry);
             tokenizer = new Regex("<right>");
-            
-            splitString[1] = tokenizer.Split(splitString[1])[1];
+
+
+            if (splitString.Count() > 1)
+            {
+                string[] tokenized = tokenizer.Split(splitString[1]);
+                if(tokenized.Count() > 1)
+                    splitString[1] = tokenizer.Split(splitString[1])[1];
+            }
 
             foreach (string split in splitString)
             {
