@@ -9,7 +9,6 @@ namespace Eryan.Input
     /// <summary>
     /// More precise implementation of Mouse class, for interactions that require more accuraccy, at the expense of randomization.
     /// </summary>
-
     public class PreciseMouse : Mouse
     {
         

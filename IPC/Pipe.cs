@@ -53,8 +53,6 @@ namespace Eryan.IPC
         public Pipe(String name)
         {
             pipeName = name;
-            
-
         }
 
         public bool initialize()

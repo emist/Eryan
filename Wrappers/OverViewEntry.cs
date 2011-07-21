@@ -81,6 +81,15 @@ namespace Eryan.Wrappers
             }
         }
 
+        public string ToString()
+        {
+            StringBuilder sb = new StringBuilder(300);
+            foreach (string section in sections)
+            {
+                sb.Append(section);
+            }
+            return sb.ToString();
+        }
         /// <summary>
         /// Returns the height of this entry
         /// </summary>

@@ -12,7 +12,7 @@ namespace Eryan.Script
     /// Scriptable interface must be implemented by all Eryan scripts
     /// </summary>
 
-    public abstract class Scriptable
+    public abstract class Scriptable : MarshalByRefObject
     {
         public Mouse m;
         public PreciseMouse pm;

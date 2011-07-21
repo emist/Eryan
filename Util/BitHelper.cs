@@ -1,5 +1,6 @@
 using System;
 
+
 namespace ZiadSpace.Util
 {
 
@@ -7,6 +8,8 @@ namespace ZiadSpace.Util
 	/// Helps perform certain operations on primative types
 	/// that deal with bits
 	/// </summary>
+    /// 
+    [Serializable]
 	public class BitHelper
 	{
 		/// <summary>
