@@ -25,6 +25,7 @@ namespace Eryan.Factories
             public const string ISMENUOPEN = "isMenuOpen";
             public const string GETOVERVIEWITEMS = "getOverViewItems";
             public const string GETSELECTEDITEM = "getSelectedItem";
+            public const string GETTARGETLIST = "getTargetList";
         }
 
        /// <summary>
