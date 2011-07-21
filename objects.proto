@@ -21,6 +21,21 @@ message label{
 	required int32 height = 5;
 }
 
+message TargetList{
+	repeated targetentry thistarget = 1;
+}
+
+message targetentry{
+	optional label text = 1;	
+	optional jammers jams = 2;
+}
+
+	
+message jammers{
+	repeated string jammer = 1;
+}
+
+
 message Interface{
 	required string name = 1;
 	required int32 topleftX = 2;

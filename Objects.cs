@@ -21,6 +21,12 @@ namespace eveobjects {
     internal static pb::FieldAccess.FieldAccessorTable<global::eveobjects.overview, global::eveobjects.overview.Builder> internal__static_eveobjects_overview__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_eveobjects_label__Descriptor;
     internal static pb::FieldAccess.FieldAccessorTable<global::eveobjects.label, global::eveobjects.label.Builder> internal__static_eveobjects_label__FieldAccessorTable;
+    internal static pbd::MessageDescriptor internal__static_eveobjects_TargetList__Descriptor;
+    internal static pb::FieldAccess.FieldAccessorTable<global::eveobjects.TargetList, global::eveobjects.TargetList.Builder> internal__static_eveobjects_TargetList__FieldAccessorTable;
+    internal static pbd::MessageDescriptor internal__static_eveobjects_targetentry__Descriptor;
+    internal static pb::FieldAccess.FieldAccessorTable<global::eveobjects.targetentry, global::eveobjects.targetentry.Builder> internal__static_eveobjects_targetentry__FieldAccessorTable;
+    internal static pbd::MessageDescriptor internal__static_eveobjects_jammers__Descriptor;
+    internal static pb::FieldAccess.FieldAccessorTable<global::eveobjects.jammers, global::eveobjects.jammers.Builder> internal__static_eveobjects_jammers__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_eveobjects_Interface__Descriptor;
     internal static pb::FieldAccess.FieldAccessorTable<global::eveobjects.Interface, global::eveobjects.Interface.Builder> internal__static_eveobjects_Interface__FieldAccessorTable;
     #endregion
@@ -37,13 +43,16 @@ namespace eveobjects {
           "EhQKDHN0cnBhcmFtZXRlchgCIAEoCSI0CghvdmVydmlldxIoCg1vdmVydmll" + 
           "d0VudHJ5GAEgAygLMhEuZXZlb2JqZWN0cy5sYWJlbCJYCgVsYWJlbBIMCgR0" + 
           "ZXh0GAEgAigJEhAKCHRvcExlZnRYGAIgAigFEhAKCHRvcExlZnRZGAMgAigF" + 
-          "Eg0KBXdpZHRoGAQgAigFEg4KBmhlaWdodBgFIAIoBSLxAQoJSW50ZXJmYWNl" + 
-          "EgwKBG5hbWUYASACKAkSEAoIdG9wbGVmdFgYAiACKAUSEAoIdG9wbGVmdFkY" + 
-          "AyACKAUSDQoFd2lkdGgYBCACKAUSDgoGaGVpZ2h0GAUgAigFEhYKDmhhc0Ns" + 
-          "b3NlQnV0dG9uGAYgASgIEhUKDWNsb3NlVG9wTGVmdFgYByABKAUSFQoNY2xv" + 
-          "c2VUb3BMZWZ0WRgIIAEoBRIZChFoYXNDb250aW51ZUJ1dHRvbhgJIAEoCBIY" + 
-          "ChBjb250aW51ZVRvcExlZnRYGAogASgFEhgKEGNvbnRpbnVlVG9wTGVmdFkY" + 
-          "CyABKAU=");
+          "Eg0KBXdpZHRoGAQgAigFEg4KBmhlaWdodBgFIAIoBSI5CgpUYXJnZXRMaXN0" + 
+          "EisKCnRoaXN0YXJnZXQYASADKAsyFy5ldmVvYmplY3RzLnRhcmdldGVudHJ5" + 
+          "IlEKC3RhcmdldGVudHJ5Eh8KBHRleHQYASABKAsyES5ldmVvYmplY3RzLmxh" + 
+          "YmVsEiEKBGphbXMYAiABKAsyEy5ldmVvYmplY3RzLmphbW1lcnMiGQoHamFt" + 
+          "bWVycxIOCgZqYW1tZXIYASADKAki8QEKCUludGVyZmFjZRIMCgRuYW1lGAEg" + 
+          "AigJEhAKCHRvcGxlZnRYGAIgAigFEhAKCHRvcGxlZnRZGAMgAigFEg0KBXdp" + 
+          "ZHRoGAQgAigFEg4KBmhlaWdodBgFIAIoBRIWCg5oYXNDbG9zZUJ1dHRvbhgG" + 
+          "IAEoCBIVCg1jbG9zZVRvcExlZnRYGAcgASgFEhUKDWNsb3NlVG9wTGVmdFkY" + 
+          "CCABKAUSGQoRaGFzQ29udGludWVCdXR0b24YCSABKAgSGAoQY29udGludWVU" + 
+          "b3BMZWZ0WBgKIAEoBRIYChBjb250aW51ZVRvcExlZnRZGAsgASgF");
       pbd::FileDescriptor.InternalDescriptorAssigner assigner = delegate(pbd::FileDescriptor root) {
         descriptor = root;
         internal__static_eveobjects_BooleanObject__Descriptor = Descriptor.MessageTypes[0];
@@ -62,7 +71,19 @@ namespace eveobjects {
         internal__static_eveobjects_label__FieldAccessorTable = 
             new pb::FieldAccess.FieldAccessorTable<global::eveobjects.label, global::eveobjects.label.Builder>(internal__static_eveobjects_label__Descriptor,
                 new string[] { "Text", "TopLeftX", "TopLeftY", "Width", "Height", });
-        internal__static_eveobjects_Interface__Descriptor = Descriptor.MessageTypes[4];
+        internal__static_eveobjects_TargetList__Descriptor = Descriptor.MessageTypes[4];
+        internal__static_eveobjects_TargetList__FieldAccessorTable = 
+            new pb::FieldAccess.FieldAccessorTable<global::eveobjects.TargetList, global::eveobjects.TargetList.Builder>(internal__static_eveobjects_TargetList__Descriptor,
+                new string[] { "Thistarget", });
+        internal__static_eveobjects_targetentry__Descriptor = Descriptor.MessageTypes[5];
+        internal__static_eveobjects_targetentry__FieldAccessorTable = 
+            new pb::FieldAccess.FieldAccessorTable<global::eveobjects.targetentry, global::eveobjects.targetentry.Builder>(internal__static_eveobjects_targetentry__Descriptor,
+                new string[] { "Text", "Jams", });
+        internal__static_eveobjects_jammers__Descriptor = Descriptor.MessageTypes[6];
+        internal__static_eveobjects_jammers__FieldAccessorTable = 
+            new pb::FieldAccess.FieldAccessorTable<global::eveobjects.jammers, global::eveobjects.jammers.Builder>(internal__static_eveobjects_jammers__Descriptor,
+                new string[] { "Jammer", });
+        internal__static_eveobjects_Interface__Descriptor = Descriptor.MessageTypes[7];
         internal__static_eveobjects_Interface__FieldAccessorTable = 
             new pb::FieldAccess.FieldAccessorTable<global::eveobjects.Interface, global::eveobjects.Interface.Builder>(internal__static_eveobjects_Interface__Descriptor,
                 new string[] { "Name", "TopleftX", "TopleftY", "Width", "Height", "HasCloseButton", "CloseTopLeftX", "CloseTopLeftY", "HasContinueButton", "ContinueTopLeftX", "ContinueTopLeftY", });
@@ -1175,6 +1196,789 @@ namespace eveobjects {
       }
     }
     static label() {
+      object.ReferenceEquals(global::eveobjects.Objects.Descriptor, null);
+    }
+  }
+  
+  public sealed partial class TargetList : pb::GeneratedMessage<TargetList, TargetList.Builder> {
+    private static readonly TargetList defaultInstance = new Builder().BuildPartial();
+    public static TargetList DefaultInstance {
+      get { return defaultInstance; }
+    }
+    
+    public override TargetList DefaultInstanceForType {
+      get { return defaultInstance; }
+    }
+    
+    protected override TargetList ThisMessage {
+      get { return this; }
+    }
+    
+    public static pbd::MessageDescriptor Descriptor {
+      get { return global::eveobjects.Objects.internal__static_eveobjects_TargetList__Descriptor; }
+    }
+    
+    protected override pb::FieldAccess.FieldAccessorTable<TargetList, TargetList.Builder> InternalFieldAccessors {
+      get { return global::eveobjects.Objects.internal__static_eveobjects_TargetList__FieldAccessorTable; }
+    }
+    
+    public const int ThistargetFieldNumber = 1;
+    private pbc::PopsicleList<global::eveobjects.targetentry> thistarget_ = new pbc::PopsicleList<global::eveobjects.targetentry>();
+    public scg::IList<global::eveobjects.targetentry> ThistargetList {
+      get { return thistarget_; }
+    }
+    public int ThistargetCount {
+      get { return thistarget_.Count; }
+    }
+    public global::eveobjects.targetentry GetThistarget(int index) {
+      return thistarget_[index];
+    }
+    
+    public override bool IsInitialized {
+      get {
+        foreach (global::eveobjects.targetentry element in ThistargetList) {
+          if (!element.IsInitialized) return false;
+        }
+        return true;
+      }
+    }
+    
+    public override void WriteTo(pb::CodedOutputStream output) {
+      int size = SerializedSize;
+      foreach (global::eveobjects.targetentry element in ThistargetList) {
+        output.WriteMessage(1, element);
+      }
+      UnknownFields.WriteTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public override int SerializedSize {
+      get {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+        
+        size = 0;
+        foreach (global::eveobjects.targetentry element in ThistargetList) {
+          size += pb::CodedOutputStream.ComputeMessageSize(1, element);
+        }
+        size += UnknownFields.SerializedSize;
+        memoizedSerializedSize = size;
+        return size;
+      }
+    }
+    
+    public static TargetList ParseFrom(pb::ByteString data) {
+      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
+    }
+    public static TargetList ParseFrom(pb::ByteString data, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
+    }
+    public static TargetList ParseFrom(byte[] data) {
+      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
+    }
+    public static TargetList ParseFrom(byte[] data, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
+    }
+    public static TargetList ParseFrom(global::System.IO.Stream input) {
+      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
+    }
+    public static TargetList ParseFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
+    }
+    public static TargetList ParseDelimitedFrom(global::System.IO.Stream input) {
+      return CreateBuilder().MergeDelimitedFrom(input).BuildParsed();
+    }
+    public static TargetList ParseDelimitedFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+      return CreateBuilder().MergeDelimitedFrom(input, extensionRegistry).BuildParsed();
+    }
+    public static TargetList ParseFrom(pb::CodedInputStream input) {
+      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
+    }
+    public static TargetList ParseFrom(pb::CodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
+    }
+    public static Builder CreateBuilder() { return new Builder(); }
+    public override Builder ToBuilder() { return CreateBuilder(this); }
+    public override Builder CreateBuilderForType() { return new Builder(); }
+    public static Builder CreateBuilder(TargetList prototype) {
+      return (Builder) new Builder().MergeFrom(prototype);
+    }
+    
+    public sealed partial class Builder : pb::GeneratedBuilder<TargetList, Builder> {
+      protected override Builder ThisBuilder {
+        get { return this; }
+      }
+      public Builder() {}
+      
+      TargetList result = new TargetList();
+      
+      protected override TargetList MessageBeingBuilt {
+        get { return result; }
+      }
+      
+      public override Builder Clear() {
+        result = new TargetList();
+        return this;
+      }
+      
+      public override Builder Clone() {
+        return new Builder().MergeFrom(result);
+      }
+      
+      public override pbd::MessageDescriptor DescriptorForType {
+        get { return global::eveobjects.TargetList.Descriptor; }
+      }
+      
+      public override TargetList DefaultInstanceForType {
+        get { return global::eveobjects.TargetList.DefaultInstance; }
+      }
+      
+      public override TargetList BuildPartial() {
+        if (result == null) {
+          throw new global::System.InvalidOperationException("build() has already been called on this Builder");
+        }
+        result.thistarget_.MakeReadOnly();
+        TargetList returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public override Builder MergeFrom(pb::IMessage other) {
+        if (other is TargetList) {
+          return MergeFrom((TargetList) other);
+        } else {
+          base.MergeFrom(other);
+          return this;
+        }
+      }
+      
+      public override Builder MergeFrom(TargetList other) {
+        if (other == global::eveobjects.TargetList.DefaultInstance) return this;
+        if (other.thistarget_.Count != 0) {
+          base.AddRange(other.thistarget_, result.thistarget_);
+        }
+        this.MergeUnknownFields(other.UnknownFields);
+        return this;
+      }
+      
+      public override Builder MergeFrom(pb::CodedInputStream input) {
+        return MergeFrom(input, pb::ExtensionRegistry.Empty);
+      }
+      
+      public override Builder MergeFrom(pb::CodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+        pb::UnknownFieldSet.Builder unknownFields = null;
+        while (true) {
+          uint tag = input.ReadTag();
+          switch (tag) {
+            case 0: {
+              if (unknownFields != null) {
+                this.UnknownFields = unknownFields.Build();
+              }
+              return this;
+            }
+            default: {
+              if (pb::WireFormat.IsEndGroupTag(tag)) {
+                if (unknownFields != null) {
+                  this.UnknownFields = unknownFields.Build();
+                }
+                return this;
+              }
+              if (unknownFields == null) {
+                unknownFields = pb::UnknownFieldSet.CreateBuilder(this.UnknownFields);
+              }
+              ParseUnknownField(input, unknownFields, extensionRegistry, tag);
+              break;
+            }
+            case 10: {
+              global::eveobjects.targetentry.Builder subBuilder = global::eveobjects.targetentry.CreateBuilder();
+              input.ReadMessage(subBuilder, extensionRegistry);
+              AddThistarget(subBuilder.BuildPartial());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      public pbc::IPopsicleList<global::eveobjects.targetentry> ThistargetList {
+        get { return result.thistarget_; }
+      }
+      public int ThistargetCount {
+        get { return result.ThistargetCount; }
+      }
+      public global::eveobjects.targetentry GetThistarget(int index) {
+        return result.GetThistarget(index);
+      }
+      public Builder SetThistarget(int index, global::eveobjects.targetentry value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        result.thistarget_[index] = value;
+        return this;
+      }
+      public Builder SetThistarget(int index, global::eveobjects.targetentry.Builder builderForValue) {
+        pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
+        result.thistarget_[index] = builderForValue.Build();
+        return this;
+      }
+      public Builder AddThistarget(global::eveobjects.targetentry value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        result.thistarget_.Add(value);
+        return this;
+      }
+      public Builder AddThistarget(global::eveobjects.targetentry.Builder builderForValue) {
+        pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
+        result.thistarget_.Add(builderForValue.Build());
+        return this;
+      }
+      public Builder AddRangeThistarget(scg::IEnumerable<global::eveobjects.targetentry> values) {
+        base.AddRange(values, result.thistarget_);
+        return this;
+      }
+      public Builder ClearThistarget() {
+        result.thistarget_.Clear();
+        return this;
+      }
+    }
+    static TargetList() {
+      object.ReferenceEquals(global::eveobjects.Objects.Descriptor, null);
+    }
+  }
+  
+  public sealed partial class targetentry : pb::GeneratedMessage<targetentry, targetentry.Builder> {
+    private static readonly targetentry defaultInstance = new Builder().BuildPartial();
+    public static targetentry DefaultInstance {
+      get { return defaultInstance; }
+    }
+    
+    public override targetentry DefaultInstanceForType {
+      get { return defaultInstance; }
+    }
+    
+    protected override targetentry ThisMessage {
+      get { return this; }
+    }
+    
+    public static pbd::MessageDescriptor Descriptor {
+      get { return global::eveobjects.Objects.internal__static_eveobjects_targetentry__Descriptor; }
+    }
+    
+    protected override pb::FieldAccess.FieldAccessorTable<targetentry, targetentry.Builder> InternalFieldAccessors {
+      get { return global::eveobjects.Objects.internal__static_eveobjects_targetentry__FieldAccessorTable; }
+    }
+    
+    public const int TextFieldNumber = 1;
+    private bool hasText;
+    private global::eveobjects.label text_ = global::eveobjects.label.DefaultInstance;
+    public bool HasText {
+      get { return hasText; }
+    }
+    public global::eveobjects.label Text {
+      get { return text_; }
+    }
+    
+    public const int JamsFieldNumber = 2;
+    private bool hasJams;
+    private global::eveobjects.jammers jams_ = global::eveobjects.jammers.DefaultInstance;
+    public bool HasJams {
+      get { return hasJams; }
+    }
+    public global::eveobjects.jammers Jams {
+      get { return jams_; }
+    }
+    
+    public override bool IsInitialized {
+      get {
+        if (HasText) {
+          if (!Text.IsInitialized) return false;
+        }
+        return true;
+      }
+    }
+    
+    public override void WriteTo(pb::CodedOutputStream output) {
+      int size = SerializedSize;
+      if (HasText) {
+        output.WriteMessage(1, Text);
+      }
+      if (HasJams) {
+        output.WriteMessage(2, Jams);
+      }
+      UnknownFields.WriteTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public override int SerializedSize {
+      get {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+        
+        size = 0;
+        if (HasText) {
+          size += pb::CodedOutputStream.ComputeMessageSize(1, Text);
+        }
+        if (HasJams) {
+          size += pb::CodedOutputStream.ComputeMessageSize(2, Jams);
+        }
+        size += UnknownFields.SerializedSize;
+        memoizedSerializedSize = size;
+        return size;
+      }
+    }
+    
+    public static targetentry ParseFrom(pb::ByteString data) {
+      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
+    }
+    public static targetentry ParseFrom(pb::ByteString data, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
+    }
+    public static targetentry ParseFrom(byte[] data) {
+      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
+    }
+    public static targetentry ParseFrom(byte[] data, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
+    }
+    public static targetentry ParseFrom(global::System.IO.Stream input) {
+      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
+    }
+    public static targetentry ParseFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
+    }
+    public static targetentry ParseDelimitedFrom(global::System.IO.Stream input) {
+      return CreateBuilder().MergeDelimitedFrom(input).BuildParsed();
+    }
+    public static targetentry ParseDelimitedFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+      return CreateBuilder().MergeDelimitedFrom(input, extensionRegistry).BuildParsed();
+    }
+    public static targetentry ParseFrom(pb::CodedInputStream input) {
+      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
+    }
+    public static targetentry ParseFrom(pb::CodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
+    }
+    public static Builder CreateBuilder() { return new Builder(); }
+    public override Builder ToBuilder() { return CreateBuilder(this); }
+    public override Builder CreateBuilderForType() { return new Builder(); }
+    public static Builder CreateBuilder(targetentry prototype) {
+      return (Builder) new Builder().MergeFrom(prototype);
+    }
+    
+    public sealed partial class Builder : pb::GeneratedBuilder<targetentry, Builder> {
+      protected override Builder ThisBuilder {
+        get { return this; }
+      }
+      public Builder() {}
+      
+      targetentry result = new targetentry();
+      
+      protected override targetentry MessageBeingBuilt {
+        get { return result; }
+      }
+      
+      public override Builder Clear() {
+        result = new targetentry();
+        return this;
+      }
+      
+      public override Builder Clone() {
+        return new Builder().MergeFrom(result);
+      }
+      
+      public override pbd::MessageDescriptor DescriptorForType {
+        get { return global::eveobjects.targetentry.Descriptor; }
+      }
+      
+      public override targetentry DefaultInstanceForType {
+        get { return global::eveobjects.targetentry.DefaultInstance; }
+      }
+      
+      public override targetentry BuildPartial() {
+        if (result == null) {
+          throw new global::System.InvalidOperationException("build() has already been called on this Builder");
+        }
+        targetentry returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public override Builder MergeFrom(pb::IMessage other) {
+        if (other is targetentry) {
+          return MergeFrom((targetentry) other);
+        } else {
+          base.MergeFrom(other);
+          return this;
+        }
+      }
+      
+      public override Builder MergeFrom(targetentry other) {
+        if (other == global::eveobjects.targetentry.DefaultInstance) return this;
+        if (other.HasText) {
+          MergeText(other.Text);
+        }
+        if (other.HasJams) {
+          MergeJams(other.Jams);
+        }
+        this.MergeUnknownFields(other.UnknownFields);
+        return this;
+      }
+      
+      public override Builder MergeFrom(pb::CodedInputStream input) {
+        return MergeFrom(input, pb::ExtensionRegistry.Empty);
+      }
+      
+      public override Builder MergeFrom(pb::CodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+        pb::UnknownFieldSet.Builder unknownFields = null;
+        while (true) {
+          uint tag = input.ReadTag();
+          switch (tag) {
+            case 0: {
+              if (unknownFields != null) {
+                this.UnknownFields = unknownFields.Build();
+              }
+              return this;
+            }
+            default: {
+              if (pb::WireFormat.IsEndGroupTag(tag)) {
+                if (unknownFields != null) {
+                  this.UnknownFields = unknownFields.Build();
+                }
+                return this;
+              }
+              if (unknownFields == null) {
+                unknownFields = pb::UnknownFieldSet.CreateBuilder(this.UnknownFields);
+              }
+              ParseUnknownField(input, unknownFields, extensionRegistry, tag);
+              break;
+            }
+            case 10: {
+              global::eveobjects.label.Builder subBuilder = global::eveobjects.label.CreateBuilder();
+              if (HasText) {
+                subBuilder.MergeFrom(Text);
+              }
+              input.ReadMessage(subBuilder, extensionRegistry);
+              Text = subBuilder.BuildPartial();
+              break;
+            }
+            case 18: {
+              global::eveobjects.jammers.Builder subBuilder = global::eveobjects.jammers.CreateBuilder();
+              if (HasJams) {
+                subBuilder.MergeFrom(Jams);
+              }
+              input.ReadMessage(subBuilder, extensionRegistry);
+              Jams = subBuilder.BuildPartial();
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      public bool HasText {
+       get { return result.HasText; }
+      }
+      public global::eveobjects.label Text {
+        get { return result.Text; }
+        set { SetText(value); }
+      }
+      public Builder SetText(global::eveobjects.label value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        result.hasText = true;
+        result.text_ = value;
+        return this;
+      }
+      public Builder SetText(global::eveobjects.label.Builder builderForValue) {
+        pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
+        result.hasText = true;
+        result.text_ = builderForValue.Build();
+        return this;
+      }
+      public Builder MergeText(global::eveobjects.label value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        if (result.HasText &&
+            result.text_ != global::eveobjects.label.DefaultInstance) {
+            result.text_ = global::eveobjects.label.CreateBuilder(result.text_).MergeFrom(value).BuildPartial();
+        } else {
+          result.text_ = value;
+        }
+        result.hasText = true;
+        return this;
+      }
+      public Builder ClearText() {
+        result.hasText = false;
+        result.text_ = global::eveobjects.label.DefaultInstance;
+        return this;
+      }
+      
+      public bool HasJams {
+       get { return result.HasJams; }
+      }
+      public global::eveobjects.jammers Jams {
+        get { return result.Jams; }
+        set { SetJams(value); }
+      }
+      public Builder SetJams(global::eveobjects.jammers value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        result.hasJams = true;
+        result.jams_ = value;
+        return this;
+      }
+      public Builder SetJams(global::eveobjects.jammers.Builder builderForValue) {
+        pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
+        result.hasJams = true;
+        result.jams_ = builderForValue.Build();
+        return this;
+      }
+      public Builder MergeJams(global::eveobjects.jammers value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        if (result.HasJams &&
+            result.jams_ != global::eveobjects.jammers.DefaultInstance) {
+            result.jams_ = global::eveobjects.jammers.CreateBuilder(result.jams_).MergeFrom(value).BuildPartial();
+        } else {
+          result.jams_ = value;
+        }
+        result.hasJams = true;
+        return this;
+      }
+      public Builder ClearJams() {
+        result.hasJams = false;
+        result.jams_ = global::eveobjects.jammers.DefaultInstance;
+        return this;
+      }
+    }
+    static targetentry() {
+      object.ReferenceEquals(global::eveobjects.Objects.Descriptor, null);
+    }
+  }
+  
+  public sealed partial class jammers : pb::GeneratedMessage<jammers, jammers.Builder> {
+    private static readonly jammers defaultInstance = new Builder().BuildPartial();
+    public static jammers DefaultInstance {
+      get { return defaultInstance; }
+    }
+    
+    public override jammers DefaultInstanceForType {
+      get { return defaultInstance; }
+    }
+    
+    protected override jammers ThisMessage {
+      get { return this; }
+    }
+    
+    public static pbd::MessageDescriptor Descriptor {
+      get { return global::eveobjects.Objects.internal__static_eveobjects_jammers__Descriptor; }
+    }
+    
+    protected override pb::FieldAccess.FieldAccessorTable<jammers, jammers.Builder> InternalFieldAccessors {
+      get { return global::eveobjects.Objects.internal__static_eveobjects_jammers__FieldAccessorTable; }
+    }
+    
+    public const int JammerFieldNumber = 1;
+    private pbc::PopsicleList<string> jammer_ = new pbc::PopsicleList<string>();
+    public scg::IList<string> JammerList {
+      get { return pbc::Lists.AsReadOnly(jammer_); }
+    }
+    public int JammerCount {
+      get { return jammer_.Count; }
+    }
+    public string GetJammer(int index) {
+      return jammer_[index];
+    }
+    
+    public override bool IsInitialized {
+      get {
+        return true;
+      }
+    }
+    
+    public override void WriteTo(pb::CodedOutputStream output) {
+      int size = SerializedSize;
+      if (jammer_.Count > 0) {
+        foreach (string element in jammer_) {
+          output.WriteString(1, element);
+        }
+      }
+      UnknownFields.WriteTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public override int SerializedSize {
+      get {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+        
+        size = 0;
+        {
+          int dataSize = 0;
+          foreach (string element in JammerList) {
+            dataSize += pb::CodedOutputStream.ComputeStringSizeNoTag(element);
+          }
+          size += dataSize;
+          size += 1 * jammer_.Count;
+        }
+        size += UnknownFields.SerializedSize;
+        memoizedSerializedSize = size;
+        return size;
+      }
+    }
+    
+    public static jammers ParseFrom(pb::ByteString data) {
+      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
+    }
+    public static jammers ParseFrom(pb::ByteString data, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
+    }
+    public static jammers ParseFrom(byte[] data) {
+      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
+    }
+    public static jammers ParseFrom(byte[] data, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
+    }
+    public static jammers ParseFrom(global::System.IO.Stream input) {
+      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
+    }
+    public static jammers ParseFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
+    }
+    public static jammers ParseDelimitedFrom(global::System.IO.Stream input) {
+      return CreateBuilder().MergeDelimitedFrom(input).BuildParsed();
+    }
+    public static jammers ParseDelimitedFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+      return CreateBuilder().MergeDelimitedFrom(input, extensionRegistry).BuildParsed();
+    }
+    public static jammers ParseFrom(pb::CodedInputStream input) {
+      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
+    }
+    public static jammers ParseFrom(pb::CodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
+    }
+    public static Builder CreateBuilder() { return new Builder(); }
+    public override Builder ToBuilder() { return CreateBuilder(this); }
+    public override Builder CreateBuilderForType() { return new Builder(); }
+    public static Builder CreateBuilder(jammers prototype) {
+      return (Builder) new Builder().MergeFrom(prototype);
+    }
+    
+    public sealed partial class Builder : pb::GeneratedBuilder<jammers, Builder> {
+      protected override Builder ThisBuilder {
+        get { return this; }
+      }
+      public Builder() {}
+      
+      jammers result = new jammers();
+      
+      protected override jammers MessageBeingBuilt {
+        get { return result; }
+      }
+      
+      public override Builder Clear() {
+        result = new jammers();
+        return this;
+      }
+      
+      public override Builder Clone() {
+        return new Builder().MergeFrom(result);
+      }
+      
+      public override pbd::MessageDescriptor DescriptorForType {
+        get { return global::eveobjects.jammers.Descriptor; }
+      }
+      
+      public override jammers DefaultInstanceForType {
+        get { return global::eveobjects.jammers.DefaultInstance; }
+      }
+      
+      public override jammers BuildPartial() {
+        if (result == null) {
+          throw new global::System.InvalidOperationException("build() has already been called on this Builder");
+        }
+        result.jammer_.MakeReadOnly();
+        jammers returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public override Builder MergeFrom(pb::IMessage other) {
+        if (other is jammers) {
+          return MergeFrom((jammers) other);
+        } else {
+          base.MergeFrom(other);
+          return this;
+        }
+      }
+      
+      public override Builder MergeFrom(jammers other) {
+        if (other == global::eveobjects.jammers.DefaultInstance) return this;
+        if (other.jammer_.Count != 0) {
+          base.AddRange(other.jammer_, result.jammer_);
+        }
+        this.MergeUnknownFields(other.UnknownFields);
+        return this;
+      }
+      
+      public override Builder MergeFrom(pb::CodedInputStream input) {
+        return MergeFrom(input, pb::ExtensionRegistry.Empty);
+      }
+      
+      public override Builder MergeFrom(pb::CodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+        pb::UnknownFieldSet.Builder unknownFields = null;
+        while (true) {
+          uint tag = input.ReadTag();
+          switch (tag) {
+            case 0: {
+              if (unknownFields != null) {
+                this.UnknownFields = unknownFields.Build();
+              }
+              return this;
+            }
+            default: {
+              if (pb::WireFormat.IsEndGroupTag(tag)) {
+                if (unknownFields != null) {
+                  this.UnknownFields = unknownFields.Build();
+                }
+                return this;
+              }
+              if (unknownFields == null) {
+                unknownFields = pb::UnknownFieldSet.CreateBuilder(this.UnknownFields);
+              }
+              ParseUnknownField(input, unknownFields, extensionRegistry, tag);
+              break;
+            }
+            case 10: {
+              AddJammer(input.ReadString());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      public pbc::IPopsicleList<string> JammerList {
+        get { return result.jammer_; }
+      }
+      public int JammerCount {
+        get { return result.JammerCount; }
+      }
+      public string GetJammer(int index) {
+        return result.GetJammer(index);
+      }
+      public Builder SetJammer(int index, string value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        result.jammer_[index] = value;
+        return this;
+      }
+      public Builder AddJammer(string value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        result.jammer_.Add(value);
+        return this;
+      }
+      public Builder AddRangeJammer(scg::IEnumerable<string> values) {
+        base.AddRange(values, result.jammer_);
+        return this;
+      }
+      public Builder ClearJammer() {
+        result.jammer_.Clear();
+        return this;
+      }
+    }
+    static jammers() {
       object.ReferenceEquals(global::eveobjects.Objects.Descriptor, null);
     }
   }
