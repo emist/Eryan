@@ -94,10 +94,11 @@ namespace Eryan.UI
             if (bots[0].running)
             {
                 Console.WriteLine("Stopping Script");
-                bots[0].scriptName = null;
-                bots[0].script = null;
+                bots[0].unloadUserDomain();
                 runButton.Text = "Run Script";
-                bots[0].running = false;
+                bots[0].initialized = false;
+                bots[0].script = null;
+                bots[0].scriptName = null;
             }
             else
             {
@@ -105,7 +106,7 @@ namespace Eryan.UI
                 runButton.Text = "Stop Script";
                 bots[0].running = true;
             }
-            running = !running;
+            
         }
 
         /// <summary>
@@ -313,7 +314,7 @@ namespace Eryan.UI
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(63, 26);
             this.runButton.TabIndex = 1;
-            this.runButton.Text = "Run";
+            this.runButton.Text = "Stop";
             this.runButton.UseVisualStyleBackColor = true;
             // 
             // loadScriptBtn
