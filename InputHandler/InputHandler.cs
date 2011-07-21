@@ -47,7 +47,7 @@ namespace Eryan.InputHandler
         public void synchronizeMouse(Mouse m)
         {
             pm.x = m.x;
-            pm.y = pm.y;
+            pm.y = m.y;
         }
    
     }
