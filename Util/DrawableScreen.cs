@@ -81,28 +81,6 @@ namespace Eryan.Util
         }
 
 
-        protected override void OnKeyDown(KeyEventArgs e)
-        {
-            if (cw.AllowInput)
-            {
-                kb = wh.getKeyBoard();
-                kb.keyDown(((char)e.KeyValue));
-            }
-            base.OnKeyDown(e);
-        }
-
-        protected override void OnKeyUp(KeyEventArgs e)
-        {
-            if (cw.AllowInput)
-            {
-                kb = wh.getKeyBoard();
-                kb.keyUp((char)e.KeyValue);
-            }
-            base.OnKeyUp(e);
-        }
-
-        /*
-
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
             if (cw.AllowInput)
@@ -112,6 +90,6 @@ namespace Eryan.Util
             }
             base.OnKeyPress(e);
         }
-        */
+
     }
 }
