@@ -8,12 +8,29 @@ using Eryan.IPC;
 
 namespace Eryan.InputHandler
 {
+    /// <summary>
+    /// The base class for all Input Handlers
+    /// </summary>
     public abstract class InputHandler
     {
+        /// <summary>
+        /// Every input handler needs a mouse
+        /// </summary>
         protected Mouse m;
+        /// <summary>
+        /// Every input handler needs a communicator
+        /// </summary>
         protected Communicator comm;
+
+        /// <summary>
+        /// Every input handler needs a precise mouse
+        /// </summary>
         protected PreciseMouse pm;
         
+
+        /// <summary>
+        /// Return a reference to this handler's mouse
+        /// </summary>
         public Mouse MOUSE
         {
             get
@@ -22,6 +39,9 @@ namespace Eryan.InputHandler
             }
         }
 
+        /// <summary>
+        /// Return a reference to this handler's Precise Mouse
+        /// </summary>
         public PreciseMouse PMOUSE
         {
             get

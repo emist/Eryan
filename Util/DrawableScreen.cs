@@ -25,6 +25,7 @@ namespace Eryan.Util
         ClientWindow cw;
         PreciseMouse pm;
         KeyBoard kb;
+        Mouse m;
 
         [DllImport(@"C:\\mouseDLL.dll")]
         public static extern void dllMoveMouse(IntPtr handle, int x, int y);
@@ -39,30 +40,68 @@ namespace Eryan.Util
         protected override void OnMouseMove(MouseEventArgs e)
         {
             pm = wh.PMOUSE;
+            m = wh.MOUSE;
             if (cw.AllowInput)
             {
                 dllMoveMouse(pm.APPWIN, e.X, e.Y);
                 pm.x = e.X;
                 pm.y = e.Y;
+                m.x = e.X;
+                m.y = e.Y;
             }
                 
             base.OnMouseMove(e);
         }
 
-        protected override void OnMouseClick(MouseEventArgs e)
+
+        protected override void OnMouseDown(MouseEventArgs e)
         {
             pm = wh.PMOUSE;
-
-            if (cw.AllowInput)
+            if(cw.AllowInput)
             {
-                if (e.Button.Equals(MouseButtons.Left))
-                    pm.click(pm.getX(), pm.getY(), true, 0);
-                else if (e.Button.Equals(MouseButtons.Right))
-                    pm.click(pm.getX(), pm.getY(), false, 0);
-                base.OnMouseClick(e);
+                if(e.Button.Equals(MouseButtons.Left))
+                    pm.holdLeftButton();
+                else if(e.Button.Equals(MouseButtons.Right))
+                    pm.holdRightButton();
             }
+            base.OnMouseDown(e);
         }
 
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            pm = wh.PMOUSE;
+            if(cw.AllowInput)
+            {
+                if(e.Button.Equals(MouseButtons.Left))
+                    pm.releaseLeftButton();
+                else if(e.Button.Equals(MouseButtons.Right))
+                    pm.releaseRightButton();
+            }
+            base.OnMouseUp(e);
+        }
+
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            if (cw.AllowInput)
+            {
+                kb = wh.getKeyBoard();
+                kb.keyDown(((char)e.KeyValue));
+            }
+            base.OnKeyDown(e);
+        }
+
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            if (cw.AllowInput)
+            {
+                kb = wh.getKeyBoard();
+                kb.keyUp((char)e.KeyValue);
+            }
+            base.OnKeyUp(e);
+        }
+
+        /*
 
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
@@ -73,6 +112,6 @@ namespace Eryan.Util
             }
             base.OnKeyPress(e);
         }
-
+        */
     }
 }

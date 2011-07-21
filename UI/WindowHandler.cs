@@ -346,7 +346,7 @@ namespace Eryan.UI
         /// Find out the EVE process' PID
         /// </summary>
         /// <returns>The PID of the EVE process</returns>
-        public uint getPid()
+        public override uint getPid()
         {
             uint outpid = 0;
             GetWindowThreadProcessId(appWin, out outpid);

@@ -17,14 +17,41 @@ namespace Eryan.Factories
         /// </summary>
         public struct CALLS
         {
+            /// <summary>
+            /// atLogin call
+            /// </summary>
             public const string ATLOGIN = "atLogin";
+            /// <summary>
+            /// Call to find items by name in the login screen
+            /// </summary>
             public const string FINDBYNAMELOGIN = "findByNameLogin";
+            /// <summary>
+            /// Call to find items by text in the login screen
+            /// </summary>
             public const string FINDBYTEXTLOGIN = "findByTextLogin";
+            /// <summary>
+            /// Call to find items by text in a menu
+            /// </summary>
             public const string FINDBYTEXTMENU = "findByTextMenu";
+            /// <summary>
+            /// Call to get the InflightInterface
+            /// </summary>
             public const string GETINFLIGHTINTERFACE = "getInflightInterface";
+            /// <summary>
+            /// Call to check if the menu is open
+            /// </summary>
             public const string ISMENUOPEN = "isMenuOpen";
+            /// <summary>
+            /// Call to retrieve the overview items
+            /// </summary>
             public const string GETOVERVIEWITEMS = "getOverViewItems";
+            /// <summary>
+            /// Call to retrieve the currently selected item
+            /// </summary>
             public const string GETSELECTEDITEM = "getSelectedItem";
+            /// <summary>
+            /// Call to get the list of currently targeted things
+            /// </summary>
             public const string GETTARGETLIST = "getTargetList";
         }
 

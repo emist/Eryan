@@ -50,7 +50,7 @@ namespace Eryan
             this.pid = pid;
         }
 
-        public uint getPid()
+        public virtual uint getPid()
         {
             return pid;
         }

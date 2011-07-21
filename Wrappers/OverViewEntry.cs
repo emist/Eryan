@@ -87,7 +87,7 @@ namespace Eryan.Wrappers
             }
         }
 
-        public string ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(300);
             foreach (string section in sections)

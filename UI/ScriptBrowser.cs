@@ -11,8 +11,14 @@ using System.Windows.Forms;
 
 namespace Eryan.UI
 {
+    /// <summary>
+    /// The form used to load scripts into Eryan
+    /// </summary>
     public partial class ScriptBrowser : Form
     {
+        /// <summary>
+        /// Nothing yet
+        /// </summary>
         public ScriptBrowser()
         {
             InitializeComponent();

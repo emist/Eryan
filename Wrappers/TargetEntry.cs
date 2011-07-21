@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
+
 namespace Eryan.Wrappers
 {
     /// <summary>
@@ -83,7 +84,7 @@ namespace Eryan.Wrappers
             }
         }
 
-        public string ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(300);
             foreach (string section in sections)

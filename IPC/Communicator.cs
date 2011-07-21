@@ -32,6 +32,7 @@ namespace Eryan.IPC
             factory = new FunctionCallFactory();
             rfactory = new ResponseFactory();
             initialized = pipe.initialize();
+            this.name = name;
         }
 
         /// <summary>
