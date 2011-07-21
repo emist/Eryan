@@ -24,6 +24,7 @@ namespace Eryan.Factories
             public const string GETINFLIGHTINTERFACE = "getInflightInterface";
             public const string ISMENUOPEN = "isMenuOpen";
             public const string GETOVERVIEWITEMS = "getOverViewItems";
+            public const string GETSELECTEDITEM = "getSelectedItem";
         }
 
        /// <summary>
