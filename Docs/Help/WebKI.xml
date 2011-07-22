@@ -249,10 +249,10 @@
   <HelpKINode Title="ClearText method" Url="html/b05fb15b-3bb6-5314-a78a-7b0becaab6db.htm" />
   <HelpKINode Title="ClearText method" Url="html/e582565c-91d7-84df-352b-6aaf6f08c9d0.htm" />
   <HelpKINode Title="ClearThistarget method" Url="html/83b06fa9-9cfc-5e7e-629c-e2ccde15f11d.htm" />
-  <HelpKINode Title="ClearTopleftX method" Url="html/c56129e8-46cd-cd6f-9cc7-c7c89cfade10.htm" />
   <HelpKINode Title="ClearTopLeftX method" Url="html/6bbdcc7e-14b7-9a75-80b2-1f3ca2073962.htm" />
-  <HelpKINode Title="ClearTopleftY method" Url="html/dff48f90-3ad7-57d7-9b38-795e9b56fea0.htm" />
+  <HelpKINode Title="ClearTopleftX method" Url="html/c56129e8-46cd-cd6f-9cc7-c7c89cfade10.htm" />
   <HelpKINode Title="ClearTopLeftY method" Url="html/e68cf180-939a-2d4a-6494-07d2afee97fe.htm" />
+  <HelpKINode Title="ClearTopleftY method" Url="html/dff48f90-3ad7-57d7-9b38-795e9b56fea0.htm" />
   <HelpKINode Title="ClearWidth method" Url="html/c65a7ac6-ce87-8b5a-aacc-1348b79df17a.htm" />
   <HelpKINode Title="ClearWidth method" Url="html/ca2b6ec3-04ba-c986-9a1f-eb7cfadc6f89.htm" />
   <HelpKINode Title="click method" Url="html/4c5fd6d9-fdcc-a2f2-e6b8-fd5df9520ece.htm" />
@@ -315,7 +315,6 @@
   <HelpKINode Title="CloseTopLeftY property" Url="html/fce48a85-db1e-9b67-21fa-96091620ce96.htm" />
   <HelpKINode Title="CloseTopLeftYFieldNumber field" Url="html/c94e7ce0-6014-6a5c-7a07-aa031a68adbf.htm" />
   <HelpKINode Title="com field" Url="html/bd4517a8-25bb-ddde-040d-6ddc81fa5d51.htm" />
-  <HelpKINode Title="comm field" Url="html/367f1135-07a6-8f3d-edaa-537e5700d0ed.htm" />
   <HelpKINode Title="comm field" Url="html/44a6f08b-b14c-c6a7-32e1-c828508718e2.htm" />
   <HelpKINode Title="Communicator class" Url="html/572c6567-fcb3-2a2c-6b07-234f2de1d0e0.htm" />
   <HelpKINode Title="Communicator class" Url="html/8c366528-cf3a-c7d4-05ec-27200c5339f2.htm" />
@@ -464,7 +463,12 @@
   <HelpKINode Title="drawString method" Url="html/3c5e9cef-6732-1291-9d14-ee02e574ce6d.htm" />
   <HelpKINode Title="drawString method" Url="html/91b0069b-9d07-9bb1-3b79-d4fd32051f88.htm" />
   <HelpKINode Title="drawString method" Url="html/ae57006e-d319-6d4c-3c19-0e7c5cbb40c8.htm" />
+  <HelpKINode Title="ECommunicator field" Url="html/c5bec9b7-0c38-64b1-3aa3-9da00a005414.htm" />
   <HelpKINode Title="EGLENNAERT field" Url="html/eaca1474-0ec0-9a38-b3c2-473f45514eb6.htm" />
+  <HelpKINode Title="EMenuHandler field" Url="html/33d1b829-e8e1-017b-0078-eeb750e452e5.htm" />
+  <HelpKINode Title="EMouse field" Url="html/f6f96fb7-2b8e-ca2b-8719-ceb899485b69.htm" />
+  <HelpKINode Title="EOverViewHandler field" Url="html/e6c58de5-55be-1068-e7ff-a73c666c146c.htm" />
+  <HelpKINode Title="EPreciseMouse field" Url="html/5f85dd5e-7eb3-97ed-f19c-54b27be67f8d.htm" />
   <HelpKINode Title="Equals method" Url="html/5c0dd59d-dab6-e127-83ce-fcc505af2001.htm" />
   <HelpKINode Title="Equals method" Url="html/b73f2844-5f29-edde-e208-5d4831216ef4.htm" />
   <HelpKINode Title="Eryan namespace" Url="html/0f81643c-3a67-353f-172c-c21edb6745c0.htm" />
@@ -694,14 +698,18 @@
   <HelpKINode Title="FunctionCallFactory.CALLS.FINDBYNAMELOGIN field" Url="html/dbef9885-491f-b2ee-9f15-23e2683aef05.htm" />
   <HelpKINode Title="FunctionCallFactory.CALLS.FINDBYTEXTLOGIN field" Url="html/1cdfc237-dd1d-a470-aba6-8318105eec44.htm" />
   <HelpKINode Title="FunctionCallFactory.CALLS.FINDBYTEXTMENU field" Url="html/e585cfed-5bea-4722-7347-0c274b14d845.htm" />
+  <HelpKINode Title="FunctionCallFactory.CALLS.GETCARGOLIST field" Url="html/813317f0-b13d-7322-87b9-7e5abf80fc83.htm" />
+  <HelpKINode Title="FunctionCallFactory.CALLS.GETHIGHSLOT field" Url="html/f2defdbe-771a-d25c-515a-6ba75ff3b779.htm" />
   <HelpKINode Title="FunctionCallFactory.CALLS.GETINFLIGHTINTERFACE field" Url="html/a126d5e0-3516-c983-5843-b24782e781cc.htm" />
   <HelpKINode Title="FunctionCallFactory.CALLS.GETOVERVIEWITEMS field" Url="html/3a03e71d-a5e1-60e3-d2ae-0b8c5e0d52f3.htm" />
   <HelpKINode Title="FunctionCallFactory.CALLS.GETSELECTEDITEM field" Url="html/76356a21-9869-052c-a899-bf6f05b98323.htm" />
   <HelpKINode Title="FunctionCallFactory.CALLS.GETTARGETLIST field" Url="html/750be733-1df3-09b3-e3ae-a335ec8ec2ea.htm" />
+  <HelpKINode Title="FunctionCallFactory.CALLS.ISHIGHSLOTACTIVE field" Url="html/d775af90-e00f-fc15-4a18-072717198303.htm" />
   <HelpKINode Title="FunctionCallFactory.CALLS.ISMENUOPEN field" Url="html/9abded0d-26da-5941-9b92-eb862d5148d4.htm" />
   <HelpKINode Title="FunctionCallFactory.FunctionCallFactory constructor" Url="html/dfa627eb-065f-818c-fd53-6c7bc91c771e.htm" />
   <HelpKINode Title="GetBits method" Url="html/0b1acea3-1c8a-40a6-6ce5-fec840940132.htm" />
   <HelpKINode Title="getBots method" Url="html/3b69ea0e-895e-14f3-9b8f-3a87bc2a6b68.htm" />
+  <HelpKINode Title="GETCARGOLIST field" Url="html/813317f0-b13d-7322-87b9-7e5abf80fc83.htm" />
   <HelpKINode Title="GetChildAtPoint method" Url="html/036ee875-9a06-5dba-a277-89ca1df4600e.htm" />
   <HelpKINode Title="GetChildAtPoint method" Url="html/105db2d6-ecf1-82f7-f286-68c99bc73318.htm" />
   <HelpKINode Title="GetChildAtPoint method" Url="html/5571a04f-0715-160b-5d8b-c36381fe3be3.htm" />
@@ -709,6 +717,7 @@
   <HelpKINode Title="GetChildAtPoint method" Url="html/98298d3b-05cb-cb28-e6b5-53fd6d18d429.htm" />
   <HelpKINode Title="getHandle method" Url="html/147a0695-0269-eb1c-96ae-e77249e56f0e.htm" />
   <HelpKINode Title="getHandle method" Url="html/cb35397c-21c9-a672-704f-77087b87d281.htm" />
+  <HelpKINode Title="GETHIGHSLOT field" Url="html/f2defdbe-771a-d25c-515a-6ba75ff3b779.htm" />
   <HelpKINode Title="GETINFLIGHTINTERFACE field" Url="html/a126d5e0-3516-c983-5843-b24782e781cc.htm" />
   <HelpKINode Title="GetJammer method" Url="html/23d303ab-5ae5-efd7-5d31-f7b015c605da.htm" />
   <HelpKINode Title="GetJammer method" Url="html/4db5814f-3eae-4471-6fdb-242f61daccfa.htm" />
@@ -774,13 +783,13 @@
   <HelpKINode Title="HasText property" Url="html/dc065d08-1c81-8b8c-4c4a-0bc0937e75f3.htm" />
   <HelpKINode Title="HasText property" Url="html/f61dc6f9-7d78-d430-99a8-21c64a8904e9.htm" />
   <HelpKINode Title="HasTopleftX property" Url="html/0891b274-2f57-a5a1-956d-4e12bdaca62d.htm" />
-  <HelpKINode Title="HasTopLeftX property" Url="html/3a44ec77-441d-1e43-70e0-415eeb0e3127.htm" />
   <HelpKINode Title="HasTopLeftX property" Url="html/a636c1cf-cc55-350b-5ce2-201107eccb74.htm" />
   <HelpKINode Title="HasTopleftX property" Url="html/6014661e-f49e-9236-f730-2a61f7d057ab.htm" />
+  <HelpKINode Title="HasTopLeftX property" Url="html/3a44ec77-441d-1e43-70e0-415eeb0e3127.htm" />
+  <HelpKINode Title="HasTopleftY property" Url="html/48aea4d2-c4fe-376b-6b12-a3c8429b0907.htm" />
   <HelpKINode Title="HasTopLeftY property" Url="html/25813be0-ac17-194c-64ad-f30c641daac9.htm" />
   <HelpKINode Title="HasTopLeftY property" Url="html/6a38f351-2cbf-d5ee-4c32-09fbde3fa9c3.htm" />
   <HelpKINode Title="HasTopleftY property" Url="html/d40a3079-0864-94cf-b83e-5313348fc58d.htm" />
-  <HelpKINode Title="HasTopleftY property" Url="html/48aea4d2-c4fe-376b-6b12-a3c8429b0907.htm" />
   <HelpKINode Title="HasWidth property" Url="html/656a34a9-0dee-750f-6920-8754185d53a7.htm" />
   <HelpKINode Title="HasWidth property" Url="html/b47584b5-de6d-593e-9228-004fe9eaa298.htm" />
   <HelpKINode Title="HasWidth property" Url="html/d27b48d0-632b-dc72-99d3-18ef6e9f5325.htm" />
@@ -1005,6 +1014,7 @@
   <HelpKINode Title="Invoke method" Url="html/8a6d892d-a210-ba15-301d-fc34bdf818cb.htm" />
   <HelpKINode Title="Invoke method" Url="html/ef3fd57c-4472-57ea-1a51-12b9ef106441.htm" />
   <HelpKINode Title="IsBitSet method" Url="html/f047c67f-1342-b8aa-9589-ac22a79198e4.htm" />
+  <HelpKINode Title="ISHIGHSLOTACTIVE field" Url="html/d775af90-e00f-fc15-4a18-072717198303.htm" />
   <HelpKINode Title="IsInitialized property" Url="html/4a0fa466-5dd7-766c-2336-26a1b7d4060a.htm" />
   <HelpKINode Title="IsInitialized property" Url="html/603bbce7-3987-883c-9c78-ef4d1d22fd2d.htm" />
   <HelpKINode Title="IsInitialized property" Url="html/8b2a0288-c856-9eea-e34f-773e7238890b.htm" />
@@ -1108,10 +1118,14 @@
     <HelpKINode Title="methods" Url="html/f253b341-0939-5aa9-8eae-6958064e12b5.htm" />
   </HelpKINode>
   <HelpKINode Title="KeyBoard.KeyBoard constructor" Url="html/e2b1f1ca-87f6-bbb6-be16-441fd7e61a7f.htm" />
+  <HelpKINode Title="KeyBoard.keyDown method" Url="html/a926a8ad-65bf-c572-d748-298fb675b342.htm" />
+  <HelpKINode Title="KeyBoard.keyUp method" Url="html/cab2f1f0-bf37-2119-04c7-9b3d41376610.htm" />
   <HelpKINode Title="KeyBoard.pressEnter method" Url="html/e26af46e-f974-8104-3f80-37ec19cc121c.htm" />
   <HelpKINode Title="KeyBoard.sendChar method" Url="html/eeeaa30f-9935-48de-3fba-5978480e0faf.htm" />
   <HelpKINode Title="KeyBoard.sendKeyPresses method" Url="html/4fac3413-72c5-aa49-e07f-fd0e9ac3f54e.htm" />
   <HelpKINode Title="KeyBoard.VKeys enumeration" Url="html/a764661b-68ac-8d13-6375-333507b9ddb2.htm" />
+  <HelpKINode Title="keyDown method" Url="html/a926a8ad-65bf-c572-d748-298fb675b342.htm" />
+  <HelpKINode Title="keyUp method" Url="html/cab2f1f0-bf37-2119-04c7-9b3d41376610.htm" />
   <HelpKINode Title="label class" Url="html/bde17348-e54a-776b-8bf1-f28b4b9f4cb9.htm" />
   <HelpKINode Title="label class" Url="html/fca60639-c4c0-5c8a-a874-fd9626330475.htm" />
   <HelpKINode Title="label class">
@@ -1197,7 +1211,6 @@
   <HelpKINode Title="LoDword method" Url="html/15adbba7-c5ab-c320-eaba-f880f209ec65.htm" />
   <HelpKINode Title="LOOKAT field" Url="html/4c951bc2-efc3-0c7c-9e3b-14f88090f14e.htm" />
   <HelpKINode Title="LoWord method" Url="html/986d045d-accb-1fd0-a89d-c54e94444380.htm" />
-  <HelpKINode Title="m field" Url="html/356cd62e-3ddb-07cc-ec31-3704950788b0.htm" />
   <HelpKINode Title="m field" Url="html/d68acea6-97f4-bd7e-06c5-95c7ad3e5148.htm" />
   <HelpKINode Title="MakeDword method" Url="html/f771e39f-d428-cc5e-f6ee-cdd8f2369bc4.htm" />
   <HelpKINode Title="MakeLong method" Url="html/549ca63e-3538-2720-5b0d-eddd801ae541.htm" />
@@ -1218,7 +1231,6 @@
     <HelpKINode Title="methods" Url="html/63ff386e-7aa8-39a4-2dfe-3e7ba3f48ccb.htm" />
     <HelpKINode Title="properties" Url="html/c636c8d3-da47-c6a4-da62-eda3582ae96f.htm" />
   </HelpKINode>
-  <HelpKINode Title="menuHandler field" Url="html/0353fc81-55f2-44d6-573e-838d29ecbda3.htm" />
   <HelpKINode Title="menuHandler field" Url="html/622efc63-ec2f-d06b-7158-5bafc71835b0.htm" />
   <HelpKINode Title="MenuHandler.click method" Url="html/5fbba68f-53c4-1861-09d4-92081cb11def.htm" />
   <HelpKINode Title="MenuHandler.MenuHandler constructor" Url="html/2c71c75b-1deb-17db-eb23-b6049bae8677.htm" />
@@ -1465,7 +1477,6 @@
     <HelpKINode Title="methods" Url="html/9317f131-35ed-072c-b553-9a9ab6793461.htm" />
     <HelpKINode Title="properties" Url="html/f647168a-46a2-df63-84eb-cea11164e0cc.htm" />
   </HelpKINode>
-  <HelpKINode Title="overViewHandler field" Url="html/fb841d55-d132-9557-2e17-8c2224094a3b.htm" />
   <HelpKINode Title="OverviewHandler.interactRow method" Url="html/45b5d846-6ca9-fab0-4356-35585334a6f5.htm" />
   <HelpKINode Title="OverviewHandler.OverviewHandler constructor" Url="html/5178559b-f4be-7ce4-fef0-c8308c04ce1f.htm" />
   <HelpKINode Title="OverviewHandler.readOverView method" Url="html/dcb75294-c5a6-0e52-269a-ea49d575e25b.htm" />
@@ -1512,7 +1523,6 @@
   <HelpKINode Title="PLANETS field" Url="html/591a2063-4b82-178b-e817-72ef1aff200a.htm" />
   <HelpKINode Title="Plexiglass method" Url="html/56525c0c-9fe2-3af4-a1d6-5492f8d4b9d6.htm" />
   <HelpKINode Title="pm field" Url="html/962ef115-5356-9d69-7136-37af4ef9fc78.htm" />
-  <HelpKINode Title="pm field" Url="html/fb56c404-1f99-38a1-3e65-1d835b6e4087.htm" />
   <HelpKINode Title="PMOUSE property" Url="html/6d4c44cc-da9e-34d5-b54f-3c72465a87c1.htm" />
   <HelpKINode Title="PMOUSE property" Url="html/78c5b073-0382-da4c-8990-6a807198fcb3.htm" />
   <HelpKINode Title="PostMessage method" Url="html/8a023fc6-3c93-98cb-c934-264de799fa03.htm" />
@@ -1594,14 +1604,14 @@
     <HelpKINode Title="fields" Url="html/a215f42d-9ebb-ef81-927b-917c3dc1cff3.htm" />
     <HelpKINode Title="methods" Url="html/ac17180c-0d9d-e95b-290e-2f46b6e9674f.htm" />
   </HelpKINode>
-  <HelpKINode Title="Scriptable.comm field" Url="html/367f1135-07a6-8f3d-edaa-537e5700d0ed.htm" />
+  <HelpKINode Title="Scriptable.ECommunicator field" Url="html/c5bec9b7-0c38-64b1-3aa3-9da00a005414.htm" />
+  <HelpKINode Title="Scriptable.EMenuHandler field" Url="html/33d1b829-e8e1-017b-0078-eeb750e452e5.htm" />
+  <HelpKINode Title="Scriptable.EMouse field" Url="html/f6f96fb7-2b8e-ca2b-8719-ceb899485b69.htm" />
+  <HelpKINode Title="Scriptable.EOverViewHandler field" Url="html/e6c58de5-55be-1068-e7ff-a73c666c146c.htm" />
+  <HelpKINode Title="Scriptable.EPreciseMouse field" Url="html/5f85dd5e-7eb3-97ed-f19c-54b27be67f8d.htm" />
   <HelpKINode Title="Scriptable.initializeInputs method" Url="html/e163061d-5da0-3ba6-421a-9a2b67e1908b.htm" />
-  <HelpKINode Title="Scriptable.m field" Url="html/356cd62e-3ddb-07cc-ec31-3704950788b0.htm" />
-  <HelpKINode Title="Scriptable.menuHandler field" Url="html/0353fc81-55f2-44d6-573e-838d29ecbda3.htm" />
   <HelpKINode Title="Scriptable.onFinish method" Url="html/9bcebfee-7101-bacb-b80b-1fd4a12ec781.htm" />
   <HelpKINode Title="Scriptable.onStart method" Url="html/a06e3608-8c26-0f04-07f5-bf686564cca3.htm" />
-  <HelpKINode Title="Scriptable.overViewHandler field" Url="html/fb841d55-d132-9557-2e17-8c2224094a3b.htm" />
-  <HelpKINode Title="Scriptable.pm field" Url="html/fb56c404-1f99-38a1-3e65-1d835b6e4087.htm" />
   <HelpKINode Title="Scriptable.run method" Url="html/7004d5a7-69a2-fc55-9984-fae64287b9a7.htm" />
   <HelpKINode Title="Scriptable.Scriptable constructor" Url="html/0d013024-4018-085c-a5f9-9a0dc6b50903.htm" />
   <HelpKINode Title="ScriptBrowser class" Url="html/13162bbb-71bb-c528-63cb-9764027a4c88.htm" />
@@ -1689,8 +1699,8 @@
   <HelpKINode Title="SetText method" Url="html/c2734942-c084-cad5-a488-ece95acc7685.htm" />
   <HelpKINode Title="SetText method" Url="html/fafa67aa-7370-1dcd-ed51-97767a44569d.htm" />
   <HelpKINode Title="SetThistarget method" Url="html/0d674c5c-e986-35a8-eafa-98dbf100c7f1.htm" />
-  <HelpKINode Title="SetTopLeftX method" Url="html/c2b5e863-7f0a-a7e5-24f8-cad18415281c.htm" />
   <HelpKINode Title="SetTopleftX method" Url="html/23d4658c-3748-e82a-8e2f-45c9a12760bb.htm" />
+  <HelpKINode Title="SetTopLeftX method" Url="html/c2b5e863-7f0a-a7e5-24f8-cad18415281c.htm" />
   <HelpKINode Title="SetTopLeftY method" Url="html/f2d9ae49-1328-0056-ddea-c4db0a8df64d.htm" />
   <HelpKINode Title="SetTopleftY method" Url="html/7d00728a-2ad0-5bd6-2a12-75e6b9643a65.htm" />
   <HelpKINode Title="setTopLevel method" Url="html/6f880222-e5b3-0590-6ebc-1c44fdcca104.htm" />
@@ -1764,18 +1774,14 @@
   <HelpKINode Title="synchronizePreciseMouse method" Url="html/8711f606-b651-f14b-c0bb-4e1a5ec2252d.htm" />
   <HelpKINode Title="tabControl1 field" Url="html/6c8417de-1b99-961d-0e3b-4dd0b1892524.htm" />
   <HelpKINode Title="tabPage1 field" Url="html/2fb41f30-5f23-4411-2d0d-0f9b9b8cf004.htm" />
-  <HelpKINode Title="targetentry class" Url="html/69130ff8-57e0-3ec5-fc2b-ee6140e59a18.htm" />
+  <HelpKINode Title="TargetEntry class" Url="html/201444a6-a9b8-e15a-e198-605d2bdf52e6.htm" />
   <HelpKINode Title="TargetEntry class" Url="html/f157ea88-7a0c-860b-7192-bbfa2e7b2d3d.htm" />
   <HelpKINode Title="targetentry class" Url="html/f5375caf-ecba-3397-31d0-458a33e3643c.htm" />
   <HelpKINode Title="targetentry class">
-    <HelpKINode Title="about targetentry class" Url="html/69130ff8-57e0-3ec5-fc2b-ee6140e59a18.htm" />
     <HelpKINode Title="all members" Url="html/f5375caf-ecba-3397-31d0-458a33e3643c.htm" />
     <HelpKINode Title="constructor" Url="html/0388a665-7871-41e4-026b-20cb057ce6a3.htm" />
-    <HelpKINode Title="properties" Url="html/047bd180-bcf6-f7bd-877d-bfa78ae3ad13.htm" />
-  </HelpKINode>
-  <HelpKINode Title="TargetEntry class" Url="html/201444a6-a9b8-e15a-e198-605d2bdf52e6.htm" />
-  <HelpKINode Title="targetentry class">
     <HelpKINode Title="methods" Url="html/a7562183-6856-ea58-74da-1a4920e91c17.htm" />
+    <HelpKINode Title="properties" Url="html/047bd180-bcf6-f7bd-877d-bfa78ae3ad13.htm" />
     <HelpKINode Title="fields" Url="html/2fb61c9e-e2b2-6d72-bd0f-c7c7ecfd48f5.htm" />
   </HelpKINode>
   <HelpKINode Title="TargetEntry class">
@@ -1784,6 +1790,10 @@
     <HelpKINode Title="constructor" Url="html/99d9284d-a921-ae4f-f103-6ae2f0d6f6ea.htm" />
     <HelpKINode Title="methods" Url="html/f3136c78-b8b2-72f4-438b-578b2ccd2b57.htm" />
     <HelpKINode Title="properties" Url="html/b5550b97-f69e-3c13-8ba7-b2a917475a0a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="targetentry class" Url="html/69130ff8-57e0-3ec5-fc2b-ee6140e59a18.htm" />
+  <HelpKINode Title="targetentry class">
+    <HelpKINode Title="about targetentry class" Url="html/69130ff8-57e0-3ec5-fc2b-ee6140e59a18.htm" />
   </HelpKINode>
   <HelpKINode Title="targetentry.Builder class" Url="html/2bb9a8bd-e834-e258-7452-7546a25dc5b6.htm" />
   <HelpKINode Title="targetentry.Builder class" Url="html/97c4568f-d6a0-b8aa-b373-f174f9b4fd3d.htm" />
@@ -1830,8 +1840,8 @@
   <HelpKINode Title="TargetEntry.parseEntry method" Url="html/04c3e179-793d-83a7-baba-e32e84c96807.htm" />
   <HelpKINode Title="targetentry.ParseFrom method" Url="html/402d8dbf-a2e5-d71a-5005-d2357c502146.htm" />
   <HelpKINode Title="targetentry.SerializedSize property" Url="html/f0d5ea13-7b92-1e15-d163-6bd5b7639bc6.htm" />
-  <HelpKINode Title="TargetEntry.TargetEntry constructor" Url="html/99d9284d-a921-ae4f-f103-6ae2f0d6f6ea.htm" />
   <HelpKINode Title="targetentry.targetentry constructor" Url="html/0388a665-7871-41e4-026b-20cb057ce6a3.htm" />
+  <HelpKINode Title="TargetEntry.TargetEntry constructor" Url="html/99d9284d-a921-ae4f-f103-6ae2f0d6f6ea.htm" />
   <HelpKINode Title="targetentry.Text property" Url="html/75d4fbd1-11d2-43f4-1a70-0c0e70a94e11.htm" />
   <HelpKINode Title="targetentry.TextFieldNumber field" Url="html/1c3848f1-0ad9-3912-6788-080ebf0f1145.htm" />
   <HelpKINode Title="targetentry.ThisMessage property" Url="html/476a2247-2550-e9d4-16ae-763d3a7cf740.htm" />
@@ -1947,12 +1957,12 @@
   <HelpKINode Title="TopLeftX property" Url="html/e91647bc-6f09-18c1-7140-a2d7f89bdc62.htm" />
   <HelpKINode Title="TopleftX property" Url="html/561fe86f-1cee-824a-11dc-74a69adff354.htm" />
   <HelpKINode Title="TopleftX property" Url="html/7a330c0b-1970-8073-92d4-a727ff5a9279.htm" />
-  <HelpKINode Title="TopleftXFieldNumber field" Url="html/3c08b831-d7c5-259c-cbce-2257b0f2196b.htm" />
   <HelpKINode Title="TopLeftXFieldNumber field" Url="html/b18c1b5a-1bab-9d88-d23b-8b7b8c120de9.htm" />
+  <HelpKINode Title="TopleftXFieldNumber field" Url="html/3c08b831-d7c5-259c-cbce-2257b0f2196b.htm" />
   <HelpKINode Title="TopleftY property" Url="html/d9bc02f5-68a4-67f1-c493-879b0fd06ab2.htm" />
-  <HelpKINode Title="TopleftY property" Url="html/f3599f8a-d5cd-4b3c-d1df-303e3b1e362d.htm" />
   <HelpKINode Title="TopLeftY property" Url="html/f938be43-03c0-af25-16f7-6d7541f4c3e1.htm" />
   <HelpKINode Title="TopLeftY property" Url="html/127fd719-8219-34c0-b480-bb7012ef1fec.htm" />
+  <HelpKINode Title="TopleftY property" Url="html/f3599f8a-d5cd-4b3c-d1df-303e3b1e362d.htm" />
   <HelpKINode Title="TopLeftYFieldNumber field" Url="html/234a6d2a-4bb2-1eae-3278-d0d38c65695d.htm" />
   <HelpKINode Title="TopleftYFieldNumber field" Url="html/821bb0a1-633a-d533-3c67-5b59f9468bf3.htm" />
   <HelpKINode Title="ToString method" Url="html/559f345a-0108-e6b2-7591-c2b8a880b65f.htm" />
@@ -2222,9 +2232,9 @@
   <HelpKINode Title="WriteTo method" Url="html/d80c4e52-80a7-8dad-d948-1b11d1849b5e.htm" />
   <HelpKINode Title="X field" Url="html/55badc2e-d42c-33a1-b1a5-7408981649e3.htm" />
   <HelpKINode Title="X property" Url="html/4b693eef-550d-7906-27fa-79e465cd8721.htm" />
+  <HelpKINode Title="X property" Url="html/884c2555-7008-0241-2505-bb5814a48dd8.htm" />
   <HelpKINode Title="X property" Url="html/bc9e1cad-474f-d9de-87cb-17c6f04e1292.htm" />
   <HelpKINode Title="x property" Url="html/f80813f7-0516-a896-fd83-aaf1fdac2767.htm" />
-  <HelpKINode Title="X property" Url="html/884c2555-7008-0241-2505-bb5814a48dd8.htm" />
   <HelpKINode Title="Y field" Url="html/8b6ac057-e4ae-755d-0420-ffc00f663ea5.htm" />
   <HelpKINode Title="y property" Url="html/4176faff-138a-850d-5983-035414147b45.htm" />
   <HelpKINode Title="Y property" Url="html/306967f3-16ce-f961-3377-1e1d857bf233.htm" />

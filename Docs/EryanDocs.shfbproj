@@ -20,8 +20,12 @@
     <Language>en-US</Language>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\bin\Debug\Eryan.exe" xmlns="" />
-<DocumentationSource sourceFile="..\bin\Debug\Eryan.XML" xmlns="" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\bin\Debug\Eryan.XML" xmlns="" />
+    </DocumentationSources>
     <HelpFileFormat>HtmlHelp1, Website</HelpFileFormat>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="(global)" isDocumented="False" xmlns="" />
+    </NamespaceSummaries>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional
