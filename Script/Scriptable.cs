@@ -17,22 +17,26 @@ namespace Eryan.Script
         /// <summary>
         /// Bot's Mouse handler
         /// </summary>
-        public Mouse m;
-        public PreciseMouse pm;
+        public Mouse EMouse;
+
+        /// <summary>
+        /// Bot's PreciseMouse reference
+        /// </summary>
+        public PreciseMouse EPreciseMouse;
         /// <summary>
         /// Bot's MenuHandler reference 
         /// </summary>
-        public MenuHandler menuHandler;
+        public MenuHandler EMenuHandler;
 
         /// <summary>
         /// Bot's communicator reference
         /// </summary>
-        public Communicator comm;
+        public Communicator ECommunicator;
 
         /// <summary>
         /// Bot's OverViewHandler reference
         /// </summary>
-        public OverviewHandler overViewHandler;
+        public OverviewHandler EOverViewHandler;
 
         /// <summary>
         /// Internal use, the Bot will initialize the script with its input handlers once its loaded into memory
@@ -44,11 +48,11 @@ namespace Eryan.Script
         /// <param name="over">The bot's overviewhandler reference</param>
         public void initializeInputs(PreciseMouse pm, Mouse m, MenuHandler mh, Communicator comm, OverviewHandler over)
         {
-            this.m = m;
-            this.pm = pm;
-            this.menuHandler = mh;
-            this.comm = comm;
-            this.overViewHandler = over;
+            this.EMouse = m;
+            this.EPreciseMouse = pm;
+            this.EMenuHandler = mh;
+            this.ECommunicator = comm;
+            this.EOverViewHandler = over;
         }
 
         /// <summary>
