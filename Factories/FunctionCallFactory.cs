@@ -63,6 +63,11 @@ namespace Eryan.Factories
             /// Call to get the status of the given high slot
             /// </summary>
             public const string ISHIGHSLOTACTIVE = "isHighSlotActive";
+
+            /// <summary>
+            /// Retrieve the ship's cargo
+            /// </summary>
+            public const string GETCARGOLIST = "getCargoList";
         }
 
        /// <summary>
