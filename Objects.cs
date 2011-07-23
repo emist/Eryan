@@ -13,12 +13,18 @@ namespace eveobjects {
     }
     #endregion
     #region Static variables
+    internal static pbd::MessageDescriptor internal__static_eveobjects_infoObject__Descriptor;
+    internal static pb::FieldAccess.FieldAccessorTable<global::eveobjects.infoObject, global::eveobjects.infoObject.Builder> internal__static_eveobjects_infoObject__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_eveobjects_BooleanObject__Descriptor;
     internal static pb::FieldAccess.FieldAccessorTable<global::eveobjects.BooleanObject, global::eveobjects.BooleanObject.Builder> internal__static_eveobjects_BooleanObject__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_eveobjects_functionCall__Descriptor;
     internal static pb::FieldAccess.FieldAccessorTable<global::eveobjects.functionCall, global::eveobjects.functionCall.Builder> internal__static_eveobjects_functionCall__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_eveobjects_overview__Descriptor;
     internal static pb::FieldAccess.FieldAccessorTable<global::eveobjects.overview, global::eveobjects.overview.Builder> internal__static_eveobjects_overview__FieldAccessorTable;
+    internal static pbd::MessageDescriptor internal__static_eveobjects_itemgroup__Descriptor;
+    internal static pb::FieldAccess.FieldAccessorTable<global::eveobjects.itemgroup, global::eveobjects.itemgroup.Builder> internal__static_eveobjects_itemgroup__FieldAccessorTable;
+    internal static pbd::MessageDescriptor internal__static_eveobjects_item__Descriptor;
+    internal static pb::FieldAccess.FieldAccessorTable<global::eveobjects.item, global::eveobjects.item.Builder> internal__static_eveobjects_item__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_eveobjects_label__Descriptor;
     internal static pb::FieldAccess.FieldAccessorTable<global::eveobjects.label, global::eveobjects.label.Builder> internal__static_eveobjects_label__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_eveobjects_TargetList__Descriptor;
@@ -38,52 +44,69 @@ namespace eveobjects {
     
     static Objects() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
-          "Cg1vYmplY3RzLnByb3RvEgpldmVvYmplY3RzIh8KDUJvb2xlYW5PYmplY3QS" + 
-          "DgoGaXN0cnVlGAEgAigIIjIKDGZ1bmN0aW9uQ2FsbBIMCgRuYW1lGAEgAigJ" + 
-          "EhQKDHN0cnBhcmFtZXRlchgCIAEoCSI0CghvdmVydmlldxIoCg1vdmVydmll" + 
-          "d0VudHJ5GAEgAygLMhEuZXZlb2JqZWN0cy5sYWJlbCJYCgVsYWJlbBIMCgR0" + 
-          "ZXh0GAEgAigJEhAKCHRvcExlZnRYGAIgAigFEhAKCHRvcExlZnRZGAMgAigF" + 
-          "Eg0KBXdpZHRoGAQgAigFEg4KBmhlaWdodBgFIAIoBSI5CgpUYXJnZXRMaXN0" + 
-          "EisKCnRoaXN0YXJnZXQYASADKAsyFy5ldmVvYmplY3RzLnRhcmdldGVudHJ5" + 
-          "IlEKC3RhcmdldGVudHJ5Eh8KBHRleHQYASABKAsyES5ldmVvYmplY3RzLmxh" + 
-          "YmVsEiEKBGphbXMYAiABKAsyEy5ldmVvYmplY3RzLmphbW1lcnMiGQoHamFt" + 
-          "bWVycxIOCgZqYW1tZXIYASADKAki8QEKCUludGVyZmFjZRIMCgRuYW1lGAEg" + 
-          "AigJEhAKCHRvcGxlZnRYGAIgAigFEhAKCHRvcGxlZnRZGAMgAigFEg0KBXdp" + 
-          "ZHRoGAQgAigFEg4KBmhlaWdodBgFIAIoBRIWCg5oYXNDbG9zZUJ1dHRvbhgG" + 
-          "IAEoCBIVCg1jbG9zZVRvcExlZnRYGAcgASgFEhUKDWNsb3NlVG9wTGVmdFkY" + 
-          "CCABKAUSGQoRaGFzQ29udGludWVCdXR0b24YCSABKAgSGAoQY29udGludWVU" + 
-          "b3BMZWZ0WBgKIAEoBRIYChBjb250aW51ZVRvcExlZnRZGAsgASgF");
+          "Cg1vYmplY3RzLnByb3RvEgpldmVvYmplY3RzIikKCmluZm9PYmplY3QSDAoE" + 
+          "dGV4dBgBIAEoCRINCgV2YWx1ZRgCIAEoBSIfCg1Cb29sZWFuT2JqZWN0Eg4K" + 
+          "BmlzdHJ1ZRgBIAIoCCIyCgxmdW5jdGlvbkNhbGwSDAoEbmFtZRgBIAIoCRIU" + 
+          "CgxzdHJwYXJhbWV0ZXIYAiABKAkiNAoIb3ZlcnZpZXcSKAoNb3ZlcnZpZXdF" + 
+          "bnRyeRgBIAMoCzIRLmV2ZW9iamVjdHMubGFiZWwiLAoJaXRlbWdyb3VwEh8K" + 
+          "BWl0ZW1zGAEgAygLMhAuZXZlb2JqZWN0cy5pdGVtImUKBGl0ZW0SDAoEbmFt" + 
+          "ZRgBIAIoCRIQCghxdWFudGl0eRgCIAIoBRIMCgRtZXRhGAMgAigJEg4KBnZv" + 
+          "bHVtZRgEIAIoCRIfCgRkYXRhGAUgAigLMhEuZXZlb2JqZWN0cy5sYWJlbCJY" + 
+          "CgVsYWJlbBIMCgR0ZXh0GAEgAigJEhAKCHRvcExlZnRYGAIgAigFEhAKCHRv" + 
+          "cExlZnRZGAMgAigFEg0KBXdpZHRoGAQgAigFEg4KBmhlaWdodBgFIAIoBSI5" + 
+          "CgpUYXJnZXRMaXN0EisKCnRoaXN0YXJnZXQYASADKAsyFy5ldmVvYmplY3Rz" + 
+          "LnRhcmdldGVudHJ5IlEKC3RhcmdldGVudHJ5Eh8KBHRleHQYASABKAsyES5l" + 
+          "dmVvYmplY3RzLmxhYmVsEiEKBGphbXMYAiABKAsyEy5ldmVvYmplY3RzLmph" + 
+          "bW1lcnMiGQoHamFtbWVycxIOCgZqYW1tZXIYASADKAki8QEKCUludGVyZmFj" + 
+          "ZRIMCgRuYW1lGAEgAigJEhAKCHRvcGxlZnRYGAIgAigFEhAKCHRvcGxlZnRZ" + 
+          "GAMgAigFEg0KBXdpZHRoGAQgAigFEg4KBmhlaWdodBgFIAIoBRIWCg5oYXND" + 
+          "bG9zZUJ1dHRvbhgGIAEoCBIVCg1jbG9zZVRvcExlZnRYGAcgASgFEhUKDWNs" + 
+          "b3NlVG9wTGVmdFkYCCABKAUSGQoRaGFzQ29udGludWVCdXR0b24YCSABKAgS" + 
+          "GAoQY29udGludWVUb3BMZWZ0WBgKIAEoBRIYChBjb250aW51ZVRvcExlZnRZ" + 
+          "GAsgASgF");
       pbd::FileDescriptor.InternalDescriptorAssigner assigner = delegate(pbd::FileDescriptor root) {
         descriptor = root;
-        internal__static_eveobjects_BooleanObject__Descriptor = Descriptor.MessageTypes[0];
+        internal__static_eveobjects_infoObject__Descriptor = Descriptor.MessageTypes[0];
+        internal__static_eveobjects_infoObject__FieldAccessorTable = 
+            new pb::FieldAccess.FieldAccessorTable<global::eveobjects.infoObject, global::eveobjects.infoObject.Builder>(internal__static_eveobjects_infoObject__Descriptor,
+                new string[] { "Text", "Value", });
+        internal__static_eveobjects_BooleanObject__Descriptor = Descriptor.MessageTypes[1];
         internal__static_eveobjects_BooleanObject__FieldAccessorTable = 
             new pb::FieldAccess.FieldAccessorTable<global::eveobjects.BooleanObject, global::eveobjects.BooleanObject.Builder>(internal__static_eveobjects_BooleanObject__Descriptor,
                 new string[] { "Istrue", });
-        internal__static_eveobjects_functionCall__Descriptor = Descriptor.MessageTypes[1];
+        internal__static_eveobjects_functionCall__Descriptor = Descriptor.MessageTypes[2];
         internal__static_eveobjects_functionCall__FieldAccessorTable = 
             new pb::FieldAccess.FieldAccessorTable<global::eveobjects.functionCall, global::eveobjects.functionCall.Builder>(internal__static_eveobjects_functionCall__Descriptor,
                 new string[] { "Name", "Strparameter", });
-        internal__static_eveobjects_overview__Descriptor = Descriptor.MessageTypes[2];
+        internal__static_eveobjects_overview__Descriptor = Descriptor.MessageTypes[3];
         internal__static_eveobjects_overview__FieldAccessorTable = 
             new pb::FieldAccess.FieldAccessorTable<global::eveobjects.overview, global::eveobjects.overview.Builder>(internal__static_eveobjects_overview__Descriptor,
                 new string[] { "OverviewEntry", });
-        internal__static_eveobjects_label__Descriptor = Descriptor.MessageTypes[3];
+        internal__static_eveobjects_itemgroup__Descriptor = Descriptor.MessageTypes[4];
+        internal__static_eveobjects_itemgroup__FieldAccessorTable = 
+            new pb::FieldAccess.FieldAccessorTable<global::eveobjects.itemgroup, global::eveobjects.itemgroup.Builder>(internal__static_eveobjects_itemgroup__Descriptor,
+                new string[] { "Items", });
+        internal__static_eveobjects_item__Descriptor = Descriptor.MessageTypes[5];
+        internal__static_eveobjects_item__FieldAccessorTable = 
+            new pb::FieldAccess.FieldAccessorTable<global::eveobjects.item, global::eveobjects.item.Builder>(internal__static_eveobjects_item__Descriptor,
+                new string[] { "Name", "Quantity", "Meta", "Volume", "Data", });
+        internal__static_eveobjects_label__Descriptor = Descriptor.MessageTypes[6];
         internal__static_eveobjects_label__FieldAccessorTable = 
             new pb::FieldAccess.FieldAccessorTable<global::eveobjects.label, global::eveobjects.label.Builder>(internal__static_eveobjects_label__Descriptor,
                 new string[] { "Text", "TopLeftX", "TopLeftY", "Width", "Height", });
-        internal__static_eveobjects_TargetList__Descriptor = Descriptor.MessageTypes[4];
+        internal__static_eveobjects_TargetList__Descriptor = Descriptor.MessageTypes[7];
         internal__static_eveobjects_TargetList__FieldAccessorTable = 
             new pb::FieldAccess.FieldAccessorTable<global::eveobjects.TargetList, global::eveobjects.TargetList.Builder>(internal__static_eveobjects_TargetList__Descriptor,
                 new string[] { "Thistarget", });
-        internal__static_eveobjects_targetentry__Descriptor = Descriptor.MessageTypes[5];
+        internal__static_eveobjects_targetentry__Descriptor = Descriptor.MessageTypes[8];
         internal__static_eveobjects_targetentry__FieldAccessorTable = 
             new pb::FieldAccess.FieldAccessorTable<global::eveobjects.targetentry, global::eveobjects.targetentry.Builder>(internal__static_eveobjects_targetentry__Descriptor,
                 new string[] { "Text", "Jams", });
-        internal__static_eveobjects_jammers__Descriptor = Descriptor.MessageTypes[6];
+        internal__static_eveobjects_jammers__Descriptor = Descriptor.MessageTypes[9];
         internal__static_eveobjects_jammers__FieldAccessorTable = 
             new pb::FieldAccess.FieldAccessorTable<global::eveobjects.jammers, global::eveobjects.jammers.Builder>(internal__static_eveobjects_jammers__Descriptor,
                 new string[] { "Jammer", });
-        internal__static_eveobjects_Interface__Descriptor = Descriptor.MessageTypes[7];
+        internal__static_eveobjects_Interface__Descriptor = Descriptor.MessageTypes[10];
         internal__static_eveobjects_Interface__FieldAccessorTable = 
             new pb::FieldAccess.FieldAccessorTable<global::eveobjects.Interface, global::eveobjects.Interface.Builder>(internal__static_eveobjects_Interface__Descriptor,
                 new string[] { "Name", "TopleftX", "TopleftY", "Width", "Height", "HasCloseButton", "CloseTopLeftX", "CloseTopLeftY", "HasContinueButton", "ContinueTopLeftX", "ContinueTopLeftY", });
@@ -97,6 +120,263 @@ namespace eveobjects {
     
   }
   #region Messages
+  public sealed partial class infoObject : pb::GeneratedMessage<infoObject, infoObject.Builder> {
+    private static readonly infoObject defaultInstance = new Builder().BuildPartial();
+    public static infoObject DefaultInstance {
+      get { return defaultInstance; }
+    }
+    
+    public override infoObject DefaultInstanceForType {
+      get { return defaultInstance; }
+    }
+    
+    protected override infoObject ThisMessage {
+      get { return this; }
+    }
+    
+    public static pbd::MessageDescriptor Descriptor {
+      get { return global::eveobjects.Objects.internal__static_eveobjects_infoObject__Descriptor; }
+    }
+    
+    protected override pb::FieldAccess.FieldAccessorTable<infoObject, infoObject.Builder> InternalFieldAccessors {
+      get { return global::eveobjects.Objects.internal__static_eveobjects_infoObject__FieldAccessorTable; }
+    }
+    
+    public const int TextFieldNumber = 1;
+    private bool hasText;
+    private string text_ = "";
+    public bool HasText {
+      get { return hasText; }
+    }
+    public string Text {
+      get { return text_; }
+    }
+    
+    public const int ValueFieldNumber = 2;
+    private bool hasValue;
+    private int value_ = 0;
+    public bool HasValue {
+      get { return hasValue; }
+    }
+    public int Value {
+      get { return value_; }
+    }
+    
+    public override bool IsInitialized {
+      get {
+        return true;
+      }
+    }
+    
+    public override void WriteTo(pb::CodedOutputStream output) {
+      int size = SerializedSize;
+      if (HasText) {
+        output.WriteString(1, Text);
+      }
+      if (HasValue) {
+        output.WriteInt32(2, Value);
+      }
+      UnknownFields.WriteTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public override int SerializedSize {
+      get {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+        
+        size = 0;
+        if (HasText) {
+          size += pb::CodedOutputStream.ComputeStringSize(1, Text);
+        }
+        if (HasValue) {
+          size += pb::CodedOutputStream.ComputeInt32Size(2, Value);
+        }
+        size += UnknownFields.SerializedSize;
+        memoizedSerializedSize = size;
+        return size;
+      }
+    }
+    
+    public static infoObject ParseFrom(pb::ByteString data) {
+      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
+    }
+    public static infoObject ParseFrom(pb::ByteString data, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
+    }
+    public static infoObject ParseFrom(byte[] data) {
+      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
+    }
+    public static infoObject ParseFrom(byte[] data, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
+    }
+    public static infoObject ParseFrom(global::System.IO.Stream input) {
+      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
+    }
+    public static infoObject ParseFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
+    }
+    public static infoObject ParseDelimitedFrom(global::System.IO.Stream input) {
+      return CreateBuilder().MergeDelimitedFrom(input).BuildParsed();
+    }
+    public static infoObject ParseDelimitedFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+      return CreateBuilder().MergeDelimitedFrom(input, extensionRegistry).BuildParsed();
+    }
+    public static infoObject ParseFrom(pb::CodedInputStream input) {
+      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
+    }
+    public static infoObject ParseFrom(pb::CodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
+    }
+    public static Builder CreateBuilder() { return new Builder(); }
+    public override Builder ToBuilder() { return CreateBuilder(this); }
+    public override Builder CreateBuilderForType() { return new Builder(); }
+    public static Builder CreateBuilder(infoObject prototype) {
+      return (Builder) new Builder().MergeFrom(prototype);
+    }
+    
+    public sealed partial class Builder : pb::GeneratedBuilder<infoObject, Builder> {
+      protected override Builder ThisBuilder {
+        get { return this; }
+      }
+      public Builder() {}
+      
+      infoObject result = new infoObject();
+      
+      protected override infoObject MessageBeingBuilt {
+        get { return result; }
+      }
+      
+      public override Builder Clear() {
+        result = new infoObject();
+        return this;
+      }
+      
+      public override Builder Clone() {
+        return new Builder().MergeFrom(result);
+      }
+      
+      public override pbd::MessageDescriptor DescriptorForType {
+        get { return global::eveobjects.infoObject.Descriptor; }
+      }
+      
+      public override infoObject DefaultInstanceForType {
+        get { return global::eveobjects.infoObject.DefaultInstance; }
+      }
+      
+      public override infoObject BuildPartial() {
+        if (result == null) {
+          throw new global::System.InvalidOperationException("build() has already been called on this Builder");
+        }
+        infoObject returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public override Builder MergeFrom(pb::IMessage other) {
+        if (other is infoObject) {
+          return MergeFrom((infoObject) other);
+        } else {
+          base.MergeFrom(other);
+          return this;
+        }
+      }
+      
+      public override Builder MergeFrom(infoObject other) {
+        if (other == global::eveobjects.infoObject.DefaultInstance) return this;
+        if (other.HasText) {
+          Text = other.Text;
+        }
+        if (other.HasValue) {
+          Value = other.Value;
+        }
+        this.MergeUnknownFields(other.UnknownFields);
+        return this;
+      }
+      
+      public override Builder MergeFrom(pb::CodedInputStream input) {
+        return MergeFrom(input, pb::ExtensionRegistry.Empty);
+      }
+      
+      public override Builder MergeFrom(pb::CodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+        pb::UnknownFieldSet.Builder unknownFields = null;
+        while (true) {
+          uint tag = input.ReadTag();
+          switch (tag) {
+            case 0: {
+              if (unknownFields != null) {
+                this.UnknownFields = unknownFields.Build();
+              }
+              return this;
+            }
+            default: {
+              if (pb::WireFormat.IsEndGroupTag(tag)) {
+                if (unknownFields != null) {
+                  this.UnknownFields = unknownFields.Build();
+                }
+                return this;
+              }
+              if (unknownFields == null) {
+                unknownFields = pb::UnknownFieldSet.CreateBuilder(this.UnknownFields);
+              }
+              ParseUnknownField(input, unknownFields, extensionRegistry, tag);
+              break;
+            }
+            case 10: {
+              Text = input.ReadString();
+              break;
+            }
+            case 16: {
+              Value = input.ReadInt32();
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      public bool HasText {
+        get { return result.HasText; }
+      }
+      public string Text {
+        get { return result.Text; }
+        set { SetText(value); }
+      }
+      public Builder SetText(string value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        result.hasText = true;
+        result.text_ = value;
+        return this;
+      }
+      public Builder ClearText() {
+        result.hasText = false;
+        result.text_ = "";
+        return this;
+      }
+      
+      public bool HasValue {
+        get { return result.HasValue; }
+      }
+      public int Value {
+        get { return result.Value; }
+        set { SetValue(value); }
+      }
+      public Builder SetValue(int value) {
+        result.hasValue = true;
+        result.value_ = value;
+        return this;
+      }
+      public Builder ClearValue() {
+        result.hasValue = false;
+        result.value_ = 0;
+        return this;
+      }
+    }
+    static infoObject() {
+      object.ReferenceEquals(global::eveobjects.Objects.Descriptor, null);
+    }
+  }
+  
   public sealed partial class BooleanObject : pb::GeneratedMessage<BooleanObject, BooleanObject.Builder> {
     private static readonly BooleanObject defaultInstance = new Builder().BuildPartial();
     public static BooleanObject DefaultInstance {
@@ -811,6 +1091,660 @@ namespace eveobjects {
       }
     }
     static overview() {
+      object.ReferenceEquals(global::eveobjects.Objects.Descriptor, null);
+    }
+  }
+  
+  public sealed partial class itemgroup : pb::GeneratedMessage<itemgroup, itemgroup.Builder> {
+    private static readonly itemgroup defaultInstance = new Builder().BuildPartial();
+    public static itemgroup DefaultInstance {
+      get { return defaultInstance; }
+    }
+    
+    public override itemgroup DefaultInstanceForType {
+      get { return defaultInstance; }
+    }
+    
+    protected override itemgroup ThisMessage {
+      get { return this; }
+    }
+    
+    public static pbd::MessageDescriptor Descriptor {
+      get { return global::eveobjects.Objects.internal__static_eveobjects_itemgroup__Descriptor; }
+    }
+    
+    protected override pb::FieldAccess.FieldAccessorTable<itemgroup, itemgroup.Builder> InternalFieldAccessors {
+      get { return global::eveobjects.Objects.internal__static_eveobjects_itemgroup__FieldAccessorTable; }
+    }
+    
+    public const int ItemsFieldNumber = 1;
+    private pbc::PopsicleList<global::eveobjects.item> items_ = new pbc::PopsicleList<global::eveobjects.item>();
+    public scg::IList<global::eveobjects.item> ItemsList {
+      get { return items_; }
+    }
+    public int ItemsCount {
+      get { return items_.Count; }
+    }
+    public global::eveobjects.item GetItems(int index) {
+      return items_[index];
+    }
+    
+    public override bool IsInitialized {
+      get {
+        foreach (global::eveobjects.item element in ItemsList) {
+          if (!element.IsInitialized) return false;
+        }
+        return true;
+      }
+    }
+    
+    public override void WriteTo(pb::CodedOutputStream output) {
+      int size = SerializedSize;
+      foreach (global::eveobjects.item element in ItemsList) {
+        output.WriteMessage(1, element);
+      }
+      UnknownFields.WriteTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public override int SerializedSize {
+      get {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+        
+        size = 0;
+        foreach (global::eveobjects.item element in ItemsList) {
+          size += pb::CodedOutputStream.ComputeMessageSize(1, element);
+        }
+        size += UnknownFields.SerializedSize;
+        memoizedSerializedSize = size;
+        return size;
+      }
+    }
+    
+    public static itemgroup ParseFrom(pb::ByteString data) {
+      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
+    }
+    public static itemgroup ParseFrom(pb::ByteString data, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
+    }
+    public static itemgroup ParseFrom(byte[] data) {
+      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
+    }
+    public static itemgroup ParseFrom(byte[] data, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
+    }
+    public static itemgroup ParseFrom(global::System.IO.Stream input) {
+      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
+    }
+    public static itemgroup ParseFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
+    }
+    public static itemgroup ParseDelimitedFrom(global::System.IO.Stream input) {
+      return CreateBuilder().MergeDelimitedFrom(input).BuildParsed();
+    }
+    public static itemgroup ParseDelimitedFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+      return CreateBuilder().MergeDelimitedFrom(input, extensionRegistry).BuildParsed();
+    }
+    public static itemgroup ParseFrom(pb::CodedInputStream input) {
+      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
+    }
+    public static itemgroup ParseFrom(pb::CodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
+    }
+    public static Builder CreateBuilder() { return new Builder(); }
+    public override Builder ToBuilder() { return CreateBuilder(this); }
+    public override Builder CreateBuilderForType() { return new Builder(); }
+    public static Builder CreateBuilder(itemgroup prototype) {
+      return (Builder) new Builder().MergeFrom(prototype);
+    }
+    
+    public sealed partial class Builder : pb::GeneratedBuilder<itemgroup, Builder> {
+      protected override Builder ThisBuilder {
+        get { return this; }
+      }
+      public Builder() {}
+      
+      itemgroup result = new itemgroup();
+      
+      protected override itemgroup MessageBeingBuilt {
+        get { return result; }
+      }
+      
+      public override Builder Clear() {
+        result = new itemgroup();
+        return this;
+      }
+      
+      public override Builder Clone() {
+        return new Builder().MergeFrom(result);
+      }
+      
+      public override pbd::MessageDescriptor DescriptorForType {
+        get { return global::eveobjects.itemgroup.Descriptor; }
+      }
+      
+      public override itemgroup DefaultInstanceForType {
+        get { return global::eveobjects.itemgroup.DefaultInstance; }
+      }
+      
+      public override itemgroup BuildPartial() {
+        if (result == null) {
+          throw new global::System.InvalidOperationException("build() has already been called on this Builder");
+        }
+        result.items_.MakeReadOnly();
+        itemgroup returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public override Builder MergeFrom(pb::IMessage other) {
+        if (other is itemgroup) {
+          return MergeFrom((itemgroup) other);
+        } else {
+          base.MergeFrom(other);
+          return this;
+        }
+      }
+      
+      public override Builder MergeFrom(itemgroup other) {
+        if (other == global::eveobjects.itemgroup.DefaultInstance) return this;
+        if (other.items_.Count != 0) {
+          base.AddRange(other.items_, result.items_);
+        }
+        this.MergeUnknownFields(other.UnknownFields);
+        return this;
+      }
+      
+      public override Builder MergeFrom(pb::CodedInputStream input) {
+        return MergeFrom(input, pb::ExtensionRegistry.Empty);
+      }
+      
+      public override Builder MergeFrom(pb::CodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+        pb::UnknownFieldSet.Builder unknownFields = null;
+        while (true) {
+          uint tag = input.ReadTag();
+          switch (tag) {
+            case 0: {
+              if (unknownFields != null) {
+                this.UnknownFields = unknownFields.Build();
+              }
+              return this;
+            }
+            default: {
+              if (pb::WireFormat.IsEndGroupTag(tag)) {
+                if (unknownFields != null) {
+                  this.UnknownFields = unknownFields.Build();
+                }
+                return this;
+              }
+              if (unknownFields == null) {
+                unknownFields = pb::UnknownFieldSet.CreateBuilder(this.UnknownFields);
+              }
+              ParseUnknownField(input, unknownFields, extensionRegistry, tag);
+              break;
+            }
+            case 10: {
+              global::eveobjects.item.Builder subBuilder = global::eveobjects.item.CreateBuilder();
+              input.ReadMessage(subBuilder, extensionRegistry);
+              AddItems(subBuilder.BuildPartial());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      public pbc::IPopsicleList<global::eveobjects.item> ItemsList {
+        get { return result.items_; }
+      }
+      public int ItemsCount {
+        get { return result.ItemsCount; }
+      }
+      public global::eveobjects.item GetItems(int index) {
+        return result.GetItems(index);
+      }
+      public Builder SetItems(int index, global::eveobjects.item value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        result.items_[index] = value;
+        return this;
+      }
+      public Builder SetItems(int index, global::eveobjects.item.Builder builderForValue) {
+        pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
+        result.items_[index] = builderForValue.Build();
+        return this;
+      }
+      public Builder AddItems(global::eveobjects.item value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        result.items_.Add(value);
+        return this;
+      }
+      public Builder AddItems(global::eveobjects.item.Builder builderForValue) {
+        pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
+        result.items_.Add(builderForValue.Build());
+        return this;
+      }
+      public Builder AddRangeItems(scg::IEnumerable<global::eveobjects.item> values) {
+        base.AddRange(values, result.items_);
+        return this;
+      }
+      public Builder ClearItems() {
+        result.items_.Clear();
+        return this;
+      }
+    }
+    static itemgroup() {
+      object.ReferenceEquals(global::eveobjects.Objects.Descriptor, null);
+    }
+  }
+  
+  public sealed partial class item : pb::GeneratedMessage<item, item.Builder> {
+    private static readonly item defaultInstance = new Builder().BuildPartial();
+    public static item DefaultInstance {
+      get { return defaultInstance; }
+    }
+    
+    public override item DefaultInstanceForType {
+      get { return defaultInstance; }
+    }
+    
+    protected override item ThisMessage {
+      get { return this; }
+    }
+    
+    public static pbd::MessageDescriptor Descriptor {
+      get { return global::eveobjects.Objects.internal__static_eveobjects_item__Descriptor; }
+    }
+    
+    protected override pb::FieldAccess.FieldAccessorTable<item, item.Builder> InternalFieldAccessors {
+      get { return global::eveobjects.Objects.internal__static_eveobjects_item__FieldAccessorTable; }
+    }
+    
+    public const int NameFieldNumber = 1;
+    private bool hasName;
+    private string name_ = "";
+    public bool HasName {
+      get { return hasName; }
+    }
+    public string Name {
+      get { return name_; }
+    }
+    
+    public const int QuantityFieldNumber = 2;
+    private bool hasQuantity;
+    private int quantity_ = 0;
+    public bool HasQuantity {
+      get { return hasQuantity; }
+    }
+    public int Quantity {
+      get { return quantity_; }
+    }
+    
+    public const int MetaFieldNumber = 3;
+    private bool hasMeta;
+    private string meta_ = "";
+    public bool HasMeta {
+      get { return hasMeta; }
+    }
+    public string Meta {
+      get { return meta_; }
+    }
+    
+    public const int VolumeFieldNumber = 4;
+    private bool hasVolume;
+    private string volume_ = "";
+    public bool HasVolume {
+      get { return hasVolume; }
+    }
+    public string Volume {
+      get { return volume_; }
+    }
+    
+    public const int DataFieldNumber = 5;
+    private bool hasData;
+    private global::eveobjects.label data_ = global::eveobjects.label.DefaultInstance;
+    public bool HasData {
+      get { return hasData; }
+    }
+    public global::eveobjects.label Data {
+      get { return data_; }
+    }
+    
+    public override bool IsInitialized {
+      get {
+        if (!hasName) return false;
+        if (!hasQuantity) return false;
+        if (!hasMeta) return false;
+        if (!hasVolume) return false;
+        if (!hasData) return false;
+        if (!Data.IsInitialized) return false;
+        return true;
+      }
+    }
+    
+    public override void WriteTo(pb::CodedOutputStream output) {
+      int size = SerializedSize;
+      if (HasName) {
+        output.WriteString(1, Name);
+      }
+      if (HasQuantity) {
+        output.WriteInt32(2, Quantity);
+      }
+      if (HasMeta) {
+        output.WriteString(3, Meta);
+      }
+      if (HasVolume) {
+        output.WriteString(4, Volume);
+      }
+      if (HasData) {
+        output.WriteMessage(5, Data);
+      }
+      UnknownFields.WriteTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public override int SerializedSize {
+      get {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+        
+        size = 0;
+        if (HasName) {
+          size += pb::CodedOutputStream.ComputeStringSize(1, Name);
+        }
+        if (HasQuantity) {
+          size += pb::CodedOutputStream.ComputeInt32Size(2, Quantity);
+        }
+        if (HasMeta) {
+          size += pb::CodedOutputStream.ComputeStringSize(3, Meta);
+        }
+        if (HasVolume) {
+          size += pb::CodedOutputStream.ComputeStringSize(4, Volume);
+        }
+        if (HasData) {
+          size += pb::CodedOutputStream.ComputeMessageSize(5, Data);
+        }
+        size += UnknownFields.SerializedSize;
+        memoizedSerializedSize = size;
+        return size;
+      }
+    }
+    
+    public static item ParseFrom(pb::ByteString data) {
+      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
+    }
+    public static item ParseFrom(pb::ByteString data, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
+    }
+    public static item ParseFrom(byte[] data) {
+      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
+    }
+    public static item ParseFrom(byte[] data, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
+    }
+    public static item ParseFrom(global::System.IO.Stream input) {
+      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
+    }
+    public static item ParseFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
+    }
+    public static item ParseDelimitedFrom(global::System.IO.Stream input) {
+      return CreateBuilder().MergeDelimitedFrom(input).BuildParsed();
+    }
+    public static item ParseDelimitedFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+      return CreateBuilder().MergeDelimitedFrom(input, extensionRegistry).BuildParsed();
+    }
+    public static item ParseFrom(pb::CodedInputStream input) {
+      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
+    }
+    public static item ParseFrom(pb::CodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
+    }
+    public static Builder CreateBuilder() { return new Builder(); }
+    public override Builder ToBuilder() { return CreateBuilder(this); }
+    public override Builder CreateBuilderForType() { return new Builder(); }
+    public static Builder CreateBuilder(item prototype) {
+      return (Builder) new Builder().MergeFrom(prototype);
+    }
+    
+    public sealed partial class Builder : pb::GeneratedBuilder<item, Builder> {
+      protected override Builder ThisBuilder {
+        get { return this; }
+      }
+      public Builder() {}
+      
+      item result = new item();
+      
+      protected override item MessageBeingBuilt {
+        get { return result; }
+      }
+      
+      public override Builder Clear() {
+        result = new item();
+        return this;
+      }
+      
+      public override Builder Clone() {
+        return new Builder().MergeFrom(result);
+      }
+      
+      public override pbd::MessageDescriptor DescriptorForType {
+        get { return global::eveobjects.item.Descriptor; }
+      }
+      
+      public override item DefaultInstanceForType {
+        get { return global::eveobjects.item.DefaultInstance; }
+      }
+      
+      public override item BuildPartial() {
+        if (result == null) {
+          throw new global::System.InvalidOperationException("build() has already been called on this Builder");
+        }
+        item returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public override Builder MergeFrom(pb::IMessage other) {
+        if (other is item) {
+          return MergeFrom((item) other);
+        } else {
+          base.MergeFrom(other);
+          return this;
+        }
+      }
+      
+      public override Builder MergeFrom(item other) {
+        if (other == global::eveobjects.item.DefaultInstance) return this;
+        if (other.HasName) {
+          Name = other.Name;
+        }
+        if (other.HasQuantity) {
+          Quantity = other.Quantity;
+        }
+        if (other.HasMeta) {
+          Meta = other.Meta;
+        }
+        if (other.HasVolume) {
+          Volume = other.Volume;
+        }
+        if (other.HasData) {
+          MergeData(other.Data);
+        }
+        this.MergeUnknownFields(other.UnknownFields);
+        return this;
+      }
+      
+      public override Builder MergeFrom(pb::CodedInputStream input) {
+        return MergeFrom(input, pb::ExtensionRegistry.Empty);
+      }
+      
+      public override Builder MergeFrom(pb::CodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+        pb::UnknownFieldSet.Builder unknownFields = null;
+        while (true) {
+          uint tag = input.ReadTag();
+          switch (tag) {
+            case 0: {
+              if (unknownFields != null) {
+                this.UnknownFields = unknownFields.Build();
+              }
+              return this;
+            }
+            default: {
+              if (pb::WireFormat.IsEndGroupTag(tag)) {
+                if (unknownFields != null) {
+                  this.UnknownFields = unknownFields.Build();
+                }
+                return this;
+              }
+              if (unknownFields == null) {
+                unknownFields = pb::UnknownFieldSet.CreateBuilder(this.UnknownFields);
+              }
+              ParseUnknownField(input, unknownFields, extensionRegistry, tag);
+              break;
+            }
+            case 10: {
+              Name = input.ReadString();
+              break;
+            }
+            case 16: {
+              Quantity = input.ReadInt32();
+              break;
+            }
+            case 26: {
+              Meta = input.ReadString();
+              break;
+            }
+            case 34: {
+              Volume = input.ReadString();
+              break;
+            }
+            case 42: {
+              global::eveobjects.label.Builder subBuilder = global::eveobjects.label.CreateBuilder();
+              if (HasData) {
+                subBuilder.MergeFrom(Data);
+              }
+              input.ReadMessage(subBuilder, extensionRegistry);
+              Data = subBuilder.BuildPartial();
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      public bool HasName {
+        get { return result.HasName; }
+      }
+      public string Name {
+        get { return result.Name; }
+        set { SetName(value); }
+      }
+      public Builder SetName(string value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        result.hasName = true;
+        result.name_ = value;
+        return this;
+      }
+      public Builder ClearName() {
+        result.hasName = false;
+        result.name_ = "";
+        return this;
+      }
+      
+      public bool HasQuantity {
+        get { return result.HasQuantity; }
+      }
+      public int Quantity {
+        get { return result.Quantity; }
+        set { SetQuantity(value); }
+      }
+      public Builder SetQuantity(int value) {
+        result.hasQuantity = true;
+        result.quantity_ = value;
+        return this;
+      }
+      public Builder ClearQuantity() {
+        result.hasQuantity = false;
+        result.quantity_ = 0;
+        return this;
+      }
+      
+      public bool HasMeta {
+        get { return result.HasMeta; }
+      }
+      public string Meta {
+        get { return result.Meta; }
+        set { SetMeta(value); }
+      }
+      public Builder SetMeta(string value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        result.hasMeta = true;
+        result.meta_ = value;
+        return this;
+      }
+      public Builder ClearMeta() {
+        result.hasMeta = false;
+        result.meta_ = "";
+        return this;
+      }
+      
+      public bool HasVolume {
+        get { return result.HasVolume; }
+      }
+      public string Volume {
+        get { return result.Volume; }
+        set { SetVolume(value); }
+      }
+      public Builder SetVolume(string value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        result.hasVolume = true;
+        result.volume_ = value;
+        return this;
+      }
+      public Builder ClearVolume() {
+        result.hasVolume = false;
+        result.volume_ = "";
+        return this;
+      }
+      
+      public bool HasData {
+       get { return result.HasData; }
+      }
+      public global::eveobjects.label Data {
+        get { return result.Data; }
+        set { SetData(value); }
+      }
+      public Builder SetData(global::eveobjects.label value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        result.hasData = true;
+        result.data_ = value;
+        return this;
+      }
+      public Builder SetData(global::eveobjects.label.Builder builderForValue) {
+        pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
+        result.hasData = true;
+        result.data_ = builderForValue.Build();
+        return this;
+      }
+      public Builder MergeData(global::eveobjects.label value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        if (result.HasData &&
+            result.data_ != global::eveobjects.label.DefaultInstance) {
+            result.data_ = global::eveobjects.label.CreateBuilder(result.data_).MergeFrom(value).BuildPartial();
+        } else {
+          result.data_ = value;
+        }
+        result.hasData = true;
+        return this;
+      }
+      public Builder ClearData() {
+        result.hasData = false;
+        result.data_ = global::eveobjects.label.DefaultInstance;
+        return this;
+      }
+    }
+    static item() {
       object.ReferenceEquals(global::eveobjects.Objects.Descriptor, null);
     }
   }

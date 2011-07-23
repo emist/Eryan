@@ -18,6 +18,20 @@ message overview{
 	repeated label overviewEntry = 1;
 }
 
+message itemgroup{
+	repeated item items = 1;
+}
+
+message item{
+	required string name = 1;
+	required int32 quantity  = 2;
+	required string meta = 3;
+	required string volume = 4;
+	required label data = 5;
+}
+	
+
+
 message label{
 	required string text = 1;
 	required int32 topLeftX = 2;
