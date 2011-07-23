@@ -36,6 +36,11 @@ namespace Eryan.Responses
             /// TargetResponse type const
             /// </summary>
             public const string TARGETRESPONSE = "TargetResponse";
+
+            /// <summary>
+            /// ItemResponse type const
+            /// </summary>
+            public const string ITEMRESPONSE = "ItemResponse";
         }
 
         /// <summary>

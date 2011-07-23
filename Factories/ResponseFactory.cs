@@ -32,6 +32,10 @@ namespace Eryan.Factories
                 {
                     return new TargetListResponse(response);
                 }
+                if (responsetype.Equals(Response.RESPONSES.ITEMRESPONSE))
+                {
+                    return new ItemResponse(response);
+                }
 
                 Console.WriteLine("Unidentified Response, not Built");
 
