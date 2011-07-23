@@ -68,6 +68,11 @@ namespace Eryan.Factories
             /// Retrieve the ship's cargo
             /// </summary>
             public const string GETCARGOLIST = "getCargoList";
+
+            /// <summary>
+            /// Retrieve the Undock button's location
+            /// </summary>
+            public const string GETUNDOCKBUTTON = "getUndockButton";
         }
 
        /// <summary>
