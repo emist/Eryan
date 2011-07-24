@@ -41,6 +41,11 @@ namespace Eryan.Responses
             /// ItemResponse type const
             /// </summary>
             public const string ITEMRESPONSE = "ItemResponse";
+
+            /// <summary>
+            /// StringResponse type const
+            /// </summary>
+            public const string STRINGRESPONSE = "StringResponse";
         }
 
         /// <summary>

@@ -49,13 +49,18 @@ namespace Eryan.Wrappers
             {
                 if (split.Equals(""))
                     continue;
-
-                if (split.Contains("km"))
+                Regex reg = new Regex("[0-9]+");
+                String nums;
+                if ((nums = reg.Match(split).Value) != "")
                 {
-                    distance = Convert.ToInt32(split.Substring(0, split.Length - 3));
-                    Console.WriteLine(distance);
+                    reg = new Regex("km");
+                    if (reg.Match(split).Value != "")
+                    {
+                        distance = Convert.ToInt32(nums) * 1000;
+                        Console.WriteLine("Distance is " + distance);
+                    }                        
+                 
                 }
-
                 Console.WriteLine(split);
                 sections.Add(split);
             }
@@ -116,6 +121,21 @@ namespace Eryan.Wrappers
             }
         }
 
+        /// <summary>
+        /// Returns the distance between our ship and this overview entry
+        /// </summary>
+        public int Distance
+        {
+            get
+            {
+                return distance;
+            }
+        }
+
+
+        /// <summary>
+        /// Returns all sections of the overview entry as strings
+        /// </summary>
         public List<string> Sections
         {
             get

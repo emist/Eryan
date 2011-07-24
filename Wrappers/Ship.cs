@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 using Eryan.UI;
 using Eryan.Wrappers;
@@ -26,7 +27,9 @@ namespace Eryan.Wrappers
         MenuHandler menu;
         PreciseMouse pm;
         Mouse m;
-        Random ran = new Random();
+        Random ran = new Random();  
+
+        public const int WARPSPEED = 300000000;
         
 
         public Ship(MenuHandler mh, OverviewHandler oh, Communicator com, PreciseMouse pm, Mouse m)
@@ -93,6 +96,11 @@ namespace Eryan.Wrappers
             return success;
         }
 
+
+        /// <summary>
+        /// Get the list of our ship's currently active targets
+        /// </summary>
+        /// <returns>The list of the currently targeted ships</returns>
         public List<TargetEntry> getTargetList()
         {
             TargetListResponse tresp = (TargetListResponse)com.sendCall(FunctionCallFactory.CALLS.GETTARGETLIST, Response.RESPONSES.TARGETRESPONSE);
@@ -104,6 +112,26 @@ namespace Eryan.Wrappers
             return (List<TargetEntry>)tresp.Data;
         }
 
+       
+        public TargetEntry getSelectedTarget()
+        {
+            InterfaceResponse tresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETSELECTEDITEM, Response.RESPONSES.INTERFACERESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve selected target");
+                return null;
+            }
+
+            return null;
+
+            //TargetEntry entry = 
+        }
+
+        /// <summary>
+        /// Activate the high slot located at position num
+        /// </summary>
+        /// <param name="num">The position of the high slot to activate</param>
+        /// <returns>True on sucess, false otherwise</returns>
         public Boolean activateHighPowerSlot(int num)
         {
             InterfaceResponse activateResp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETHIGHSLOT, num + "", Response.RESPONSES.INTERFACERESPONSE);
@@ -119,6 +147,11 @@ namespace Eryan.Wrappers
             return true;
         }
 
+        /// <summary>
+        /// Check if the highslot at position num is active
+        /// </summary>
+        /// <param name="num">The position of the highslot to check</param>
+        /// <returns>True if its active, false otherwise</returns>
         public Boolean isHighSlotActive(int num)
         {
             BooleanResponse activeResp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.ISHIGHSLOTACTIVE, "" + num, Response.RESPONSES.BOOLEANRESPONSE);
@@ -128,6 +161,36 @@ namespace Eryan.Wrappers
                 return false;
             }
             return (Boolean)activeResp.Data;
+        }
+
+        /// <summary>
+        /// Get our ship's current speed
+        /// </summary>
+        /// <returns>The speed of the ship in m/s</returns>
+        public int getSpeed()
+        {
+            int speed = -1;
+            StringResponse iresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPSPEED, Response.RESPONSES.STRINGRESPONSE);
+            if (iresp == null)
+            {
+                Console.WriteLine("Response is null");
+                return speed;
+            }
+
+            Regex regex = new Regex("<center>");
+            if (regex.Split((String)iresp.Data)[1].Equals("(WARPING"))
+            {
+                Console.WriteLine("We're warping");
+                Console.WriteLine(regex.Split((String)iresp.Data)[1]);
+                speed = WARPSPEED;
+            }
+            else
+            {
+                regex = new Regex("[0-9]+" + @"\." + "*[0-9]*");
+                String match = regex.Match((String)iresp.Data).Value;
+                speed = Convert.ToInt32(match);
+            }
+            return speed;
         }
 
         /// <summary>

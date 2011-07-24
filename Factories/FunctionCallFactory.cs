@@ -88,6 +88,26 @@ namespace Eryan.Factories
             /// Retrieve the items button at the station
             /// </summary>
             public const string GETITEMSBUTTON = "getItemsButton";
+
+            /// <summary>
+            /// Retrieve the ship's armor
+            /// </summary>
+            public const string GETSHIPARMOR = "getShipArmor";
+
+            /// <summary>
+            /// Retrieve the ship's shiled
+            /// </summary>
+            public const string GETSHIPSHIELD = "getShipShield";
+
+            /// <summary>
+            /// Retrieve the ship's structure
+            /// </summary>
+            public const string GETSHIPSTRUCTURE = "getShipStructure";
+
+            /// <summary>
+            /// Retrieve the ship's speed
+            /// </summary>
+            public const string GETSHIPSPEED = "getShipSpeed";
         }
 
        /// <summary>

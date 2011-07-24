@@ -26,6 +26,7 @@ namespace Eryan.Responses
         {
           
             interfaceObject = Interface.CreateBuilder().MergeFrom(input).Build();
+            Console.WriteLine(interfaceObject.Name);
             name = interfaceObject.Name;
             y = interfaceObject.TopleftY;
             x = interfaceObject.TopleftX;

@@ -20,6 +20,11 @@ using Eryan.UI;
 using Eryan.Input;
 using Eryan.Util;
 
+//Need to update target hook to show distance to selected target
+//Ship's cargo capacity hook
+//If things are loaded
+//Distance to overview entries
+
 
 namespace Eryan
 {
@@ -230,7 +235,7 @@ namespace Eryan
 
             if (!initialized)
             {
-                script.initializeInputs(bot.PMOUSE, bot.MOUSE, menuHandler, com, over);
+                script.initializeInputs(bot);
                 initialized = !initialized;
             }
 

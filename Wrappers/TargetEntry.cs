@@ -32,13 +32,18 @@ namespace Eryan.Wrappers
         /// <param name="unparsedEntry">The unparsed Target entry from the client</param>
         public void parseEntry(string unparsedEntry)
         {
-            tokenizer = new Regex(@"<t>");
-            string[] splitString = tokenizer.Split(unparsedEntry);
-            tokenizer = new Regex("<right>");
+            //tokenizer = new Regex(@"<t>");
+            //string[] splitString = tokenizer.Split(unparsedEntry);
+            //tokenizer = new Regex("<right>");
             
-           /*
-            splitString[1] = tokenizer.Split(splitString[1])[1];
+           
+            //splitString[1] = tokenizer.Split(splitString[1])[1];
 
+            
+            Console.WriteLine(unparsedEntry);
+            
+
+            /*
             foreach (string split in splitString)
             {
                 if (split.Equals(""))
@@ -46,7 +51,7 @@ namespace Eryan.Wrappers
                 Console.WriteLine(split);
                 sections.Add(split);
             }
-            */
+           */
          
 
         }

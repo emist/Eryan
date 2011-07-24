@@ -14,6 +14,10 @@ message functionCall{
 	optional string strparameter = 2;
 }
 
+message stringResponse{
+	required string data = 1;
+}
+
 message overview{
 	repeated label overviewEntry = 1;
 }
