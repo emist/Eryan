@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
+using System.Threading;
+
 using Eryan.Input;
 using Eryan.Responses;
 using Eryan.IPC;
 using Eryan.Factories;
-using System.Drawing;
-using System.Threading;
-
+using Eryan.Wrappers;
 
 namespace Eryan.InputHandler
 {
@@ -133,6 +134,15 @@ namespace Eryan.InputHandler
             /// </summary>
             public const string BOOKMARKLOCATION = "Bookmark Location";
 
+            /// <summary>
+            /// Dock
+            /// </summary>
+            public const string DOCK = "Dock";
+
+            /// <summary>
+            /// Warp to zero element
+            /// </summary>
+            public const string WARPTOZERO = "Warp to within 0 m";
         }
         
         /// <summary>
@@ -151,6 +161,7 @@ namespace Eryan.InputHandler
             
         }
 
+
         /// <summary>
         /// Warps to Zero on the selected item(if possible)
         /// </summary>
@@ -158,6 +169,20 @@ namespace Eryan.InputHandler
         public bool warpToZero()
         {
             return click("warp to within 0 m");
+        }
+
+        /// <summary>
+        /// Open a menu at the given interface entry 
+        /// </summary>
+        /// <param name="entry">The interface entry to open the menu on</param>
+        /// <returns>True if sucess, false otherwise</returns>
+        public Boolean open(InterfaceEntry entry)
+        {
+            m.move(new Point(random.Next(entry.X, entry.X + entry.Width), random.Next(entry.Y, entry.Y + entry.Height - 5)));
+            pm.synchronize(m);
+            m.click(false);
+            Thread.Sleep(300);
+            return true;
         }
 
         /// <summary>
@@ -178,8 +203,6 @@ namespace Eryan.InputHandler
             {
                 return false;
             }
-
-            menuOpen.HandleResponse();
 
             if (!(Boolean)menuOpen.Data)
             {
@@ -206,7 +229,6 @@ namespace Eryan.InputHandler
             if (resp == null)
                 return false;
 
-            resp.HandleResponse();
             pm.MissChance = 100;
             pm.Speed = 5;
 
@@ -241,7 +263,7 @@ namespace Eryan.InputHandler
             if (resp == null)
                 return false;
 
-            resp.HandleResponse();
+
             pm.MissChance = 100;
             pm.Speed = 5;
 

@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
+using Eryan.Wrappers;
+
 namespace Eryan.Input
 {
     /// <summary>
@@ -76,6 +78,19 @@ namespace Eryan.Input
         public void holdLeftButton()
         {
             dllMouseButtonDown(appWin, true, x, y);
+        }
+
+        public void drag(Point p)
+        {
+            holdLeftButton();
+            move(p);
+            releaseLeftButton();
+        }
+
+        public void synchronize(Mouse m)
+        {
+            this.X = m.X;
+            this.Y = m.Y;
         }
 
         public void holdRightButton()

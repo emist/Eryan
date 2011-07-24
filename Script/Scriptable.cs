@@ -5,6 +5,8 @@ using System.Text;
 using Eryan.Input;
 using Eryan.InputHandler;
 using Eryan.IPC;
+using Eryan.Wrappers;
+using Eryan.UI;
 
 namespace Eryan.Script
 {
@@ -39,6 +41,13 @@ namespace Eryan.Script
         public OverviewHandler EOverViewHandler;
 
         /// <summary>
+        /// Reference to the bot's station handler
+        /// </summary>
+        public Station EStationHandler;
+
+        public Ship MyShip;
+
+        /// <summary>
         /// Internal use, the Bot will initialize the script with its input handlers once its loaded into memory
         /// </summary>
         /// <param name="pm">The bot's precisemouse reference</param>
@@ -46,13 +55,15 @@ namespace Eryan.Script
         /// <param name="mh">The bot's menuhandler reference</param>
         /// <param name="comm">The bot's communicator reference</param>
         /// <param name="over">The bot's overviewhandler reference</param>
-        public void initializeInputs(PreciseMouse pm, Mouse m, MenuHandler mh, Communicator comm, OverviewHandler over)
+        public void initializeInputs(WindowHandler bot)
         {
-            this.EMouse = m;
-            this.EPreciseMouse = pm;
-            this.EMenuHandler = mh;
-            this.ECommunicator = comm;
-            this.EOverViewHandler = over;
+            this.EMouse = bot.MOUSE;
+            this.EPreciseMouse = bot.PMOUSE;
+            this.EMenuHandler = bot.MENU;
+            this.ECommunicator = bot.COMMUNICATOR;
+            this.EOverViewHandler = bot.OVERVIEW;
+            this.EStationHandler = bot.STATION;
+            this.MyShip = bot.SHIP;
         }
 
         /// <summary>

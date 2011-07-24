@@ -10,9 +10,13 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System;
 using System.Drawing.Drawing2D;
+
 using Eryan.Input;
 using Eryan.Singleton;
 using Eryan.Util;
+using Eryan.Wrappers;
+using Eryan.InputHandler;
+using Eryan.IPC;
 
 //Events need to be changed to handle proper PID selection
 //As it is it wont support multiple eve clients
@@ -46,7 +50,11 @@ namespace Eryan.UI
         KeyBoard keyboard = new KeyBoard();
         Mouse mouse = new Mouse();
         PreciseMouse pmouse = new PreciseMouse();
-
+        Communicator com = new Communicator("\\\\.\\pipe\\TestChannel");
+        OverviewHandler overviewhandler;
+        MenuHandler menuhandler;
+        Station station;
+        Ship myShip;
 
         //Events we listen to
         private const uint EVENT_OBJECT_DESTROY = (uint)0x00008001L;
@@ -268,7 +276,11 @@ namespace Eryan.UI
             FormClosing += new FormClosingEventHandler(Program_FormClosing);
             winDel = new WinEventDelegate(HandleWindowChanges);
             MouseDown += new MouseEventHandler(Form1_MouseDown);
-            
+            overviewhandler = new OverviewHandler(mouse, pmouse, com);
+            menuhandler = new MenuHandler(mouse, pmouse, com);
+            station = new Station(mouse, pmouse, menuhandler, com);
+            myShip = new Ship(menuhandler, overviewhandler, com, pmouse, mouse);
+
 
             Process p = null;
 
@@ -412,6 +424,29 @@ namespace Eryan.UI
             }
         }
 
+        public OverviewHandler OVERVIEW
+        {
+            get
+            {
+                return overviewhandler;
+            }
+        }
+
+        public Communicator COMMUNICATOR
+        {
+            get
+            {
+                return com;
+            }
+        }
+
+        public MenuHandler MENU
+        {
+            get
+            {
+                return menuhandler;
+            }   
+        }
 
         /// <summary>
         /// Returns this WindowHandler's Mouse reference
@@ -434,9 +469,22 @@ namespace Eryan.UI
                 return pmouse;
             }
         }
-        
 
+        public Station STATION
+        {
+            get
+            {
+                return station;
+            }
+        }
 
+        public Ship SHIP
+        {
+            get
+            {
+                return myShip;
+            }
+        }
         /// <summary>
         /// Eat the EVE window and inject
         /// </summary>

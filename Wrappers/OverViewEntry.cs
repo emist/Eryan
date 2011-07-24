@@ -4,22 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
+
 namespace Eryan.Wrappers
 {
     /// <summary>
     /// Wraps an overview entry
     /// </summary>
-    public class OverViewEntry
+    public class OverViewEntry : InterfaceEntry
     {
         List<string> sections;
         Regex tokenizer;
-        int absoluteTop, absoluteLeft, height, width;
+        int distance;
+        //int absoluteTop, absoluteLeft, height, width;
 
         public OverViewEntry(string unparsedEntry, int absoluteTop, int absoluteLeft, int height, int width)
         {
             sections = new List<string>();
-            this.absoluteLeft = absoluteLeft;
-            this.absoluteTop = absoluteTop;
+            this.y = absoluteLeft;
+            this.x = absoluteTop;
             this.height = height;
             this.width = width;
             parseEntry(unparsedEntry);
@@ -47,6 +49,13 @@ namespace Eryan.Wrappers
             {
                 if (split.Equals(""))
                     continue;
+
+                if (split.Contains("km"))
+                {
+                    distance = Convert.ToInt32(split.Substring(0, split.Length - 3));
+                    Console.WriteLine(distance);
+                }
+
                 Console.WriteLine(split);
                 sections.Add(split);
             }
@@ -61,7 +70,7 @@ namespace Eryan.Wrappers
         {
             get
             {
-                return absoluteLeft;
+                return x;
             }
         }
         
@@ -72,7 +81,7 @@ namespace Eryan.Wrappers
         {
             get
             {
-                return absoluteTop;
+                return y;
             }
         }
 
@@ -104,6 +113,14 @@ namespace Eryan.Wrappers
             get
             {
                 return height;
+            }
+        }
+
+        public List<string> Sections
+        {
+            get
+            {
+                return sections;
             }
         }
 

@@ -45,7 +45,6 @@ namespace Eryan.InputHandler
             {
                 return false;
             }
-            resp.HandleResponse();
 
             entries = (List<OverViewEntry>)resp.Data;
             return true;
@@ -101,5 +100,17 @@ namespace Eryan.InputHandler
             }
             return false;
         }
+
+        /// <summary>
+        /// Returns the overview items
+        /// </summary>
+        public List<OverViewEntry> Items
+        {
+            get
+            {
+                return entries;
+            }
+        }
+
     }
 }
