@@ -24,6 +24,16 @@ namespace Eryan.Responses
         {
             OverViewObject = overview.CreateBuilder().MergeFrom(input).Build();
             data = new List<OverViewEntry>();
+            foreach (label lab in OverViewObject.OverviewEntryList)
+            {
+
+                data.Add(new OverViewEntry(lab.Text, lab.TopLeftY, lab.TopLeftX, lab.Height, lab.Width));
+                Console.WriteLine(lab.Text);
+                Console.WriteLine(lab.TopLeftX);
+                Console.WriteLine(lab.TopLeftY);
+                Console.WriteLine(lab.Width);
+                Console.WriteLine(lab.Height);
+            }
         }
 
 
@@ -32,16 +42,7 @@ namespace Eryan.Responses
         /// </summary>
         public override void HandleResponse()
         {
-            foreach (label lab in OverViewObject.OverviewEntryList)
-            {
-                      
-                data.Add(new OverViewEntry(lab.Text, lab.TopLeftY, lab.TopLeftX, lab.Height, lab.Width));
-                Console.WriteLine(lab.Text);
-                Console.WriteLine(lab.TopLeftX);
-                Console.WriteLine(lab.TopLeftY);
-                Console.WriteLine(lab.Width);
-                Console.WriteLine(lab.Height);
-            }
+            
         }
 
 

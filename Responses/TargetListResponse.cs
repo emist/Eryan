@@ -24,6 +24,16 @@ namespace Eryan.Responses
         {
             TargetObject = TargetList.CreateBuilder().MergeFrom(input).Build();
             data = new List<TargetEntry>();
+            foreach (targetentry entry in TargetObject.ThistargetList)
+            {
+
+                data.Add(new TargetEntry(entry.Text.Text, entry.Text.TopLeftY, entry.Text.TopLeftX, entry.Text.Height, entry.Text.Width));
+                Console.WriteLine(entry.Text.Text);
+                Console.WriteLine(entry.Text.TopLeftX);
+                Console.WriteLine(entry.Text.TopLeftY);
+                Console.WriteLine(entry.Text.Width);
+                Console.WriteLine(entry.Text.Height);
+            }
         }
 
 
@@ -32,17 +42,7 @@ namespace Eryan.Responses
         /// </summary>
         public override void HandleResponse()
         {
-            
-            foreach (targetentry entry in TargetObject.ThistargetList)
-            {
-                                
-                data.Add(new TargetEntry(entry.Text.Text, entry.Text.TopLeftY, entry.Text.TopLeftX, entry.Text.Height, entry.Text.Width));
-                Console.WriteLine(entry.Text.Text);
-                Console.WriteLine(entry.Text.TopLeftX);
-                Console.WriteLine(entry.Text.TopLeftY);
-                Console.WriteLine(entry.Text.Width);
-                Console.WriteLine(entry.Text.Height);
-            }
+           
             Console.WriteLine("handling response");
         }
 

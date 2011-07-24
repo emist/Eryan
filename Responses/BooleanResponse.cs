@@ -23,6 +23,7 @@ namespace Eryan.Responses
         {
             booleanObject = BooleanObject.CreateBuilder().MergeFrom(input).Build();
             Console.WriteLine(booleanObject.Istrue);
+            data = booleanObject.Istrue;
         }
 
         /// <summary>
@@ -30,7 +31,7 @@ namespace Eryan.Responses
         /// </summary>
         public override void HandleResponse()
         {
-            data = booleanObject.Istrue;
+            
         }
 
         /// <summary>

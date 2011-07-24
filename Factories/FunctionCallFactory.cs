@@ -78,6 +78,16 @@ namespace Eryan.Factories
             /// Retrieve the Ship hangar
             /// </summary>
             public const string GETSHIPHANGAR = "getShipHangar";
+
+            /// <summary>
+            /// Retrive the Station hangar
+            /// </summary>
+            public const string GETSTATIONHANGAR = "getStationHangar";
+
+            /// <summary>
+            /// Retrieve the items button at the station
+            /// </summary>
+            public const string GETITEMSBUTTON = "getItemsButton";
         }
 
        /// <summary>

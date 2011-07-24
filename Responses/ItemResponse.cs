@@ -24,20 +24,12 @@ namespace Eryan.Responses
         {
             itemGroupObject = itemgroup.CreateBuilder().MergeFrom(input).Build();
             data = new List<Item>();
-        }
-
-
-        /// <summary>
-        /// Initializes the data elements
-        /// </summary>
-        public override void HandleResponse()
-        {
             foreach (item lab in itemGroupObject.ItemsList)
             {
-               
-//                data.Add(new Item(item.Text, item.TopLeftY, item.TopLeftX, item.Height, item.Width));
-                
-                
+
+                //                data.Add(new Item(item.Text, item.TopLeftY, item.TopLeftX, item.Height, item.Width));
+
+
                 data.Add(new Item(lab.Quantity, lab.Volume, lab.Data.Text, lab.Meta, lab.Data.Width, lab.Data.Height, lab.Data.TopLeftX, lab.Data.TopLeftY));
 
 
@@ -51,6 +43,14 @@ namespace Eryan.Responses
                 Console.WriteLine(lab.Data.Width);
                 Console.WriteLine(lab.Data.Height);
             }
+        }
+
+
+        /// <summary>
+        /// Initializes the data elements
+        /// </summary>
+        public override void HandleResponse()
+        {
         }
 
 

@@ -26,6 +26,15 @@ namespace Eryan.Responses
         {
           
             interfaceObject = Interface.CreateBuilder().MergeFrom(input).Build();
+            name = interfaceObject.Name;
+            y = interfaceObject.TopleftY;
+            x = interfaceObject.TopleftX;
+            width = interfaceObject.Width;
+            height = interfaceObject.Height;
+            data = new List<string>();
+            data.Add(name);
+            data.Add(x + "");
+            data.Add(y + "");
             Console.WriteLine(interfaceObject.Name);
             Console.WriteLine(interfaceObject.TopleftX);
             Console.WriteLine(interfaceObject.TopleftY);
@@ -39,15 +48,7 @@ namespace Eryan.Responses
         /// </summary>
         public override void HandleResponse()
         {
-            name = interfaceObject.Name;
-            y = interfaceObject.TopleftY;
-            x = interfaceObject.TopleftX;
-            width = interfaceObject.Width;
-            height = interfaceObject.Height;
-            data = new List<string>();
-            data.Add(name);
-            data.Add(x + "");
-            data.Add(y + "");
+        
         }
         
 
