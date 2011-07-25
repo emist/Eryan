@@ -178,8 +178,14 @@ namespace Eryan.InputHandler
         /// <returns>True if sucess, false otherwise</returns>
         public Boolean open(InterfaceEntry entry)
         {
-            m.move(new Point(random.Next(entry.X, entry.X + entry.Width), random.Next(entry.Y, entry.Y + entry.Height - 5)));
+
+
+            
+            Point pt = new Point(random.Next(entry.X, entry.X + entry.Width), random.Next(entry.Y, entry.Y + entry.Height - 5));
+            m.move(pt);
+            Console.WriteLine("Moving to point: " + pt);
             pm.synchronize(m);
+            Thread.Sleep(300);
             m.click(false);
             Thread.Sleep(300);
             return true;
@@ -221,7 +227,7 @@ namespace Eryan.InputHandler
 
                 Thread.Sleep(300);
                 m.click(false);
-                Thread.Sleep(200);
+                Thread.Sleep(800);
                 
             }
             

@@ -27,12 +27,13 @@ namespace Eryan.Responses
             foreach (label lab in OverViewObject.OverviewEntryList)
             {
 
+                
                 data.Add(new OverViewEntry(lab.Text, lab.TopLeftY, lab.TopLeftX, lab.Height, lab.Width));
-                Console.WriteLine(lab.Text);
-                Console.WriteLine(lab.TopLeftX);
-                Console.WriteLine(lab.TopLeftY);
-                Console.WriteLine(lab.Width);
-                Console.WriteLine(lab.Height);
+           //     Console.WriteLine(lab.Text);
+           //     Console.WriteLine(lab.TopLeftX);
+           //     Console.WriteLine(lab.TopLeftY);
+           //     Console.WriteLine(lab.Width);
+           //     Console.WriteLine(lab.Height);
             }
         }
 
