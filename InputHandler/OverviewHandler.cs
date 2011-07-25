@@ -14,12 +14,29 @@ using Eryan.Factories;
 
 namespace Eryan.InputHandler
 {
+
+    class SortIntDescending : IComparer<OverViewEntry>
+    {
+        int IComparer<OverViewEntry>.Compare(OverViewEntry b, OverViewEntry a) //implement Compare
+        {
+            if (a.Distance > b.Distance)
+                return -1; //normally greater than = 1
+            if (a.Distance < b.Distance)
+                return 1; // normally smaller than = -1
+            else
+                return 0; // equal
+        }
+    }
+ 
+
     /// <summary>
     /// Handles the interaction with the overview
     /// </summary>
     public class OverviewHandler : InputHandler
     {
         List<OverViewEntry> entries;
+
+
 
 
         /// <summary>
@@ -49,6 +66,7 @@ namespace Eryan.InputHandler
             }
 
             entries = (List<OverViewEntry>)resp.Data;
+            entries.Sort(new SortIntDescending());
             return true;
         }
 
