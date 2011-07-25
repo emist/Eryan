@@ -45,16 +45,15 @@ namespace Eryan.Script
         /// </summary>
         public Station EStationHandler;
 
+        /// <summary>
+        /// Reference to our player's ship
+        /// </summary>
         public Ship MyShip;
 
         /// <summary>
         /// Internal use, the Bot will initialize the script with its input handlers once its loaded into memory
         /// </summary>
-        /// <param name="pm">The bot's precisemouse reference</param>
-        /// <param name="m">The bot's mouse reference</param>
-        /// <param name="mh">The bot's menuhandler reference</param>
-        /// <param name="comm">The bot's communicator reference</param>
-        /// <param name="over">The bot's overviewhandler reference</param>
+        /// <param name="bot">The reference to the bot's windowhandler</param>
         public void initializeInputs(WindowHandler bot)
         {
             this.EMouse = bot.MOUSE;
