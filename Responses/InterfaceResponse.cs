@@ -97,6 +97,9 @@ namespace Eryan.Responses
             }
         }
 
+        /// <summary>
+        /// Getter for the width of this interface
+        /// </summary>
         public int Width
         {
             get
@@ -105,6 +108,9 @@ namespace Eryan.Responses
             }
         }
 
+        /// <summary>
+        /// Getter for the height of this interface
+        /// </summary>
         public int Height
         {
             get
