@@ -108,6 +108,11 @@ namespace Eryan.Factories
             /// Retrieve the ship's speed
             /// </summary>
             public const string GETSHIPSPEED = "getShipSpeed";
+
+            /// <summary>
+            /// Retrieve the ship's capacity
+            /// </summary>
+            public const string GETSHIPCAPACITY = "getShipCapacity";
         }
 
        /// <summary>
