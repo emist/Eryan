@@ -29,6 +29,9 @@ namespace Eryan.Wrappers
         Mouse m;
         Random ran = new Random();  
 
+        /// <summary>
+        /// Constant to signify warpspeed = really really fast
+        /// </summary>
         public const int WARPSPEED = 300000000;
         
 
@@ -112,20 +115,232 @@ namespace Eryan.Wrappers
             return (List<TargetEntry>)tresp.Data;
         }
 
-       
-        public TargetEntry getSelectedTarget()
+        /// <summary>
+        /// Return the selected item
+        /// </summary>
+        /// <returns>Selected item</returns>
+        public SelectedItem getSelectedItem()
         {
-            InterfaceResponse tresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETSELECTEDITEM, Response.RESPONSES.INTERFACERESPONSE);
+            StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSELECTEDITEM, Response.RESPONSES.STRINGRESPONSE);
             if (tresp == null)
             {
-                Console.WriteLine("Couldn't retrieve selected target");
+                Console.WriteLine("Couldn't retrieve selected item");
                 return null;
             }
 
-            return null;
+            Regex reg = new Regex("<br>Distance: ");
+            string[] result = reg.Split((string)tresp.Data);
 
-            //TargetEntry entry = 
+            if(result.Count() > 1)
+            {
+                reg = new Regex("[0-9]+");
+                String nums;
+                int distance = 0;
+                if ((nums = reg.Match(result[1]).Value) != "")
+                {
+                    reg = new Regex("km");
+                    if (reg.Match(result[1]).Value != "")
+                    {
+                        distance = Convert.ToInt32(nums) * 1000;
+                        Console.WriteLine("Distance is " + distance);
+                    }
+                    else
+                    {
+                        distance = Convert.ToInt32(nums);
+                        Console.WriteLine("Distance is " + distance);
+                    }
+                }
+                
+                return new SelectedItem(result[0], distance);
+            }
+
+            return null;
+            
         }
+
+        /// <summary>
+        /// Returns the percentage of structure the ship currently has
+        /// </summary>
+        /// <returns>Ship Structure percentage or -1 on failure</returns>
+        public int GetStructurePercentage()
+        {
+            StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPSTRUCTURE, Response.RESPONSES.STRINGRESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve armor percentage");
+                return -1;
+            }
+
+            Regex reg = new Regex("[0-9]+%");
+            string result = reg.Match((string)tresp.Data).Value;
+            result = result.Substring(0, result.Length - 1);
+            return Convert.ToInt32(result);
+        }
+
+
+        /// <summary>
+        /// Returns the percentage of shield the ship currently has
+        /// </summary>
+        /// <returns>Ship Shiled percentage or -1 on failure</returns>
+        public int GetShiledPercentage()
+        {
+            StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPSHIELD, Response.RESPONSES.STRINGRESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve armor percentage");
+                return -1;
+            }
+
+            Regex reg = new Regex("[0-9]+%");
+            string result = reg.Match((string)tresp.Data).Value;
+            result = result.Substring(0, result.Length - 1);
+            return Convert.ToInt32(result);
+        }
+
+        /// <summary>
+        /// Returns the percentage of armor the ship currently has
+        /// </summary>
+        /// <returns>Ship Armor percentage or -1 on failure</returns>
+        public int GetArmorPercentage()
+        {
+            StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPARMOR, Response.RESPONSES.STRINGRESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve armor percentage");
+                return -1;
+            }
+
+            Regex reg = new Regex("[0-9]+%");
+            string result = reg.Match((string)tresp.Data).Value;
+            if (result.Length > 0)
+            {
+                result = result.Substring(0, result.Length - 1);
+                return Convert.ToInt32(result);
+            }
+            else
+                return -1;
+        }
+
+        /// <summary>
+        /// Returns the amount of cargo space that has been used
+        /// </summary>
+        /// <returns>Volume used or -1 on error</returns>
+        public double GetCargoFilled()
+        {
+            StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPCAPACITY, Response.RESPONSES.STRINGRESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve selected item");
+                return -1;
+            }
+
+
+            Regex reg = new Regex("[0-9]+" + @"." + "[0-9]+" + @"/");
+            string result = reg.Match((string)tresp.Data).Value;
+            if (result.Length > 0)
+            {
+                try
+                {
+                    result = result.Substring(0, result.Length - 1);
+                    return Convert.ToDouble(result);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return -1;
+                }
+            }
+            return -1;
+        }
+
+
+        /// <summary>
+        /// Returns the ship's current available cargo volume
+        /// </summary>
+        /// <returns>The ammount of volume available or -1 on error</returns>
+        public double GetCargoSpaceRemaining()
+        {
+            StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPCAPACITY, Response.RESPONSES.STRINGRESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve capacity");
+                return -1;
+            }
+
+            double capacity = 0, used = 0;
+
+            Regex reg = new Regex(@"/" + "[0-9]+" + @"." + "[0-9]+");
+            string result = reg.Match((string)tresp.Data).Value;
+            if (result.Length > 0)
+            {
+                result = result.Substring(1, result.Length - 1);
+                try
+                {
+                    capacity = Convert.ToDouble(result);
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return -1;
+                }
+            }
+
+            reg = new Regex("[0-9]+" + @"." + "[0-9]+" + @"/");
+            result = reg.Match((string)tresp.Data).Value;
+            if (result.Length > 0)
+            {
+                result = result.Substring(0, result.Length - 1);
+                try
+                {
+                    used = Convert.ToDouble(result);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return -1;
+                }
+            }
+            if(capacity != 0)
+                return capacity - used;
+            
+            return -1;
+        }
+
+
+
+        /// <summary>
+        /// Returns the cargo capacity of your ship
+        /// </summary>
+        /// <returns>Capacity or -1 on error</returns>
+        public int GetShipCapacity()
+        {
+                  
+            StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPCAPACITY, Response.RESPONSES.STRINGRESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve selected item");
+                return -1;
+            }
+
+              
+            Regex reg = new Regex(@"/" + "[0-9]+" + @"." + "[0-9]+");
+            string result = reg.Match((string)tresp.Data).Value;
+            if (result.Length > 0)
+            {
+                try
+                {
+                    result = result.Substring(1, result.Length - 1);
+                    return Convert.ToInt32(result);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    return -1;
+                }
+            }
+            return -1;
+        }
+
 
         /// <summary>
         /// Activate the high slot located at position num
@@ -177,18 +392,24 @@ namespace Eryan.Wrappers
                 return speed;
             }
 
-            Regex regex = new Regex("<center>");
-            if (regex.Split((String)iresp.Data)[1].Equals("(WARPING"))
+            Regex regex = new Regex("Warping");
+            if (regex.Match((String)iresp.Data).Value != "")
             {
                 Console.WriteLine("We're warping");
-                Console.WriteLine(regex.Split((String)iresp.Data)[1]);
                 speed = WARPSPEED;
             }
             else
             {
                 regex = new Regex("[0-9]+" + @"\." + "*[0-9]*");
                 String match = regex.Match((String)iresp.Data).Value;
-                speed = Convert.ToInt32(match);
+                try
+                {
+                    speed = (int)Convert.ToDouble(match);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
             }
             return speed;
         }
@@ -208,16 +429,13 @@ namespace Eryan.Wrappers
         /// <returns>True if docked, false otherwise</returns>
         public Boolean isDocked()
         {
-            InterfaceResponse dockbutton = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETUNDOCKBUTTON, Response.RESPONSES.INTERFACERESPONSE);
-            if (dockbutton == null)
-            {
-                Console.WriteLine("dockbutton is null");
-                return false;
-            }
-
-            return true;
+            return getSpeed() == -1;
         }
 
+        /// <summary>
+        /// Undock if docked
+        /// </summary>
+        /// <returns>True if success, false otherwise</returns>
         public Boolean unDock()
         {
 
@@ -230,6 +448,7 @@ namespace Eryan.Wrappers
 
             m.move(new Point(ran.Next(dockbutton.X, dockbutton.X + dockbutton.Width), ran.Next(dockbutton.Y, dockbutton.Y + dockbutton.Height)));
             pm.synchronize(m);
+            m.click(true);
             return true;
         }
 
