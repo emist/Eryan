@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 using Eryan.Wrappers;
 using Eryan.Input;
@@ -43,6 +44,7 @@ namespace Eryan.InputHandler
             OverViewResponse resp = (OverViewResponse)comm.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWITEMS, Response.RESPONSES.OVERVIEWRESPONSE);
             if (resp == null)
             {
+                entries = new List<OverViewEntry>();
                 return false;
             }
 
@@ -74,10 +76,49 @@ namespace Eryan.InputHandler
         /// </summary>
         /// <param name="rowNum">The row number in the overview</param>
         /// <returns>The contents of the overview row</returns>
-        public string readRow(int rowNum)
+        public OverViewEntry readRow(int rowNum)
         {
             if (entries.Count < rowNum)
-                return entries[rowNum].ToString();
+                return entries[rowNum];
+            return null;
+        }
+
+
+        /// <summary>
+        /// Find if the given item is on the overview
+        /// </summary>
+        /// <param name="labelName">The name of the item to look for</param>
+        /// <returns>True if found, false otherwise</returns>
+        public bool isInOverView(string labelName)
+        {
+            Regex reg = new Regex(labelName);
+            foreach (OverViewEntry entry in entries)
+            {
+                foreach (String section in entry.Sections)
+                {
+                    if (reg.Match(section).Value != "")
+                        return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Return the overview entry containing the requested label
+        /// </summary>
+        /// <param name="labelName">Text in the overview row requested</param>
+        /// <returns>The overview entry or null if not found</returns>
+        public OverViewEntry getEntry(string labelName)
+        {
+            Regex reg = new Regex(labelName);
+            foreach (OverViewEntry entry in entries)
+            {
+                foreach (String section in entry.Sections)
+                {
+                    if (reg.Match(section).Value != "")
+                        return entry;
+                }
+            }
             return null;
         }
 
