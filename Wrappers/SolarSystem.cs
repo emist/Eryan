@@ -20,6 +20,9 @@ namespace Eryan.Wrappers
         /// </summary>
         public struct names
         {
+            /// <summary>
+            /// Bourynes solar system
+            /// </summary>
             public const string BOURYNES = "Bourynes";
         }
 

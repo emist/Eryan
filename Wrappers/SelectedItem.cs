@@ -13,6 +13,11 @@ namespace Eryan.Wrappers
         string name;
         int distance;
 
+        /// <summary>
+        /// Build a wrapper of currently selected item
+        /// </summary>
+        /// <param name="name">Name of the item</param>
+        /// <param name="distance">Distance to the item</param>
         public SelectedItem(string name, int distance)
         {
             this.name = name;

@@ -110,5 +110,15 @@ namespace Eryan.Wrappers
             }
         }
 
+        /// <summary>
+        /// Sort by distance from player
+        /// </summary>
+        /// <param name="T">The object to compare against</param>
+        /// <returns></returns>
+        public int CompareTo(OverViewEntry T)
+        {
+            return distance.CompareTo(T.distance);
+        }
+
     }
 }

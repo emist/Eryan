@@ -16,6 +16,14 @@ namespace Eryan.Wrappers
         Regex tokenizer;
         int absoluteTop, absoluteLeft, height, width;
 
+        /// <summary>
+        /// Takes an unparsed target entry and tokenize its elements
+        /// </summary>
+        /// <param name="unparsedEntry">Tbe entry</param>
+        /// <param name="absoluteTop">Top y value of the entry icon</param>
+        /// <param name="absoluteLeft">Leftmost x value of the entry icon</param>
+        /// <param name="height">Height of the entry icon</param>
+        /// <param name="width">Width of the entry icon</param>
         public TargetEntry(string unparsedEntry, int absoluteTop, int absoluteLeft, int height, int width)
         {
             sections = new List<string>();

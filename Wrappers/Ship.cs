@@ -110,7 +110,7 @@ namespace Eryan.Wrappers
             if (tresp == null)
             {
                 Console.WriteLine("Couldn't retrieve targetlist");
-                return null;
+                return new List<TargetEntry>();
             }
             return (List<TargetEntry>)tresp.Data;
         }
@@ -355,7 +355,7 @@ namespace Eryan.Wrappers
                 Console.WriteLine("Can't find module item");
                 return false;
             }
-            m.move(new Point(ran.Next(activateResp.X, activateResp.X + activateResp.Width), ran.Next(activateResp.Y, activateResp.Y+activateResp.Height)));
+            m.move(new Point(ran.Next(activateResp.X+5, activateResp.X + activateResp.Width - 5), ran.Next(activateResp.Y+5, activateResp.Y+activateResp.Height-5)));
             Thread.Sleep(200);
             m.click(true);
             pm.synchronize(m);

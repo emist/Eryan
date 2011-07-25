@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
 namespace Eryan.Wrappers
 {
     /// <summary>
@@ -10,6 +11,9 @@ namespace Eryan.Wrappers
     /// </summary>
     public class InterfaceEntry
     {
+        /// <summary>
+        /// The x, y, width and height of the interface, all entries inherit this
+        /// </summary>
         protected int x, y, width, height;
 
         /// <summary>
@@ -56,6 +60,10 @@ namespace Eryan.Wrappers
                 return height;
             }
         }
+
+
+
+                
     }
 
     

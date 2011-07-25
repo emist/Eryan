@@ -22,6 +22,13 @@ namespace Eryan.Wrappers
         Communicator com;
         Random ran;
 
+        /// <summary>
+        /// Builds station handler with current mouse, pmouse, menu handler and communicator 
+        /// </summary>
+        /// <param name="m">Bot's mouse</param>
+        /// <param name="pm">Bot's precise mouse</param>
+        /// <param name="mh">Bot's menu handler</param>
+        /// <param name="com">Bot's communicator</param>
         public Station(Mouse m, PreciseMouse pm, MenuHandler mh, Communicator com)
         {
             this.m = m;
