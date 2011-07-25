@@ -20,11 +20,8 @@ using Eryan.UI;
 using Eryan.Input;
 using Eryan.Util;
 
-//Need to update target hook to show distance to selected target
-//Ship's cargo capacity hook
-//If things are loaded
-//Distance to overview entries
-
+//Make the createpipe server take a parameter with the name of the pipe so that randomized pipe names can be used
+//If layers are loaded
 
 namespace Eryan
 {
@@ -239,33 +236,23 @@ namespace Eryan
                 initialized = !initialized;
             }
 
-            //Console.WriteLine("Bot running");
+            //Loaded script needs to be on its own thread...maybe not
 
-            /*
-             * BS DEBUGGING STUFF
-             */
+            int sleep = 0;
+            try
+            {
+                sleep = script.run();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("user script fucked up");
+                Console.WriteLine(e.ToString());
+            }
 
-            /*
-            menuHandler.select("planets");   
-            menuHandler.select("bourynes III");
-            menuHandler.click("warp to within 0 m");
-            */
+            if (sleep < 1)
+                sleep = 300;
 
-
-            //Loaded script needs to be on its own thread.
-
-            Thread.Sleep(script.run());
-             
-            
-            //bot.getMouse().move(new Point(300, 300));
-            //bot.getMouse().click(false);
-            
-            /*
-            if (bot.getMouse().cursorDistance(new Point( ((InterfaceResponse)resp).X, ((InterfaceResponse)resp).Y)) > 5)
-                bot.getMouse().move(new Point( ((InterfaceResponse)resp).X, ((InterfaceResponse)resp).Y));
-            else
-                bot.getMouse().move(new Point(500, 600));
-             */
+            Thread.Sleep(sleep);
             
             Console.WriteLine("Bot pid = " + getPid());
         }
