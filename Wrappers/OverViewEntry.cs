@@ -17,11 +17,19 @@ namespace Eryan.Wrappers
         int distance;
         //int absoluteTop, absoluteLeft, height, width;
 
+        /// <summary>
+        /// Builds an overview entry
+        /// </summary>
+        /// <param name="unparsedEntry">The unparsed eve client overview entry text</param>
+        /// <param name="absoluteTop">The lowest Y coordinate of the overview entry</param>
+        /// <param name="absoluteLeft">The lowest X coordinate of the overview entry</param>
+        /// <param name="height">The height of the entry on screen</param>
+        /// <param name="width">The width of the entry on screen</param>
         public OverViewEntry(string unparsedEntry, int absoluteTop, int absoluteLeft, int height, int width)
         {
             sections = new List<string>();
-            this.y = absoluteLeft;
-            this.x = absoluteTop;
+            this.y = absoluteTop;
+            this.x = absoluteLeft;
             this.height = height;
             this.width = width;
             parseEntry(unparsedEntry);
@@ -37,6 +45,7 @@ namespace Eryan.Wrappers
             string[] splitString = tokenizer.Split(unparsedEntry);
             tokenizer = new Regex("<right>");
 
+            Console.WriteLine(unparsedEntry);
 
             if (splitString.Count() > 1)
             {
@@ -68,39 +77,6 @@ namespace Eryan.Wrappers
             
         }
 
-        /// <summary>
-        /// Returns the X coordinate of this entry
-        /// </summary>
-        public int X
-        {
-            get
-            {
-                return x;
-            }
-        }
-        
-        /// <summary>
-        /// Returns the Y coordinate of this entry
-        /// </summary>
-        public int Y
-        {
-            get
-            {
-                return y;
-            }
-        }
-
-        /// <summary>
-        /// Returns the width of this entry
-        /// </summary>
-        public int Width
-        {
-            get
-            {
-                return width;
-            }
-        }
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder(300);
@@ -109,16 +85,6 @@ namespace Eryan.Wrappers
                 sb.Append(section);
             }
             return sb.ToString();
-        }
-        /// <summary>
-        /// Returns the height of this entry
-        /// </summary>
-        public int Height
-        {
-            get
-            {
-                return height;
-            }
         }
 
         /// <summary>
