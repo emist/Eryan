@@ -21,7 +21,11 @@ using Eryan.Input;
 using Eryan.Util;
 
 //Make the createpipe server take a parameter with the name of the pipe so that randomized pipe names can be used
-//If layers are loaded
+//Get the distance to targets, its gotta be there somewhere
+//If layers are loaded(station, inflight)
+//Find if chat box is open and minimize it
+
+//Find out how to send ctrl+key events
 
 namespace Eryan
 {
@@ -46,10 +50,7 @@ namespace Eryan
         public Boolean initialized = false;
         public Boolean input = false;
         public string scriptName;
-        AppDomain ad2;
-        String AsmName = @"UserClass";
-        
-
+       
 
         //This needs to go when the buttons get implemented properly
         ClientWindow cw;
@@ -93,7 +94,7 @@ namespace Eryan
             this.cw = cw;
             //DEBUGGING STUFF
             com = new Communicator("\\\\.\\pipe\\TestChannel");
-            menuHandler = new MenuHandler(bot.MOUSE, bot.PMOUSE, com);
+            menuHandler = new MenuHandler(bot.MOUSE, bot.PMOUSE, com, bot.KEYBOARD);
             over = new OverviewHandler(bot.MOUSE, bot.PMOUSE, com);
             
         }
@@ -209,8 +210,8 @@ namespace Eryan
         /// </summary>
         public void update()
         {
-            
 
+            
             if (paused)
             {
                 //Console.WriteLine("Not running");
@@ -239,6 +240,7 @@ namespace Eryan
             //Loaded script needs to be on its own thread...maybe not
 
             int sleep = 0;
+            
             try
             {
                 sleep = script.run();
@@ -266,6 +268,6 @@ namespace Eryan
             return true;
         }
 
-
+        
     }
 }
