@@ -46,6 +46,12 @@ namespace Eryan.Responses
             /// StringResponse type const
             /// </summary>
             public const string STRINGRESPONSE = "StringResponse";
+
+            /// <summary>
+            /// MenuResponse type const
+            /// </summary>
+            public const string MENURESPONSE = "MenuResponse";
+
         }
 
         /// <summary>

@@ -113,6 +113,12 @@ namespace Eryan.Factories
             /// Retrieve the ship's capacity
             /// </summary>
             public const string GETSHIPCAPACITY = "getShipCapacity";
+
+            /// <summary>
+            /// Retrieve the currently visible menu items
+            /// </summary>
+            public const string GETMENUITEMS = "getMenuItems";
+
         }
 
        /// <summary>
