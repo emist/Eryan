@@ -42,6 +42,11 @@ namespace Eryan.Factories
                     return new StringResponse(response);
                 }
 
+                if (responsetype.Equals(Response.RESPONSES.MENURESPONSE))
+                {
+                    return new MenuResponse(response);
+                }
+
                 Console.WriteLine("Unidentified Response, not Built");
 
                 return null;
