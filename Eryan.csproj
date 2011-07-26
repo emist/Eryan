@@ -62,6 +62,10 @@
     <Compile Include="InputHandler\OverviewHandler.cs" />
     <Compile Include="Input\PreciseMouse.cs" />
     <Compile Include="IPC\Communicator.cs" />
+    <Compile Include="Responses\ItemResponse.cs" />
+    <Compile Include="Responses\MenuResponse.cs" />
+    <Compile Include="Responses\StringResposne.cs" />
+    <Compile Include="Responses\TargetListResponse.cs" />
     <Compile Include="Script\Scriptable.cs" />
     <Compile Include="UI\ScriptBrowser.cs">
       <SubType>Form</SubType>
@@ -142,9 +146,16 @@
     <Compile Include="Responses\InterfaceResponse.cs" />
     <Compile Include="Responses\OverViewResponse.cs" />
     <Compile Include="Responses\Response.cs" />
+    <Compile Include="Wrappers\InterfaceEntry.cs" />
+    <Compile Include="Wrappers\Item.cs" />
+    <Compile Include="Wrappers\MenuEntry.cs" />
     <Compile Include="Wrappers\OverViewEntry.cs" />
+    <Compile Include="Wrappers\SelectedItem.cs" />
+    <Compile Include="Wrappers\Ship.cs" />
     <Compile Include="Wrappers\SolarSystem.cs" />
     <Compile Include="Wrappers\Stargate.cs" />
+    <Compile Include="Wrappers\Station.cs" />
+    <Compile Include="Wrappers\TargetEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Injector\Injector\Injector.csproj">
