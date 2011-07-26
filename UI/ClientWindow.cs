@@ -354,7 +354,8 @@ namespace Eryan.UI
             this.Controls.Add(this.loadScriptBtn);
             this.Controls.Add(this.runButton);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(900, 890);
             this.Name = "ClientWindow";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
