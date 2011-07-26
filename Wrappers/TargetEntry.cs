@@ -10,11 +10,11 @@ namespace Eryan.Wrappers
     /// <summary>
     /// Wraps a target entry
     /// </summary>
-    public class TargetEntry
+    public class TargetEntry : InterfaceEntry
     {
         List<string> sections;
         Regex tokenizer;
-        int absoluteTop, absoluteLeft, height, width;
+
 
         /// <summary>
         /// Takes an unparsed target entry and tokenize its elements
@@ -27,8 +27,8 @@ namespace Eryan.Wrappers
         public TargetEntry(string unparsedEntry, int absoluteTop, int absoluteLeft, int height, int width)
         {
             sections = new List<string>();
-            this.absoluteLeft = absoluteLeft;
-            this.absoluteTop = absoluteTop;
+            this.x = absoluteLeft;
+            this.y = absoluteTop;
             this.height = height;
             this.width = width;
             parseEntry(unparsedEntry);
@@ -43,13 +43,13 @@ namespace Eryan.Wrappers
             //tokenizer = new Regex(@"<t>");
             //string[] splitString = tokenizer.Split(unparsedEntry);
             //tokenizer = new Regex("<right>");
-            
-           
+
+
             //splitString[1] = tokenizer.Split(splitString[1])[1];
 
-            
+
             Console.WriteLine(unparsedEntry);
-            
+
 
             /*
             foreach (string split in splitString)
@@ -60,42 +60,10 @@ namespace Eryan.Wrappers
                 sections.Add(split);
             }
            */
-         
+
 
         }
 
-        /// <summary>
-        /// Returns the X coordinate of this entry
-        /// </summary>
-        public int X
-        {
-            get
-            {
-                return absoluteLeft;
-            }
-        }
-
-        /// <summary>
-        /// Returns the Y coordinate of this entry
-        /// </summary>
-        public int Y
-        {
-            get
-            {
-                return absoluteTop;
-            }
-        }
-
-        /// <summary>
-        /// Returns the width of this entry
-        /// </summary>
-        public int Width
-        {
-            get
-            {
-                return width;
-            }
-        }
 
         public override string ToString()
         {
@@ -106,16 +74,5 @@ namespace Eryan.Wrappers
             }
             return sb.ToString();
         }
-        /// <summary>
-        /// Returns the height of this entry
-        /// </summary>
-        public int Height
-        {
-            get
-            {
-                return height;
-            }
-        }
-
-    }
+    }     
 }

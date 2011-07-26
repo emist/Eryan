@@ -61,7 +61,7 @@ namespace Eryan.Wrappers
             foreach (Item it in (List<Item>)items.Data)
             {
                 m.move(new Point(ran.Next(it.X, it.X+it.Width), ran.Next(it.Y, it.Y+it.Height)));
-                m.drag(new Point(ran.Next(stationHangar.X, stationHangar.Width), ran.Next(stationHangar.Y, stationHangar.Width)));
+                m.drag(new Point(ran.Next(stationHangar.X, stationHangar.X + stationHangar.Width), ran.Next(stationHangar.Y, stationHangar.Y + stationHangar.Height)));
             }
 
             pm.synchronize(m);

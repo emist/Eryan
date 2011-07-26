@@ -81,7 +81,7 @@ namespace Eryan.Wrappers
         /// <param name="entry">The overview entry to target</param>
         /// <returns>True on sucess, false otherwise</returns>
         public Boolean target(OverViewEntry entry)
-        {
+        {   
             menu.open(entry);
             menu.click(MenuHandler.MENUITEMS.LOCKTARGET);
             return true;
