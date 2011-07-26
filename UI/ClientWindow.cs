@@ -53,7 +53,13 @@ namespace Eryan.UI
             this.tabControl1.TabPages[0].Size = new Size(1024, 900);
         }
 
-
+        public void drawString(String str, Font f, Point loc, bool antialiasing)
+        {
+            Graphics g = this.CreateGraphics();
+            if (antialiasing)
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            g.DrawString(str, f, Brushes.Green, new Point(loc.X+15, loc.Y+80));
+        }
 
         /// <summary>
         /// Getter for the Bot list.

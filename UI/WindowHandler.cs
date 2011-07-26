@@ -277,7 +277,7 @@ namespace Eryan.UI
             winDel = new WinEventDelegate(HandleWindowChanges);
             MouseDown += new MouseEventHandler(Form1_MouseDown);
             overviewhandler = new OverviewHandler(mouse, pmouse, com);
-            menuhandler = new MenuHandler(mouse, pmouse, com);
+            menuhandler = new MenuHandler(mouse, pmouse, com, keyboard);
             station = new Station(mouse, pmouse, menuhandler, com);
             myShip = new Ship(menuhandler, overviewhandler, com, pmouse, mouse);
 
@@ -433,6 +433,10 @@ namespace Eryan.UI
             }
         }
 
+
+        /// <summary>
+        /// Returns this windowhandler's overview handler reference
+        /// </summary>
         public OverviewHandler OVERVIEW
         {
             get
@@ -441,6 +445,9 @@ namespace Eryan.UI
             }
         }
 
+        /// <summary>
+        /// Returns this windowhandler's communicator reference
+        /// </summary>
         public Communicator COMMUNICATOR
         {
             get
@@ -449,6 +456,20 @@ namespace Eryan.UI
             }
         }
 
+        /// <summary>
+        /// Returns this windowhandler's keyboard reference
+        /// </summary>
+        public KeyBoard KEYBOARD
+        {
+            get
+            {
+                return keyboard;
+            }
+        }
+
+        /// <summary>
+        /// Returns this windowhandler's menu reference
+        /// </summary>
         public MenuHandler MENU
         {
             get
@@ -479,6 +500,9 @@ namespace Eryan.UI
             }
         }
 
+        /// <summary>
+        /// Returns this WindowHandler's station handler reference
+        /// </summary>
         public Station STATION
         {
             get
@@ -487,6 +511,9 @@ namespace Eryan.UI
             }
         }
 
+        /// <summary>
+        /// Returns this windowhandler's ship reference
+        /// </summary>
         public Ship SHIP
         {
             get
