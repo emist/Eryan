@@ -12,7 +12,8 @@ namespace Eryan.Wrappers
     /// </summary>
     public class TargetEntry : InterfaceEntry
     {
-        List<string> sections;
+        String name;
+        int distance;
         Regex tokenizer;
 
 
@@ -26,7 +27,6 @@ namespace Eryan.Wrappers
         /// <param name="width">Width of the entry icon</param>
         public TargetEntry(string unparsedEntry, int absoluteTop, int absoluteLeft, int height, int width)
         {
-            sections = new List<string>();
             this.x = absoluteLeft;
             this.y = absoluteTop;
             this.height = height;
@@ -40,39 +40,50 @@ namespace Eryan.Wrappers
         /// <param name="unparsedEntry">The unparsed Target entry from the client</param>
         public void parseEntry(string unparsedEntry)
         {
-            //tokenizer = new Regex(@"<t>");
-            //string[] splitString = tokenizer.Split(unparsedEntry);
-            //tokenizer = new Regex("<right>");
-
-
-            //splitString[1] = tokenizer.Split(splitString[1])[1];
-
-
-            Console.WriteLine(unparsedEntry);
-
-
-            /*
-            foreach (string split in splitString)
+            Regex reg = new Regex("<br>");
+            int nums = 0;
+            string num = ""; 
+            string[] split = reg.Split(unparsedEntry);
+            reg = new Regex("[0-9]+");
+            if (split.Count() > 1)
             {
-                if (split.Equals(""))
-                    continue;
-                Console.WriteLine(split);
-                sections.Add(split);
+                foreach (Capture capture in reg.Matches(split[1]))
+                {
+                    num += capture.Value;
+                }
+
+                if (num == "")
+                {
+                    throw new Exception("No numbers in the target entry");
+                }
+
+                nums = Convert.ToInt32(num);
+                reg = new Regex("km");
+                if (reg.Match(split[1]).Value != "")
+                {
+                    distance = nums * 1000;
+                }
+
+                distance = nums;
+                name = split[0];
             }
-           */
-
-
         }
 
 
-        public override string ToString()
+        public int Distance
         {
-            StringBuilder sb = new StringBuilder(300);
-            foreach (string section in sections)
+            get
             {
-                sb.Append(section);
+                return distance;
             }
-            return sb.ToString();
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
         }
     }     
 }

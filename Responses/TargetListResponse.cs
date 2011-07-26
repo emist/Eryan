@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+
+
 using eveobjects;
 using Eryan.Wrappers;
+
+
 
 namespace Eryan.Responses
 {
@@ -26,7 +31,6 @@ namespace Eryan.Responses
             data = new List<TargetEntry>();
             foreach (targetentry entry in TargetObject.ThistargetList)
             {
-
                 data.Add(new TargetEntry(entry.Text.Text, entry.Text.TopLeftY, entry.Text.TopLeftX, entry.Text.Height, entry.Text.Width));
                 Console.WriteLine(entry.Text.Text);
                 Console.WriteLine(entry.Text.TopLeftX);
