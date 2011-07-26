@@ -328,7 +328,7 @@ namespace Eryan.UI
         /// <param name="e"></param>
         protected override void OnSizeChanged(EventArgs e)
         {
-            this.Invalidate();
+            //this.Invalidate();
             base.OnSizeChanged(e);
         }
 
@@ -377,6 +377,12 @@ namespace Eryan.UI
             return keyboard;
         }
 
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            drawingScreen.Invalidate();
+            this.Invalidate();
+        }
+
         /// <summary>
         /// Return the mouse device associated with this window
         /// </summary>
@@ -415,6 +421,9 @@ namespace Eryan.UI
                     {               
                         injector.getSyringe().CallExport(dll, "startServer");
                         injector.getSyringe().CallExport(dll, "dropServer");
+                        //drawingScreen.Invalidate();
+                        //this.Invalidate();
+                        //cw.Invalidate();
                     }
                 }
                 catch (Exception e)
@@ -493,9 +502,10 @@ namespace Eryan.UI
             RECT eveWindowRect = new RECT();
             HandleRef windowRef = new HandleRef(this, appWin);
 
-            if (this.IsVisible())
+            /*if (this.IsVisible())
                 this.Hide();
             this.Show();
+            */
 
             GetWindowRect(windowRef, out eveWindowRect);
 
@@ -535,7 +545,7 @@ namespace Eryan.UI
             }
            // cw.Size = new Size(900, 800);
 
-            cw.Invalidate();
+
         #if DEBUG
             ;
         #else
@@ -578,7 +588,7 @@ namespace Eryan.UI
 
                             
 
-                            ShowWindow(appWin, ShowWindowCommands.Hide);
+                            //ShowWindow(appWin, ShowWindowCommands.Hide);
                             // Put it into this form
 
                             SetParent(appWin, this.Handle);
@@ -592,7 +602,11 @@ namespace Eryan.UI
 
 
                             initialize();
+
+                            
                             handleDrawingScreen();
+                            //ShowWindow(appWin, ShowWindowCommands.Show);
+                            MoveWindow(appWin, 0, 0, this.Width - 10, this.Height, true);
                             
                            
                         }
@@ -625,13 +639,13 @@ namespace Eryan.UI
         protected override void OnMove(EventArgs e)
         {
 
-
+            
             if (this.IsVisible())
             {
                 handleDrawingScreen();
             }
             
-            base.OnMove(e);
+            //base.OnMove(e);
         }
 
         /// <summary>
@@ -727,7 +741,7 @@ namespace Eryan.UI
             }
 
 
-            this.Invalidate();
+            //this.Invalidate();
             base.OnVisibleChanged(e);
 
 
@@ -765,10 +779,11 @@ namespace Eryan.UI
         {
             if (loaded)
             {
+                //drawingScreen.Invalidate();
                 drawingScreen.drawString("Eryan 2.0", systemFont, new Point(0, 0));
             }
 
-            //this.Invalidate();
+            
             base.OnPaint(e);
         }
         
@@ -784,10 +799,11 @@ namespace Eryan.UI
                 return;
             }
             
+            
             if (drawingScreen != null)
                 if (drawingScreen.IsVisible())
                     drawingScreen.hideForm();
-
+            
             if (!this.IsVisible())
             {
                 return;
@@ -839,19 +855,15 @@ namespace Eryan.UI
             }
 
             System.Console.WriteLine( (appWin == IntPtr.Zero) + "");
-
-
-            MoveWindow(appWin, 0, 0, this.Width - 10, this.Height, true);
-
- 
-            if (created == true)
-            {
+            
+            if(created == true)
                 handleDrawingScreen();
-            }
+
+            
 
 
-            this.Invalidate();
-            base.OnResize(e);
+            //this.Invalidate();
+//            base.OnResize(e);
 
         }
 

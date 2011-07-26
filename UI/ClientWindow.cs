@@ -50,7 +50,7 @@ namespace Eryan.UI
 
             this.tabControl1.TabPages[0].Controls.Add(form);
             //this.tabControl1.Size = new Size(800, 900);
-            //this.tabControl1.TabPages[0].Size = new Size(800, 900);
+            this.tabControl1.TabPages[0].Size = new Size(1024, 900);
         }
 
 
@@ -187,10 +187,10 @@ namespace Eryan.UI
                 {
                     Utils util = DrawAbleScreenFetcher.fetch(tmp.getPid());
                     if(util != null)
-                        util.setLocation(new Point(this.Location.X + 5, this.Location.Y + 50));
+                        util.setLocation(new Point(this.Location.X + 15, this.Location.Y + 80));
                 }
             }
-            this.tabControl1.Size = this.Size;
+            //this.tabControl1.Size = this.Size;
             base.OnVisibleChanged(e);
         }
 
@@ -208,11 +208,11 @@ namespace Eryan.UI
                 {
                     Utils util = DrawAbleScreenFetcher.fetch(tmp.getPid());
                     if(util != null)
-                        util.setLocation(new Point(this.Location.X + 5, this.Location.Y + 50));
+                        util.setLocation(new Point(this.Location.X + 15, this.Location.Y + 80));
                 }
             }
 
-            this.tabControl1.Size = this.Size;
+           
             base.OnMove(e);
         }
         /// <summary>
@@ -229,11 +229,11 @@ namespace Eryan.UI
                 {
                     Utils util = DrawAbleScreenFetcher.fetch(tmp.getPid());
                     if(util != null)
-                        util.setLocation(new Point(this.Location.X + 5, this.Location.Y + 50));
+                        util.setLocation(new Point(this.Location.X + 15, this.Location.Y + 80));
                 }
             }
 
-            this.tabControl1.Size = this.Size;
+            //this.tabControl1.Size = this.Size;
             base.OnResize(e);
         }
 
@@ -252,9 +252,9 @@ namespace Eryan.UI
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.mouseInput = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.mouseInput = new System.Windows.Forms.Button();
             this.runButton = new System.Windows.Forms.Button();
             this.loadScriptBtn = new System.Windows.Forms.Button();
             this.stopScriptBtn = new System.Windows.Forms.Button();
@@ -267,27 +267,39 @@ namespace Eryan.UI
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.mouseInput, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 2);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.052503F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96.94749F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1032, 849);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1032, 905);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // mouseInput
+            // 
+            this.mouseInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.mouseInput.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.mouseInput.Location = new System.Drawing.Point(478, 4);
+            this.mouseInput.Name = "mouseInput";
+            this.mouseInput.Size = new System.Drawing.Size(75, 19);
+            this.mouseInput.TabIndex = 1;
+            this.mouseInput.Text = "Input";
+            this.mouseInput.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(0, 25);
+            this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.tabControl1.Location = new System.Drawing.Point(0, 27);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(0, 0);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1032, 824);
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
+            this.tabControl1.Size = new System.Drawing.Size(1032, 878);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -296,20 +308,9 @@ namespace Eryan.UI
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1024, 798);
+            this.tabPage1.Size = new System.Drawing.Size(1024, 852);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
-            // 
-            // mouseInput
-            // 
-            this.mouseInput.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.mouseInput.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.mouseInput.Location = new System.Drawing.Point(478, 3);
-            this.mouseInput.Name = "mouseInput";
-            this.mouseInput.Size = new System.Drawing.Size(75, 19);
-            this.mouseInput.TabIndex = 1;
-            this.mouseInput.Text = "Input";
-            this.mouseInput.UseVisualStyleBackColor = true;
             // 
             // runButton
             // 
@@ -342,11 +343,12 @@ namespace Eryan.UI
             // ClientWindow
             // 
             this.BackColor = System.Drawing.SystemColors.ControlText;
-            this.ClientSize = new System.Drawing.Size(1034, 852);
+            this.ClientSize = new System.Drawing.Size(1034, 908);
             this.Controls.Add(this.stopScriptBtn);
             this.Controls.Add(this.loadScriptBtn);
             this.Controls.Add(this.runButton);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimumSize = new System.Drawing.Size(900, 890);
             this.Name = "ClientWindow";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
