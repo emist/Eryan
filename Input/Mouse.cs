@@ -423,6 +423,9 @@ namespace Eryan.Input
             //PostMessage(hWndCalc, (int)WMessages.WM_LBUTTONDOWN, 0, ZiadSpace.Util.BitHelper.MakeDword(300, 200));
             //PostMessage(hWndCalc, (int)WMessages.WM_LBUTTONUP, 0, ZiadSpace.Util.BitHelper.MakeDword(300,200));
 
+            screen.Invalidate();
+            
+            
             screen.drawLine(Pens.BurlyWood, p, new Point(p.X + 5, p.Y));
             //dllMoveMouse(appWin, X, Y);
             //dllMouseClick(appWin, X, Y);

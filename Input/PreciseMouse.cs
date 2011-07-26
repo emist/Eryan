@@ -87,7 +87,7 @@ namespace Eryan.Input
                         nx = nx + random.Next(randX, randX * 2);
                         ny = ny + random.Next(randY, randY * 2);
                     }
-                    WindMouse(cx, cy, nx, ny, 11, 1, 10 / randSpeed, 12 / randSpeed, 10 * randSpeed, 10 * randSpeed);
+                    WindMouse(cx, cy, nx, ny, 11, 2 , 10 / randSpeed, 12 / randSpeed, 10 * randSpeed, 10 * randSpeed);
                     e++;
                 }
                 cx = cursorLocation().X;
@@ -96,7 +96,7 @@ namespace Eryan.Input
                 if (!atPosition(x, y))
                 {
                     System.Threading.Thread.Sleep(30 + random.Next(30));
-                    WindMouse(cx, cy, (x + random.Next(randX)), (y + random.Next(randY)), 11, 1, 5 / randSpeed, 10 / randSpeed, 10 * randSpeed, 10 * randSpeed);
+                    WindMouse(cx, cy, (x + random.Next(randX)), (y + random.Next(randY)), 11, 2, 5 / randSpeed, 10 / randSpeed, 10 * randSpeed, 10 * randSpeed);
                 }
 
                 //               PostMessage(appWin, (int)WMessages.WM_LBUTTONDOWN, 0, MakeLParam(x, y));
