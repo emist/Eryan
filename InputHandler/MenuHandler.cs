@@ -143,6 +143,11 @@ namespace Eryan.InputHandler
             /// Warp to zero element
             /// </summary>
             public const string WARPTOZERO = "Warp to within 0 m";
+
+            /// <summary>
+            /// Unlock Target
+            /// </summary>
+            public const string UNLOCKTARGET = "Unlock Target";
         }
         
         /// <summary>
@@ -151,12 +156,13 @@ namespace Eryan.InputHandler
         /// <param name="m">The bot's Mouse</param>
         /// <param name="pm">The bot's PreciseMouse</param>
         /// <param name="com">The bot's communicator</param>
-        public MenuHandler(Mouse m, PreciseMouse pm, Communicator com)
+        public MenuHandler(Mouse m, PreciseMouse pm, Communicator com, KeyBoard kb)
         {
             this.pm = pm;
             pm.Speed = 20;
             this.m = m;
             this.comm = com;
+            this.kb = kb;
             random = new Random();
             
         }
@@ -178,17 +184,115 @@ namespace Eryan.InputHandler
         /// <returns>True if sucess, false otherwise</returns>
         public Boolean open(InterfaceEntry entry)
         {
-
-
             
             Point pt = new Point(random.Next(entry.X, entry.X + entry.Width), random.Next(entry.Y, entry.Y + entry.Height - 5));
             m.move(pt);
-            Console.WriteLine("Moving to point: " + pt);
             pm.synchronize(m);
+            m.click(true);
             Thread.Sleep(300);
             m.click(false);
-            Thread.Sleep(300);
+            Thread.Sleep(600);
             return true;
+        }
+
+
+        /// <summary>
+        /// Select the given menuview entry if not null
+        /// </summary>
+        /// <param name="entry">The menu entry to select</param>
+        /// <returns>true if success, false otherwise</returns>
+        public bool select(MenuEntry entry)
+        {
+            Console.WriteLine("Selecting " + entry.Text + " at " + entry.X + " , " + entry.Y);
+            pm.MissChance = 100;
+            pm.Speed = 5;
+
+            if (entry == null)
+            {
+                return false;
+            }
+
+            pm.move(10, random.Next(entry.X + 2, entry.X + 5), random.Next(pm.getY() - 3, pm.getY()), 0, 0, 0);
+            pm.move(10, random.Next(entry.Width / 3 + entry.X, entry.Width / 2 + entry.X), random.Next(entry.Y + 1, entry.Y + 5), 0, 0, 0);
+
+            Thread.Sleep(300);
+            m.synchronize(pm);
+            return true;
+        }
+
+        /// <summary>
+        /// Click the given menu entry
+        /// </summary>
+        /// <param name="entry">The menu entry to click</param>
+        /// <returns>true on sucess, false otherwise</returns>
+        public bool click(MenuEntry entry)
+        {
+            pm.MissChance = 100;
+            pm.Speed = 5;
+
+            if (entry == null)
+            {
+                return false;
+            }
+
+
+            pm.move(10,random.Next(entry.X+2, entry.X + 5), random.Next(pm.getY()-3, pm.getY()), 0, 0, 0);
+            pm.move(10,random.Next(entry.Width/3 + entry.X, entry.Width / 2 + entry.X), random.Next(entry.Y+ 1, entry.Y + 5), 0, 0, 0);
+            Thread.Sleep(300);
+            pm.click(true);
+            m.synchronize(pm);
+            return true;
+        }
+
+        /// <summary>
+        /// Returns the asteroid belts in the currently open menu
+        /// </summary>
+        /// <returns>List of menu entries representing the asteroid belts</returns>
+        public List<MenuEntry> getBelts()
+        {
+            List<MenuEntry> belts = new List<MenuEntry>();
+            BooleanResponse menuOpen = (BooleanResponse)comm.sendCall(FunctionCallFactory.CALLS.ISMENUOPEN, Response.RESPONSES.BOOLEANRESPONSE);
+            if (menuOpen == null)
+            {
+                return null;
+            }
+
+            if (!(Boolean)menuOpen.Data)
+            {
+                return null;
+            }
+            
+            MenuResponse resp = (MenuResponse)comm.sendCall(FunctionCallFactory.CALLS.GETMENUITEMS, Response.RESPONSES.MENURESPONSE);
+            if (resp == null)
+            {
+                Console.WriteLine("couldn't get menu items");
+                return null;
+            }
+
+            foreach (MenuEntry entry in (List<MenuEntry>)resp.Data)
+            {
+                if (entry.Text.ToLower().Contains("belt "))
+                {
+                    belts.Add(entry);
+                }
+            }
+
+            return belts;
+        }
+
+        /// <summary>
+        /// Check if there is a currently open menu
+        /// </summary>
+        /// <returns>Return true if there is, false otherwise</returns>
+        public bool isMenuOpen()
+        {
+            BooleanResponse menuOpen = (BooleanResponse)comm.sendCall(FunctionCallFactory.CALLS.ISMENUOPEN, Response.RESPONSES.BOOLEANRESPONSE);
+            if (menuOpen == null)
+            {
+                return false;
+            }
+
+            return (Boolean)menuOpen.Data;
         }
 
         /// <summary>
@@ -214,8 +318,9 @@ namespace Eryan.InputHandler
             {
                 InterfaceResponse inflight = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETINFLIGHTINTERFACE, Response.RESPONSES.INTERFACERESPONSE);
                 if (inflight == null)
+                {
                     return false;
-
+                }
                 inflight.HandleResponse();
 
                 m.move(new Point(
@@ -227,25 +332,26 @@ namespace Eryan.InputHandler
 
                 Thread.Sleep(300);
                 m.click(false);
-                Thread.Sleep(800);
+                Thread.Sleep(600);
                 
             }
             
             InterfaceResponse resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYTEXTMENU, menuItem.ToUpper(), Response.RESPONSES.INTERFACERESPONSE);
             if (resp == null)
+            {
+                if(isMenuOpen())
+                    kb.sendChar((char)KeyBoard.VKeys.VK_ESCAPE);
                 return false;
+            }
 
             pm.MissChance = 100;
             pm.Speed = 5;
-
-            //m.move(new Point(resp.X + random.Next(resp.Height - 2, resp.Height / 2), resp.Y + random.Next(resp.Width, resp.Width / 2)));
-            //pm.move(10, random.Next(resp.Width + resp.X - 10, resp.Width + resp.X), resp.Y+5, 0, 0, 0);
-           
+ 
             pm.move(10, resp.X + 5, pm.getY(), 0, 0, 0);
             pm.move(10, resp.Width/2 + resp.X, resp.Y + 5, 0, 0, 0);
 
             //Synchronize both mouse devices
-            synchronizePreciseMouse(pm);
+            m.synchronize(pm);
             
             return true;
         }
@@ -275,17 +381,13 @@ namespace Eryan.InputHandler
 
             Random random = new Random();
 
-           
-
-//            pm.move(10, random.Next(resp.Width + resp.X-10, resp.Width + resp.X), resp.Y+10, 0 , 0, 0);
-
             
             pm.move(10, resp.X+5, pm.getY(), 0, 0, 0);
             pm.move(10, resp.X + 5, resp.Y + 6, 0, 0,0);
 
 
             //Synchronize both mouse devices
-            synchronizePreciseMouse(pm);
+            m.synchronize(pm);
            
             Thread.Sleep(600);
 

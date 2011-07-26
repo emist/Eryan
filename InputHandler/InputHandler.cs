@@ -26,8 +26,24 @@ namespace Eryan.InputHandler
         /// Every input handler needs a precise mouse
         /// </summary>
         protected PreciseMouse pm;
-        
 
+        /// <summary>
+        /// Some input handlers need a keyboard
+        /// </summary>
+        protected KeyBoard kb;
+
+
+        /// <summary>
+        /// Return a reference to this handler's keyboard
+        /// </summary>
+        public KeyBoard KEYBOARD
+        {
+            get
+            {
+                return kb;
+            }
+        }
+        
         /// <summary>
         /// Return a reference to this handler's mouse
         /// </summary>
