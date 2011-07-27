@@ -21,11 +21,9 @@ using Eryan.Input;
 using Eryan.Util;
 
 //Make the createpipe server take a parameter with the name of the pipe so that randomized pipe names can be used
-//Get the distance to targets, its gotta be there somewhere
 //If layers are loaded(station, inflight)
 //Find if chat box is open and minimize it
-
-//Find out how to send ctrl+key events
+//Move drawable screen down by like 5 pixels
 
 namespace Eryan
 {

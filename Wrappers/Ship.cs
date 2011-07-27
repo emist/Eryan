@@ -341,6 +341,15 @@ namespace Eryan.Wrappers
             return -1;
         }
 
+        /// <summary>
+        /// Stop the ship
+        /// </summary>
+        /// <returns></returns>
+        public bool stop()
+        {
+            menu.KEYBOARD.sendCtrlCharacter((char)0x20);
+            return true;
+        }
 
         /// <summary>
         /// Activate the high slot located at position num
@@ -355,7 +364,7 @@ namespace Eryan.Wrappers
                 Console.WriteLine("Can't find module item");
                 return false;
             }
-            m.move(new Point(ran.Next(activateResp.X+5, activateResp.X + activateResp.Width - 5), ran.Next(activateResp.Y+5, activateResp.Y+activateResp.Height-5)));
+            m.move(new Point(ran.Next(activateResp.X+10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y+10, activateResp.Y+activateResp.Height-10)));
             Thread.Sleep(200);
             m.click(true);
             pm.synchronize(m);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 //Implement holding down a key
 
@@ -21,7 +22,13 @@ namespace Eryan.Input
         private const uint WM_CHAR = (uint)0x102;
         private const uint WM_KEYUP = (uint)0x101;
         private const uint WM_GETTEXT = (uint)0x000D;
-        
+
+        public enum KeyEvents : int
+        {
+            KEYEVENTF_KEYUP = 0x0002,
+        };
+    
+
         //Special Keys
         public enum VKeys : int
         {
@@ -197,6 +204,23 @@ namespace Eryan.Input
                 PostMessage(appWin, WM_KEYDOWN, VkKeyScan(key), 0x00140001);
             }
         }
+
+
+        /// <summary>
+        /// Sends the given character with the control key pressed
+        /// </summary>
+        /// <param name="c">Character to send with control</param>
+   
+        public void sendCtrlCharacter(char c)
+        {
+
+            keybd_event((byte)VKeys.VK_CONTROL, 0, 0, 0);
+            Thread.Sleep(100);
+            PostMessage(appWin, WM_KEYDOWN, VkKeyScan(c), 0);
+            Thread.Sleep(300);
+            keybd_event((byte)VKeys.VK_CONTROL, 0, 0x2, 0);
+        }
+        
 
         /// <summary>
         /// Sends keypresses to the EVE client with a static wait between keypresses

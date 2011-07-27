@@ -51,6 +51,12 @@ namespace Eryan.Input
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         protected static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, UInt32 wParam, IntPtr lparam);
 
+        [DllImport("user32.dll", EntryPoint = "keybd_event", SetLastError = true)]
+        internal static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
+
+        [DllImport("user32.dll")]
+        public static extern uint MapVirtualKey(uint uCode, uint uMapType);
+
         /// <summary>
         /// Associate this device to a windows handler
         /// </summary>
