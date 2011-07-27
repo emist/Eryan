@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Threading;
 
 using Eryan.Wrappers;
 using Eryan.IPC;
@@ -61,6 +62,7 @@ namespace Eryan.Wrappers
             foreach (Item it in (List<Item>)items.Data)
             {
                 m.move(new Point(ran.Next(it.X, it.X+it.Width), ran.Next(it.Y, it.Y+it.Height)));
+                Thread.Sleep(200);
                 m.drag(new Point(ran.Next(stationHangar.X, stationHangar.X + stationHangar.Width), ran.Next(stationHangar.Y, stationHangar.Y + stationHangar.Height)));
             }
 
