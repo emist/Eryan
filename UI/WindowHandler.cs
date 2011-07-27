@@ -40,7 +40,7 @@ namespace Eryan.UI
         private delegate void drawingScreenDelegate();
         private bool loaded = false;
         private Font systemFont = new Font("Impact", 16);
-        private String dll = "C:\\Black.dll";
+        private String dll = "C:\\FRAPS32.dll";
         private Boolean running = false;
 
        
