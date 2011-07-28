@@ -119,6 +119,31 @@ namespace Eryan.Factories
             /// </summary>
             public const string GETMENUITEMS = "getMenuItems";
 
+            /// <summary>
+            /// Retrieve the current system
+            /// </summary>
+            public const string GETSYSTEMINFORMATION = "getSystemInformation";
+
+            /// <summary>
+            /// Get the cancel button of a modal window
+            /// </summary>
+            public const string GETMODALCANCELBUTTON = "getModalCancelButton";
+
+            /// <summary>
+            /// Get the OK button of a modal window if present
+            /// </summary>
+            public const string GETMODALOKBUTTON = "getModalOkButton";
+
+            /// <summary>
+            /// Check if the system menu is open
+            /// </summary>
+            public const string ISSYSTEMMENUOPEN = "isSystemMenuOpen";
+
+            /// <summary>
+            /// Check if a loading screen is open
+            /// </summary>
+            public const string ISLOADING = "isLoading";
+
         }
 
        /// <summary>
