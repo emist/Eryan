@@ -52,6 +52,11 @@ namespace Eryan.Responses
             /// </summary>
             public const string MENURESPONSE = "MenuResponse";
 
+            /// <summary>
+            /// SolarSystemResponse type const
+            /// </summary>
+            public const string SOLARYSYSTEMRESPONSE = "SolarSystemResponse";
+
         }
 
         /// <summary>
