@@ -47,6 +47,7 @@ namespace Eryan.Wrappers
             reg = new Regex("[0-9]+");
             if (split.Count() > 1)
             {
+                
                 foreach (Capture capture in reg.Matches(split[1]))
                 {
                     num += capture.Value;
@@ -63,13 +64,15 @@ namespace Eryan.Wrappers
                 {
                     distance = nums * 1000;
                 }
-
-                distance = nums;
+                else
+                    distance = nums;
                 name = split[0];
             }
         }
 
-
+        /// <summary>
+        /// Return the distance to the target
+        /// </summary>
         public int Distance
         {
             get

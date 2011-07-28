@@ -45,7 +45,7 @@ namespace Eryan.Wrappers
             string[] splitString = tokenizer.Split(unparsedEntry);
             tokenizer = new Regex("<right>");
 
-            Console.WriteLine(unparsedEntry);
+            //Console.WriteLine(unparsedEntry);
 
             if (splitString.Count() > 1)
             {
@@ -66,11 +66,13 @@ namespace Eryan.Wrappers
                     if (reg.Match(split).Value != "")
                     {
                         distance = Convert.ToInt32(nums) * 1000;
-                        Console.WriteLine("Distance is " + distance);
-                    }                        
+                        //Console.WriteLine("Distance is " + distance);
+                    }
+                    else
+                        distance = Convert.ToInt32(nums);
                  
                 }
-                Console.WriteLine(split);
+                //Console.WriteLine(split);
                 sections.Add(split);
             }
 
