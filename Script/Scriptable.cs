@@ -51,6 +51,11 @@ namespace Eryan.Script
         public Ship MyShip;
 
         /// <summary>
+        /// Reference to our current eve session
+        /// </summary>
+        public Session ESession;
+
+        /// <summary>
         /// Internal use, the Bot will initialize the script with its input handlers once its loaded into memory
         /// </summary>
         /// <param name="bot">The reference to the bot's windowhandler</param>
@@ -63,6 +68,7 @@ namespace Eryan.Script
             this.EOverViewHandler = bot.OVERVIEW;
             this.EStationHandler = bot.STATION;
             this.MyShip = bot.SHIP;
+            this.ESession = bot.SESSION;
         }
 
         /// <summary>
