@@ -47,6 +47,11 @@ namespace Eryan.Factories
                     return new MenuResponse(response);
                 }
 
+                if (responsetype.Equals(Response.RESPONSES.SOLARYSYSTEMRESPONSE))
+                {
+                    return new SystemResponse(response);
+                }
+
                 Console.WriteLine("Unidentified Response, not Built");
 
                 return null;
