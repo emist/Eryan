@@ -144,6 +144,12 @@ namespace Eryan.Factories
             /// </summary>
             public const string ISLOADING = "isLoading";
 
+
+            /// <summary>
+            /// Get the last server message 
+            /// </summary>
+            public const string GETSERVERMESSAGE = "getServerMessage";
+
         }
 
        /// <summary>
