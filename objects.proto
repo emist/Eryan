@@ -14,6 +14,11 @@ message functionCall{
 	optional string strparameter = 2;
 }
 
+message systemObject{
+	required string name = 1;
+	required string info = 2;
+}
+
 message stringResponse{
 	required string data = 1;
 }
