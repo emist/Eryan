@@ -111,7 +111,14 @@ namespace Eryan.Wrappers
         /// <returns>Returns a solarsystem object on success, null on failure</returns>
         public SolarSystem getSolarSystem()
         {
-            return null;
+            SystemResponse sresp = (SystemResponse)com.sendCall(FunctionCallFactory.CALLS.GETSYSTEMINFORMATION, Response.RESPONSES.SOLARYSYSTEMRESPONSE);
+            if (sresp == null)
+            {
+                return null;
+            }
+
+            return new SolarSystem(sresp.Name, sresp.Info);
+           
         }
 
     }

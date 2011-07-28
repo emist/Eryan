@@ -12,7 +12,8 @@ namespace Eryan.Responses
     /// </summary>
     public class SystemResponse : Response
     {
-        List<string> data;
+        string name;
+        string info;
 
         systemObject SystemObject;
 
@@ -24,6 +25,12 @@ namespace Eryan.Responses
         {
             SystemObject = systemObject.CreateBuilder().MergeFrom(input).Build();
             //data = new List<OverViewEntry>();
+
+            this.name = SystemObject.Name;
+            this.info = SystemObject.Info;
+
+            
+
 
             //data.Add(new OverViewEntry(lab.Text, lab.TopLeftY, lab.TopLeftX, lab.Height, lab.Width));
             Console.WriteLine(SystemObject.Name);
@@ -43,15 +50,19 @@ namespace Eryan.Responses
 
         }
 
-
-        /// <summary>
-        /// List represenation of the data
-        /// </summary>
-        public override Object Data
+        public string Name
         {
             get
             {
-                return data;
+                return this.name;
+            }
+        }
+
+        public string Info
+        {
+            get
+            {
+                return this.info;
             }
         }
     }

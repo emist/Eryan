@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Eryan.Wrappers
 {
@@ -14,6 +15,23 @@ namespace Eryan.Wrappers
         string constellation;
         string sov;
         double secStatus;
+
+
+        /// <summary>
+        /// Builds a solar system from the unparsed response
+        /// </summary>
+        /// <param name="name">Name of the solar system</param>
+        /// <param name="unparsedEntry">The unparsed information string</param>
+        public SolarSystem(string name, string unparsedEntry)
+        {
+            this.name = name;
+            Regex reg = new Regex("[0-1].[0-9]");
+            string entry = reg.Match(unparsedEntry).Value;
+            if (entry != "")
+            {
+                secStatus = Convert.ToDouble(entry);
+            }
+        }
 
         /// <summary>
         /// Build a solar system
