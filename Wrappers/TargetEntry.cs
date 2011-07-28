@@ -81,6 +81,9 @@ namespace Eryan.Wrappers
             }
         }
 
+        /// <summary>
+        /// Get the name of this target
+        /// </summary>
         public string Name
         {
             get

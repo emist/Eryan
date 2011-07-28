@@ -11,34 +11,67 @@ namespace Eryan.Wrappers
     public class SolarSystem
     {
         string name;
-        int belts;
-        List<string> gates;
-        List<string> stations;
+        string constellation;
+        string sov;
+        double secStatus;
 
         /// <summary>
-        /// List of all EVE Solary Systems
+        /// Build a solar system
         /// </summary>
-        public struct names
+        /// <param name="name">The name of the system</param>
+        /// <param name="constellation">The constellation its on</param>
+        /// <param name="sov">The sov of the place</param>
+        /// <param name="secStatus">The security status of the system</param>
+        public SolarSystem(string name, string constellation, string sov, double secStatus)
         {
-            /// <summary>
-            /// Bourynes solar system
-            /// </summary>
-            public const string BOURYNES = "Bourynes";
+            this.name = name;
+            this.constellation = constellation;
+            this.sov = sov;
+            this.secStatus = secStatus;
         }
 
         /// <summary>
-        /// SolarSystem constructor
+        /// Return the name of the system
         /// </summary>
-        /// <param name="name">The solarsystem name</param>
-        /// <param name="belts">Number of belts in the solar system</param>
-        /// <param name="gates">List of gates in the system</param>
-        /// <param name="stations">List of stations in the system</param>
-        public SolarSystem(string name, int belts, List<string> gates, List<string> stations)
+        public string Name
         {
-            this.name = name;         
-            this.belts = belts;
-            this.gates = gates;
-            this.stations = stations;
+            get
+            {
+                return name;
+            }
+        }
+        
+        /// <summary>
+        /// Return the Constellation the system is in
+        /// </summary>
+        public string Constellation
+        {
+            get
+            {
+                return constellation;
+            }
+        }
+
+        /// <summary>
+        /// Return this system's sovereignity
+        /// </summary>
+        public string Sovereignty
+        {
+            get
+            {
+                return sov;
+            }
+        }
+
+        /// <summary>
+        /// Return the system's security level
+        /// </summary>
+        public double Security
+        {
+            get
+            {
+                return secStatus;
+            }
         }
 
     }
