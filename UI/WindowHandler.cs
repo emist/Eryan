@@ -55,6 +55,7 @@ namespace Eryan.UI
         MenuHandler menuhandler;
         Station station;
         Ship myShip;
+        Session eveSession;
 
         //Events we listen to
         private const uint EVENT_OBJECT_DESTROY = (uint)0x00008001L;
@@ -280,7 +281,7 @@ namespace Eryan.UI
             menuhandler = new MenuHandler(mouse, pmouse, com, keyboard);
             station = new Station(mouse, pmouse, menuhandler, com);
             myShip = new Ship(menuhandler, overviewhandler, com, pmouse, mouse);
-
+            eveSession = new Session(com);
 
             Process p = null;
 
@@ -508,6 +509,17 @@ namespace Eryan.UI
             get
             {
                 return station;
+            }
+        }
+
+        /// <summary>
+        /// Returns this WindowHandler's session reference
+        /// </summary>
+        public Session SESSION
+        {
+            get
+            {
+                return eveSession;
             }
         }
 
