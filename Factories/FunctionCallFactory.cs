@@ -150,6 +150,11 @@ namespace Eryan.Factories
             /// </summary>
             public const string GETSERVERMESSAGE = "getServerMessage";
 
+            /// <summary>
+            /// Get the interface windows
+            /// </summary>
+            public const string GETINTERFACEWINDOWS = "getInterfaceWindows";
+
         }
 
        /// <summary>
