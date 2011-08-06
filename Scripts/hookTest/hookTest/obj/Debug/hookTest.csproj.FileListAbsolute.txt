@@ -1,0 +1,15 @@
+C:\Users\emist\Eryan\Scripts\hookTest\hookTest\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\emist\Eryan\Scripts\hookTest\hookTest\bin\Debug\hookTest.dll
+C:\Users\emist\Eryan\Scripts\hookTest\hookTest\bin\Debug\hookTest.pdb
+C:\Users\emist\Eryan\Scripts\hookTest\hookTest\bin\Debug\Eryan.exe
+C:\Users\emist\Eryan\Scripts\hookTest\hookTest\bin\Debug\Syringe.dll
+C:\Users\emist\Eryan\Scripts\hookTest\hookTest\bin\Debug\Google.ProtocolBuffers.dll
+C:\Users\emist\Eryan\Scripts\hookTest\hookTest\bin\Debug\Injector.dll
+C:\Users\emist\Eryan\Scripts\hookTest\hookTest\bin\Debug\Syringe.pdb
+C:\Users\emist\Eryan\Scripts\hookTest\hookTest\bin\Debug\Google.ProtocolBuffers.pdb
+C:\Users\emist\Eryan\Scripts\hookTest\hookTest\bin\Debug\Google.ProtocolBuffers.xml
+C:\Users\emist\Eryan\Scripts\hookTest\hookTest\bin\Debug\Injector.pdb
+C:\Users\emist\Eryan\Scripts\hookTest\hookTest\bin\Debug\Eryan.pdb
+C:\Users\emist\Eryan\Scripts\hookTest\hookTest\bin\Debug\Eryan.xml
+C:\Users\emist\Eryan\Scripts\hookTest\hookTest\obj\Debug\hookTest.dll
+C:\Users\emist\Eryan\Scripts\hookTest\hookTest\obj\Debug\hookTest.pdb
