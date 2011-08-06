@@ -76,6 +76,15 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Open the cargo
+        /// </summary>
+        /// <returns>Return true on success, false otherwise</returns>
+        public Boolean openCargo()
+        {
+            return false;
+        }
+
+        /// <summary>
         /// Target the given overview entry
         /// </summary>
         /// <param name="entry">The overview entry to target</param>
@@ -235,7 +244,7 @@ namespace Eryan.Wrappers
             }
 
 
-            Regex reg = new Regex("[0-9]+" + @"." + "[0-9]+" + @"/");
+            Regex reg = new Regex("[0-9]*,*[0-9]+" + @"." + "[0-9]+" + @"/");
             string result = reg.Match((string)tresp.Data).Value;
             if (result.Length > 0)
             {
@@ -269,7 +278,7 @@ namespace Eryan.Wrappers
 
             double capacity = 0, used = 0;
 
-            Regex reg = new Regex(@"/" + "[0-9]+" + @"." + "[0-9]+");
+            Regex reg = new Regex(@"/" + "[0-9]*,*[0-9]+" + @"." + "[0-9]+");
             string result = reg.Match((string)tresp.Data).Value;
             if (result.Length > 0)
             {
@@ -285,7 +294,7 @@ namespace Eryan.Wrappers
                 }
             }
 
-            reg = new Regex("[0-9]+" + @"." + "[0-9]+" + @"/");
+            reg = new Regex("[0-9]*,*[0-9]+" + @"." + "[0-9]+" + @"/");
             result = reg.Match((string)tresp.Data).Value;
             if (result.Length > 0)
             {
@@ -323,7 +332,7 @@ namespace Eryan.Wrappers
             }
 
               
-            Regex reg = new Regex(@"/" + "[0-9]+" + @"." + "[0-9]+");
+            Regex reg = new Regex(@"/" + "[0-9]*,*[0-9]+" + @"." + "[0-9]+");
             string result = reg.Match((string)tresp.Data).Value;
             if (result.Length > 0)
             {
