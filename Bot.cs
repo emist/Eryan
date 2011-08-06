@@ -20,10 +20,17 @@ using Eryan.UI;
 using Eryan.Input;
 using Eryan.Util;
 
+
+
 //Make the createpipe server take a parameter with the name of the pipe so that randomized pipe names can be used
-//If layers are loaded(station, inflight)
-//Find if chat box is open and minimize it
-//Move drawable screen down by like 5 pixels
+
+//Looting from containers/wrecks(owner/maybe just use color in the overview/yellow not ours, white ours)
+//drone handling
+
+//Readout eve.session(IP, char id, etc)
+//Implement open cargo(alt+c would be best)
+//Write a Logger class and replace all these WriteLines
+
 
 namespace Eryan
 {
@@ -241,6 +248,11 @@ namespace Eryan
             
             try
             {
+                if(bot.SESSION.isSystemMenuOpen())
+                {
+                    bot.KEYBOARD.sendChar((char)0x1B);
+                    Thread.Sleep(1500);
+                }
                 sleep = script.run();
             }
             catch (Exception e)
