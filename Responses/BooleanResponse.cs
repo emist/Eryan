@@ -21,6 +21,9 @@ namespace Eryan.Responses
         /// <param name="input">Byte representation of the object</param>
         public BooleanResponse(byte[] input)
         {
+            if (input == null)
+                return;
+
             booleanObject = BooleanObject.CreateBuilder().MergeFrom(input).Build();
             Console.WriteLine(booleanObject.Istrue);
             data = booleanObject.Istrue;
