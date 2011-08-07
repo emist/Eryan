@@ -56,6 +56,7 @@ namespace Eryan.UI
         Station station;
         Ship myShip;
         Session eveSession;
+        Camera cam;
 
         //Events we listen to
         private const uint EVENT_OBJECT_DESTROY = (uint)0x00008001L;
@@ -282,6 +283,7 @@ namespace Eryan.UI
             station = new Station(mouse, pmouse, menuhandler, com);
             myShip = new Ship(menuhandler, overviewhandler, com, pmouse, mouse);
             eveSession = new Session(com);
+            cam = new Camera(mouse, pmouse, com);
 
             Process p = null;
 
@@ -454,6 +456,17 @@ namespace Eryan.UI
             get
             {
                 return com;
+            }
+        }
+
+        /// <summary>
+        /// Return this windowhandler's camera handler
+        /// </summary>
+        public Camera CAMERA
+        {
+            get
+            {
+                return cam;
             }
         }
 
