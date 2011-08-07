@@ -303,6 +303,10 @@ namespace Eryan.InputHandler
             return true;
         }
 
+        /// <summary>
+        /// Find an open area in the inflight interface
+        /// </summary>
+        /// <returns>An empty point in space</returns>
         public Point getOpenSpace()
         {
             List<Rectangle> recs = new List<Rectangle>();
