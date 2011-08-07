@@ -295,6 +295,44 @@ namespace Eryan.InputHandler
             return (Boolean)menuOpen.Data;
         }
 
+        private bool isEmpty(List<Rectangle> recs, Point pt)
+        {
+            foreach (Rectangle rec in recs)
+                if (rec.Contains(pt))
+                    return false;
+            return true;
+        }
+
+        public Point getOpenSpace()
+        {
+            List<Rectangle> recs = new List<Rectangle>();
+            OverViewResponse items = (OverViewResponse)comm.sendCall(FunctionCallFactory.CALLS.GETINTERFACEWINDOWS, Response.RESPONSES.OVERVIEWRESPONSE);
+            if (items == null)
+            {
+                Console.WriteLine("cargolist is null");
+                return new Point(-1, -1);
+            }
+
+            InterfaceResponse inflight = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETINFLIGHTINTERFACE, Response.RESPONSES.INTERFACERESPONSE);
+            if (inflight == null)
+            {
+                Console.WriteLine("inflight is null");
+                return new Point(-1, -1);
+            }
+
+            Point pt = new Point(random.Next(inflight.X, inflight.X + inflight.Width), random.Next(inflight.Y, inflight.Y + inflight.Height));
+
+            foreach (OverViewEntry it in (List<OverViewEntry>)items.Data)
+            {
+                recs.Add(new Rectangle(it.X, it.Y, it.Width, it.Height));
+            }
+
+            while (!isEmpty(recs, pt))
+                pt = new Point(random.Next(inflight.X, inflight.X + inflight.Width), random.Next(inflight.Y, inflight.Y + inflight.Height));
+
+            return pt;
+        }
+
         /// <summary>
         /// Select the given string in the currently open menu
         /// </summary>
@@ -321,12 +359,12 @@ namespace Eryan.InputHandler
                 {
                     return false;
                 }
-                inflight.HandleResponse();
 
-                m.move(new Point(
-                    random.Next(inflight.X, inflight.X + inflight.Width), 
-                    random.Next(inflight.Y, inflight.Y + inflight.Width)
-                    ));
+                Point pt = getOpenSpace();
+                if (pt.X == -1 || pt.Y == -1)
+                    return false;
+
+                m.move(pt);
                 pm.x = m.x;
                 pm.y = m.y;
 

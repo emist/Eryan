@@ -860,7 +860,7 @@ namespace Eryan.UI
             //drawingScreen.setLocation(new Point(this.Location.X+5, this.Location.Y + 50));
             //drawingScreen.setBackColor(Color.Transparent);
             drawingScreen.setBackColor(Color.Gray);
-            drawingScreen.setOpacity(0.30);
+            drawingScreen.setOpacity(0.70);
             //drawingScreen.setTransparencyKey();
             drawingScreen.setFormBorderStyle(FormBorderStyle.None);
             drawingScreen.setControlBox(false);

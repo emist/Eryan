@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 using Eryan.Wrappers;
 
@@ -83,7 +84,9 @@ namespace Eryan.Input
         public void drag(Point p)
         {
             holdLeftButton();
+            Thread.Sleep(300);
             move(p);
+            Thread.Sleep(300);
             releaseLeftButton();
         }
 
@@ -423,7 +426,7 @@ namespace Eryan.Input
             //PostMessage(hWndCalc, (int)WMessages.WM_LBUTTONDOWN, 0, ZiadSpace.Util.BitHelper.MakeDword(300, 200));
             //PostMessage(hWndCalc, (int)WMessages.WM_LBUTTONUP, 0, ZiadSpace.Util.BitHelper.MakeDword(300,200));
 
-            screen.Invalidate();
+            //screen.Invalidate();
             
             
             screen.drawLine(Pens.BurlyWood, p, new Point(p.X + 5, p.Y));

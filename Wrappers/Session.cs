@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Drawing;
 
 using Eryan.Responses;
 using Eryan.Factories;
@@ -16,6 +17,7 @@ namespace Eryan.Wrappers
     public class Session
     {
         Communicator com;
+        Random ran = new Random();
 
         /// <summary>
         /// Builds the session object with the given communicator
@@ -25,6 +27,7 @@ namespace Eryan.Wrappers
         {
             this.com = com;
         }
+
 
         /// <summary>
         /// Check if we are loading something

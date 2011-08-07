@@ -40,7 +40,7 @@ namespace Eryan.Util
         protected override void OnMouseMove(MouseEventArgs e)
         {
             //cw.tabControl1.Invalidate();
-            wh.Invalidate();
+          //  wh.Invalidate();
             pm = wh.PMOUSE;
             m = wh.MOUSE;
             if (cw.AllowInput)
