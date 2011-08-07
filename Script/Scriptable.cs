@@ -56,6 +56,11 @@ namespace Eryan.Script
         public Session ESession;
 
         /// <summary>
+        /// Reference to this bot's camera handler
+        /// </summary>
+        public Camera ECamera;
+
+        /// <summary>
         /// Internal use, the Bot will initialize the script with its input handlers once its loaded into memory
         /// </summary>
         /// <param name="bot">The reference to the bot's windowhandler</param>
@@ -69,6 +74,7 @@ namespace Eryan.Script
             this.EStationHandler = bot.STATION;
             this.MyShip = bot.SHIP;
             this.ESession = bot.SESSION;
+            this.ECamera = bot.CAMERA;
         }
 
         /// <summary>
