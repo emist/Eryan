@@ -159,6 +159,11 @@ namespace Eryan.Factories
             /// </summary>
             public const string GETTARGETINGRANGE = "getTargetingRange";
 
+            /// <summary>
+            /// Check if incursion is undergoing
+            /// </summary>
+            public const string ISINCURSIONONGOING = "isIncursion";
+
         }
 
        /// <summary>

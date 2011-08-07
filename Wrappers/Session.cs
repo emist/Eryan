@@ -109,6 +109,21 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Check if current system is undergoing an incursion
+        /// </summary>
+        /// <returns>Returns true if there is an incursion, false otherwise</returns>
+        public Boolean isIncursionOngoing()
+        {
+            BooleanResponse bresp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.ISINCURSIONONGOING, Response.RESPONSES.BOOLEANRESPONSE);
+            if (bresp == null)
+            {
+                return false;
+            }
+
+            return (Boolean)bresp.Data;
+        }
+
+        /// <summary>
         /// Get the current solar system
         /// </summary>
         /// <returns>Returns a solarsystem object on success, null on failure</returns>
