@@ -144,7 +144,6 @@ namespace Eryan.Factories
             /// </summary>
             public const string ISLOADING = "isLoading";
 
-
             /// <summary>
             /// Get the last server message 
             /// </summary>
@@ -154,6 +153,11 @@ namespace Eryan.Factories
             /// Get the interface windows
             /// </summary>
             public const string GETINTERFACEWINDOWS = "getInterfaceWindows";
+
+            /// <summary>
+            /// Get the module's max targeting range
+            /// </summary>
+            public const string GETTARGETINGRANGE = "getTargetingRange";
 
         }
 

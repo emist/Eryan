@@ -381,6 +381,24 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Returns the max targeting range of the given high slot
+        /// </summary>
+        /// <param name="num">The high slot number</param>
+        /// <returns>The max targeting range in meters</returns>
+        public double getHighSlotTargetingRange(int num)
+        {
+            StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETTARGETINGRANGE, "" + num, Response.RESPONSES.STRINGRESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve selected item");
+                return -1.0;
+            }
+
+            return Convert.ToDouble((string)tresp.Data);
+
+        }
+
+        /// <summary>
         /// Check if the highslot at position num is active
         /// </summary>
         /// <param name="num">The position of the highslot to check</param>
