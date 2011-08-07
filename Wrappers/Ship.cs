@@ -390,7 +390,7 @@ namespace Eryan.Wrappers
             StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETTARGETINGRANGE, "" + num, Response.RESPONSES.STRINGRESPONSE);
             if (tresp == null)
             {
-                Console.WriteLine("Couldn't retrieve selected item");
+                Console.WriteLine("Couldn't retrieve highslot range");
                 return -1.0;
             }
 
