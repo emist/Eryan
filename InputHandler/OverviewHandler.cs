@@ -133,12 +133,15 @@ namespace Eryan.InputHandler
         {
             readOverView();
             Regex reg = new Regex(labelName);
-            foreach (OverViewEntry entry in entries)
+            for (int i = 0; i < entries.Count(); i++ )
             {
-                foreach (String section in entry.Sections)
+                foreach (String section in entries[i].Sections)
                 {
                     if (reg.Match(section).Value != "")
-                        return entry;
+                    {
+                        Console.WriteLine(section);
+                        return entries[i];
+                    }
                 }
             }
             return null;
