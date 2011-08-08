@@ -77,6 +77,7 @@ namespace Eryan.InputHandler
         /// <returns>True if success, false otherwise</returns>
         public bool interactRow(int rowNum)
         {
+            readOverView();
             if (entries.Count > rowNum)
             {
                 m.moveMouse(new Point(entries[rowNum].X, entries[rowNum].Y));
@@ -96,6 +97,7 @@ namespace Eryan.InputHandler
         /// <returns>The contents of the overview row</returns>
         public OverViewEntry readRow(int rowNum)
         {
+            readOverView();
             if (entries.Count < rowNum)
                 return entries[rowNum];
             return null;
@@ -109,6 +111,7 @@ namespace Eryan.InputHandler
         /// <returns>True if found, false otherwise</returns>
         public bool isInOverView(string labelName)
         {
+            readOverView();
             Regex reg = new Regex(labelName);
             foreach (OverViewEntry entry in entries)
             {
@@ -128,6 +131,7 @@ namespace Eryan.InputHandler
         /// <returns>The overview entry or null if not found</returns>
         public OverViewEntry getEntry(string labelName)
         {
+            readOverView();
             Regex reg = new Regex(labelName);
             foreach (OverViewEntry entry in entries)
             {
@@ -147,6 +151,7 @@ namespace Eryan.InputHandler
         /// <returns>True if interacted, false otherwise</returns>
         public bool interactRow(string content)
         {
+            readOverView();
             int i = 0;
             foreach (OverViewEntry entry in entries)
             {
