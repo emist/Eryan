@@ -19,9 +19,9 @@ namespace Eryan.InputHandler
     {
         int IComparer<OverViewEntry>.Compare(OverViewEntry b, OverViewEntry a) //implement Compare
         {
-            if (a.Distance > b.Distance)
+            if (a.Y > b.Y)
                 return -1; //normally greater than = 1
-            if (a.Distance < b.Distance)
+            if (a.Y < b.Y)
                 return 1; // normally smaller than = -1
             else
                 return 0; // equal
