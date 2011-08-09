@@ -16,6 +16,17 @@ namespace Eryan.Wrappers
         /// </summary>
         protected int x, y, width, height;
 
+        public InterfaceEntry()
+        { }
+
+        public InterfaceEntry(int x, int y, int width, int height)
+        {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
+        }
+
         /// <summary>
         /// Get the X position of this item in the Eve client
         /// </summary>
