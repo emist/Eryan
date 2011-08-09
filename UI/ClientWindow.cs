@@ -193,7 +193,7 @@ namespace Eryan.UI
                 {
                     Utils util = DrawAbleScreenFetcher.fetch(tmp.getPid());
                     if(util != null)
-                        util.setLocation(new Point(this.Location.X + 15, this.Location.Y + 82));
+                        util.setLocation(new Point(this.Location.X + 10, this.Location.Y + 80));
                 }
             }
             //this.tabControl1.Size = this.Size;
@@ -214,7 +214,7 @@ namespace Eryan.UI
                 {
                     Utils util = DrawAbleScreenFetcher.fetch(tmp.getPid());
                     if(util != null)
-                        util.setLocation(new Point(this.Location.X + 15, this.Location.Y + 80));
+                        util.setLocation(new Point(this.Location.X + 10, this.Location.Y + 80));
                 }
             }
 
@@ -235,7 +235,7 @@ namespace Eryan.UI
                 {
                     Utils util = DrawAbleScreenFetcher.fetch(tmp.getPid());
                     if(util != null)
-                        util.setLocation(new Point(this.Location.X + 15, this.Location.Y + 82));
+                        util.setLocation(new Point(this.Location.X + 10, this.Location.Y + 80));
                 }
             }
 
