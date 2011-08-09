@@ -164,6 +164,21 @@ namespace Eryan.Factories
             /// </summary>
             public const string ISINCURSIONONGOING = "isIncursion";
 
+            /// <summary>
+            /// Return the position of the drones in space tab
+            /// </summary>
+            public const string GETDRONESINSPACETAB = "dronesInSpace";
+
+            /// <summary>
+            /// Return the position of the drones in bay tab
+            /// </summary>
+            public const string GETDRONESINBAYTAB = "dronesInBay";
+
+            /// <summary>
+            /// Return true if local is hostile, false otherwise
+            /// </summary>
+            public const string CHECKLOCAL = "checkLocal";
+        
         }
 
        /// <summary>
