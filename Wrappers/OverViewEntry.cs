@@ -58,19 +58,29 @@ namespace Eryan.Wrappers
             {
                 if (split.Equals(""))
                     continue;
-                Regex reg = new Regex("[0-9]+");
+                Regex reg = new Regex("[0-9]*,*[0-9]+");
                 String nums;
+
                 if ((nums = reg.Match(split).Value) != "")
                 {
-                    reg = new Regex("km");
+                    //Console.WriteLine(nums);
+                    reg = new Regex(",");
                     if (reg.Match(split).Value != "")
                     {
-                        distance = Convert.ToInt32(nums) * 1000;
-                        //Console.WriteLine("Distance is " + distance);
+                        distance = Convert.ToInt32(nums[0] + nums.Substring(2, 3));
                     }
                     else
-                        distance = Convert.ToInt32(nums);
-                 
+                    {
+                        reg = new Regex("km");
+                        if (reg.Match(split).Value != "")
+                        {
+                            distance = Convert.ToInt32(nums) * 1000;
+                            //Console.WriteLine("Distance is " + distance);
+                        }
+                        else
+                            distance = Convert.ToInt32(nums);
+                    }
+
                 }
                 //Console.WriteLine(split);
                 sections.Add(split);

@@ -13,6 +13,7 @@ namespace Eryan.Responses
     public class OverViewResponse : Response
     {
         List<OverViewEntry> data;
+        List<label> labels;
         overview OverViewObject;
 
 
@@ -24,10 +25,11 @@ namespace Eryan.Responses
         {
             OverViewObject = overview.CreateBuilder().MergeFrom(input).Build();
             data = new List<OverViewEntry>();
+            labels = new List<label>();
             foreach (label lab in OverViewObject.OverviewEntryList)
             {
 
-                
+                labels.Add(lab);
                 data.Add(new OverViewEntry(lab.Text, lab.TopLeftY, lab.TopLeftX, lab.Height, lab.Width));
            //     Console.WriteLine(lab.Text);
            //     Console.WriteLine(lab.TopLeftX);
@@ -46,6 +48,13 @@ namespace Eryan.Responses
             
         }
 
+        public List<label> Labels
+        {
+            get
+            {
+                return labels;
+            }
+        }
 
         /// <summary>
         /// List represenation of the data

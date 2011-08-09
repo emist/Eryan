@@ -50,6 +50,7 @@ namespace Eryan.InputHandler
             this.m = m;
             this.pm = pm;
             this.comm = com;
+            entries = new List<OverViewEntry>();
         }
 
         /// <summary>
@@ -98,7 +99,7 @@ namespace Eryan.InputHandler
         public OverViewEntry readRow(int rowNum)
         {
             readOverView();
-            if (entries.Count < rowNum)
+            if (entries.Count > rowNum)
                 return entries[rowNum];
             return null;
         }
@@ -140,6 +141,7 @@ namespace Eryan.InputHandler
                     if (reg.Match(section).Value != "")
                     {
                         Console.WriteLine(section);
+                        Console.WriteLine(entries[i].Distance);
                         return entries[i];
                     }
                 }
