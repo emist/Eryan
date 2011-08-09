@@ -99,7 +99,7 @@ namespace Eryan.IPC
             {
 
 
-                Console.WriteLine("Connecting to pipe");
+                //Console.WriteLine("Connecting to pipe");
 
 
                 uint bread;
@@ -110,7 +110,7 @@ namespace Eryan.IPC
 
 
 
-                Console.WriteLine("Writing to server");
+                //Console.WriteLine("Writing to server");
 
                 if (!WriteFile(npipe, fcall.ToByteArray(), (uint)fcall.SerializedSize, out bsent, ref n))
                 {
@@ -120,7 +120,7 @@ namespace Eryan.IPC
 
                 byte[] recvdata = new byte[500];
 
-                Console.WriteLine("Reading from server");
+                //Console.WriteLine("Reading from server");
 
 
                 ReadFile(npipe, buf, 10000, out bread, IntPtr.Zero);
