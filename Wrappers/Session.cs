@@ -124,6 +124,21 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Check if there's hostiles in local
+        /// </summary>
+        /// <returns>Returns true if there is hostiles in local, false otherwise</returns>
+        public Boolean isLocalHostile()
+        {
+            BooleanResponse tresp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.CHECKLOCAL, Response.RESPONSES.BOOLEANRESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve local");
+                return true;
+            }
+            return ((Boolean)tresp.Data);
+        }
+
+        /// <summary>
         /// Get the current solar system
         /// </summary>
         /// <returns>Returns a solarsystem object on success, null on failure</returns>
