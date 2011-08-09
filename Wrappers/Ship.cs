@@ -300,6 +300,62 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Check if we have drones in space
+        /// </summary>
+        /// <returns>True if we do, false otherwise</returns>
+        public bool hasDronesInSpace()
+        {
+            InterfaceResponse tresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETDRONESINSPACETAB, Response.RESPONSES.INTERFACERESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve drone tab");
+                return false;
+            }
+
+            Regex reg = new Regex("[0-9]");
+            string nums = reg.Match(tresp.Name).Value;
+            int digit = 0;
+            if (nums != "")
+            {
+                digit = Convert.ToInt32(nums);
+                if (digit == 0)
+                    return false;
+                else
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check if we have drones available to launch
+        /// </summary>
+        /// <returns>True if we do, false otherwise</returns>
+        public bool hasAvailableDrones()
+        {
+            InterfaceResponse tresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETDRONESINSPACETAB, Response.RESPONSES.INTERFACERESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve drone tab");
+                return false;
+            }
+
+            Regex reg = new Regex("[0-9]");
+            string nums = reg.Match(tresp.Name).Value;
+            int digit = 0;
+            if(nums != "")
+            {
+                digit = Convert.ToInt32(nums);
+                if (digit == 0)
+                    return true;
+                else
+                    return false;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Engage active target with drones in space
         /// </summary>
         /// <returns>True on success, false otherwise</returns>
