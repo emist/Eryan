@@ -148,6 +148,22 @@ namespace Eryan.InputHandler
             /// Unlock Target
             /// </summary>
             public const string UNLOCKTARGET = "Unlock Target";
+
+            /// <summary>
+            /// Launch Drones
+            /// </summary>
+            public const string LAUNCHDRONES = "Launch Drones";
+
+            /// <summary>
+            /// Return to drone bay
+            /// </summary>
+            public const string RETURNTODRONEBAY = "Return To Drone Bay";
+
+            /// <summary>
+            /// Engage target
+            /// </summary>
+            public const string ENGAGETARGET = "Engage Target";
+
         }
         
         /// <summary>
