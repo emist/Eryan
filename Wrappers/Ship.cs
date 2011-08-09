@@ -171,7 +171,7 @@ namespace Eryan.Wrappers
         /// Returns the percentage of structure the ship currently has
         /// </summary>
         /// <returns>Ship Structure percentage or -1 on failure</returns>
-        public int GetStructurePercentage()
+        public int getStructurePercentage()
         {
             StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPSTRUCTURE, Response.RESPONSES.STRINGRESPONSE);
             if (tresp == null)
@@ -191,7 +191,7 @@ namespace Eryan.Wrappers
         /// Returns the percentage of shield the ship currently has
         /// </summary>
         /// <returns>Ship Shiled percentage or -1 on failure</returns>
-        public int GetShiledPercentage()
+        public int getShiledPercentage()
         {
             StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPSHIELD, Response.RESPONSES.STRINGRESPONSE);
             if (tresp == null)
@@ -210,7 +210,7 @@ namespace Eryan.Wrappers
         /// Returns the percentage of armor the ship currently has
         /// </summary>
         /// <returns>Ship Armor percentage or -1 on failure</returns>
-        public int GetArmorPercentage()
+        public int getArmorPercentage()
         {
             StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPARMOR, Response.RESPONSES.STRINGRESPONSE);
             if (tresp == null)
@@ -234,7 +234,7 @@ namespace Eryan.Wrappers
         /// Returns the amount of cargo space that has been used
         /// </summary>
         /// <returns>Volume used or -1 on error</returns>
-        public double GetCargoFilled()
+        public double getCargoFilled()
         {
             StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPCAPACITY, Response.RESPONSES.STRINGRESPONSE);
             if (tresp == null)
@@ -264,10 +264,64 @@ namespace Eryan.Wrappers
 
 
         /// <summary>
+        /// Launch drones
+        /// </summary>
+        /// <returns>true on success, false otherwise</returns>
+        public bool launchDrones()
+        {
+            InterfaceResponse tresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETDRONESINBAYTAB, Response.RESPONSES.INTERFACERESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve drone tab");
+                return false;
+            }
+            InterfaceEntry ientry = new InterfaceEntry(tresp.X, tresp.Y, tresp.Width, tresp.Height);
+            menu.open(ientry);
+            Thread.Sleep(400);
+            return menu.click(MenuHandler.MENUITEMS.LAUNCHDRONES);
+        }
+
+        /// <summary>
+        /// Return drones to drone bay 
+        /// </summary>
+        /// <returns>True on success, false otherwise</returns>
+        public bool retrieveDrones()
+        {
+            InterfaceResponse tresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETDRONESINSPACETAB, Response.RESPONSES.INTERFACERESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve drone tab");
+                return false;
+            }
+            InterfaceEntry ientry = new InterfaceEntry(tresp.X, tresp.Y, tresp.Width, tresp.Height);
+            menu.open(ientry);
+            Thread.Sleep(400);
+            return menu.click(MenuHandler.MENUITEMS.RETURNTODRONEBAY);
+        }
+
+        /// <summary>
+        /// Engage active target with drones in space
+        /// </summary>
+        /// <returns>True on success, false otherwise</returns>
+        public bool engageDrones()
+        {
+            InterfaceResponse tresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETDRONESINSPACETAB, Response.RESPONSES.INTERFACERESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve drone tab");
+                return false;
+            }
+            InterfaceEntry ientry = new InterfaceEntry(tresp.X, tresp.Y, tresp.Width, tresp.Height);
+            menu.open(ientry);
+            Thread.Sleep(400);
+            return menu.click(MenuHandler.MENUITEMS.ENGAGETARGET);
+        }
+
+        /// <summary>
         /// Returns the ship's current available cargo volume
         /// </summary>
         /// <returns>The ammount of volume available or -1 on error</returns>
-        public double GetCargoSpaceRemaining()
+        public double getCargoSpaceRemaining()
         {
             StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPCAPACITY, Response.RESPONSES.STRINGRESPONSE);
             if (tresp == null)
@@ -321,7 +375,7 @@ namespace Eryan.Wrappers
         /// Returns the cargo capacity of your ship
         /// </summary>
         /// <returns>Capacity or -1 on error</returns>
-        public int GetShipCapacity()
+        public int getShipCapacity()
         {
                   
             StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPCAPACITY, Response.RESPONSES.STRINGRESPONSE);
