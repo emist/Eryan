@@ -356,6 +356,19 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Set active target on the current target
+        /// </summary>
+        /// <param name="target">The target entry to set active</param>
+        /// <returns>True on success, false otherwise</returns>
+        public bool setActiveTarget(TargetEntry target)
+        {
+            m.move(new Point(ran.Next(target.X + 10, target.X + target.Width - 10), ran.Next(target.Y + 10, target.Y + target.Height - 10)));
+            Thread.Sleep(400);
+            m.click(true);
+            pm.synchronize(m);
+            return true;
+        }
+        /// <summary>
         /// Engage active target with drones in space
         /// </summary>
         /// <returns>True on success, false otherwise</returns>
