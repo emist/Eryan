@@ -19,9 +19,9 @@ namespace Eryan.InputHandler
     {
         int IComparer<OverViewEntry>.Compare(OverViewEntry b, OverViewEntry a) //implement Compare
         {
-            if (a.Y > b.Y)
+            if (a.Distance > b.Distance)
                 return -1; //normally greater than = 1
-            if (a.Y < b.Y)
+            if (a.Distance < b.Distance)
                 return 1; // normally smaller than = -1
             else
                 return 0; // equal
@@ -68,6 +68,13 @@ namespace Eryan.InputHandler
 
             entries = (List<OverViewEntry>)resp.Data;
             entries.Sort(new SortIntDescending());
+
+            /*
+            for (int i = 0; i < entries.Count; i++)
+            {
+                Console.WriteLine(entries[i].Distance);
+            }
+             */
             return true;
         }
 
