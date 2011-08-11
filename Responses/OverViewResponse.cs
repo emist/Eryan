@@ -15,6 +15,7 @@ namespace Eryan.Responses
         List<OverViewEntry> data;
         List<label> labels;
         overview OverViewObject;
+        
 
 
         /// <summary>
@@ -30,7 +31,7 @@ namespace Eryan.Responses
             {
 
                 labels.Add(lab);
-                data.Add(new OverViewEntry(lab.Text, lab.TopLeftY, lab.TopLeftX, lab.Height, lab.Width));
+                data.Add(new OverViewEntry(lab.Text, lab.TopLeftY, lab.TopLeftX, lab.Height, lab.Width, lab.Color));
            //     Console.WriteLine(lab.Text);
            //     Console.WriteLine(lab.TopLeftX);
            //     Console.WriteLine(lab.TopLeftY);
