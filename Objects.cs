@@ -57,18 +57,19 @@ namespace eveobjects {
           "dmVvYmplY3RzLmxhYmVsIiwKCWl0ZW1ncm91cBIfCgVpdGVtcxgBIAMoCzIQ" + 
           "LmV2ZW9iamVjdHMuaXRlbSJlCgRpdGVtEgwKBG5hbWUYASACKAkSEAoIcXVh" + 
           "bnRpdHkYAiACKAUSDAoEbWV0YRgDIAIoCRIOCgZ2b2x1bWUYBCACKAkSHwoE" + 
-          "ZGF0YRgFIAIoCzIRLmV2ZW9iamVjdHMubGFiZWwiWAoFbGFiZWwSDAoEdGV4" + 
+          "ZGF0YRgFIAIoCzIRLmV2ZW9iamVjdHMubGFiZWwiZwoFbGFiZWwSDAoEdGV4" + 
           "dBgBIAIoCRIQCgh0b3BMZWZ0WBgCIAIoBRIQCgh0b3BMZWZ0WRgDIAIoBRIN" + 
-          "CgV3aWR0aBgEIAIoBRIOCgZoZWlnaHQYBSACKAUiOQoKVGFyZ2V0TGlzdBIr" + 
-          "Cgp0aGlzdGFyZ2V0GAEgAygLMhcuZXZlb2JqZWN0cy50YXJnZXRlbnRyeSJR" + 
-          "Cgt0YXJnZXRlbnRyeRIfCgR0ZXh0GAEgASgLMhEuZXZlb2JqZWN0cy5sYWJl" + 
-          "bBIhCgRqYW1zGAIgASgLMhMuZXZlb2JqZWN0cy5qYW1tZXJzIhkKB2phbW1l" + 
-          "cnMSDgoGamFtbWVyGAEgAygJIvEBCglJbnRlcmZhY2USDAoEbmFtZRgBIAIo" + 
-          "CRIQCgh0b3BsZWZ0WBgCIAIoBRIQCgh0b3BsZWZ0WRgDIAIoBRINCgV3aWR0" + 
-          "aBgEIAIoBRIOCgZoZWlnaHQYBSACKAUSFgoOaGFzQ2xvc2VCdXR0b24YBiAB" + 
-          "KAgSFQoNY2xvc2VUb3BMZWZ0WBgHIAEoBRIVCg1jbG9zZVRvcExlZnRZGAgg" + 
-          "ASgFEhkKEWhhc0NvbnRpbnVlQnV0dG9uGAkgASgIEhgKEGNvbnRpbnVlVG9w" + 
-          "TGVmdFgYCiABKAUSGAoQY29udGludWVUb3BMZWZ0WRgLIAEoBQ==");
+          "CgV3aWR0aBgEIAIoBRIOCgZoZWlnaHQYBSACKAUSDQoFY29sb3IYBiABKAEi" + 
+          "OQoKVGFyZ2V0TGlzdBIrCgp0aGlzdGFyZ2V0GAEgAygLMhcuZXZlb2JqZWN0" + 
+          "cy50YXJnZXRlbnRyeSJRCgt0YXJnZXRlbnRyeRIfCgR0ZXh0GAEgASgLMhEu" + 
+          "ZXZlb2JqZWN0cy5sYWJlbBIhCgRqYW1zGAIgASgLMhMuZXZlb2JqZWN0cy5q" + 
+          "YW1tZXJzIhkKB2phbW1lcnMSDgoGamFtbWVyGAEgAygJIvEBCglJbnRlcmZh" + 
+          "Y2USDAoEbmFtZRgBIAIoCRIQCgh0b3BsZWZ0WBgCIAIoBRIQCgh0b3BsZWZ0" + 
+          "WRgDIAIoBRINCgV3aWR0aBgEIAIoBRIOCgZoZWlnaHQYBSACKAUSFgoOaGFz" + 
+          "Q2xvc2VCdXR0b24YBiABKAgSFQoNY2xvc2VUb3BMZWZ0WBgHIAEoBRIVCg1j" + 
+          "bG9zZVRvcExlZnRZGAggASgFEhkKEWhhc0NvbnRpbnVlQnV0dG9uGAkgASgI" + 
+          "EhgKEGNvbnRpbnVlVG9wTGVmdFgYCiABKAUSGAoQY29udGludWVUb3BMZWZ0" + 
+          "WRgLIAEoBQ==");
       pbd::FileDescriptor.InternalDescriptorAssigner assigner = delegate(pbd::FileDescriptor root) {
         descriptor = root;
         internal__static_eveobjects_infoObject__Descriptor = Descriptor.MessageTypes[0];
@@ -106,7 +107,7 @@ namespace eveobjects {
         internal__static_eveobjects_label__Descriptor = Descriptor.MessageTypes[8];
         internal__static_eveobjects_label__FieldAccessorTable = 
             new pb::FieldAccess.FieldAccessorTable<global::eveobjects.label, global::eveobjects.label.Builder>(internal__static_eveobjects_label__Descriptor,
-                new string[] { "Text", "TopLeftX", "TopLeftY", "Width", "Height", });
+                new string[] { "Text", "TopLeftX", "TopLeftY", "Width", "Height", "Color", });
         internal__static_eveobjects_TargetList__Descriptor = Descriptor.MessageTypes[9];
         internal__static_eveobjects_TargetList__FieldAccessorTable = 
             new pb::FieldAccess.FieldAccessorTable<global::eveobjects.TargetList, global::eveobjects.TargetList.Builder>(internal__static_eveobjects_TargetList__Descriptor,
@@ -2311,6 +2312,16 @@ namespace eveobjects {
       get { return height_; }
     }
     
+    public const int ColorFieldNumber = 6;
+    private bool hasColor;
+    private double color_ = 0D;
+    public bool HasColor {
+      get { return hasColor; }
+    }
+    public double Color {
+      get { return color_; }
+    }
+    
     public override bool IsInitialized {
       get {
         if (!hasText) return false;
@@ -2339,6 +2350,9 @@ namespace eveobjects {
       if (HasHeight) {
         output.WriteInt32(5, Height);
       }
+      if (HasColor) {
+        output.WriteDouble(6, Color);
+      }
       UnknownFields.WriteTo(output);
     }
     
@@ -2363,6 +2377,9 @@ namespace eveobjects {
         }
         if (HasHeight) {
           size += pb::CodedOutputStream.ComputeInt32Size(5, Height);
+        }
+        if (HasColor) {
+          size += pb::CodedOutputStream.ComputeDoubleSize(6, Color);
         }
         size += UnknownFields.SerializedSize;
         memoizedSerializedSize = size;
@@ -2471,6 +2488,9 @@ namespace eveobjects {
         if (other.HasHeight) {
           Height = other.Height;
         }
+        if (other.HasColor) {
+          Color = other.Color;
+        }
         this.MergeUnknownFields(other.UnknownFields);
         return this;
       }
@@ -2521,6 +2541,10 @@ namespace eveobjects {
             }
             case 40: {
               Height = input.ReadInt32();
+              break;
+            }
+            case 49: {
+              Color = input.ReadDouble();
               break;
             }
           }
@@ -2616,6 +2640,24 @@ namespace eveobjects {
       public Builder ClearHeight() {
         result.hasHeight = false;
         result.height_ = 0;
+        return this;
+      }
+      
+      public bool HasColor {
+        get { return result.HasColor; }
+      }
+      public double Color {
+        get { return result.Color; }
+        set { SetColor(value); }
+      }
+      public Builder SetColor(double value) {
+        result.hasColor = true;
+        result.color_ = value;
+        return this;
+      }
+      public Builder ClearColor() {
+        result.hasColor = false;
+        result.color_ = 0D;
         return this;
       }
     }
