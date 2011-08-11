@@ -15,6 +15,7 @@ namespace Eryan.Wrappers
         List<string> sections;
         Regex tokenizer;
         int distance;
+        double iconcolor;
         //int absoluteTop, absoluteLeft, height, width;
 
         /// <summary>
@@ -25,13 +26,14 @@ namespace Eryan.Wrappers
         /// <param name="absoluteLeft">The lowest X coordinate of the overview entry</param>
         /// <param name="height">The height of the entry on screen</param>
         /// <param name="width">The width of the entry on screen</param>
-        public OverViewEntry(string unparsedEntry, int absoluteTop, int absoluteLeft, int height, int width)
+        public OverViewEntry(string unparsedEntry, int absoluteTop, int absoluteLeft, int height, int width, double color)
         {
             sections = new List<string>();
             this.y = absoluteTop;
             this.x = absoluteLeft;
             this.height = height;
             this.width = width;
+            this.iconcolor = color;
             parseEntry(unparsedEntry);
         }
 
@@ -110,6 +112,17 @@ namespace Eryan.Wrappers
             }
         }
 
+        /// <summary>
+        /// Return the color of the icon attached to this overview entry
+        /// </summary>
+        public double color
+        {
+            get
+            {
+                return iconcolor;
+            }
+        }
+
 
         /// <summary>
         /// Returns all sections of the overview entry as strings
@@ -120,6 +133,18 @@ namespace Eryan.Wrappers
             {
                 return sections;
             }
+        }
+
+        /// <summary>
+        /// Check if this overview item belongs to us
+        /// </summary>
+        /// <returns>True if its ours or abandoned, false otherwise</returns>
+        public Boolean isMine()
+        {
+            if (color == 0.5 || color == 1.0)
+                return true;
+            else
+                return false;
         }
 
         /// <summary>
