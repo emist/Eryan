@@ -178,6 +178,21 @@ namespace Eryan.Factories
             /// Return true if local is hostile, false otherwise
             /// </summary>
             public const string CHECKLOCAL = "checkLocal";
+
+            /// <summary>
+            /// Check if drones are engaged or idle
+            /// </summary>
+            public const string CHECKDRONESTATUS = "checkDroneStatus";
+
+            /// <summary>
+            /// Return the given strip miner's mining amount
+            /// </summary>
+            public const string GETMININGAMOUNT = "getMiningAmount";
+
+            /// <summary>
+            /// Return the given module's cycle duration
+            /// </summary>
+            public const string GETDURATION = "getDuration";
         
         }
 
