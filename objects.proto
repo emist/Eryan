@@ -47,6 +47,7 @@ message label{
 	required int32 topLeftY = 3;
 	required int32 width = 4;
 	required int32 height = 5;
+	optional double color = 6;
 }
 
 message TargetList{
