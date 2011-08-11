@@ -125,6 +125,52 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Get the cycle duration for the given high slot
+        /// </summary>
+        /// <param name="i">The high slot number</param>
+        /// <returns>The cycle duration in seconds, or -1 on failure</returns>
+        public double getHighSlotCycleDuration(int i)
+        {
+            StringResponse sresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETDURATION, "" + i, Response.RESPONSES.STRINGRESPONSE);
+            if (sresp == null)
+                return -1;
+
+            return (double)sresp.Data / 1000;
+        }
+
+        /// <summary>
+        /// Get the yield amount of the given strip miner
+        /// </summary>
+        /// <param name="i">The high slot number</param>
+        /// <returns>The yield amount in m^3 or -1 on failure</returns>
+        public double getMiningAmount(int i)
+        {
+            StringResponse sresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETMININGAMOUNT, "1", Response.RESPONSES.STRINGRESPONSE);
+            if (sresp == null)
+                return -1;
+
+            return (double)sresp.Data;
+        }
+
+        /// <summary>
+        /// Find out if the drones are fighting something
+        /// </summary>
+        /// <returns>1 if fighting, 0 if idle, -1 on failure</returns>
+        public int areDronesEngaged()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.CHECKDRONESTATUS, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+                return -1;
+
+            if (((string)iresp.Name).Contains("Fighting"))
+                return 1;
+            else
+                return 0;
+        }
+
+
+
+        /// <summary>
         /// Return the selected item
         /// </summary>
         /// <returns>Selected item</returns>
