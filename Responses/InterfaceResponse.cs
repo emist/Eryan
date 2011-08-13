@@ -43,7 +43,6 @@ namespace Eryan.Responses
             Console.WriteLine(interfaceObject.Height);
         }
 
-
         /// <summary>
         /// Initializes the data elements
         /// </summary>

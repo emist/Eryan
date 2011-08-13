@@ -11,6 +11,7 @@ using System.Threading;
 using System;
 using System.Drawing.Drawing2D;
 
+
 using Eryan.Input;
 using Eryan.Singleton;
 using Eryan.Util;
@@ -42,15 +43,40 @@ namespace Eryan.UI
         private Font systemFont = new Font("Impact", 16);
         private String dll = "C:\\FRAPS32.dll";
         private Boolean running = false;
+        private string pipename;
+        MessageStruct mes;
 
-       
+        private static Random random = new Random((int)DateTime.Now.Ticks);
+        private string RandomString(int size)
+        {
+            StringBuilder builder = new StringBuilder();
+            char ch;
+            for (int i = 0; i < size; i++)
+            {
+            ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));                 
+            builder.Append(ch);
+            }
+            return builder.ToString();
+        }
+
+
+
+
+        [StructLayout(LayoutKind.Sequential)]
+        struct MessageStruct
+        {
+            [Syringe.CustomMarshalAs(Syringe.CustomUnmanagedType.LPWStr)]
+            public string Text;
+            [Syringe.CustomMarshalAs(Syringe.CustomUnmanagedType.LPWStr)]
+            public string cap;
+        }       
 
 
         //private Eve interaction objects
         KeyBoard keyboard = new KeyBoard();
         Mouse mouse = new Mouse();
         PreciseMouse pmouse = new PreciseMouse();
-        Communicator com = new Communicator("\\\\.\\pipe\\TestChannel");
+        Communicator com;
         OverviewHandler overviewhandler;
         MenuHandler menuhandler;
         Station station;
@@ -274,6 +300,9 @@ namespace Eryan.UI
             InitializeComponent();
             drawingScreen = new DrawableScreen(cw, this);
             //drawingScreen = new Utils();
+            pipename = RandomString(9);
+            pipename = "\\\\.\\pipe\\" + pipename;
+            com = new Communicator(pipename);
             Load += new EventHandler(Program_Load);
             FormClosing += new FormClosingEventHandler(Program_FormClosing);
             winDel = new WinEventDelegate(HandleWindowChanges);
@@ -284,7 +313,11 @@ namespace Eryan.UI
             myShip = new Ship(menuhandler, overviewhandler, com, pmouse, mouse);
             eveSession = new Session(com);
             cam = new Camera(mouse, pmouse, com);
-
+            
+            
+            Console.WriteLine(pipename);
+            
+            mes = new MessageStruct() { Text = pipename };
             Process p = null;
 
             p = System.Diagnostics.Process.Start(this.exeName);
@@ -418,12 +451,15 @@ namespace Eryan.UI
                     Console.WriteLine(e.ToString());
                 }
 
+
                 try
                 {
                     if (injector.getSyringe() != null)
-                    {               
+                    {
+
                         injector.getSyringe().CallExport(dll, "startServer");
-                        injector.getSyringe().CallExport(dll, "dropServer");
+                        Console.WriteLine("Calling with custom data" + mes.Text);
+                        injector.getSyringe().CallExport(dll, "dropServer", mes);
                         //drawingScreen.Invalidate();
                         //this.Invalidate();
                         //cw.Invalidate();
