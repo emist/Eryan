@@ -41,9 +41,10 @@ namespace Eryan.UI
         private delegate void drawingScreenDelegate();
         private bool loaded = false;
         private Font systemFont = new Font("Impact", 16);
-        private String dll = "C:\\FRAPS32.dll";
+        private String dll;
         private Boolean running = false;
         private string pipename;
+        private ConfigHandler config = new ConfigHandler();
         MessageStruct mes;
 
         private static Random random = new Random((int)DateTime.Now.Ticks);
@@ -210,9 +211,9 @@ namespace Eryan.UI
 
         
         private String title = "EVE";
-        private String exeName = "C:\\Program Files\\CCP\\EVE\\bin\\ExeFile.exe";
+        //private String exeName = "C:\\Program Files\\CCP\\EVE\\bin\\ExeFile.exe";
         private String processName = "ExeFile";
-        
+        private String exeName;
 
         private uint pid = 0;
         public delegate void WinEventDelegate(IntPtr hWinEventHook, uint eventType,
@@ -298,6 +299,10 @@ namespace Eryan.UI
         public WindowHandler(ClientWindow cw)
         {
             InitializeComponent();
+            List<string> items = config.readconfig();
+            exeName = items[0];
+            dll = items[1];
+
             drawingScreen = new DrawableScreen(cw, this);
             //drawingScreen = new Utils();
             pipename = RandomString(9);
@@ -313,9 +318,6 @@ namespace Eryan.UI
             myShip = new Ship(menuhandler, overviewhandler, com, pmouse, mouse);
             eveSession = new Session(com);
             cam = new Camera(mouse, pmouse, com);
-            
-            
-            Console.WriteLine(pipename);
             
             mes = new MessageStruct() { Text = pipename };
             Process p = null;
@@ -456,9 +458,7 @@ namespace Eryan.UI
                 {
                     if (injector.getSyringe() != null)
                     {
-
                         injector.getSyringe().CallExport(dll, "startServer");
-                        Console.WriteLine("Calling with custom data" + mes.Text);
                         injector.getSyringe().CallExport(dll, "dropServer", mes);
                         //drawingScreen.Invalidate();
                         //this.Invalidate();

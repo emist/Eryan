@@ -25,7 +25,6 @@ using Eryan.Util;
 //Make the createpipe server take a parameter with the name of the pipe so that randomized pipe names can be used
 
 //Looting from containers/wrecks(owner/maybe just use color in the overview/yellow not ours, white ours)
-//drone handling
 
 //Readout eve.session(IP, char id, etc)
 //Implement open cargo(alt+c would be best)
@@ -98,9 +97,9 @@ namespace Eryan
 
             this.cw = cw;
             //DEBUGGING STUFF
-            com = new Communicator("\\\\.\\pipe\\TestChannel");
-            menuHandler = new MenuHandler(bot.MOUSE, bot.PMOUSE, com, bot.KEYBOARD);
-            over = new OverviewHandler(bot.MOUSE, bot.PMOUSE, com);
+            //com = new Communicator("\\\\.\\pipe\\TestChannel");
+            menuHandler = new MenuHandler(bot.MOUSE, bot.PMOUSE, bot.COMMUNICATOR, bot.KEYBOARD);
+            over = new OverviewHandler(bot.MOUSE, bot.PMOUSE, bot.COMMUNICATOR);
             
         }
 

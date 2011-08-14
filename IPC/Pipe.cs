@@ -65,7 +65,7 @@ namespace Eryan.IPC
             const uint CREATE_ALWAYS = 2;
             const uint OPEN_EXISTING = 3;
 
-            Console.WriteLine("Waiting for pipe");
+            //Console.WriteLine("Waiting for pipe");
             if (!WaitNamedPipe(pipeName, 2500))
             {
                 Console.WriteLine("Error: cannot wait for the named pipe.");
@@ -110,7 +110,7 @@ namespace Eryan.IPC
 
 
 
-                Console.WriteLine("Writing to server");
+                //Console.WriteLine("Writing to server");
 
                 if (!WriteFile(npipe, fcall.ToByteArray(), (uint)fcall.SerializedSize, out bsent, ref n))
                 {
@@ -120,7 +120,7 @@ namespace Eryan.IPC
 
                 byte[] recvdata = new byte[500];
 
-                Console.WriteLine("Reading from server");
+                //Console.WriteLine("Reading from server");
 
 
                 ReadFile(npipe, buf, 10000, out bread, IntPtr.Zero);
