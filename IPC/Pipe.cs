@@ -114,8 +114,10 @@ namespace Eryan.IPC
 
                 if (!WriteFile(npipe, fcall.ToByteArray(), (uint)fcall.SerializedSize, out bsent, ref n))
                 {
+                    Console.WriteLine(Marshal.GetLastWin32Error());
+                    Console.WriteLine(pipeName);
                     Console.WriteLine("Error writing the named pipe\n");
-                    return null;
+                    //return null;
                 }
 
                 byte[] recvdata = new byte[500];
