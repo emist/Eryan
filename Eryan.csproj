@@ -14,6 +14,21 @@
     <FileAlignment>512</FileAlignment>
     <StartupObject>
     </StartupObject>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,7 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseSubject.cs" />
+    <Compile Include="ConfigHandler.cs" />
     <Compile Include="Factories\ResponseFactory.cs" />
+    <Compile Include="InputHandler\Camera.cs" />
     <Compile Include="InputHandler\InputHandler.cs" />
     <Compile Include="InputHandler\MenuHandler.cs" />
     <Compile Include="InputHandler\OverviewHandler.cs" />
@@ -65,6 +82,7 @@
     <Compile Include="Responses\ItemResponse.cs" />
     <Compile Include="Responses\MenuResponse.cs" />
     <Compile Include="Responses\StringResposne.cs" />
+    <Compile Include="Responses\SystemResponse.cs" />
     <Compile Include="Responses\TargetListResponse.cs" />
     <Compile Include="Script\Scriptable.cs" />
     <Compile Include="UI\ScriptBrowser.cs">
@@ -146,11 +164,13 @@
     <Compile Include="Responses\InterfaceResponse.cs" />
     <Compile Include="Responses\OverViewResponse.cs" />
     <Compile Include="Responses\Response.cs" />
+    <Compile Include="Wrappers\Button.cs" />
     <Compile Include="Wrappers\InterfaceEntry.cs" />
     <Compile Include="Wrappers\Item.cs" />
     <Compile Include="Wrappers\MenuEntry.cs" />
     <Compile Include="Wrappers\OverViewEntry.cs" />
     <Compile Include="Wrappers\SelectedItem.cs" />
+    <Compile Include="Wrappers\Session.cs" />
     <Compile Include="Wrappers\Ship.cs" />
     <Compile Include="Wrappers\SolarSystem.cs" />
     <Compile Include="Wrappers\Stargate.cs" />
@@ -166,6 +186,28 @@
       <Project>{3E3A04B3-9347-4395-A22A-C49C9B38F83C}</Project>
       <Name>Syringe</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Script\Scripts\" />

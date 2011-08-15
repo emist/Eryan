@@ -451,6 +451,7 @@ namespace Eryan.UI
                 catch (Exception e)
                 {
                     Console.WriteLine(e.ToString());
+                    Console.WriteLine("failed to inject");
                 }
 
 
@@ -458,8 +459,9 @@ namespace Eryan.UI
                 {
                     if (injector.getSyringe() != null)
                     {
-                        injector.getSyringe().CallExport(dll, "startServer");
+                        //injector.getSyringe().CallExport(dll, "startServer");
                         injector.getSyringe().CallExport(dll, "dropServer", mes);
+                        
                         //drawingScreen.Invalidate();
                         //this.Invalidate();
                         //cw.Invalidate();
@@ -467,7 +469,8 @@ namespace Eryan.UI
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Function not found in the dll");
+                    Console.WriteLine(e.ToString());
+                    Console.WriteLine("Couldn't drop server");
                 }
             }
         }
