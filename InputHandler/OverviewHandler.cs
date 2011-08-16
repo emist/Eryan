@@ -35,7 +35,7 @@ namespace Eryan.InputHandler
     public class OverviewHandler : InputHandler
     {
         List<OverViewEntry> entries;
-
+        Random ran;
 
 
 
@@ -51,6 +51,7 @@ namespace Eryan.InputHandler
             this.pm = pm;
             this.comm = com;
             entries = new List<OverViewEntry>();
+            ran = new Random();
         }
 
         /// <summary>
@@ -60,21 +61,19 @@ namespace Eryan.InputHandler
         public bool readOverView()
         {
             OverViewResponse resp = (OverViewResponse)comm.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWITEMS, Response.RESPONSES.OVERVIEWRESPONSE);
+            entries.Clear();
             if (resp == null)
             {
-                entries = new List<OverViewEntry>();
                 return false;
             }
 
-            entries = (List<OverViewEntry>)resp.Data;
-            entries.Sort(new SortIntDescending());
 
-            /*
-            for (int i = 0; i < entries.Count; i++)
+            foreach (OverViewEntry entry in (List<OverViewEntry>)resp.Data)
             {
-                Console.WriteLine(entries[i].Distance);
+                entries.Add(entry);
             }
-             */
+
+            entries.Sort(new SortIntDescending());
             return true;
         }
 
@@ -96,6 +95,46 @@ namespace Eryan.InputHandler
                 return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Scroll the overview down
+        /// </summary>
+        /// <returns>True on success, false otherwise</returns>
+        public bool scrollDown()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWSCROLL, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                return false;
+            }
+
+            m.move(new Point(ran.Next(iresp.X+3, iresp.X+iresp.Width-3), ran.Next(iresp.Y+3, iresp.Y+iresp.Height-3)));
+            Thread.Sleep(300);
+            m.drag(new Point(iresp.X, iresp.Y + iresp.Height));
+            pm.synchronize(m);
+
+            return true;
+        }
+
+        /// <summary>
+        /// Scroll the overview up
+        /// </summary>
+        /// <returns>True on success, false otherwise</returns>
+        public bool scrollUp()
+        {
+
+            InterfaceResponse iresp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWSCROLL, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                return false;
+            }
+
+            m.move(new Point(ran.Next(iresp.X + 3, iresp.X + iresp.Width - 3), ran.Next(iresp.Y + 3, iresp.Y + iresp.Height - 3)));
+            Thread.Sleep(300);
+            m.drag(new Point(iresp.X, iresp.Y - iresp.Height));
+            pm.synchronize(m);
+            return true;
         }
 
         /// <summary>
@@ -125,7 +164,7 @@ namespace Eryan.InputHandler
             {
                 foreach (String section in entry.Sections)
                 {
-                    if (reg.Match(section).Value != "")
+                    if (reg.Match(section).Value != "" && entry.X != 0)
                         return true;
                 }
             }
