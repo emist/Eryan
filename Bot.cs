@@ -54,6 +54,7 @@ namespace Eryan
         public Boolean initialized = false;
         public Boolean input = false;
         public string scriptName;
+        private List<Scriptable> backgroundScripts;
        
 
         //This needs to go when the buttons get implemented properly
@@ -95,11 +96,16 @@ namespace Eryan
             cw.tabControl1.TabPages[0].Controls.Add(bot);
             cw.tabControl1.TabPages[0].Text = "Bot";
 
+            backgroundScripts = new List<Scriptable>();
+            Script.Scripts.InterfaceCloser icloser = new Script.Scripts.InterfaceCloser();
+            icloser.initializeInputs(bot);
+            backgroundScripts.Add(icloser);
+
             this.cw = cw;
             //DEBUGGING STUFF
             //com = new Communicator("\\\\.\\pipe\\TestChannel");
             menuHandler = new MenuHandler(bot.MOUSE, bot.PMOUSE, bot.COMMUNICATOR, bot.KEYBOARD);
-            over = new OverviewHandler(bot.MOUSE, bot.PMOUSE, bot.COMMUNICATOR);
+            over = new OverviewHandler(bot.MENU, bot.MOUSE, bot.PMOUSE, bot.COMMUNICATOR);
             
         }
 
@@ -247,11 +253,10 @@ namespace Eryan
             
             try
             {
-                if(bot.SESSION.isSystemMenuOpen())
-                {
-                    bot.KEYBOARD.sendChar((char)0x1B);
-                    Thread.Sleep(1500);
-                }
+                //Run background scripts
+                foreach (Scriptable bgScript in backgroundScripts)
+                    bgScript.run();
+
                 sleep = script.run();
             }
             catch (Exception e)
