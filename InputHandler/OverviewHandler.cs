@@ -36,7 +36,7 @@ namespace Eryan.InputHandler
     {
         List<OverViewEntry> entries;
         Random ran;
-
+        MenuHandler mh;
 
 
         /// <summary>
@@ -45,11 +45,12 @@ namespace Eryan.InputHandler
         /// <param name="m">Reference to the bot's mouse</param>
         /// <param name="pm">Reference to the bot's Precise mouse</param>
         /// <param name="com">Reference to the bot's communicator</param>
-        public OverviewHandler(Mouse m, PreciseMouse pm, Communicator com)
+        public OverviewHandler(MenuHandler mh, Mouse m, PreciseMouse pm, Communicator com)
         {
             this.m = m;
             this.pm = pm;
             this.comm = com;
+            this.mh = mh;
             entries = new List<OverViewEntry>();
             ran = new Random();
         }
@@ -60,8 +61,8 @@ namespace Eryan.InputHandler
         /// <returns>True if success, false otherwise</returns>
         public bool readOverView()
         {
-            OverViewResponse resp = (OverViewResponse)comm.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWITEMS, Response.RESPONSES.OVERVIEWRESPONSE);
             entries.Clear();
+            OverViewResponse resp = (OverViewResponse)comm.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWITEMS, Response.RESPONSES.OVERVIEWRESPONSE);
             if (resp == null)
             {
                 return false;
@@ -70,6 +71,7 @@ namespace Eryan.InputHandler
 
             foreach (OverViewEntry entry in (List<OverViewEntry>)resp.Data)
             {
+                
                 entries.Add(entry);
             }
 
@@ -150,6 +152,90 @@ namespace Eryan.InputHandler
             return null;
         }
 
+        private InterfaceResponse overviewScrollbar()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWSCROLL, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                return null;
+            }
+
+            return iresp;
+
+        }
+
+        private int overviewBottom()
+        {
+
+            StringResponse sresp = (StringResponse)comm.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWBOTTOM, Response.RESPONSES.STRINGRESPONSE);
+            if (sresp == null)
+            {
+                return -1;
+            }
+
+            return Convert.ToInt32((string)sresp.Data);
+        }
+
+        /// <summary>
+        /// Open a menu on the overview item with the given name
+        /// </summary>
+        /// <param name="entryName">The name of the overview item to open a menu on</param>
+        /// <returns>True on success, false otherwise</returns>
+        public bool openMenu(string entryName)
+        {
+            InterfaceResponse overv = overviewScrollbar();
+            int passes = 0;
+            bool direction = false;
+            bool found = false; 
+
+            OverViewEntry entry = getEntry(entryName);
+
+
+            while (passes < 2 && entry != null) 
+            {
+
+                if (overv != null)
+                {
+                    if (overv.Y + overv.Height + 20 >= overviewBottom())
+                    {
+                        passes++;
+                        direction = false;
+                    }
+
+                    if (overv.Y - 30 <= overv.Y)
+                    {
+                        passes++;
+                        direction = true;
+                    }
+
+                    if (!direction)
+                    {
+                        if (entry.X != 0)
+                        {
+                            found = true;
+                            break;
+                        }
+                        scrollUp();
+                    }
+                    else
+                    {
+                        if (entry.X != 0)
+                        {
+                            found = true;
+                            break;
+                        }
+                        scrollDown();
+                    }
+
+                    Thread.Sleep(500);
+                }
+                
+                entry = getEntry(entryName);
+            }
+            if(found)
+                mh.open(entry);
+            return found;
+        }
 
         /// <summary>
         /// Find if the given item is on the overview
@@ -180,7 +266,7 @@ namespace Eryan.InputHandler
         {
             readOverView();
             Regex reg = new Regex(labelName);
-            for (int i = 0; i < entries.Count(); i++ )
+            for (int i = 0; i < entries.Count(); i++)
             {
                 foreach (String section in entries[i].Sections)
                 {
@@ -194,7 +280,6 @@ namespace Eryan.InputHandler
             }
             return null;
         }
-
         /// <summary>
         /// Interact with the first overview row that contains "content"
         /// </summary>
