@@ -152,7 +152,11 @@ namespace Eryan.InputHandler
             return null;
         }
 
-        private InterfaceResponse overviewScrollbar()
+        /// <summary>
+        /// Get the coordinates of the overview scrollbar
+        /// </summary>
+        /// <returns>An interface response object with the scrollbar information or null on failure</returns>
+        public InterfaceResponse overviewScrollbar()
         {
             InterfaceResponse iresp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWSCROLL, Response.RESPONSES.INTERFACERESPONSE);
             if (iresp == null)
@@ -164,7 +168,11 @@ namespace Eryan.InputHandler
 
         }
 
-        private int overviewBottom()
+        /// <summary>
+        /// Get the y coordinate of the overview scroll area bottom
+        /// </summary>
+        /// <returns>A coordinate between 0 and size on success, -1 on failure</returns>
+        public int overviewBottom()
         {
 
             StringResponse sresp = (StringResponse)comm.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWBOTTOM, Response.RESPONSES.STRINGRESPONSE);
@@ -177,62 +185,79 @@ namespace Eryan.InputHandler
         }
 
         /// <summary>
+        /// Get the y coordinate of the top of the overview scrolling area
+        /// </summary>
+        /// <returns>A coordinate between 0 and size on success, -1 on failure</returns>
+        public int overviewTop()
+        {
+            StringResponse sresp = (StringResponse)comm.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWTOP, Response.RESPONSES.STRINGRESPONSE);
+            if (sresp == null)
+            {
+                return -1;
+            }
+
+            return Convert.ToInt32((string)sresp.Data);
+        }
+
+
+        /// <summary>
         /// Open a menu on the overview item with the given name
         /// </summary>
         /// <param name="entryName">The name of the overview item to open a menu on</param>
         /// <returns>True on success, false otherwise</returns>
         public bool openMenu(string entryName)
         {
-            InterfaceResponse overv = overviewScrollbar();
             int passes = 0;
             bool direction = false;
-            bool found = false; 
-
+            bool found = false;
             OverViewEntry entry = getEntry(entryName);
 
-
-            while (passes < 2 && entry != null) 
+            while (passes < 2 && entry != null)
             {
 
+                InterfaceResponse overv = overviewScrollbar();
                 if (overv != null)
                 {
-                    if (overv.Y + overv.Height + 20 >= overviewBottom())
+
+                    if (entry.X != 0)
                     {
+                        found = true;
+                        break;
+                    }
+
+                    //Console.WriteLine("Overview Bottom: " + overviewBottom());
+                    //Console.WriteLine("O.Y+O.Height+50: " + (overv.Y + overv.Height + 50));
+                    if (overv.Y + overv.Height + 30 >= overviewBottom())
+                    {
+                      //  Console.WriteLine("GOING UP!");
+                      //  Console.WriteLine("PASSES INCREMENTED");
                         passes++;
                         direction = false;
                     }
 
-                    if (overv.Y - 30 <= overv.Y)
+                    //Console.WriteLine("Overview Top: " + EOverViewHandler.overviewTop());
+                    //Console.WriteLine("Overview.Y-3: " + (overv.Y - 30));
+                    if (overv.Y - 30 <= overviewTop())
                     {
+                       // Console.WriteLine("GOING DOWN!!!!");
+                       // Console.WriteLine("PASSES INCREMENTED");
                         passes++;
                         direction = true;
                     }
 
                     if (!direction)
-                    {
-                        if (entry.X != 0)
-                        {
-                            found = true;
-                            break;
-                        }
                         scrollUp();
-                    }
-                    else
-                    {
-                        if (entry.X != 0)
-                        {
-                            found = true;
-                            break;
-                        }
-                        scrollDown();
-                    }
 
-                    Thread.Sleep(500);
+                    else
+                        scrollDown();
+
+                    entry = getEntry(entryName);
+                    Thread.Sleep(200);
                 }
-                
-                entry = getEntry(entryName);
+
+
             }
-            if(found)
+            if (found)
                 mh.open(entry);
             return found;
         }
