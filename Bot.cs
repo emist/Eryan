@@ -251,12 +251,23 @@ namespace Eryan
 
             int sleep = 0;
             
+                //Run background scripts
+            foreach (Scriptable bgScript in backgroundScripts)
+            {
+                try
+                {
+                    bgScript.run();
+                }
+
+                catch (Exception e)
+                {
+                    Console.WriteLine("background script fucked up");
+                    Console.WriteLine(e.ToString());
+                }
+                
+            }
             try
             {
-                //Run background scripts
-                foreach (Scriptable bgScript in backgroundScripts)
-                    bgScript.run();
-
                 sleep = script.run();
             }
             catch (Exception e)
@@ -264,6 +275,8 @@ namespace Eryan
                 Console.WriteLine("user script fucked up");
                 Console.WriteLine(e.ToString());
             }
+
+
 
             if (sleep < 1)
                 sleep = 300;
