@@ -312,7 +312,7 @@ namespace Eryan.UI
             FormClosing += new FormClosingEventHandler(Program_FormClosing);
             winDel = new WinEventDelegate(HandleWindowChanges);
             MouseDown += new MouseEventHandler(Form1_MouseDown);
-            overviewhandler = new OverviewHandler(mouse, pmouse, com);
+            overviewhandler = new OverviewHandler(menuhandler, mouse, pmouse, com);
             menuhandler = new MenuHandler(mouse, pmouse, com, keyboard);
             station = new Station(mouse, pmouse, menuhandler, com);
             myShip = new Ship(menuhandler, overviewhandler, com, pmouse, mouse);
