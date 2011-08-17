@@ -104,7 +104,7 @@ namespace Eryan.IPC
 
                 uint bread;
                 uint bsent;
-                byte[] buf = new byte[10000];
+                byte[] buf = new byte[20000];
 
                 NativeOverlapped n = new NativeOverlapped();
 
@@ -114,8 +114,10 @@ namespace Eryan.IPC
 
                 if (!WriteFile(npipe, fcall.ToByteArray(), (uint)fcall.SerializedSize, out bsent, ref n))
                 {
+                    Console.WriteLine(Marshal.GetLastWin32Error());
+                    Console.WriteLine(pipeName);
                     Console.WriteLine("Error writing the named pipe\n");
-                    return null;
+                    //return null;
                 }
 
                 byte[] recvdata = new byte[500];
@@ -123,7 +125,7 @@ namespace Eryan.IPC
                 //Console.WriteLine("Reading from server");
 
 
-                ReadFile(npipe, buf, 10000, out bread, IntPtr.Zero);
+                ReadFile(npipe, buf, 20000, out bread, IntPtr.Zero);
 
                 byte[] tempbuf = new byte[bread];
 

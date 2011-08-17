@@ -173,11 +173,13 @@ namespace Syringe
                     throw new Win32Exception(Marshal.GetLastWin32Error());
 
                 // get address of loaded module - this doesn't work in x64, so just iterate module list to find injected module
+                /*
                 IntPtr hLibModule;// = IntPtr.Zero;
                 if (!Imports.GetExitCodeThread(hThread, out hLibModule))
                     throw new Win32Exception(Marshal.GetLastWin32Error());
                 if (hLibModule == IntPtr.Zero)
                     throw new Exception("Code executed properly, but unable to get an appropriate module handle, possible Win32Exception", new Win32Exception(Marshal.GetLastWin32Error()));
+                */
 
                 // iterate modules in target process to find our newly injected module
                 ProcessModule modFound = null;

@@ -270,6 +270,7 @@ namespace Eryan.UI
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -287,13 +288,14 @@ namespace Eryan.UI
             // mouseInput
             // 
             this.mouseInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.mouseInput.BackColor = System.Drawing.SystemColors.Control;
             this.mouseInput.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.mouseInput.Location = new System.Drawing.Point(478, 4);
             this.mouseInput.Name = "mouseInput";
             this.mouseInput.Size = new System.Drawing.Size(75, 19);
             this.mouseInput.TabIndex = 1;
             this.mouseInput.Text = "Input";
-            this.mouseInput.UseVisualStyleBackColor = true;
+            this.mouseInput.UseVisualStyleBackColor = false;
             // 
             // tabControl1
             // 
@@ -310,46 +312,51 @@ namespace Eryan.UI
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.Black;
+            this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(1024, 852);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // runButton
             // 
+            this.runButton.BackColor = System.Drawing.SystemColors.Control;
             this.runButton.Location = new System.Drawing.Point(968, 1);
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(63, 26);
             this.runButton.TabIndex = 1;
             this.runButton.Text = "Stop";
-            this.runButton.UseVisualStyleBackColor = true;
+            this.runButton.UseVisualStyleBackColor = false;
             // 
             // loadScriptBtn
             // 
+            this.loadScriptBtn.BackColor = System.Drawing.SystemColors.Control;
             this.loadScriptBtn.Location = new System.Drawing.Point(3, 0);
             this.loadScriptBtn.Name = "loadScriptBtn";
             this.loadScriptBtn.Size = new System.Drawing.Size(75, 23);
             this.loadScriptBtn.TabIndex = 2;
             this.loadScriptBtn.Text = "Load Script";
-            this.loadScriptBtn.UseVisualStyleBackColor = true;
+            this.loadScriptBtn.UseVisualStyleBackColor = false;
             this.loadScriptBtn.Click += new System.EventHandler(this.loadScriptBtn_Click);
             // 
             // stopScriptBtn
             // 
+            this.stopScriptBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.stopScriptBtn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.stopScriptBtn.Location = new System.Drawing.Point(92, 0);
             this.stopScriptBtn.Name = "stopScriptBtn";
             this.stopScriptBtn.Size = new System.Drawing.Size(95, 23);
             this.stopScriptBtn.TabIndex = 3;
             this.stopScriptBtn.Text = "Resume Script";
-            this.stopScriptBtn.UseVisualStyleBackColor = true;
+            this.stopScriptBtn.UseVisualStyleBackColor = false;
             // 
             // ClientWindow
             // 
-            this.BackColor = System.Drawing.SystemColors.ControlText;
-            this.ClientSize = new System.Drawing.Size(1034, 908);
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ClientSize = new System.Drawing.Size(1034, 882);
             this.Controls.Add(this.stopScriptBtn);
             this.Controls.Add(this.loadScriptBtn);
             this.Controls.Add(this.runButton);
@@ -384,6 +391,11 @@ namespace Eryan.UI
                 bots[0].scriptName = sDialog.FileName;
                 Console.WriteLine(bots[0].scriptName);
             }
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
         }
 
         

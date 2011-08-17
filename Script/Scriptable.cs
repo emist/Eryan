@@ -60,6 +60,17 @@ namespace Eryan.Script
         /// </summary>
         public Camera ECamera;
 
+
+        /// <summary>
+        /// Reference to this bot's keyboard
+        /// </summary>
+        public KeyBoard EKeyboard;
+
+        /// <summary>
+        /// Random generator for script use
+        /// </summary>
+        public Random ERandom;
+
         /// <summary>
         /// Internal use, the Bot will initialize the script with its input handlers once its loaded into memory
         /// </summary>
@@ -75,6 +86,8 @@ namespace Eryan.Script
             this.MyShip = bot.SHIP;
             this.ESession = bot.SESSION;
             this.ECamera = bot.CAMERA;
+            this.EKeyboard = bot.KEYBOARD;
+            ERandom = new Random();
         }
 
         /// <summary>
