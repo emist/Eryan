@@ -97,6 +97,18 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Target the entry with the given name
+        /// </summary>
+        /// <param name="entry">The overview name of the entry</param>
+        /// <returns>True</returns>
+        public Boolean target(string entry)
+        {
+            overviewhandler.openMenu(entry);
+            menu.click(MenuHandler.MENUITEMS.LOCKTARGET);
+            return true;
+        }
+
+        /// <summary>
         /// Approach the overview item
         /// </summary>
         /// <param name="entry">Name of the item as it appears on the overview</param>
@@ -108,6 +120,12 @@ namespace Eryan.Wrappers
             return success;
         }
 
+        public Boolean approach(string entry)
+        {
+            bool success = overviewhandler.openMenu(entry);
+            menu.click(MenuHandler.MENUITEMS.APPROACH);
+            return success;
+        }
 
         /// <summary>
         /// Get the list of our ship's currently active targets
