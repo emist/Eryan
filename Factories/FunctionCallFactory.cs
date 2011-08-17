@@ -205,10 +205,15 @@ namespace Eryan.Factories
             public const string GETOVERVIEWHEIGHT = "getOverviewHeight";
 
             /// <summary>
-            /// Get the bottom of the overview
+            /// Get the bottom of the overview scroll area
             /// </summary>
             
             public const string GETOVERVIEWBOTTOM = "getOverviewBottom";
+
+            /// <summary>
+            /// Get the top of the overview scroll area
+            /// </summary>
+            public const string GETOVERVIEWTOP = "getOverviewTop";
         }
 
        /// <summary>
