@@ -198,6 +198,17 @@ namespace Eryan.Factories
             /// Return the scroll bar for the overview
             /// </summary>
             public const string GETOVERVIEWSCROLL = "overviewGetScrollBar";
+
+            /// <summary>
+            /// Return the overview height
+            /// </summary>
+            public const string GETOVERVIEWHEIGHT = "getOverviewHeight";
+
+            /// <summary>
+            /// Get the bottom of the overview
+            /// </summary>
+            
+            public const string GETOVERVIEWBOTTOM = "getOverviewBottom";
         }
 
        /// <summary>
