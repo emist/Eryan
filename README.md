@@ -42,7 +42,7 @@ END USER LICENSE AGREEMENT
 
 Thank you for your interest in the Eryan automation platform("the software"). Before you can use this software you must covenant and agree to the following terms: 
 
-This End User License Agreement ("EULA") describes the terms and conditions under which you may install and use the Software. The authors may amend this EULA from time to time by posting an amended version at http://github.com/emist/Eryan/EULA.txt. If you accept this EULA, the then-current version of this EULA shall apply each time you use the software.
+This End User License Agreement ("EULA") describes the terms and conditions under which you may install and use the Software. The authors may amend this EULA from time to time by posting an amended version at http://github.com/emist/Eryan. If you accept this EULA, the then-current version of this EULA shall apply each time you use the software.
 
 By clicking the "ACCEPT" button below, (or if you bypass or otherwise disable the "ACCEPT" button, and still install, copy, download, access or otherwise use the Software), you accept the terms and conditions in the EULA. If you do not accept the terms and conditions in the EULA, you must click the "DECLINE" button and discontinue use of the Software. 
 
