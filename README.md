@@ -18,8 +18,11 @@ Keep your source up to date with:
 <h2>Dependencies</h2>
 
 [Syringe Injection Library](http://dl.getdropbox.com/u/2660220/Injector.rar)
+
 [.NET Framework](http://www.microsoft.com/net/download.aspx)
+
 [EVE Interaction DLL](http://null.comm)
+
 [C# Protocolbuffers Port](http://code.google.com/p/protobuf-csharp-port/)
 
 <h2>Compiling</h2>
