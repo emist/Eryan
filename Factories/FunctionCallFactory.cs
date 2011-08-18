@@ -214,6 +214,11 @@ namespace Eryan.Factories
             /// Get the top of the overview scroll area
             /// </summary>
             public const string GETOVERVIEWTOP = "getOverviewTop";
+
+            /// <summary>
+            /// Return the eve client's version
+            /// </summary>
+            public const string GETVERSION = "getVersion";
         }
 
        /// <summary>
