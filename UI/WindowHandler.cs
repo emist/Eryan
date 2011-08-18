@@ -459,8 +459,9 @@ namespace Eryan.UI
                 {
                     if (injector.getSyringe() != null)
                     {
+                        Thread.Sleep(15000);
                         injector.getSyringe().CallExport(dll, "startServer");
-                       
+                            
                         injector.getSyringe().CallExport(dll, "dropServer", mes);
                         
                         //drawingScreen.Invalidate();
