@@ -42,8 +42,24 @@ namespace Eryan
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            EulaView eula;
 
-            
+            if (!System.IO.File.Exists("r"))
+            {
+                eula = new UI.EulaView();
+                Application.Run(eula);
+                if (eula.Status == false)
+                {
+                    MessageBox.Show("You must accept the EULA in order to use Eryan(E2)", "EULA Declined");
+                    return;
+                }
+                else
+                {
+                    System.IO.File.Create("r");
+                }
+            }
+
+
             Thread ClientThread = new Thread(new ThreadStart(createWindow));
             ClientThread.SetApartmentState(ApartmentState.STA);
             ClientThread.Start();

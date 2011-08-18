@@ -1,0 +1,88 @@
+﻿Eryan
+END USER LICENSE AGREEMENT
+
+Thank you for your interest in the Eryan automation platform("the software"). Before you can use this software you must covenant and agree to the following terms: 
+
+This End User License Agreement ("EULA") describes the terms and conditions under which you may install and use the Software. The authors may amend this EULA from time to time by posting an amended version at http://github.com/emist/Eryan/EULA.txt. If you accept this EULA, the then-current version of this EULA shall apply each time you use the software.
+
+By clicking the "ACCEPT" button below, (or if you bypass or otherwise disable the "ACCEPT" button, and still install, copy, download, access or otherwise use the Software), you accept the terms and conditions in the EULA. If you do not accept the terms and conditions in the EULA, you must click the "DECLINE" button and discontinue use of the Software. 
+
+   1. AMENDMENTS TO EULA
+      The author(s) may, in their sole discretion, amend the EULA from time to time. If the EULA is amended, you will be asked to review the amended EULA when you start the software, and to indicate and confirm your acceptance of the amended EULA by clicking the "ACCEPT" button.
+
+      If the amendment alters a material term of the EULA that is unacceptable to you, you may, as your sole and exclusive remedy, terminate the EULA and discontinue the use of the software.
+
+   2. CONDUCT
+      A. Restricted Conduct
+      Your continued license to the software is subject to proper conduct:
+         1. You may not use this software if you currently have a contractual relationship with CCP Games. 
+         2. You may not use this software if you are a CCP employee, affiliate or assign. 
+         3. You may not reverse engineer any portion of the software not available as open source.
+         4. You may not modify the software in any way to attempt to bypass any known CCP access control mechanisms.
+         5. You may not use this software to gain an unfair advantage in games. 
+
+      B. Good Faith
+	You agree to observe every covenant of this EULA. You also covenant that you do not have a contractual relationship with
+	CCP games.
+	You covenant that you understand that this software violates Eve Online's EULA if used in conjunction with an active Eve Online account.
+	You further covenant that if you use this software in breach of Eve Online's EULA you do so out of your own free will and 
+	have not been encouraged or incited to do so by the software author(s).
+
+  3. LICENSE
+      A. Software License
+      Subject to the terms of the EULA, the author(s) grants you a limited, non-exclusive, revocable license to use the Software and its accompanying documentation solely for your use and enjoyment.
+
+      B. Specific Restrictions
+      Any and all rights not expressly granted by the author(s) herein are reserved, and no license, permission or right of access or use not granted expressly herein shall be implied.
+
+      You may not reverse engineer, disassemble or decompile, or attempt to reverse engineer or derive source code from, all or any portion of the Software that is not available as open source.
+
+      C. Software Updates
+      The author(s) may from time to time update or otherwise modify the Software electronically. You hereby grant the author(s) permission to: (i) extract hardware system profile data from your computer;  
+
+      D. New Releases of the Software
+      You are not entitled to receive any new releases of the Software, or any expansion packs, updates, upgrades or similar products under the EULA, but the author(s) may, in its sole discretion, offer any or all of the foregoing to you. The author(s) may update, upgrade or otherwise enhance the Software at any time, in its sole discretion, without obligation to you. Periodically, the author(s) will require all users to migrate to new releases of the Software in order to continue using the software. You will be informed when a new release is available and will have a period of time in which to procure and install the new release. You must install and use the new release before the period of time has lapsed to continue using the software. 
+
+  4. PROPRIETARY RIGHTS
+      A. Ownership of Software
+      As between you and the author(s), the author(s) is the sole and exclusive owner of the Software. The Software is protected by law governing copyrights, trademarks and other proprietary rights. The author(s) reserves all rights not expressly granted herein.
+
+      The software is comprised of, without limitation, software code, programs, routines, subroutines, objects, files, data, text, content, layout, design and any other information programmed for use in conjunction with the software. The author(s), its affiliates, licensors and/or suppliers retain all of their right, title and interest (including without limitation all intellectual property rights) in and to the Software, and no rights thereto are transferred to you, except for the limited license granted above.
+
+      B. Rights to Certain Content
+      You hereby irrevocably and without additional consideration beyond the rights granted to you herein, assign to the author(s) any and all right, title and interest you have, including copyrights, in or to any and all derivative works and routines developed to be used in conjunction with the software("scripts"). To the extent that any such rights are not assignable, you hereby grant the author(s) an exclusive, perpetual, worldwide, irrevocable, assignable, royalty-free license, fully sublicensable through multiple tiers, to exercise all intellectual property and other rights, in and to all or any part of such information, in any medium now known or hereafter developed.
+
+      Violation of the author(s)'s proprietary rights is a material breach of the EULA, in the event of which the author(s) may terminate the EULA and take whatever additional action the author(s) deems appropriate under the circumstance. The foregoing is without prejudice to or waiver of any and all of the author(s) other rights and remedies, all of which are expressly reserved, survive termination, and are cumulative.
+
+  5. NO WARRANTIES
+      The Software and all other services and material provided in connection therewith, are provided "AS IS," with all faults, and without warranty of any kind. You assume all risk of use.
+
+      The author(s) disclaims all warranties, whether express or implied, including without limitation the warranties of merchantability, fitness for particular purpose and non-infringement. There is no warranty against interference with your enjoyment of the software. The author(s) does not warrant that your use of the Software, will be uninterrupted or error-free, nor that the Software will be compatible with your hardware and software.
+
+  6. DISCLAIMER OF DAMAGES
+      In no event shall the author(s), its affiliates, licensors or suppliers be liable to you or to any third party for any special, indirect, incidental, consequential, punitive or exemplary damages (including without limitation, lost profits or lost data), arising out of or in connection with the software, EULA, or any other services or materials provided in connection therewith, whether based on warranty, contract, tort or any other legal theory, and whether or not the author(s) is advised of the possibility of such damages, and even if any stated remedy fails of its essential purpose.
+
+  7. LIMITATION OF LIABILITY
+      Except as set forth below, author(s)'s maximum liability for any and all claims arising out of or in connection with the Software, EULA, and any other services or materials provided in connection therewith, shall not exceed an amount equal to 30 U.S. dollars.
+
+      If any of the foregoing disclaimers or limitations of liability are declared to be void or unenforceable, then the author(s)'s liability shall be limited to the maximum extent permissible under applicable law. The remedies set forth herein are exclusive and in lieu of all other remedies, oral or written, express or implied.
+
+  8. INDEMNITY
+      You shall defend, indemnify and hold harmless the author(s) and its affiliates, licensors and suppliers, and their respective employees, contractors, officers and directors, from any and all claims, loss, damages and demands, including reasonable attorneys' fees, arising out of: (i) your use or misuse of the Software.
+
+  9. GOVERNING LAW AND EXCLUSIVE FORUM
+      The EULA, and the rights and obligations of the parties hereto, shall be governed and construed by and in accordance with the laws of the State of Florida. The EULA shall not be governed by the United Nations Convention on Contracts for the International Sale of Goods.
+
+      The sole and exclusive forum for resolving any controversy, dispute or claim arising out of or relating to the EULA, or otherwise relating to any rights in, access to or use of the Software and/or the rights and obligations of the parties hereto, shall be Miami, Florida. You hereby expressly waive and agree not to raise any and all objections based on personal jurisdiction, venue and/or inconvenience of such forum and agree to the jurisdiction of the courts of Miami, Florida.
+
+  10. MISCELLANEOUS
+      If any part of the EULA is held invalid or unenforceable, that portion shall be construed in a manner consistent with applicable law to reflect, as nearly as possible, the original intentions of the parties expressed in the EULA, and the remaining portions shall remain in full force and effect.
+
+      You shall comply with all applicable laws regarding your access to and use of the Software. 
+
+      Except as otherwise provided herein, you may not assign or transfer the EULA or your rights thereunder, and any attempt to do so is void. Except as provided above, or in a writing signed by both parties, the EULA may not be modified or amended. No distributor, agent or employee of the author(s) is authorized to make any modifications or additions to the EULA.
+
+
+All notices to the author(s) required or permitted by the EULA shall be by electronic mail at eryanbot@gmail.com, unless stated otherwise in the EULA.
+
+Updated August 17, 2011
