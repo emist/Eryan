@@ -13,19 +13,18 @@ using Eryan.UI;
 
 namespace Eryan.Util
 {
-    /// <summary>
-    /// The Eryan overlay, for internal use
-    /// </summary>
-    
+
+
     public class DrawableScreen : Utils
     {
-
 
         WindowHandler wh;
         ClientWindow cw;
         PreciseMouse pm;
         KeyBoard kb;
         Mouse m;
+
+        private Font systemFont = new Font("Impact", 16);
 
         [DllImport(@"C:\\mouseDLL.dll")]
         public static extern void dllMoveMouse(IntPtr handle, int x, int y);
@@ -35,6 +34,12 @@ namespace Eryan.Util
         {
             this.wh = wh;
             this.cw = cw;
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            drawString("Eryan 2.0", systemFont, new Point(20, 50));
+            //base.OnPaint(e);
         }
 
         protected override void OnMouseMove(MouseEventArgs e)

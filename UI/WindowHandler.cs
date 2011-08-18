@@ -304,7 +304,6 @@ namespace Eryan.UI
             dll = items[1];
 
             drawingScreen = new DrawableScreen(cw, this);
-            //drawingScreen = new Utils();
             pipename = RandomString(9);
             pipename = "\\\\.\\pipe\\" + pipename;
             com = new Communicator(pipename);
@@ -627,6 +626,8 @@ namespace Eryan.UI
             pmouse.setWindowHandle(appWin);
             keyboard.setWindowHandle(appWin);
             mouse.setWindowHandle(appWin);
+            //drawingScreen.TopLevel = false;
+            //drawingScreen.Parent = this;
 
             StringBuilder sb = new StringBuilder(300);
 
@@ -837,8 +838,6 @@ namespace Eryan.UI
             //this.Invalidate();
             base.OnVisibleChanged(e);
 
-
-            
         }
 
         /// <summary>
@@ -868,18 +867,7 @@ namespace Eryan.UI
         }
 
         
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            if (loaded)
-            {
-                //drawingScreen.Invalidate();
-                drawingScreen.drawString("Eryan 2.0", systemFont, new Point(0, 0));
-            }
-
-            
-            base.OnPaint(e);
-        }
-        
+              
         /// <summary>
         /// Update the drawing screen
         /// </summary>
@@ -909,12 +897,13 @@ namespace Eryan.UI
 
 
             drawingScreen.setOwner(this);
+            //drawingScreen.bringToFront();
             drawingScreen.setSize(new Size(this.Size.Width, this.Size.Height));
             drawingScreen.setLocation(new Point(cw.Location.X+10, cw.Location.Y+80));
             //drawingScreen.setLocation(new Point(this.Location.X+5, this.Location.Y + 50));
             //drawingScreen.setBackColor(Color.Transparent);
             drawingScreen.setBackColor(Color.Gray);
-            drawingScreen.setOpacity(0.70);
+            //drawingScreen.setOpacity(0.70);
             //drawingScreen.setTransparencyKey();
             drawingScreen.setFormBorderStyle(FormBorderStyle.None);
             drawingScreen.setControlBox(false);

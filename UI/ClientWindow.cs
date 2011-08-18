@@ -128,14 +128,14 @@ namespace Eryan.UI
                 Console.WriteLine("Stopping Input");
                 mouseInput.Text = "Input";
                 
-                this.Invalidate();
+                //this.Invalidate();
             }
             else
             {
                 Console.WriteLine("Starting Input");
                 mouseInput.Text = "No Input";
                 
-                this.Invalidate();
+                //this.Invalidate();
             }
             isMouse = !isMouse;
         }
