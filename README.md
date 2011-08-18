@@ -2,7 +2,7 @@
 
 Eryan(E2) is an advanced automation framework currently supporting Eve Online. 
 The platform's source code is completely open. Whether you'd like to contribute
-to the codebase or just looking to learn something the bot is a valuable learning
+to the codebase or just looking to learn something the platform is a valuable learning
 experience.
 
 <h2>Get the source</h2>
