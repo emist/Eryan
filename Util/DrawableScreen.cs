@@ -39,7 +39,7 @@ namespace Eryan.Util
         protected override void OnPaint(PaintEventArgs e)
         {
             drawString("Eryan 2.0", systemFont, new Point(20, 50));
-            //base.OnPaint(e);
+            base.OnPaint(e);
         }
 
         protected override void OnMouseMove(MouseEventArgs e)

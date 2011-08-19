@@ -201,6 +201,41 @@ namespace Eryan.InputHandler
 
 
         /// <summary>
+        /// Bookmark the given overview entry by name
+        /// </summary>
+        /// <param name="entryName">The name of the entry to bookmark</param>
+        /// <returns>True on success, false otherwise</returns>
+        public string bookmark(string entryName)
+        {
+            InterfaceResponse iresp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETMODALOKBUTTON, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp != null)
+                return null;
+
+            openMenu(entryName);
+            Thread.Sleep(400);
+
+            mh.click(MenuHandler.MENUITEMS.BOOKMARKLOCATION);
+            Thread.Sleep(400);
+
+            iresp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETMODALOKBUTTON, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+                return null;
+
+            StringResponse bmname = (StringResponse)comm.sendCall(FunctionCallFactory.CALLS.GETBOOKMARKFIELDNAME, Response.RESPONSES.STRINGRESPONSE);
+            if (bmname == null)
+                return null;
+
+            string name = (string)bmname.Data;
+
+            m.move(new Point(ran.Next(iresp.X + 5, iresp.X + iresp.Width - 5), ran.Next(iresp.Y + 5, iresp.Y + iresp.Height - 5)));
+            Thread.Sleep(300);
+            m.click(true);
+            pm.synchronize(m);
+
+            return name;
+        }
+
+        /// <summary>
         /// Open a menu on the overview item with the given name
         /// </summary>
         /// <param name="entryName">The name of the overview item to open a menu on</param>

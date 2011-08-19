@@ -365,7 +365,7 @@ namespace Eryan.UI
         /// <param name="e"></param>
         protected override void OnSizeChanged(EventArgs e)
         {
-            //this.Invalidate();
+            this.Invalidate();
             base.OnSizeChanged(e);
         }
 
@@ -458,7 +458,7 @@ namespace Eryan.UI
                 {
                     if (injector.getSyringe() != null)
                     {
-                        Thread.Sleep(15000);
+                        //Thread.Sleep(15000);
                         injector.getSyringe().CallExport(dll, "startServer");
                             
                         injector.getSyringe().CallExport(dll, "dropServer", mes);
@@ -835,7 +835,7 @@ namespace Eryan.UI
             }
 
 
-            //this.Invalidate();
+            this.Invalidate();
             base.OnVisibleChanged(e);
 
         }
@@ -944,7 +944,7 @@ namespace Eryan.UI
             
 
 
-            //this.Invalidate();
+              this.Invalidate();
 //            base.OnResize(e);
 
         }

@@ -219,6 +219,11 @@ namespace Eryan.Factories
             /// Return the eve client's version
             /// </summary>
             public const string GETVERSION = "getVersion";
+
+            /// <summary>
+            /// Return the bookmark name
+            /// </summary>
+            public const string GETBOOKMARKFIELDNAME = "getBookMarkFieldName";
         }
 
        /// <summary>
