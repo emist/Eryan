@@ -184,6 +184,7 @@
     <Compile Include="Responses\InterfaceResponse.cs" />
     <Compile Include="Responses\OverViewResponse.cs" />
     <Compile Include="Responses\Response.cs" />
+    <Compile Include="Util\Version.cs" />
     <Compile Include="Wrappers\Button.cs" />
     <Compile Include="Wrappers\InterfaceEntry.cs" />
     <Compile Include="Wrappers\Item.cs" />

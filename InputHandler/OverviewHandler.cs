@@ -215,7 +215,7 @@ namespace Eryan.InputHandler
             Thread.Sleep(400);
 
             mh.click(MenuHandler.MENUITEMS.BOOKMARKLOCATION);
-            Thread.Sleep(400);
+            Thread.Sleep(600);
 
             iresp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETMODALOKBUTTON, Response.RESPONSES.INTERFACERESPONSE);
             if (iresp == null)

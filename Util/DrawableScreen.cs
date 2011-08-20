@@ -61,6 +61,18 @@ namespace Eryan.Util
         }
 
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                // Set the WS_EX_TRANSPARENT flag without enabling click-through
+                CreateParams createParams = base.CreateParams;
+                if(Version.GetCurrentWindowsVersion() != Version.WindowsVersions.Win7)
+                    createParams.ExStyle |= 0x00000020;
+                return createParams;
+            }
+        } 
+
         protected override void OnMouseDown(MouseEventArgs e)
         {
             pm = wh.PMOUSE;

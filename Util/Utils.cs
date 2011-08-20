@@ -55,16 +55,22 @@ namespace Eryan
             return pid;
         }
 
+        /*
         protected override CreateParams CreateParams
         {
             get
             {
                 // Set the WS_EX_TRANSPARENT flag without enabling click-through
                 CreateParams createParams = base.CreateParams;
-                createParams.ExStyle |= 0x00000020;
+                if (Eryan.Util.Version.GetCurrentWindowsVersion() != Eryan.Util.Version.WindowsVersions.Win7)
+                {
+                    createParams.ExStyle |= 0x00000020; 
+                }
+                
                 return createParams;
             }
         } 
+        */
 
         public void drawString(String str, Font f, Point loc, bool antialiasing)
         {
