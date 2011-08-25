@@ -280,6 +280,15 @@ namespace Eryan.Factories
             /// </summary>
             public const string GETCONNECTBUTTON = "getConnectButton";
 
+            /// <summary>
+            /// Check if we are at the character selection screen
+            /// </summary>
+            public const string ISATCHARSEL = "isAtCharSel";
+
+            /// <summary>
+            /// Get the "Enter Game" button in the character selection screen
+            /// </summary>
+            public const string GETENTERGAMEBTN = "getEnterButton";
         }
 
        /// <summary>
