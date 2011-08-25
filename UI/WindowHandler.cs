@@ -84,6 +84,7 @@ namespace Eryan.UI
         Ship myShip;
         Session eveSession;
         Camera cam;
+        LocalHandler local;
 
         //Events we listen to
         private const uint EVENT_OBJECT_DESTROY = (uint)0x00008001L;
@@ -317,6 +318,7 @@ namespace Eryan.UI
             myShip = new Ship(this);
             eveSession = new Session(this);
             cam = new Camera(this);
+            local = new LocalHandler(this);
             mes = new MessageStruct() { Text = pipename };
             Process p = null;
 
@@ -585,6 +587,18 @@ namespace Eryan.UI
                 return myShip;
             }
         }
+
+        /// <summary>
+        /// Return this windowhandler's localhandler reference
+        /// </summary>
+        public LocalHandler LOCAL
+        {
+            get
+            {
+                return local;
+            }
+        }
+
         /// <summary>
         /// Eat the EVE window and inject
         /// </summary>
