@@ -72,6 +72,11 @@ namespace Eryan.Script
         public Random ERandom;
 
         /// <summary>
+        /// This bot's local chat handler
+        /// </summary>
+        public LocalHandler ELocalHandler;
+
+        /// <summary>
         /// Internal use, the Bot will initialize the script with its input handlers once its loaded into memory
         /// </summary>
         /// <param name="bot">The reference to the bot's windowhandler</param>
@@ -87,6 +92,7 @@ namespace Eryan.Script
             this.ESession = bot.SESSION;
             this.ECamera = bot.CAMERA;
             this.EKeyboard = bot.KEYBOARD;
+            this.ELocalHandler = bot.LOCAL;
             ERandom = new Random();
         }
 
