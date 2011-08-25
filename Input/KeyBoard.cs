@@ -184,8 +184,6 @@ namespace Eryan.Input
 
                 foreach (char c in text)
                 {
-                    Console.WriteLine(c);
-                    Console.WriteLine((int)c);
                     if ((int)c < 91 && (int)c > 64)
                     {
                         //PostMessage(appWin, WM_KEYDOWN, (long)VKeys.VK_SHIFT, 0x00140001);
@@ -251,8 +249,6 @@ namespace Eryan.Input
 
                 foreach (char c in text)
                 {
-                    Console.WriteLine(c);
-                    Console.WriteLine((int)c);
                     if ((int)c < 91 && (int)c > 64)
                     {
                         //PostMessage(appWin, WM_KEYDOWN, (long)VKeys.VK_SHIFT, 0x00140001);
