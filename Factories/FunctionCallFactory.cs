@@ -264,6 +264,22 @@ namespace Eryan.Factories
             /// Check if player is fleeted
             /// </summary>
             public const string ISFLEETED = "isFleeted";
+
+            /// <summary>
+            /// Get the password entry box
+            /// </summary>
+            public const string GETPASSWORDBOX = "getPasswordBox";
+
+            /// <summary>
+            /// Get the username box
+            /// </summary>
+            public const string GETUSERNAMEBOX = "getUserNameBox";
+
+            /// <summary>
+            /// Get the connect button
+            /// </summary>
+            public const string GETCONNECTBUTTON = "getConnectButton";
+
         }
 
        /// <summary>
