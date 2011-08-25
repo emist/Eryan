@@ -480,9 +480,12 @@ namespace Eryan.UI
                         mes = new MessageStruct() { Text = pipename };
 
                         backgroundScripts = new List<Scriptable>();
+                        Script.Scripts.AutoLoger autoLogger = new Script.Scripts.AutoLoger();
                         Script.Scripts.InterfaceCloser icloser = new Script.Scripts.InterfaceCloser();
                         icloser.initializeInputs(this);
+                        autoLogger.initializeInputs(this);
                         backgroundScripts.Add(icloser);
+                        backgroundScripts.Add(autoLogger);
 
 
                         injector.getSyringe().CallExport(dll, "startServer");
