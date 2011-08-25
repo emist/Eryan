@@ -83,7 +83,9 @@
     <Compile Include="ConfigHandler.cs" />
     <Compile Include="Factories\ResponseFactory.cs" />
     <Compile Include="InputHandler\Camera.cs" />
+    <Compile Include="InputHandler\ChatHandler.cs" />
     <Compile Include="InputHandler\InputHandler.cs" />
+    <Compile Include="InputHandler\LocalHandler.cs" />
     <Compile Include="InputHandler\MenuHandler.cs" />
     <Compile Include="InputHandler\OverviewHandler.cs" />
     <Compile Include="Input\PreciseMouse.cs" />
