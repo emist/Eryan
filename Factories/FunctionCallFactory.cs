@@ -224,6 +224,41 @@ namespace Eryan.Factories
             /// Return the bookmark name
             /// </summary>
             public const string GETBOOKMARKFIELDNAME = "getBookMarkFieldName";
+
+            /// <summary>
+            /// Get the location of the logoff button
+            /// </summary>
+            public const string GETLOGOFFBUTTON = "getLogOffButton";
+
+            /// <summary>
+            /// Get the Yes button on a modal dialogue
+            /// </summary>
+            public const string GETMODALYESBUTTON = "getModalYesButton";
+
+            /// <summary>
+            /// Get the No button on a modal dialogue
+            /// </summary>
+            public const string GETMODALNOBUTTON = "getModalNoButton";
+
+            /// <summary>
+            /// Find the given player name in local
+            /// </summary>
+            public const string FINDPLAYERINLOCAL = "findPlayerInLocal";
+
+            /// <summary>
+            /// Get the top of the local chat window
+            /// </summary>
+            public const string GETLOCALCHATTOP = "getLocalChatTop";
+
+            /// <summary>
+            /// Get the bottom of the local chat window
+            /// </summary>
+            public const string GETLOCALCHATBOTTOM = "getLocalChatBottom";
+
+            /// <summary>
+            /// Get the local chat scroll bar
+            /// </summary>
+            public const string GETLOCALCHATSCROLLBAR = "getLocalChatScrollbar";
         }
 
        /// <summary>
