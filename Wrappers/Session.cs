@@ -93,9 +93,51 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Check if we are at the login screen
+        /// </summary>
+        /// <returns>True if we are, false otherwise</returns>
+        public bool atLogin()
+        {
+            BooleanResponse bresp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.ATLOGIN, Response.RESPONSES.BOOLEANRESPONSE);
+            if (bresp == null)
+                return false;
+
+            return (Boolean)bresp.Data;
+        }
+            
+        /// <summary>
+        /// Check if we are at the character selection screen
+        /// </summary>
+        /// <returns>True if we are, false otherwise</returns>
+        public bool atCharSel()
+        {
+            BooleanResponse bresp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.ISATCHARSEL, Response.RESPONSES.BOOLEANRESPONSE);
+            if (bresp == null)
+                return false;
+
+            return (Boolean)bresp.Data;
+        }
+
+        /// <summary>
+        /// Get the enter game button
+        /// </summary>
+        /// <returns>The button, null on failure</returns>
+        public Button getEnterButton()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETENTERGAMEBTN, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                return null;
+            }
+
+            return new Button(iresp.Name, iresp.X, iresp.Y, iresp.Height, iresp.Width);
+        }
+
+
+        /// <summary>
         /// Get the connect button of the login interface
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The button, null on failure</returns>
         public Button getConnectButton()
         {
             InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETCONNECTBUTTON, Response.RESPONSES.INTERFACERESPONSE);
@@ -110,7 +152,7 @@ namespace Eryan.Wrappers
         /// <summary>
         /// Get the username box of the login interface
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The box, null on failure</returns>
         public InterfaceResponse getUsernameBox()
         {
             InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETUSERNAMEBOX, Response.RESPONSES.INTERFACERESPONSE);
@@ -122,7 +164,12 @@ namespace Eryan.Wrappers
             return iresp;
         }
 
-
+        /// <summary>
+        /// Check if the edit field has the info we want
+        /// </summary>
+        /// <param name="edit">The edit field</param>
+        /// <param name="text">The text we want it to contain</param>
+        /// <returns>True if they are equal, false otherwise</returns>
         public bool checkEdit(InterfaceResponse edit, string text)
         {
             return edit.Name.Equals(text);
