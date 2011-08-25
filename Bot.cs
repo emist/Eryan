@@ -96,11 +96,13 @@ namespace Eryan
             cw.tabControl1.TabPages[0].Controls.Add(bot);
             cw.tabControl1.TabPages[0].Text = "Bot";
 
+            /*
             backgroundScripts = new List<Scriptable>();
             Script.Scripts.InterfaceCloser icloser = new Script.Scripts.InterfaceCloser();
             icloser.initializeInputs(bot);
             backgroundScripts.Add(icloser);
-
+            */
+             
             this.cw = cw;
             //DEBUGGING STUFF
             //com = new Communicator("\\\\.\\pipe\\TestChannel");
@@ -108,6 +110,8 @@ namespace Eryan
             over = new OverviewHandler(bot.MENU, bot.MOUSE, bot.PMOUSE, bot.COMMUNICATOR);
             
         }
+
+
 
         /// <summary>
         /// Gets a reference to the handler in charge of this bot
@@ -252,7 +256,7 @@ namespace Eryan
             int sleep = 0;
             
                 //Run background scripts
-            foreach (Scriptable bgScript in backgroundScripts)
+            foreach (Scriptable bgScript in bot.BACKGROUNDSCRIPTS)
             {
                 try
                 {
