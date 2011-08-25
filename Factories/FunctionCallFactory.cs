@@ -259,6 +259,7 @@ namespace Eryan.Factories
             /// Get the local chat scroll bar
             /// </summary>
             public const string GETLOCALCHATSCROLLBAR = "getLocalChatScrollbar";
+
         }
 
        /// <summary>
