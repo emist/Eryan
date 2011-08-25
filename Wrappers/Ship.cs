@@ -265,7 +265,7 @@ namespace Eryan.Wrappers
         /// Returns the percentage of shield the ship currently has
         /// </summary>
         /// <returns>Ship Shiled percentage or -1 on failure</returns>
-        public int getShiledPercentage()
+        public int getShieldPercentage()
         {
             StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPSHIELD, Response.RESPONSES.STRINGRESPONSE);
             if (tresp == null)
