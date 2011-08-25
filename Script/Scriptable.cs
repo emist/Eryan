@@ -17,6 +17,16 @@ namespace Eryan.Script
     public abstract class Scriptable
     {
         /// <summary>
+        /// The script name
+        /// </summary>
+        protected string name = "Unamed";
+
+        /// <summary>
+        /// Is the script enabled
+        /// </summary>
+        public bool enabled = true;
+
+        /// <summary>
         /// Bot's Mouse handler
         /// </summary>
         public Mouse EMouse;
@@ -94,6 +104,7 @@ namespace Eryan.Script
             this.EKeyboard = bot.KEYBOARD;
             this.ELocalHandler = bot.LOCAL;
             ERandom = new Random();
+            
         }
 
         /// <summary>
@@ -114,6 +125,29 @@ namespace Eryan.Script
         /// <returns>Returns the amount in miliseconds you want Eryan to keep your script thread sleeping for</returns>
         public abstract int run();
 
+        /// <summary>
+        /// Return if the script is enabled
+        /// </summary>
+        public bool Enabled
+        {
+            get
+            {
+                return enabled;
+            }
+            set
+            {
+                enabled = value;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+    
     }
    
 }
