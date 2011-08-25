@@ -19,6 +19,7 @@ namespace Eryan.Script.Scripts
 
         public override Boolean onStart()
         {
+            name = "InterfaceCloser";
             return true;
         }
 

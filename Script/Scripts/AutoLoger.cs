@@ -18,6 +18,7 @@ namespace Eryan.Script.Scripts
 
         public override Boolean onStart()
         {
+            name = "Autologer";
             return true;
         }
 
