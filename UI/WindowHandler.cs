@@ -18,6 +18,7 @@ using Eryan.Util;
 using Eryan.Wrappers;
 using Eryan.InputHandler;
 using Eryan.IPC;
+using Eryan.Script;
 
 //Events need to be changed to handle proper PID selection
 //As it is it wont support multiple eve clients
@@ -46,6 +47,7 @@ namespace Eryan.UI
         private string pipename;
         private ConfigHandler config = new ConfigHandler();
         MessageStruct mes;
+        List<Scriptable> backgroundScripts;
 
         private static Random random = new Random((int)DateTime.Now.Ticks);
         private string RandomString(int size)
@@ -305,13 +307,16 @@ namespace Eryan.UI
             dll = items[1];
 
             drawingScreen = new DrawableScreen(cw, this);
-            pipename = RandomString(9);
-            pipename = "\\\\.\\pipe\\" + pipename;
-            com = new Communicator(pipename);
             Load += new EventHandler(Program_Load);
             FormClosing += new FormClosingEventHandler(Program_FormClosing);
             winDel = new WinEventDelegate(HandleWindowChanges);
             MouseDown += new MouseEventHandler(Form1_MouseDown);
+
+
+            /*
+            pipename = RandomString(9);
+            pipename = "\\\\.\\pipe\\" + pipename;
+            com = new Communicator(pipename);
             menuhandler = new MenuHandler(this);
             overviewhandler = new OverviewHandler(this);
             station = new Station(this);
@@ -320,6 +325,7 @@ namespace Eryan.UI
             cam = new Camera(this);
             local = new LocalHandler(this);
             mes = new MessageStruct() { Text = pipename };
+             */
             Process p = null;
 
             p = System.Diagnostics.Process.Start(this.exeName);
@@ -460,6 +466,25 @@ namespace Eryan.UI
                     if (injector.getSyringe() != null)
                     {
                         //Thread.Sleep(15000);
+                        pipename = RandomString(9);
+                        pipename = "\\\\.\\pipe\\" + pipename;
+                        Console.WriteLine("creating pipe " + pipename);
+                        com = new Communicator(pipename);
+                        menuhandler = new MenuHandler(this);
+                        overviewhandler = new OverviewHandler(this);
+                        station = new Station(this);
+                        myShip = new Ship(this);
+                        eveSession = new Session(this);
+                        cam = new Camera(this);
+                        local = new LocalHandler(this);
+                        mes = new MessageStruct() { Text = pipename };
+
+                        backgroundScripts = new List<Scriptable>();
+                        Script.Scripts.InterfaceCloser icloser = new Script.Scripts.InterfaceCloser();
+                        icloser.initializeInputs(this);
+                        backgroundScripts.Add(icloser);
+
+
                         injector.getSyringe().CallExport(dll, "startServer");
                             
                         injector.getSyringe().CallExport(dll, "dropServer", mes);
@@ -574,6 +599,14 @@ namespace Eryan.UI
             get
             {
                 return eveSession;
+            }
+        }
+
+        public List<Scriptable> BACKGROUNDSCRIPTS
+        {
+            get
+            {
+                return backgroundScripts;
             }
         }
 
