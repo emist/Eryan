@@ -248,6 +248,7 @@ namespace Eryan
             if (!initialized)
             {
                 script.initializeInputs(bot);
+                script.onStart();
                 initialized = !initialized;
             }
 
@@ -260,7 +261,8 @@ namespace Eryan
             {
                 try
                 {
-                    bgScript.run();
+                    if(bgScript.Enabled)
+                        bgScript.run();
                 }
 
                 catch (Exception e)
@@ -272,7 +274,10 @@ namespace Eryan
             }
             try
             {
-                sleep = script.run();
+                if (script.enabled)
+                    sleep = script.run();
+                else
+                    sleep = 600;
             }
             catch (Exception e)
             {
