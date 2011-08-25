@@ -93,6 +93,51 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Get the connect button of the login interface
+        /// </summary>
+        /// <returns></returns>
+        public Button getConnectButton()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETCONNECTBUTTON, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                return null;
+            }
+
+            return new Button(iresp.Name, iresp.X, iresp.Y, iresp.Height, iresp.Width);
+        }
+
+        /// <summary>
+        /// Get the username box of the login interface
+        /// </summary>
+        /// <returns></returns>
+        public InterfaceResponse getUsernameBox()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETUSERNAMEBOX, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                return null;
+            }
+
+            return iresp;
+        }
+
+        /// <summary>
+        /// Get the password box of the login interface
+        /// </summary>
+        /// <returns></returns>
+        public InterfaceResponse getPasswordBox()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETPASSWORDBOX, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                return null;
+            }
+
+            return iresp;
+        }
+
+        /// <summary>
         /// Logout
         /// </summary>
         public void logout()
