@@ -184,6 +184,19 @@ namespace Eryan.Input
 
                 foreach (char c in text)
                 {
+                    Console.WriteLine(c);
+                    Console.WriteLine((int)c);
+                    if ((int)c < 91 && (int)c > 64)
+                    {
+                        //PostMessage(appWin, WM_KEYDOWN, (long)VKeys.VK_SHIFT, 0x00140001);
+                        keybd_event((byte)VKeys.VK_SHIFT, 0, 0, 0);
+                        Thread.Sleep(550);
+                        PostMessage(appWin, WM_KEYDOWN, VkKeyScan(c), 0x00140001);
+                        Thread.Sleep(550);
+                        keybd_event((byte)VKeys.VK_SHIFT, 0, 0x2, 0);
+                        //PostMessage(appWin, WM_KEYUP, (long)VKeys.VK_SHIFT, 0x00140001);
+                    }
+
                     PostMessage(appWin, WM_KEYDOWN, VkKeyScan(c), 0x00140001);
                     System.Threading.Thread.Sleep(random.Next(minWait, maxWait));
                 }
@@ -238,9 +251,22 @@ namespace Eryan.Input
 
                 foreach (char c in text)
                 {
-                    //PostMessage(appWin, WM_KEYDOWN, VkKeyScan('c'), 0x00140001);
-                    PostMessage(appWin, WM_KEYDOWN, VkKeyScan(c), 0x00140001);
-                    System.Threading.Thread.Sleep(speed);
+                    Console.WriteLine(c);
+                    Console.WriteLine((int)c);
+                    if ((int)c < 91 && (int)c > 64)
+                    {
+                        //PostMessage(appWin, WM_KEYDOWN, (long)VKeys.VK_SHIFT, 0x00140001);
+                        keybd_event((byte)VKeys.VK_SHIFT, 0, 0, 0);
+                        Thread.Sleep(550);
+                        PostMessage(appWin, WM_KEYDOWN, VkKeyScan(c), 0x00140001);
+                        Thread.Sleep(550);
+                        keybd_event((byte)VKeys.VK_SHIFT, 0, 0x2, 0);
+                        //PostMessage(appWin, WM_KEYUP, (long)VKeys.VK_SHIFT, 0x00140001);
+                    }
+                    else
+                        PostMessage(appWin, WM_KEYDOWN, VkKeyScan(c), 0x00140001);
+                    System.Threading.Thread.Sleep(60);
+                    
                 }
 
             }
