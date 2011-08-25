@@ -10,6 +10,7 @@ using Eryan.Factories;
 using Eryan.Responses;
 using Eryan.IPC;
 using Eryan.Wrappers;
+using Eryan.UI;
 
 namespace Eryan.InputHandler
 {
@@ -34,6 +35,13 @@ namespace Eryan.InputHandler
             this.m = m;
             this.pm = pm;
             this.com = com;
+        }
+
+        public Camera(WindowHandler wh)
+        {
+            m = wh.MOUSE;
+            pm = wh.PMOUSE;
+            com = wh.COMMUNICATOR;
         }
 
         private bool isEmpty(List<Rectangle> recs, Point pt)

@@ -10,6 +10,7 @@ using Eryan.Responses;
 using Eryan.IPC;
 using Eryan.Factories;
 using Eryan.Wrappers;
+using Eryan.UI;
 
 namespace Eryan.InputHandler
 {
@@ -206,6 +207,16 @@ namespace Eryan.InputHandler
             this.kb = kb;
             random = new Random();
             
+        }
+
+        public MenuHandler(WindowHandler wh)
+        {
+            this.pm = wh.PMOUSE;
+            pm.Speed = 20;
+            this.m = wh.MOUSE;
+            this.comm = wh.COMMUNICATOR;
+            this.kb = wh.KEYBOARD;
+            random = new Random();
         }
 
 

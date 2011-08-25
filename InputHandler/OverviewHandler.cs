@@ -11,6 +11,7 @@ using Eryan.Input;
 using Eryan.IPC;
 using Eryan.Responses;
 using Eryan.Factories;
+using Eryan.UI;
 
 namespace Eryan.InputHandler
 {
@@ -54,6 +55,17 @@ namespace Eryan.InputHandler
             entries = new List<OverViewEntry>();
             ran = new Random();
         }
+
+        public OverviewHandler(WindowHandler wh)
+        {
+            this.m = wh.MOUSE;
+            this.pm = wh.PMOUSE;
+            this.comm = wh.COMMUNICATOR;
+            this.mh = wh.MENU;
+            entries = new List<OverViewEntry>();
+            ran = new Random();
+        }
+
 
         /// <summary>
         /// Populate this overview wrapper with the client's current overview
