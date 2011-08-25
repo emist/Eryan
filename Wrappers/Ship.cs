@@ -571,7 +571,7 @@ namespace Eryan.Wrappers
         /// Returns the max targeting range of the given high slot
         /// </summary>
         /// <param name="num">The high slot number</param>
-        /// <returns>The max targeting range in meters</returns>
+        /// <returns>The max targeting range l;in meters</returns>
         public double getHighSlotTargetingRange(int num)
         {
             StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETTARGETINGRANGE, "" + num, Response.RESPONSES.STRINGRESPONSE);
@@ -583,6 +583,22 @@ namespace Eryan.Wrappers
 
             return Convert.ToDouble((string)tresp.Data);
 
+        }
+
+        /// <summary>
+        /// Check if the ship has the given highslot
+        /// </summary>
+        /// <param name="num">highslot position</param>
+        /// <returns>True if it does, false otherwise</returns>
+        public Boolean hasHighSlot(int num)
+        {
+            BooleanResponse activeResp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.ISHIGHSLOTACTIVE, "" + num, Response.RESPONSES.BOOLEANRESPONSE);
+            if (activeResp == null)
+            {
+                Console.WriteLine("Can't get activity status");
+                return false;
+            }
+            return true;
         }
 
         /// <summary>
