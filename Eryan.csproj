@@ -96,6 +96,7 @@
     <Compile Include="Responses\SystemResponse.cs" />
     <Compile Include="Responses\TargetListResponse.cs" />
     <Compile Include="Script\Scriptable.cs" />
+    <Compile Include="Script\Scripts\AutoLoger.cs" />
     <Compile Include="Script\Scripts\InterfaceCloser.cs" />
     <Compile Include="UI\EulaView.cs">
       <SubType>Form</SubType>
