@@ -190,6 +190,10 @@ namespace Eryan.InputHandler
             /// </summary>
             public const string REMOVELOCATION = "Remove Location";
 
+            /// <summary>
+            /// Form Fleet With
+            /// </summary>
+            public const string FORMFLEETWITH = "Form Fleet With...";
         }
         
         /// <summary>
