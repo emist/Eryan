@@ -122,6 +122,110 @@ namespace Eryan.Wrappers
             return iresp;
         }
 
+
+        public bool checkEdit(InterfaceResponse edit, string text)
+        {
+            return edit.Name.Equals(text);
+        }
+
+        private void populateEdit(InterfaceResponse edit, string text)
+        {
+            string currText = edit.Name;
+
+            if (!currText.Equals(text))
+            {
+                if (currText != "")
+                {
+                    
+                    m.move(new Point(ran.Next(edit.X + 5, edit.X + edit.Width - 5), ran.Next(edit.Y + 5, edit.Y + edit.Height - 5)));
+                    Thread.Sleep(ran.Next(300, 500));
+                    m.click(true);
+                    Thread.Sleep(ran.Next(100, 300));
+                    for (int i = 0; i < currText.Length; i++)
+                    {
+                        kb.sendChar((char)KeyBoard.VKeys.VK_BACK);
+                        Thread.Sleep(ran.Next(150, 190));
+                    }
+                    pm.synchronize(m);
+
+                }
+
+                if (currText == "")
+                {
+                    m.move(new Point(ran.Next(edit.X + 5, edit.X + edit.Width - 5), ran.Next(edit.Y + 5, edit.Y + edit.Height - 5)));
+                    Thread.Sleep(ran.Next(300, 500));
+                    m.click(true);
+                    Thread.Sleep(ran.Next(100, 300));
+                    kb.sendKeyPresses(text);
+                    pm.synchronize(m);
+                }
+
+            }
+
+
+        }
+
+        public bool click(Button button)
+        {
+            if (button == null)
+                return false;
+
+            m.move(new Point(ran.Next(button.X + 5, button.X + button.Width - 5), ran.Next(button.Y + 5, button.Y + button.Height - 5)));
+            Thread.Sleep(ran.Next(300, 500));
+            m.click(true);
+            pm.synchronize(m);
+            return true;
+        }
+
+        /// <summary>
+        /// Login
+        /// </summary>
+        /// <param name="username">The username to login with</param>
+        /// <param name="password">The password to login with</param>
+        /// <returns>True on succes, false otherwise</returns>
+        public bool login(string username, string password)
+        {
+            InterfaceResponse pentry = getPasswordBox();
+            if (pentry == null)
+                return false;
+
+            populateEdit(pentry, password);
+
+            pentry = getPasswordBox();
+            if (pentry == null)
+                return false;
+
+            if (!checkEdit(pentry, password))
+                return false;
+
+            InterfaceResponse uentry = getUsernameBox();
+            if (uentry == null)
+                return false;
+
+            populateEdit(uentry, username);
+
+            uentry = getUsernameBox();
+            if (uentry == null)
+                return false;
+
+            if (!checkEdit(uentry, username))
+                return false;
+
+            Button connect = getConnectButton();
+
+            if (connect == null)
+                return false;
+
+
+            if (!click(connect))
+                return false;
+
+
+
+            return true;
+        }
+
+
         /// <summary>
         /// Get the password box of the login interface
         /// </summary>
