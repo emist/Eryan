@@ -260,6 +260,10 @@ namespace Eryan.Factories
             /// </summary>
             public const string GETLOCALCHATSCROLLBAR = "getLocalChatScrollbar";
 
+            /// <summary>
+            /// Check if player is fleeted
+            /// </summary>
+            public const string ISFLEETED = "isFleeted";
         }
 
        /// <summary>
