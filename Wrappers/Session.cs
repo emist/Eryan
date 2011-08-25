@@ -24,6 +24,7 @@ namespace Eryan.Wrappers
         Random ran = new Random();
         Mouse m;
         PreciseMouse pm;
+        WindowHandler wh;
 
         /// <summary>
         /// Builds the session object with the given communicator
@@ -35,6 +36,7 @@ namespace Eryan.Wrappers
             this.kb = wh.KEYBOARD;
             m = wh.MOUSE;
             pm = wh.PMOUSE;
+            this.wh = wh;
         }
 
 
@@ -116,6 +118,27 @@ namespace Eryan.Wrappers
                 return false;
 
             return (Boolean)bresp.Data;
+        }
+
+        /// <summary>
+        /// Disable the autologin script
+        /// </summary>
+        /// <returns></returns>
+        public void disableAutoLogin()
+        {
+            foreach (Eryan.Script.Scriptable script in wh.BACKGROUNDSCRIPTS)
+                if (script.Name.Equals("Autologer"))
+                    script.Enabled = false;
+        }
+
+        /// <summary>
+        /// Enable the autologin script
+        /// </summary>
+        public void enableAutoLogin()
+        {
+            foreach (Eryan.Script.Scriptable script in wh.BACKGROUNDSCRIPTS)
+                if (script.Name.Equals("Autologer"))
+                    script.Enabled = true;
         }
 
         /// <summary>
