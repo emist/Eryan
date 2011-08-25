@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Drawing;
+using System.Threading;
 
 using Eryan.Responses;
 using Eryan.Factories;
 using Eryan.IPC;
+using Eryan.Input;
+using Eryan.UI;
 
 namespace Eryan.Wrappers
 {
@@ -17,15 +20,21 @@ namespace Eryan.Wrappers
     public class Session
     {
         Communicator com;
+        KeyBoard kb;
         Random ran = new Random();
+        Mouse m;
+        PreciseMouse pm;
 
         /// <summary>
         /// Builds the session object with the given communicator
         /// </summary>
         /// <param name="com">The reference to the bot's communicator</param>
-        public Session(Communicator com)
+        public Session(WindowHandler wh)
         {
-            this.com = com;
+            this.com = wh.COMMUNICATOR;
+            this.kb = wh.KEYBOARD;
+            m = wh.MOUSE;
+            pm = wh.PMOUSE;
         }
 
 
@@ -52,6 +61,93 @@ namespace Eryan.Wrappers
             if (bresp == null)
                 return false;
             return (Boolean)bresp.Data;
+        }
+
+        /// <summary>
+        /// Get the No button of an interface if it exists
+        /// </summary>
+        /// <returns>The No button or null on failure</returns>
+
+        public Button getNoButton()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETMODALYESBUTTON, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                return null;
+            }
+
+            return new Button("NO", iresp.X, iresp.Y, iresp.Height, iresp.Width);
+        }
+
+        /// <summary>
+        /// Logout
+        /// </summary>
+        public void logout()
+        {
+            if (!isSystemMenuOpen())
+                openSystemMenu();
+
+            Thread.Sleep(600);
+
+            Button logoff = getLogoutButton();
+            if (logoff != null)
+            {   
+                m.move(new Point(ran.Next(logoff.X + 5, logoff.X + logoff.Width - 5), ran.Next(logoff.Y + 5, logoff.Y + logoff.Height - 5)));
+                Thread.Sleep(500);
+                m.click(true);
+                pm.synchronize(m);
+                Thread.Sleep(600);
+                Button yes = getYesButton();
+                if (yes != null)
+                {
+                    m.move(new Point(ran.Next(yes.X + 5, yes.X + yes.Width - 5), ran.Next(yes.Y + 5, yes.Y + yes.Height - 5)));
+                    Thread.Sleep(600);
+                    m.click(true);
+                    pm.synchronize(m);
+                }
+            }
+
+
+
+        }
+
+        /// <summary>
+        /// Open the system menu
+        /// </summary>
+        public void openSystemMenu()
+        {
+           kb.sendChar((char)KeyBoard.VKeys.VK_ESCAPE);
+        }
+
+        /// <summary>
+        /// Get the logoff button from the system menu
+        /// </summary>
+        /// <returns>The logout button or No on failure</returns>
+        public Button getLogoutButton()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETLOGOFFBUTTON, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                return null;
+            }
+
+            return new Button("LOGOFF", iresp.X, iresp.Y, iresp.Height, iresp.Width);
+        }
+
+
+        /// <summary>
+        /// Get the Yes button of an interface if it exists
+        /// </summary>
+        /// <returns>The Yes Button, or null on failure</returns>
+        public Button getYesButton()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETMODALYESBUTTON, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                return null;
+            }
+
+            return new Button("YES", iresp.X, iresp.Y, iresp.Height, iresp.Width);
         }
 
         /// <summary>

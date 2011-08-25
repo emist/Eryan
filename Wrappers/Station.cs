@@ -39,6 +39,15 @@ namespace Eryan.Wrappers
             ran = new Random();
         }
 
+        public Station(WindowHandler wh)
+        {
+            this.m = wh.MOUSE;
+            this.pm = wh.PMOUSE;
+            this.mh = wh.MENU;
+            this.com = wh.COMMUNICATOR;
+            ran = new Random();
+        }
+
         /// <summary>
         /// Deposits all items in your cargo to the station hangar
         /// </summary>

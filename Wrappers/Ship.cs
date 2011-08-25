@@ -44,6 +44,16 @@ namespace Eryan.Wrappers
             this.m = m;
         }
 
+        public Ship(WindowHandler wh)
+        {
+            overviewhandler = wh.OVERVIEW;
+            com = wh.COMMUNICATOR;
+            menu = wh.MENU;
+            pm = wh.PMOUSE;
+            m = wh.MOUSE;
+        }
+
+
         /// <summary>
         /// Returns the overview entries
         /// </summary>
