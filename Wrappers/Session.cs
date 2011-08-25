@@ -80,6 +80,19 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Check if we are fleeted
+        /// </summary>
+        /// <returns>True if we are fleeted, false otherwise</returns>
+        public bool amIFleeted()
+        {
+            BooleanResponse bresp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.ISFLEETED, Response.RESPONSES.BOOLEANRESPONSE);
+            if (bresp == null)
+                return false;
+
+            return (Boolean)bresp.Data;
+        }
+
+        /// <summary>
         /// Logout
         /// </summary>
         public void logout()
