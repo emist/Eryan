@@ -266,13 +266,10 @@ namespace Eryan
             {
                 try
                 {
-                    Console.WriteLine("SCRIPT NAME : " + bgScript.Name);
                     if (bgScript.Name.Equals("Autologer"))
                     {
-                        Console.WriteLine("INSIDE AUTLOGERRRRRR");
                         if (!((Script.Scripts.AutoLoger)bgScript).HasCredentials)
                             ((Script.Scripts.AutoLoger)bgScript).userCredentials(bot.Accountmanager);
-                    
                     }
 
                     if(bgScript.Enabled)
@@ -289,7 +286,10 @@ namespace Eryan
             try
             {
                 if (script.enabled)
+                {
+                    script.initializeInputs(bot);
                     sleep = script.run();
+                }
                 else
                     sleep = 600;
             }
