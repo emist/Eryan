@@ -19,6 +19,7 @@ using Eryan.Wrappers;
 using Eryan.InputHandler;
 using Eryan.IPC;
 using Eryan.Script;
+using Eryan.Security;
 
 //Events need to be changed to handle proper PID selection
 //As it is it wont support multiple eve clients
@@ -48,6 +49,7 @@ namespace Eryan.UI
         private ConfigHandler config = new ConfigHandler();
         MessageStruct mes;
         List<Scriptable> backgroundScripts;
+        AccountManager accManager;
 
         private static Random random = new Random((int)DateTime.Now.Ticks);
         private string RandomString(int size)
@@ -311,6 +313,7 @@ namespace Eryan.UI
             FormClosing += new FormClosingEventHandler(Program_FormClosing);
             winDel = new WinEventDelegate(HandleWindowChanges);
             MouseDown += new MouseEventHandler(Form1_MouseDown);
+            accManager = new AccountManager();
 
 
             /*
@@ -483,6 +486,8 @@ namespace Eryan.UI
                         Script.Scripts.AutoLoger autoLogger = new Script.Scripts.AutoLoger();
                         Script.Scripts.InterfaceCloser icloser = new Script.Scripts.InterfaceCloser();
                         icloser.initializeInputs(this);
+                        icloser.onStart();
+                        autoLogger.onStart();
                         autoLogger.initializeInputs(this);
                         backgroundScripts.Add(icloser);
                         backgroundScripts.Add(autoLogger);
@@ -996,6 +1001,14 @@ namespace Eryan.UI
               this.Invalidate();
 //            base.OnResize(e);
 
+        }
+
+        public AccountManager Accountmanager
+        {
+            get
+            {
+                return accManager;
+            }
         }
 
     }

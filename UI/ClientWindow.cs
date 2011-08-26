@@ -386,6 +386,11 @@ namespace Eryan.UI
 
         private void loadScriptBtn_Click(object sender, EventArgs e)
         {
+            if(bots[0].getHandle().Accountmanager.Username.Equals("") || bots[0].getHandle().Accountmanager.Password.Equals(""))
+            {
+                bots[0].getHandle().Accountmanager.ShowDialog();
+            }
+
             if (sDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 bots[0].scriptName = sDialog.FileName;

@@ -207,7 +207,7 @@ namespace Eryan.Wrappers
                 if (currText != "")
                 {
                     
-                    m.move(new Point(ran.Next(edit.X + 5, edit.X + edit.Width - 5), ran.Next(edit.Y + 5, edit.Y + edit.Height - 5)));
+                    m.move(new Point(ran.Next(edit.X + 5, edit.X + edit.Width - 15), ran.Next(edit.Y + 5, edit.Y + edit.Height - 5)));
                     Thread.Sleep(ran.Next(300, 500));
                     m.click(true);
                     Thread.Sleep(ran.Next(100, 300));

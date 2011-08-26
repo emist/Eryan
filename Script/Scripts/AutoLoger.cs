@@ -7,6 +7,7 @@ using System.Drawing;
 
 using Eryan.Script;
 using Eryan.Wrappers;
+using Eryan.Security;
 
 namespace Eryan.Script.Scripts
 {
@@ -15,6 +16,10 @@ namespace Eryan.Script.Scripts
     /// </summary>
     public class AutoLoger : Scriptable
     {
+
+        private Boolean hasCredentials = false;
+        private string username;
+        private string password;
 
         public override Boolean onStart()
         {
@@ -27,6 +32,24 @@ namespace Eryan.Script.Scripts
             return true;
         }
 
+        public void userCredentials(AccountManager acc)
+        {
+            if (acc == null)
+            {
+                Console.WriteLine("Account manager is null");
+                return;
+            }
+            
+            Console.WriteLine("USERNAME " + acc.Username);
+
+            if (acc.Username.Equals("") || acc.Password.Equals(""))
+                return;
+
+            username = acc.Username;
+            password = acc.Password;
+            hasCredentials = true;
+        }
+
         public override int run()
         {
             if (ESession.isLoading())
@@ -34,7 +57,8 @@ namespace Eryan.Script.Scripts
             
             if (ESession.atLogin())
             {
-                ESession.login("user", "pass");
+                Console.WriteLine("USERNAME XXX " + username);
+                ESession.login(username, password);
                 return 3000;
             }
 
@@ -43,6 +67,14 @@ namespace Eryan.Script.Scripts
            
 
             return 200;
+        }
+
+        public bool HasCredentials
+        {
+            get
+            {
+                return hasCredentials;
+            }
         }
     }
 }

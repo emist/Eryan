@@ -19,6 +19,7 @@ using Eryan.Script;
 using Eryan.UI;
 using Eryan.Input;
 using Eryan.Util;
+using Eryan.Security;
 
 
 
@@ -55,7 +56,8 @@ namespace Eryan
         public Boolean input = false;
         public string scriptName;
         private List<Scriptable> backgroundScripts;
-       
+        
+              
 
         //This needs to go when the buttons get implemented properly
         ClientWindow cw;
@@ -95,6 +97,7 @@ namespace Eryan
 
             cw.tabControl1.TabPages[0].Controls.Add(bot);
             cw.tabControl1.TabPages[0].Text = "Bot";
+            
 
             /*
             backgroundScripts = new List<Scriptable>();
@@ -235,7 +238,9 @@ namespace Eryan
             if (script == null)
             {
                 if(scriptName != null)
+                {
                     script = loadScript(this.scriptName);
+                }
                 return;
             }
 
@@ -261,6 +266,15 @@ namespace Eryan
             {
                 try
                 {
+                    Console.WriteLine("SCRIPT NAME : " + bgScript.Name);
+                    if (bgScript.Name.Equals("Autologer"))
+                    {
+                        Console.WriteLine("INSIDE AUTLOGERRRRRR");
+                        if (!((Script.Scripts.AutoLoger)bgScript).HasCredentials)
+                            ((Script.Scripts.AutoLoger)bgScript).userCredentials(bot.Accountmanager);
+                    
+                    }
+
                     if(bgScript.Enabled)
                         bgScript.run();
                 }
