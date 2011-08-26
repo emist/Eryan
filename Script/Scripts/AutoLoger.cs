@@ -32,16 +32,17 @@ namespace Eryan.Script.Scripts
             return true;
         }
 
+        /// <summary>
+        /// Load the user credentials
+        /// </summary>
+        /// <param name="acc">The account manager reference that has the credentials</param>
         public void userCredentials(AccountManager acc)
         {
             if (acc == null)
             {
-                Console.WriteLine("Account manager is null");
                 return;
             }
             
-            Console.WriteLine("USERNAME " + acc.Username);
-
             if (acc.Username.Equals("") || acc.Password.Equals(""))
                 return;
 
@@ -57,7 +58,6 @@ namespace Eryan.Script.Scripts
             
             if (ESession.atLogin())
             {
-                Console.WriteLine("USERNAME XXX " + username);
                 ESession.login(username, password);
                 return 3000;
             }
@@ -69,6 +69,9 @@ namespace Eryan.Script.Scripts
             return 200;
         }
 
+        /// <summary>
+        /// Returns true if credentials have been loaded, false otherwise
+        /// </summary>
         public bool HasCredentials
         {
             get
