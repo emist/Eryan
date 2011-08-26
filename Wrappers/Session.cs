@@ -132,6 +132,18 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Check if the given background script is enabled
+        /// </summary>
+        /// <param name="scriptname">The name of the background script to check</param>
+        /// <returns>True if enabled, false otherwise</returns>
+        public bool isBgScriptEnabled(string scriptname)
+        {
+            foreach (Eryan.Script.Scriptable script in wh.BACKGROUNDSCRIPTS)
+                if (script.Name.Equals("Autologer"))
+                    return script.Enabled;
+            return false;
+        }
+        /// <summary>
         /// Enable the autologin script
         /// </summary>
         public void enableAutoLogin()
