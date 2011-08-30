@@ -34,6 +34,8 @@ namespace Eryan.Util
         {
             this.wh = wh;
             this.cw = cw;
+            pm = wh.PMOUSE;
+            m = wh.MOUSE;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -56,7 +58,7 @@ namespace Eryan.Util
                 m.x = e.X;
                 m.y = e.Y;
             }
-                
+            this.Invalidate();   
             base.OnMouseMove(e);
         }
 
@@ -67,8 +69,8 @@ namespace Eryan.Util
             {
                 // Set the WS_EX_TRANSPARENT flag without enabling click-through
                 CreateParams createParams = base.CreateParams;
-                if(Version.GetCurrentWindowsVersion() != Version.WindowsVersions.Win7)
-                    createParams.ExStyle |= 0x00000020;
+                //if(Version.GetCurrentWindowsVersion() != Version.WindowsVersions.Win7)
+                //    createParams.ExStyle |= 0x00000020;
                 return createParams;
             }
         } 

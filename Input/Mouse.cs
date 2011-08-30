@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
 
+using Eryan.Singleton;
 using Eryan.Wrappers;
 
 namespace Eryan.Input
@@ -391,15 +392,17 @@ namespace Eryan.Input
             }
         }
 
-
+        
         /// <summary>
         /// Move the mouse to Point p
         /// </summary>
         /// <param name="p">The point to move the mouse to</param>
         public void moveMouse(Point p)
         {
-           
-            screen = fetchScreen(getPid());
+
+            Cursor cur = Cursors.Default;
+
+            screen = DrawAbleScreenFetcher.fetchOpaque(getPid());
             if (screen == null)
             {
                 Console.WriteLine("Screen is null");
@@ -427,12 +430,14 @@ namespace Eryan.Input
             //PostMessage(hWndCalc, (int)WMessages.WM_LBUTTONUP, 0, ZiadSpace.Util.BitHelper.MakeDword(300,200));
 
             //screen.Invalidate();
-            
-            
-            screen.drawLine(Pens.BurlyWood, p, new Point(p.X + 5, p.Y));
-            //dllMoveMouse(appWin, X, Y);
-            //dllMouseClick(appWin, X, Y);
 
+
+            //screen.Invalidate();
+                        
+            //dllMoveMouse(appWin, X, Y);
+            //dllMuseClick(appWin, X, Y);
+            screen.drawMouse(new Point(p.X, p.Y), cur);
+            //screen.drawLine(Pens.BurlyWood, p, new Point(p.X + 5, p.Y));
             dllMoveMouse(appWin, p.X, p.Y);
             
 
@@ -487,7 +492,7 @@ namespace Eryan.Input
             if (x != -1 || y != -1)
             {
 
-                screen = fetchScreen(getPid());
+                screen = DrawAbleScreenFetcher.fetchOpaque(getPid());
 
 
                 if (screen == null)

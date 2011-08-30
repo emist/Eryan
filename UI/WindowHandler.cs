@@ -34,7 +34,7 @@ namespace Eryan.UI
     public partial class WindowHandler : Utils
     {
 
-        private DrawableScreen drawingScreen;
+        public DrawableScreen drawingScreen;
         //private DrawableScreen drawingScreen;
         private ClientWindow cw;
         //private Utils currentTransparency = new Utils();
@@ -47,10 +47,11 @@ namespace Eryan.UI
         private Boolean running = false;
         private string pipename;
         private ConfigHandler config = new ConfigHandler();
+        public DrawableScreen drawingPanel;
         MessageStruct mes;
         List<Scriptable> backgroundScripts;
         AccountManager accManager;
-
+        
         private static Random random = new Random((int)DateTime.Now.Ticks);
         private string RandomString(int size)
         {
@@ -309,26 +310,14 @@ namespace Eryan.UI
             dll = items[1];
 
             drawingScreen = new DrawableScreen(cw, this);
+            drawingPanel = new DrawableScreen(cw, this);
+
             Load += new EventHandler(Program_Load);
             FormClosing += new FormClosingEventHandler(Program_FormClosing);
             winDel = new WinEventDelegate(HandleWindowChanges);
             MouseDown += new MouseEventHandler(Form1_MouseDown);
             accManager = new AccountManager();
 
-
-            /*
-            pipename = RandomString(9);
-            pipename = "\\\\.\\pipe\\" + pipename;
-            com = new Communicator(pipename);
-            menuhandler = new MenuHandler(this);
-            overviewhandler = new OverviewHandler(this);
-            station = new Station(this);
-            myShip = new Ship(this);
-            eveSession = new Session(this);
-            cam = new Camera(this);
-            local = new LocalHandler(this);
-            mes = new MessageStruct() { Text = pipename };
-             */
             Process p = null;
 
             p = System.Diagnostics.Process.Start(this.exeName);
@@ -672,9 +661,12 @@ namespace Eryan.UI
 
             //Add the screen to global list
             DrawAbleScreenFetcher.addScreen(drawingScreen);
+            DrawAbleScreenFetcher.addScreen(drawingPanel);
 
             //Initialize input methods
             drawingScreen.setPid(getPid());
+            drawingPanel.setPid(getPid());
+
             mouse.setPid(getPid());
             pmouse.setPid(getPid());
             pmouse.setWindowHandle(appWin);
@@ -938,7 +930,11 @@ namespace Eryan.UI
             if (drawingScreen != null)
                 if (drawingScreen.IsVisible())
                     drawingScreen.hideForm();
-            
+
+            if (drawingPanel != null)
+                if (drawingPanel.Visible)
+                    drawingPanel.hideForm();
+
             if (!this.IsVisible())
             {
                 return;
@@ -949,7 +945,6 @@ namespace Eryan.UI
                 Console.WriteLine("drawingScreen is null");
             }
 
-
             drawingScreen.setOwner(this);
             //drawingScreen.bringToFront();
             drawingScreen.setSize(new Size(this.Size.Width, this.Size.Height));
@@ -957,7 +952,7 @@ namespace Eryan.UI
             //drawingScreen.setLocation(new Point(this.Location.X+5, this.Location.Y + 50));
             //drawingScreen.setBackColor(Color.Transparent);
             drawingScreen.setBackColor(Color.Gray);
-            //drawingScreen.setOpacity(0.70);
+            drawingScreen.setOpacity(0.10);
             //drawingScreen.setTransparencyKey();
             drawingScreen.setFormBorderStyle(FormBorderStyle.None);
             drawingScreen.setControlBox(false);
@@ -966,9 +961,32 @@ namespace Eryan.UI
             drawingScreen.setAutoScaleMode(AutoScaleMode.None);
             drawingScreen.bringToFront();
             drawingScreen.showForm();
-
-
             
+            //drawing panel
+
+            drawingPanel.setOwner(this);
+            //drawingScreen.bringToFront();
+            drawingPanel.setSize(new Size(this.Size.Width, this.Size.Height));
+            drawingPanel.setLocation(new Point(cw.Location.X + 10, cw.Location.Y + 80));
+            //drawingScreen.setLocation(new Point(this.Location.X+5, this.Location.Y + 50));
+            //drawingScreen.setBackColor(Color.Transparent);
+            drawingPanel.setBackColor(Color.Gray);
+            drawingPanel.setOpacity(1.00);
+            drawingPanel.TransparencyKey = Color.Gray;
+            //drawingScreen.setTransparencyKey();
+            drawingPanel.setFormBorderStyle(FormBorderStyle.None);
+            drawingPanel.setControlBox(false);
+            drawingPanel.showInTaskbar(false);
+            drawingPanel.setStartPosition(FormStartPosition.Manual);
+            drawingPanel.setAutoScaleMode(AutoScaleMode.None);
+            drawingPanel.bringToFront();
+            drawingPanel.showForm();
+            drawingPanel.Invalidate();
+
+
+            //drawingPanel.MoveMouse(new Point(300, 100));
+
+
             //System.Console.WriteLine(this.Size.ToString());
                         
         }
@@ -1001,6 +1019,14 @@ namespace Eryan.UI
               this.Invalidate();
 //            base.OnResize(e);
 
+        }
+
+        public DrawableScreen DrawingArea
+        {
+            get
+            {
+                return DrawAbleScreenFetcher.fetchOpaque(getPid());
+            }
         }
 
         public AccountManager Accountmanager

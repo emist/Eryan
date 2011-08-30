@@ -127,14 +127,14 @@ namespace Eryan.UI
             {
                 Console.WriteLine("Stopping Input");
                 mouseInput.Text = "Input";
-                
+            
                 //this.Invalidate();
             }
             else
             {
                 Console.WriteLine("Starting Input");
                 mouseInput.Text = "No Input";
-                
+                                
                 //this.Invalidate();
             }
             isMouse = !isMouse;
@@ -191,9 +191,11 @@ namespace Eryan.UI
                 WindowHandler tmp = bots[0].getHandle();
                 if (tmp != null)
                 {
-                    Utils util = DrawAbleScreenFetcher.fetch(tmp.getPid());
-                    if(util != null)
-                        util.setLocation(new Point(this.Location.X + 10, this.Location.Y + 80));
+                    foreach(Utils util in DrawAbleScreenFetcher.fetchAllScreens(tmp.getPid()))
+                    {
+                        if(util != null)
+                            util.setLocation(new Point(this.Location.X + 10, this.Location.Y + 80));
+                    }
                 }
             }
             //this.tabControl1.Size = this.Size;
@@ -212,9 +214,11 @@ namespace Eryan.UI
                 WindowHandler tmp = bots[0].getHandle();
                 if (tmp != null)
                 {
-                    Utils util = DrawAbleScreenFetcher.fetch(tmp.getPid());
-                    if(util != null)
-                        util.setLocation(new Point(this.Location.X + 10, this.Location.Y + 80));
+                    foreach(Utils util in DrawAbleScreenFetcher.fetchAllScreens(tmp.getPid()))
+                    {
+                        if(util != null)
+                            util.setLocation(new Point(this.Location.X + 10, this.Location.Y + 80));
+                    }
                 }
             }
 
@@ -233,9 +237,11 @@ namespace Eryan.UI
                 WindowHandler tmp = bots[0].getHandle();
                 if (tmp != null)
                 {
-                    Utils util = DrawAbleScreenFetcher.fetch(tmp.getPid());
-                    if(util != null)
-                        util.setLocation(new Point(this.Location.X + 10, this.Location.Y + 80));
+                    foreach (Utils util in DrawAbleScreenFetcher.fetchAllScreens(tmp.getPid()))
+                    {
+                        if (util != null)
+                            util.setLocation(new Point(this.Location.X + 10, this.Location.Y + 80));
+                    }
                 }
             }
 

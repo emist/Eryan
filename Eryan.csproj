@@ -98,6 +98,12 @@
     <Compile Include="Script\Scriptable.cs" />
     <Compile Include="Script\Scripts\AutoLoger.cs" />
     <Compile Include="Script\Scripts\InterfaceCloser.cs" />
+    <Compile Include="Security\AccountManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Security\AccountManager.Designer.cs">
+      <DependentUpon>AccountManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\EulaView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Bot.resx">
       <DependentUpon>Bot.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\AccountManager.resx">
+      <DependentUpon>AccountManager.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ClientWindow.resx">

@@ -72,6 +72,25 @@ namespace Eryan
         } 
         */
 
+        public void ClearMouse(Point MouseLocation, Cursor MouseCursor)
+        {
+            if (MouseLocation != Point.Empty)
+            {
+                this.Invalidate(new Rectangle(this.PointToClient(PointToScreen(MouseLocation)), MouseCursor.Size));
+                this.Update();
+                MouseLocation = Point.Empty;
+            }
+        }
+
+        public void drawMouse(Point Location, Cursor MouseCursor)
+        {
+            this.Invalidate();
+            ClearMouse(Location, MouseCursor);
+            Graphics MouseGraphics = CreateGraphics();
+            Rectangle MouseRectangle = new Rectangle(Location, MouseCursor.Size);
+            MouseCursor.Draw(MouseGraphics, MouseRectangle);
+        }
+
         public void drawString(String str, Font f, Point loc, bool antialiasing)
         {
             Graphics g = this.CreateGraphics();
@@ -84,6 +103,12 @@ namespace Eryan
         {
             Graphics g = this.CreateGraphics();
             g.DrawString(str, f, Brushes.Green, loc);
+        }
+
+        public void drawRectangle(Brush b, Rectangle rect)
+        {
+            Graphics g = this.CreateGraphics();
+            g.FillRectangle(b, rect);
         }
 
         public void drawLine(Pen pen, Point point1, Point point2)

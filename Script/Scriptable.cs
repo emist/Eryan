@@ -7,6 +7,7 @@ using Eryan.InputHandler;
 using Eryan.IPC;
 using Eryan.Wrappers;
 using Eryan.UI;
+using Eryan.Util;
 
 namespace Eryan.Script
 {
@@ -87,6 +88,11 @@ namespace Eryan.Script
         public LocalHandler ELocalHandler;
 
         /// <summary>
+        /// The bot's drawing area
+        /// </summary>
+        public DrawableScreen EDrawingArea;
+
+        /// <summary>
         /// Internal use, the Bot will initialize the script with its input handlers once its loaded into memory
         /// </summary>
         /// <param name="bot">The reference to the bot's windowhandler</param>
@@ -103,6 +109,7 @@ namespace Eryan.Script
             this.ECamera = bot.CAMERA;
             this.EKeyboard = bot.KEYBOARD;
             this.ELocalHandler = bot.LOCAL;
+            this.EDrawingArea = bot.DrawingArea;
             ERandom = new Random();
             
         }

@@ -43,7 +43,7 @@ namespace Eryan
       
 
         Thread botThread;
-        WindowHandler bot;
+        public WindowHandler bot;
         Response resp;
         public Communicator com;
         public MenuHandler menuHandler;
