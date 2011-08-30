@@ -578,6 +578,46 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Activate the med slot located at position num
+        /// </summary>
+        /// <param name="num">The position of the med slot to activate</param>
+        /// <returns>True on sucess, false otherwise</returns>
+        public Boolean activateMedPowerSlot(int num)
+        {
+            InterfaceResponse activateResp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETMEDSLOT, num + "", Response.RESPONSES.INTERFACERESPONSE);
+            if (activateResp == null)
+            {
+                Console.WriteLine("Can't find module item");
+                return false;
+            }
+            m.move(new Point(ran.Next(activateResp.X + 10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y + 10, activateResp.Y + activateResp.Height - 10)));
+            Thread.Sleep(200);
+            m.click(true);
+            pm.synchronize(m);
+            return true;
+        }
+
+        /// <summary>
+        /// Activate the low slot located at position num
+        /// </summary>
+        /// <param name="num">The position of the low slot to activate</param>
+        /// <returns>True on sucess, false otherwise</returns>
+        public Boolean activateLowPowerSlot(int num)
+        {
+            InterfaceResponse activateResp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETLOWSLOT, num + "", Response.RESPONSES.INTERFACERESPONSE);
+            if (activateResp == null)
+            {
+                Console.WriteLine("Can't find module item");
+                return false;
+            }
+            m.move(new Point(ran.Next(activateResp.X + 10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y + 10, activateResp.Y + activateResp.Height - 10)));
+            Thread.Sleep(200);
+            m.click(true);
+            pm.synchronize(m);
+            return true;
+        }
+
+        /// <summary>
         /// Returns the max targeting range of the given high slot
         /// </summary>
         /// <param name="num">The high slot number</param>
@@ -612,6 +652,40 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Check if the ship has the given med slot
+        /// </summary>
+        /// <param name="num">The slot number from 1-9</param>
+        /// <returns>True if it does, false otherwise</returns>
+        public Boolean hasMedSlot(int num)
+        {
+            BooleanResponse activeResp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.ISMEDSLOTACTIVE, "" + num, Response.RESPONSES.BOOLEANRESPONSE);
+            if (activeResp == null)
+            {
+                Console.WriteLine("Can't get activity status");
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Check if the ship has the given low slot
+        /// </summary>
+        /// <param name="num">The slot number from 1-9</param>
+        /// <returns>True if it does, false otherwise</returns>
+        public Boolean hasLowSlot(int num)
+        {
+            BooleanResponse activeResp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.ISLOWSLOTACTIVE, "" + num, Response.RESPONSES.BOOLEANRESPONSE);
+            if (activeResp == null)
+            {
+                Console.WriteLine("Can't get activity status");
+                return false;
+            }
+            return true;
+        }
+
+
+
+        /// <summary>
         /// Check if the highslot at position num is active
         /// </summary>
         /// <param name="num">The position of the highslot to check</param>
@@ -619,6 +693,38 @@ namespace Eryan.Wrappers
         public Boolean isHighSlotActive(int num)
         {
             BooleanResponse activeResp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.ISHIGHSLOTACTIVE, "" + num, Response.RESPONSES.BOOLEANRESPONSE);
+            if (activeResp == null)
+            {
+                Console.WriteLine("Can't get activity status");
+                return false;
+            }
+            return (Boolean)activeResp.Data;
+        }
+
+        /// <summary>
+        /// Check if the given med slot is active
+        /// </summary>
+        /// <param name="num">The slot number from 1-9</param>
+        /// <returns>True if active, false otherwise</returns>
+        public Boolean isMedSlotActive(int num)
+        {
+            BooleanResponse activeResp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.ISMEDSLOTACTIVE, "" + num, Response.RESPONSES.BOOLEANRESPONSE);
+            if (activeResp == null)
+            {
+                Console.WriteLine("Can't get activity status");
+                return false;
+            }
+            return (Boolean)activeResp.Data;
+        }
+
+        /// <summary>
+        /// Check if the given low slot is active
+        /// </summary>
+        /// <param name="num">The slot number from 1-9</param>
+        /// <returns>True if active, false otherwise</returns>
+        public Boolean isLowSlotActive(int num)
+        {
+            BooleanResponse activeResp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.ISLOWSLOTACTIVE, "" + num, Response.RESPONSES.BOOLEANRESPONSE);
             if (activeResp == null)
             {
                 Console.WriteLine("Can't get activity status");

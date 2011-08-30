@@ -482,7 +482,7 @@ namespace Eryan.UI
                         backgroundScripts.Add(autoLogger);
 
 
-                        injector.getSyringe().CallExport(dll, "startServer");
+                        //injector.getSyringe().CallExport(dll, "startServer");
                             
                         injector.getSyringe().CallExport(dll, "dropServer", mes);
                         

@@ -60,6 +60,16 @@ namespace Eryan.Factories
             public const string GETHIGHSLOT = "getHighSlot";
 
             /// <summary>
+            /// Get the data associated with the given mid slot
+            /// </summary>
+            public const string GETMEDSLOT = "getMidSlot";
+
+            /// <summary>
+            /// Get the data associated with the given low slot
+            /// </summary>
+            public const string GETLOWSLOT = "getLowSlot";
+
+            /// <summary>
             /// Call to get the status of the given high slot
             /// </summary>
             public const string ISHIGHSLOTACTIVE = "isHighSlotActive";
@@ -289,6 +299,16 @@ namespace Eryan.Factories
             /// Get the "Enter Game" button in the character selection screen
             /// </summary>
             public const string GETENTERGAMEBTN = "getEnterButton";
+
+            /// <summary>
+            /// Check if the given low slot is active
+            /// </summary>
+            public const string ISLOWSLOTACTIVE = "isLowSlotActive";
+
+            /// <summary>
+            /// Check if the given med slot is active
+            /// </summary>
+            public const string ISMEDSLOTACTIVE = "isMedSlotActive";
         }
 
        /// <summary>

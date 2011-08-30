@@ -36,6 +36,7 @@ namespace Eryan.Util
             this.cw = cw;
             pm = wh.PMOUSE;
             m = wh.MOUSE;
+            //DoubleBuffered = true;
         }
 
         protected override void OnPaint(PaintEventArgs e)
