@@ -199,6 +199,51 @@ namespace Eryan.Wrappers
 
 
         /// <summary>
+        /// Stack all items in the cargo hold
+        /// </summary>
+        /// <returns>Returns true on success, false on failure</returns>
+        public bool stackCargo()
+        {
+
+            List<Rectangle> recs = new List<Rectangle>();
+
+            ItemResponse items = (ItemResponse)com.sendCall(FunctionCallFactory.CALLS.GETCARGOLIST, Response.RESPONSES.ITEMRESPONSE);
+            if (items == null)
+            {
+                Console.WriteLine("cargolist is null");
+                return false;
+            }
+
+            foreach (Item it in (List<Item>)items.Data)
+            {
+                recs.Add(new Rectangle(it.X, it.Y, it.Width, it.Height));
+            }
+
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPHANGAR, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                Console.WriteLine("hangar is null");
+                return false;
+            }
+
+            Point pt = new Point(ran.Next(iresp.X, iresp.X + iresp.Width), ran.Next(iresp.Y + 30, iresp.Y + iresp.Height));
+
+            
+
+            while (!menu.isEmpty(recs, pt))
+                pt = new Point(ran.Next(iresp.X, iresp.X + iresp.Width), ran.Next(iresp.Y, iresp.Y + iresp.Height));
+
+            menu.open(pt);
+            Thread.Sleep(ran.Next(200, 300));
+            menu.select(MenuHandler.MENUITEMS.STACKALL);
+            Thread.Sleep(ran.Next(200, 300));
+            menu.click(MenuHandler.MENUITEMS.STACKALL);
+
+            return true;
+
+        }
+
+        /// <summary>
         /// Return the selected item
         /// </summary>
         /// <returns>Selected item</returns>

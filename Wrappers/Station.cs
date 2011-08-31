@@ -49,6 +49,118 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Check if the given item is in the Station hangar
+        /// </summary>
+        /// <param name="name">The name of the item we are looking for</param>
+        /// <returns>True if it exists, false otherwise</returns>
+        public bool isItemInHangar(string name)
+        {
+            ItemResponse items = (ItemResponse)com.sendCall(FunctionCallFactory.CALLS.GETHANGARITEMS, Response.RESPONSES.ITEMRESPONSE);
+            if (items == null)
+            {
+                Console.WriteLine("cargolist is null");
+                return false;
+            }
+
+            foreach (Item it in (List<Item>)items.Data)
+            {
+                if (it.Name.ToLower().Equals(name.ToLower()))
+                    return true;
+            }
+
+            return false;
+        }
+
+
+        /// <summary>
+        /// Withdraw the given item stack from the station hangar by name
+        /// </summary>
+        /// <param name="name">Item name to withdraw</param>
+        /// <returns>True on success, false otherwise</returns>
+        public bool withdrawItem(string name)
+        {
+            if (!isItemInHangar(name))
+                return false;
+
+            ItemResponse items = (ItemResponse)com.sendCall(FunctionCallFactory.CALLS.GETHANGARITEMS, Response.RESPONSES.ITEMRESPONSE);
+            if (items == null)
+            {
+                Console.WriteLine("cargolist is null");
+                return false;
+            }
+
+
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPHANGAR, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                Console.WriteLine("hangar is null");
+                return false;
+            }
+
+            foreach (Item it in (List<Item>)items.Data)
+            {
+                if (it.Name.ToLower().Equals(name.ToLower()))
+                {
+                    m.move(new Point(ran.Next(it.X + 5, it.X + it.Width - 5), ran.Next(it.Y + 5, it.Y + it.Height - 5)));
+                    Thread.Sleep(200);
+                    m.holdLeftButton();
+                    Thread.Sleep(200);
+                    m.move(new Point(ran.Next(iresp.X + 5, iresp.X + iresp.Width - 5), ran.Next(iresp.Y + 5, iresp.Y + iresp.Height - 5)));
+                    Thread.Sleep(200);
+                    m.releaseLeftButton();
+                    pm.synchronize(m);
+                    return true;
+                }
+            }
+
+            return false;
+
+        }
+
+        /// <summary>
+        /// Stack All the items in the station hangar
+        /// </summary>
+        /// <returns>True on success, false otherwise</returns>
+        public bool stackHangarItems()
+        {
+            List<Rectangle> recs = new List<Rectangle>();
+
+            ItemResponse items = (ItemResponse)com.sendCall(FunctionCallFactory.CALLS.GETHANGARITEMS, Response.RESPONSES.ITEMRESPONSE);
+            if (items == null)
+            {
+                Console.WriteLine("cargolist is null");
+                return false;
+            }
+
+            foreach (Item it in (List<Item>)items.Data)
+            {
+                recs.Add(new Rectangle(it.X, it.Y, it.Width, it.Height));
+            }
+
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETSTATIONHANGAR, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                Console.WriteLine("hangar is null");
+                return false;
+            }
+
+            Point pt = new Point(ran.Next(iresp.X, iresp.X + iresp.Width), ran.Next(iresp.Y + 30, iresp.Y + iresp.Height));
+
+            while (!mh.isEmpty(recs, pt))
+                pt = new Point(ran.Next(iresp.X, iresp.X + iresp.Width), ran.Next(iresp.Y + 30, iresp.Y + iresp.Height));
+            
+            mh.open(pt);
+            Thread.Sleep(ran.Next(200, 300));
+            mh.select(MenuHandler.MENUITEMS.STACKALL);
+            Thread.Sleep(ran.Next(200, 300));
+            mh.click(MenuHandler.MENUITEMS.STACKALL);
+
+
+            return false;
+        }
+
+
+        /// <summary>
         /// Deposits all items in your cargo to the station hangar
         /// </summary>
         /// <returns>True if sucess, false otherwise</returns>
