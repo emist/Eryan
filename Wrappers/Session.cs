@@ -25,11 +25,14 @@ namespace Eryan.Wrappers
         Mouse m;
         PreciseMouse pm;
         WindowHandler wh;
+        AddressBook addBook;
+
+
 
         /// <summary>
-        /// Builds the session object with the given communicator
+        /// Builds the session object with the given windowhandler
         /// </summary>
-        /// <param name="com">The reference to the bot's communicator</param>
+        /// <param name="wh">The reference to the bot's windowhandler</param>
         public Session(WindowHandler wh)
         {
             this.com = wh.COMMUNICATOR;
@@ -37,6 +40,7 @@ namespace Eryan.Wrappers
             m = wh.MOUSE;
             pm = wh.PMOUSE;
             this.wh = wh;
+            addBook = new AddressBook(wh);
         }
 
 
@@ -119,6 +123,16 @@ namespace Eryan.Wrappers
 
             return (Boolean)bresp.Data;
         }
+
+        /// <summary>
+        /// Bookmarks a space location using the addressbook
+        /// </summary>
+        /// <returns>True if succeeded, false otherwise</returns>
+        public bool bookMarkInSpace()
+        {
+            return addBook.bm();
+        }
+
 
         /// <summary>
         /// Disable the autologin script
