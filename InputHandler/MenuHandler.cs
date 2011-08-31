@@ -194,6 +194,11 @@ namespace Eryan.InputHandler
             /// Form Fleet With
             /// </summary>
             public const string FORMFLEETWITH = "Form Fleet With...";
+
+            /// <summary>
+            /// Stack all
+            /// </summary>
+            public const string STACKALL = "Stack All";
         }
         
         /// <summary>
@@ -351,12 +356,24 @@ namespace Eryan.InputHandler
             return (Boolean)menuOpen.Data;
         }
 
-        private bool isEmpty(List<Rectangle> recs, Point pt)
+        public bool isEmpty(List<Rectangle> recs, Point pt)
         {
             foreach (Rectangle rec in recs)
                 if (rec.Contains(pt))
                     return false;
             return true;
+        }
+
+        /// <summary>
+        /// Open a menu on the given point
+        /// </summary>
+        /// <param name="pt">The client point in which to open the menu</param>
+        public void open(Point pt)
+        {
+            m.move(pt);
+            Thread.Sleep(random.Next(200, 300));
+            pm.synchronize(m);
+            m.click(false);
         }
 
         /// <summary>
