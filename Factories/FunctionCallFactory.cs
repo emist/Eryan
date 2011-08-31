@@ -309,7 +309,33 @@ namespace Eryan.Factories
             /// Check if the given med slot is active
             /// </summary>
             public const string ISMEDSLOTACTIVE = "isMedSlotActive";
+
+            /// <summary>
+            /// Get the items in the hangar
+            /// </summary>
+            public const string GETHANGARITEMS = "getHangarItems";
+
+            /// <summary>
+            /// Get people and places tab in the neocom
+            /// </summary>
+            public const string GETPEOPLEANDPLACES = "getPeopleAndPlaces";
+
+            /// <summary>
+            /// Get the places tab in the addressbook
+            /// </summary>
+            public const string GETADDRESSBOOKPLACESTAB = "getAddressBookPlacesTab";
+
+            /// <summary>
+            /// Get the bookmark button in the addressbook
+            /// </summary>
+            public const string GETADDRESSBOOKBMBUTTON = "getAddressBookBMButton";
+
+            /// <summary>
+            /// Get the addressbook window
+            /// </summary>
+            public const string GETADDRESSBOOKWINDOW = "getAddressBookWindow";
         }
+
 
        /// <summary>
        /// Builds a functionCall object with no parameters
