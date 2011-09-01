@@ -44,7 +44,7 @@ namespace Eryan.Script.Scripts
                 if (cancel != null)
                     EMouse.move(new Point(ERandom.Next(cancel.X, cancel.X + cancel.Width), ERandom.Next(cancel.Y, cancel.Y + cancel.Height)));
                 else
-                    EMouse.move(new Point(ERandom.Next(ok.X, ok.X + ok.Width), ERandom.Next(ok.Y, cancel.Y + ok.Height)));
+                    EMouse.move(new Point(ERandom.Next(ok.X, ok.X + ok.Width), ERandom.Next(ok.Y, ok.Y + ok.Height)));
 
                 EMouse.click(true);
                 Thread.Sleep(500);
