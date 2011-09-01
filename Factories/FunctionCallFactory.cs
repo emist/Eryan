@@ -334,6 +334,16 @@ namespace Eryan.Factories
             /// Get the addressbook window
             /// </summary>
             public const string GETADDRESSBOOKWINDOW = "getAddressBookWindow";
+
+            /// <summary>
+            /// Get the current count in local
+            /// </summary>
+            public const string GETLOCALCOUNT = "getLocalCount";
+
+            /// <summary>
+            /// Get the "items" tab in the neocom
+            /// </summary>
+            public const string GETNEOCOMITEMSBUTTON = "getNeoComItems";
         }
 
 

@@ -62,6 +62,39 @@ namespace Eryan.InputHandler
             return true;
         }
 
+        public bool userlistScrollToBottom()
+        {
+            InterfaceEntry scrollbar = userlistScrollBar();
+            if (scrollbar == null)
+                return false;
+
+            int bottom = userlistBottom();
+
+            m.move(new Point(ran.Next(scrollbar.X, scrollbar.X + 3), ran.Next(scrollbar.Y, scrollbar.Y + scrollbar.Height-5)));
+            Thread.Sleep(ran.Next(100, 200));
+            m.drag(new Point(ran.Next(scrollbar.X, scrollbar.X + 8), ran.Next(bottom - 5, bottom + 5)));
+            pm.synchronize(m);
+
+            return true;
+        }
+
+        public bool userlistScrollToTop()
+        {
+            InterfaceEntry scrollbar = userlistScrollBar();
+            if (scrollbar == null)
+                return false;
+
+            int top = userlistTop();
+
+            m.move(new Point(ran.Next(scrollbar.X, scrollbar.X + 3), ran.Next(scrollbar.Y, scrollbar.Y + scrollbar.Height - 5)));
+            Thread.Sleep(ran.Next(100, 200));
+            m.drag(new Point(ran.Next(scrollbar.X, scrollbar.X + 8), ran.Next(top - 5, top + 5)));
+            pm.synchronize(m);
+
+
+            return true;
+        }
+
         public override bool userlistScrollUp()
         {
             InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETLOCALCHATSCROLLBAR, Response.RESPONSES.INTERFACERESPONSE);

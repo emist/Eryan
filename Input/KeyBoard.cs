@@ -231,7 +231,19 @@ namespace Eryan.Input
             Thread.Sleep(300);
             keybd_event((byte)VKeys.VK_CONTROL, 0, 0x2, 0);
         }
-        
+
+        /// <summary>
+        /// Sends the given character with the alt key pressed
+        /// </summary>
+        /// <param name="c">The character to send</param>
+        public void sendAltCharacter(char c)
+        {
+            keybd_event((byte)VKeys.VK_MENU, 0, 0, 0);
+            Thread.Sleep(100);
+            PostMessage(appWin, WM_KEYDOWN, VkKeyScan(c), 0);
+            Thread.Sleep(300);
+            keybd_event((byte)VKeys.VK_MENU, 0, 0x2, 0);
+        }
 
         /// <summary>
         /// Sends keypresses to the EVE client with a static wait between keypresses

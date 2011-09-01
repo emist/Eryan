@@ -11,6 +11,7 @@ using Eryan.Factories;
 using Eryan.IPC;
 using Eryan.Input;
 using Eryan.UI;
+using Eryan.InputHandler;
 
 namespace Eryan.Wrappers
 {
@@ -26,7 +27,7 @@ namespace Eryan.Wrappers
         PreciseMouse pm;
         WindowHandler wh;
         AddressBook addBook;
-
+        LocalHandler local;
 
 
         /// <summary>
@@ -41,6 +42,7 @@ namespace Eryan.Wrappers
             pm = wh.PMOUSE;
             this.wh = wh;
             addBook = new AddressBook(wh);
+            local = new LocalHandler(wh);
         }
 
 
@@ -476,6 +478,22 @@ namespace Eryan.Wrappers
 
             return (Boolean)bresp.Data;
         }
+        
+        /// <summary>
+        /// Get the amount of players in local
+        /// </summary>
+        /// <returns>Number greater than 0 on success, -1 on failure</returns>
+        public int getLocalCount()
+        {
+            StringResponse sresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETLOCALCOUNT, Response.RESPONSES.STRINGRESPONSE);
+            if (sresp == null)
+                return -1;
+
+            Regex reg = new Regex("[0-9]+");
+
+            return Convert.ToInt32(reg.Match((string)sresp.Data).Value);
+        }
+
 
         /// <summary>
         /// Check if there's hostiles in local
@@ -483,6 +501,9 @@ namespace Eryan.Wrappers
         /// <returns>Returns true if there is hostiles in local, false otherwise</returns>
         public Boolean isLocalHostile()
         {
+            local.userlistScrollToTop();
+            local.userlistScrollToBottom();
+
             BooleanResponse tresp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.CHECKLOCAL, Response.RESPONSES.BOOLEANRESPONSE);
             if (tresp == null)
             {

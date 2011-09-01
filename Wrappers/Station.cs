@@ -159,6 +159,26 @@ namespace Eryan.Wrappers
             return false;
         }
 
+        /// <summary>
+        /// Open the address book
+        /// </summary>
+        /// <returns>True on success, false otherwise</returns>
+        public bool openHangar()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETNEOCOMITEMSBUTTON, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                Console.WriteLine("hangarbutton is null");
+                return false;
+            }
+
+            m.move(new Point(ran.Next(iresp.X + 10, iresp.X + iresp.Width - 10), ran.Next(iresp.Y + 4, iresp.Y + iresp.Height - 4)));
+            Thread.Sleep(ran.Next(200, 300));
+            m.click(true);
+            pm.synchronize(m);
+            return true;
+        }
+
 
         /// <summary>
         /// Deposits all items in your cargo to the station hangar

@@ -43,12 +43,16 @@ namespace Eryan.Wrappers
             return new Button("OK", iresp.X, iresp.Y, iresp.Height, iresp.Width);
         }
 
+        /// <summary>
+        /// Open the address book
+        /// </summary>
+        /// <returns>True on success, false otherwise</returns>
         public bool open()
         {
             InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETPEOPLEANDPLACES, Response.RESPONSES.INTERFACERESPONSE);
             if (iresp == null)
             {
-                Console.WriteLine("hangar is null");
+                Console.WriteLine("addressbook is null");
                 return false;
             }
 
@@ -59,6 +63,13 @@ namespace Eryan.Wrappers
             return true;
         }
 
+
+
+
+        /// <summary>
+        /// Select the places tab in the addressbook
+        /// </summary>
+        /// <returns>True on success, false otherwise</returns>
         public bool selectPlacesTab()
         {
             InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETADDRESSBOOKPLACESTAB, Response.RESPONSES.INTERFACERESPONSE);
@@ -90,6 +101,9 @@ namespace Eryan.Wrappers
             return true;
         }
 
+        /// <summary>
+        /// Close the address book
+        /// </summary>
         public void close()
         {
             InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETADDRESSBOOKWINDOW, Response.RESPONSES.INTERFACERESPONSE);
@@ -110,6 +124,8 @@ namespace Eryan.Wrappers
 
         }
 
+
+
         private bool click(Button button)
         {
             if (button == null)
@@ -122,7 +138,10 @@ namespace Eryan.Wrappers
             return true;
         }
 
-
+        /// <summary>
+        /// Bookmark from the address book
+        /// </summary>
+        /// <returns>True on success, false otherwise</returns>
         public bool bm()
         {
             if (!isOpen())
@@ -151,7 +170,10 @@ namespace Eryan.Wrappers
             return outcome;
         }
 
-
+        /// <summary>
+        /// Check if the addressbook is open
+        /// </summary>
+        /// <returns>True if open, false otherwise</returns>
         public bool isOpen()
         {
             InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETADDRESSBOOKWINDOW, Response.RESPONSES.INTERFACERESPONSE);

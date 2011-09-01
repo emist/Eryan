@@ -27,6 +27,7 @@ namespace Eryan.Wrappers
         MenuHandler menu;
         PreciseMouse pm;
         Mouse m;
+        KeyBoard kb;
         Random ran = new Random();  
 
         /// <summary>
@@ -34,16 +35,6 @@ namespace Eryan.Wrappers
         /// </summary>
         public const int WARPSPEED = 300000000;
         
-
-        public Ship(MenuHandler mh, OverviewHandler oh, Communicator com, PreciseMouse pm, Mouse m)
-        {
-            overviewhandler = oh;
-            this.com=com;
-            menu = mh;
-            this.pm = pm;
-            this.m = m;
-        }
-
         public Ship(WindowHandler wh)
         {
             overviewhandler = wh.OVERVIEW;
@@ -51,6 +42,7 @@ namespace Eryan.Wrappers
             menu = wh.MENU;
             pm = wh.PMOUSE;
             m = wh.MOUSE;
+            kb = wh.KEYBOARD;
         }
 
 
@@ -91,7 +83,15 @@ namespace Eryan.Wrappers
         /// <returns>Return true on success, false otherwise</returns>
         public Boolean openCargo()
         {
-            return false;
+
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPHANGAR, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp != null)
+            {
+                return true;
+            }
+            
+            kb.sendAltCharacter('c');
+            return true;
         }
 
         /// <summary>
@@ -610,12 +610,15 @@ namespace Eryan.Wrappers
         public Boolean activateHighPowerSlot(int num)
         {
             InterfaceResponse activateResp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETHIGHSLOT, num + "", Response.RESPONSES.INTERFACERESPONSE);
+            if (!hasHighSlot(num))
+                return false;
+
             if (activateResp == null)
             {
                 Console.WriteLine("Can't find module item");
                 return false;
             }
-            m.move(new Point(ran.Next(activateResp.X+10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y+10, activateResp.Y+activateResp.Height-10)));
+            m.move(new Point(ran.Next(activateResp.X+10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y+10, activateResp.Y+activateResp.Height-20)));
             Thread.Sleep(200);
             m.click(true);
             pm.synchronize(m);
@@ -630,12 +633,16 @@ namespace Eryan.Wrappers
         public Boolean activateMedPowerSlot(int num)
         {
             InterfaceResponse activateResp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETMEDSLOT, num + "", Response.RESPONSES.INTERFACERESPONSE);
+
+            if (!hasMedSlot(num))
+                return false;
+            
             if (activateResp == null)
             {
                 Console.WriteLine("Can't find module item");
                 return false;
             }
-            m.move(new Point(ran.Next(activateResp.X + 10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y + 10, activateResp.Y + activateResp.Height - 10)));
+            m.move(new Point(ran.Next(activateResp.X + 20, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y + 10, activateResp.Y + activateResp.Height - 20)));
             Thread.Sleep(200);
             m.click(true);
             pm.synchronize(m);
@@ -650,12 +657,15 @@ namespace Eryan.Wrappers
         public Boolean activateLowPowerSlot(int num)
         {
             InterfaceResponse activateResp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETLOWSLOT, num + "", Response.RESPONSES.INTERFACERESPONSE);
+            if (!hasLowSlot(num))
+                return false;
+            
             if (activateResp == null)
             {
                 Console.WriteLine("Can't find module item");
                 return false;
             }
-            m.move(new Point(ran.Next(activateResp.X + 10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y + 10, activateResp.Y + activateResp.Height - 10)));
+            m.move(new Point(ran.Next(activateResp.X + 10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y + 10, activateResp.Y + activateResp.Height - 20)));
             Thread.Sleep(200);
             m.click(true);
             pm.synchronize(m);
