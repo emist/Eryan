@@ -344,6 +344,16 @@ namespace Eryan.Factories
             /// Get the "items" tab in the neocom
             /// </summary>
             public const string GETNEOCOMITEMSBUTTON = "getNeoComItems";
+
+            /// <summary>
+            /// Get the overview selection icon
+            /// </summary>
+            public const string GETOVERVIEWSELECTION = "getOverViewSelectIcon";
+
+            /// <summary>
+            /// Get the name of the currently selected overview
+            /// </summary>
+            public const string GETOVERVIEWSELECTTEXT = "getOverviewSelectText";
         }
 
 
