@@ -199,6 +199,11 @@ namespace Eryan.InputHandler
             /// Stack all
             /// </summary>
             public const string STACKALL = "Stack All";
+
+            /// <summary>
+            /// Load Default
+            /// </summary>
+            public const string LOADDEFAULT = "Load Default";
         }
         
         /// <summary>
