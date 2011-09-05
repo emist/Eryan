@@ -24,6 +24,20 @@ namespace Eryan.Input
             */
         }
 
+        /// <summary>
+        /// Check whether the mouse it at the given x and y coordinates
+        /// </summary>
+        /// <param name="x">X coordinate to check</param>
+        /// <param name="y">Y coordinate to check</param>
+        /// <returns>Returns true if the mouse is within the 5 pixel square of the given coordinates</returns>
+        public new bool atPosition(int x, int y)
+        {
+            if (cursorLocation().X >= x - 2 && cursorLocation().X <= x + 2)
+                if (cursorLocation().Y >= y - 2 && cursorLocation().Y <= y + 2)
+                    return true;
+            return false;
+        }
+
 
         public void move(int speed, int x, int y, int randX, int randY, int afterOffset)
         {
