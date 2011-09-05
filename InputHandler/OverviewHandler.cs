@@ -111,6 +111,79 @@ namespace Eryan.InputHandler
             return false;
         }
 
+        private bool openOverviewSelect()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWSELECTION, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                return false;
+            }
+
+            m.move(new Point(ran.Next(iresp.X + 2, iresp.X + iresp.Width - 2), ran.Next(iresp.Y + 2, iresp.Y + iresp.Height - 2)));
+            pm.synchronize(m);
+            pm.move(new Point(ran.Next(iresp.X + 2, iresp.X + iresp.Width - 2), ran.Next(iresp.Y + 2, iresp.Y + iresp.Height - 2)));
+            m.synchronize(pm);
+            Thread.Sleep(ran.Next(200, 300));
+            pm.click(true);
+            return true;
+        }
+
+        /// <summary>
+        /// Select the given overview profile
+        /// </summary>
+        /// <param name="profile">The name of the overview profile to select</param>
+        /// <returns>True on success, false otherwise</returns>
+        public bool selectProfile(string profile)
+        {
+            openOverviewSelect();
+            Thread.Sleep(ran.Next(200, 400));
+
+            if (!mh.isMenuOpen())
+                return false;
+
+            mh.select(MenuHandler.MENUITEMS.LOADDEFAULT);
+            Thread.Sleep(ran.Next(200, 400));
+            mh.click(profile);
+            return true;
+        }
+
+        /// <summary>
+        /// Get the currently selected overview profile
+        /// </summary>
+        /// <returns>The name of the profile or null on failure</returns>
+        public string getSelectedProfile()
+        {
+            StringResponse sresp = (StringResponse)comm.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWSELECTTEXT, Response.RESPONSES.STRINGRESPONSE);
+            if (sresp == null)
+                return null;
+            int posStart = -1, posEnd = -1;
+            posStart = ((String)sresp.Data).IndexOf('(');
+            posEnd = ((String)sresp.Data).IndexOf(')');
+
+            if (posStart == -1 || posEnd == -1)
+                return null;
+
+            return ((String)sresp.Data).Substring(posStart + 1, posEnd - posStart - 1);
+        }
+
+        /// <summary>
+        /// Check if the given profile is currently selected
+        /// </summary>
+        /// <param name="profile">The name of the profile to check for</param>
+        /// <returns>True if selected, false otherwise</returns>
+        public bool isProfileSelected(string profile)
+        {
+            string selected = getSelectedProfile();
+            if (selected == null)
+                return false;
+
+            if (selected.ToLower().Equals(profile.ToLower()))
+                return true;
+
+            return false;
+        }
+
+
         /// <summary>
         /// Scroll the overview down
         /// </summary>
