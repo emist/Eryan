@@ -5,6 +5,10 @@ message infoObject {
 	optional int32 value = 2;
 }
 
+message stringgroup {
+	repeated stringResponse data = 1;
+}
+
 message BooleanObject {
 	required bool istrue = 1;
 }
