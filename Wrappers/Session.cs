@@ -411,6 +411,20 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Get the solarsystem id for the current system
+        /// </summary>
+        /// <returns>The solarsystem id on success, -1 on failure</returns>
+        public int getSolarSystemId()
+        {
+            StringResponse sresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETCURRENTSSID, Response.RESPONSES.STRINGRESPONSE);
+            if (sresp == null)
+                return -1;
+
+            return Convert.ToInt32((string)sresp.Data);
+        }
+
+
+        /// <summary>
         /// Get the OK button of an interface if it exists
         /// </summary>
         /// <returns>The ok button of the interface, null if it doesn't exist</returns>
