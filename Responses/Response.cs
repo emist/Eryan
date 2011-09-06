@@ -57,6 +57,11 @@ namespace Eryan.Responses
             /// </summary>
             public const string SOLARYSYSTEMRESPONSE = "SolarSystemResponse";
 
+            /// <summary>
+            /// StringGroup Response type const
+            /// </summary>
+            public const string STRINGGROUPRESPONSE = "StringGroupResponse";
+
         }
 
         /// <summary>

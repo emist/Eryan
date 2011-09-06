@@ -52,6 +52,11 @@ namespace Eryan.Factories
                     return new SystemResponse(response);
                 }
 
+                if (responsetype.Equals(Response.RESPONSES.STRINGGROUPRESPONSE))
+                {
+                    return new StringGroupResponse(response);
+                }
+
                 Console.WriteLine("Unidentified Response, not Built");
 
                 return null;
