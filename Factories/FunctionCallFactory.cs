@@ -354,6 +354,22 @@ namespace Eryan.Factories
             /// Get the name of the currently selected overview
             /// </summary>
             public const string GETOVERVIEWSELECTTEXT = "getOverviewSelectText";
+
+            /// <summary>
+            /// Get the last 15 entries of text in local chat
+            /// </summary>
+            public const string GETLOCALCHATTEXT = "getLocalChatText";
+
+            /// <summary>
+            /// Get the current solar system id
+            /// </summary>
+            public const string GETCURRENTSSID = "getCurrentSolarsystemid";
+
+            /// <summary>
+            /// Get the local writing area
+            /// </summary>
+            public const string GETLOCALWRITINGAREA = "getLocalWritingArea";
+
         }
 
 
