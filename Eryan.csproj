@@ -92,6 +92,7 @@
     <Compile Include="IPC\Communicator.cs" />
     <Compile Include="Responses\ItemResponse.cs" />
     <Compile Include="Responses\MenuResponse.cs" />
+    <Compile Include="Responses\StringGroupResponse.cs" />
     <Compile Include="Responses\StringResposne.cs" />
     <Compile Include="Responses\SystemResponse.cs" />
     <Compile Include="Responses\TargetListResponse.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="Responses\OverViewResponse.cs" />
     <Compile Include="Responses\Response.cs" />
     <Compile Include="Util\Version.cs" />
+    <Compile Include="Wrappers\AddressBook.cs" />
     <Compile Include="Wrappers\Button.cs" />
     <Compile Include="Wrappers\InterfaceEntry.cs" />
     <Compile Include="Wrappers\Item.cs" />
