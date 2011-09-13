@@ -370,6 +370,11 @@ namespace Eryan.Factories
             /// </summary>
             public const string GETLOCALWRITINGAREA = "getLocalWritingArea";
 
+            /// <summary>
+            /// Get the ship's capacitor
+            /// </summary>
+            public const string GETSHIPCAPACITOR = "getShipCapacitor";
+
         }
 
 
