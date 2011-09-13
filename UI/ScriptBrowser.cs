@@ -22,6 +22,7 @@ namespace Eryan.UI
         public ScriptBrowser()
         {
             InitializeComponent();
+            openFileDialog1.Filter = "DLL Files (*.dll)|*.dll";
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)

@@ -27,7 +27,7 @@ namespace Eryan.UI
         private Button loadScriptBtn;
         private Button stopScriptBtn;
         private OpenFileDialog sDialog;
-
+        private Button LogToggle;
 
         private delegate void formDelegate(Utils form);
         private delegate Bot createBotDelegate();
@@ -177,6 +177,7 @@ namespace Eryan.UI
             mouseInput.Click += mouseInput_Click;
             stopScriptBtn.Click += stopScriptBtn_Click;
             sDialog = new OpenFileDialog();
+            sDialog.Filter = "DLL Files (*.dll)|*.dll";
 
         }
 
@@ -270,6 +271,7 @@ namespace Eryan.UI
             this.runButton = new System.Windows.Forms.Button();
             this.loadScriptBtn = new System.Windows.Forms.Button();
             this.stopScriptBtn = new System.Windows.Forms.Button();
+            this.LogToggle = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -288,6 +290,11 @@ namespace Eryan.UI
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.052503F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96.94749F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1032, 905);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -295,10 +302,9 @@ namespace Eryan.UI
             // 
             this.mouseInput.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mouseInput.BackColor = System.Drawing.SystemColors.Control;
-            this.mouseInput.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.mouseInput.Location = new System.Drawing.Point(478, 4);
+            this.mouseInput.Location = new System.Drawing.Point(478, 3);
             this.mouseInput.Name = "mouseInput";
-            this.mouseInput.Size = new System.Drawing.Size(75, 19);
+            this.mouseInput.Size = new System.Drawing.Size(75, 21);
             this.mouseInput.TabIndex = 1;
             this.mouseInput.Text = "Input";
             this.mouseInput.UseVisualStyleBackColor = false;
@@ -340,7 +346,7 @@ namespace Eryan.UI
             // loadScriptBtn
             // 
             this.loadScriptBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.loadScriptBtn.Location = new System.Drawing.Point(3, 0);
+            this.loadScriptBtn.Location = new System.Drawing.Point(103, 5);
             this.loadScriptBtn.Name = "loadScriptBtn";
             this.loadScriptBtn.Size = new System.Drawing.Size(75, 23);
             this.loadScriptBtn.TabIndex = 2;
@@ -352,17 +358,29 @@ namespace Eryan.UI
             // 
             this.stopScriptBtn.BackColor = System.Drawing.SystemColors.Control;
             this.stopScriptBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.stopScriptBtn.Location = new System.Drawing.Point(92, 0);
+            this.stopScriptBtn.Location = new System.Drawing.Point(202, 5);
             this.stopScriptBtn.Name = "stopScriptBtn";
             this.stopScriptBtn.Size = new System.Drawing.Size(95, 23);
             this.stopScriptBtn.TabIndex = 3;
             this.stopScriptBtn.Text = "Resume Script";
             this.stopScriptBtn.UseVisualStyleBackColor = false;
             // 
+            // LogToggle
+            // 
+            this.LogToggle.BackColor = System.Drawing.SystemColors.Control;
+            this.LogToggle.Location = new System.Drawing.Point(11, 7);
+            this.LogToggle.Name = "LogToggle";
+            this.LogToggle.Size = new System.Drawing.Size(75, 23);
+            this.LogToggle.TabIndex = 4;
+            this.LogToggle.Text = "Toggle Log";
+            this.LogToggle.UseVisualStyleBackColor = false;
+            this.LogToggle.Click += new System.EventHandler(this.LogToggle_Click);
+            // 
             // ClientWindow
             // 
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(1034, 882);
+            this.Controls.Add(this.LogToggle);
             this.Controls.Add(this.stopScriptBtn);
             this.Controls.Add(this.loadScriptBtn);
             this.Controls.Add(this.runButton);
@@ -407,6 +425,14 @@ namespace Eryan.UI
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void LogToggle_Click(object sender, EventArgs e)
+        {
+            if (bots[0].getHandle().LOGVIEWER.Visible == false)
+                bots[0].getHandle().LOGVIEWER.Show();
+            else
+                bots[0].getHandle().LOGVIEWER.Hide();
         }
 
         

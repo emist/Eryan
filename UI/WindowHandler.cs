@@ -51,7 +51,9 @@ namespace Eryan.UI
         MessageStruct mes;
         List<Scriptable> backgroundScripts;
         AccountManager accManager;
-        
+        private LogViewer logViewer;
+        private Logger logger;
+
         private static Random random = new Random((int)DateTime.Now.Ticks);
         private string RandomString(int size)
         {
@@ -308,7 +310,6 @@ namespace Eryan.UI
             List<string> items = config.readconfig();
             exeName = items[0];
             dll = items[1];
-
             drawingScreen = new DrawableScreen(cw, this);
             drawingPanel = new DrawableScreen(cw, this);
 
@@ -317,6 +318,8 @@ namespace Eryan.UI
             winDel = new WinEventDelegate(HandleWindowChanges);
             MouseDown += new MouseEventHandler(Form1_MouseDown);
             accManager = new AccountManager();
+            logViewer = new LogViewer();
+            logger = new Logger(this, "a");
 
             Process p = null;
 
@@ -338,8 +341,8 @@ namespace Eryan.UI
 
             //this.Size = new Size(700, 600);
             this.cw = cw;
-            
 
+            
 
             //Move += new Form
             //this.AutoSize = true;
@@ -487,7 +490,7 @@ namespace Eryan.UI
                         
 
 
-                        //injector.getSyringe().CallExport(dll, "startServer");
+                        injector.getSyringe().CallExport(dll, "startServer");
                             
                         injector.getSyringe().CallExport(dll, "dropServer", mes);
                         
@@ -1039,6 +1042,22 @@ namespace Eryan.UI
             get
             {
                 return accManager;
+            }
+        }
+
+        public LogViewer LOGVIEWER
+        {
+            get
+            {
+                return logViewer;
+            }
+        }
+
+        public Logger LOGGER
+        {
+            get
+            {
+                return logger;
             }
         }
 
