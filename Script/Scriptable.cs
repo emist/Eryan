@@ -92,6 +92,12 @@ namespace Eryan.Script
         /// </summary>
         public DrawableScreen EDrawingArea;
 
+
+        /// <summary>
+        /// The scripts Logging engine
+        /// </summary>
+        public Util.Logger ELogger;
+
         /// <summary>
         /// Internal use, the Bot will initialize the script with its input handlers once its loaded into memory
         /// </summary>
@@ -110,6 +116,8 @@ namespace Eryan.Script
             this.EKeyboard = bot.KEYBOARD;
             this.ELocalHandler = bot.LOCAL;
             this.EDrawingArea = bot.DrawingArea;
+            this.ELogger = bot.LOGGER;
+            this.ELogger.ScriptName = name;
             ERandom = new Random();
             
         }
@@ -152,6 +160,10 @@ namespace Eryan.Script
             get
             {
                 return name;
+            }
+            set
+            {
+                name = value;
             }
         }
     
