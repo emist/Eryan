@@ -179,7 +179,7 @@ namespace Eryan.Wrappers
 
             
 
-            return  Convert.ToInt32((string)sresp.Data);
+            return  Convert.ToDouble((string)sresp.Data);
         }
 
         /// <summary>
