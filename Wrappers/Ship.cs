@@ -177,7 +177,9 @@ namespace Eryan.Wrappers
             if (sresp == null)
                 return -1;
 
-            return (double)sresp.Data;
+            
+
+            return  Convert.ToInt32((string)sresp.Data);
         }
 
         /// <summary>
@@ -305,6 +307,24 @@ namespace Eryan.Wrappers
             return Convert.ToInt32(result);
         }
 
+        /// <summary>
+        /// Returns the percentage of capacitor the ship currently has
+        /// </summary>
+        /// <returns>Ship Capacitor percentage or -1 on failure</returns>
+        public int getCapacitorPercentage()
+        {
+            StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPCAPACITOR, Response.RESPONSES.STRINGRESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve capacitor percentage");
+                return -1;
+            }
+
+            Regex reg = new Regex("[0-9]+%");
+            string result = reg.Match((string)tresp.Data).Value;
+            result = result.Substring(0, result.Length - 1);
+            return Convert.ToInt32(result);
+        }
 
         /// <summary>
         /// Returns the percentage of shield the ship currently has
