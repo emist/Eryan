@@ -638,7 +638,7 @@ namespace Eryan.Wrappers
                 Console.WriteLine("Can't find module item");
                 return false;
             }
-            m.move(new Point(ran.Next(activateResp.X+10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y+10, activateResp.Y+activateResp.Height-20)));
+            m.move(new Point(ran.Next(activateResp.X+10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y+20, activateResp.Y+activateResp.Height-10)));
             Thread.Sleep(200);
             m.click(true);
             pm.synchronize(m);
@@ -662,7 +662,7 @@ namespace Eryan.Wrappers
                 Console.WriteLine("Can't find module item");
                 return false;
             }
-            m.move(new Point(ran.Next(activateResp.X + 20, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y + 10, activateResp.Y + activateResp.Height - 20)));
+            m.move(new Point(ran.Next(activateResp.X + 20, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y + 20, activateResp.Y + activateResp.Height - 10)));
             Thread.Sleep(200);
             m.click(true);
             pm.synchronize(m);
@@ -685,7 +685,7 @@ namespace Eryan.Wrappers
                 Console.WriteLine("Can't find module item");
                 return false;
             }
-            m.move(new Point(ran.Next(activateResp.X + 10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y + 10, activateResp.Y + activateResp.Height - 20)));
+            m.move(new Point(ran.Next(activateResp.X + 10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y + 20, activateResp.Y + activateResp.Height - 10)));
             Thread.Sleep(200);
             m.click(true);
             pm.synchronize(m);
