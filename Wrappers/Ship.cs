@@ -173,7 +173,7 @@ namespace Eryan.Wrappers
         /// <returns>The yield amount in m^3 or -1 on failure</returns>
         public double getMiningAmount(int i)
         {
-            StringResponse sresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETMININGAMOUNT, "1", Response.RESPONSES.STRINGRESPONSE);
+            StringResponse sresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETMININGAMOUNT, ""+i, Response.RESPONSES.STRINGRESPONSE);
             if (sresp == null)
                 return -1;
 
@@ -622,6 +622,63 @@ namespace Eryan.Wrappers
             return true;
         }
 
+
+        /// <summary>
+        /// Load the ammo with the given name in the given highslot
+        /// </summary>
+        /// <param name="i">The number of the highslot to load the ammo into</param>
+        /// <param name="ammoName">The name of the ammo to load</param>
+        /// <returns></returns>
+        public Boolean loadAmmo(int i, string ammoName)
+        {
+            if (!hasHighSlot(i))
+                return false;
+
+            InterfaceResponse activateResp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETHIGHSLOT, i + "", Response.RESPONSES.INTERFACERESPONSE);
+           
+            if (activateResp == null)
+            {
+                Console.WriteLine("Can't find module item");
+                return false;
+            }
+            m.move(new Point(ran.Next(activateResp.X + 10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y + 20, activateResp.Y + activateResp.Height - 10)));
+            Thread.Sleep(200);
+            m.click(false);
+            Thread.Sleep(ran.Next(500, 700));
+            pm.synchronize(m);
+            if (!menu.click(ammoName))
+                return menu.click(MenuHandler.MENUITEMS.Reload + " (" + ammoName);
+            
+            return true;
+        }
+
+        /// <summary>
+        /// Unload the ammo from the given high slot
+        /// </summary>
+        /// <param name="i">The high slot to unload</param>
+        /// <returns>True on success, false otherwise</returns>
+        public Boolean unloadAmmo(int i)
+        {
+            if (!hasHighSlot(i))
+                return false;
+
+            InterfaceResponse activateResp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETHIGHSLOT, i + "", Response.RESPONSES.INTERFACERESPONSE);
+
+            if (activateResp == null)
+            {
+                Console.WriteLine("Can't find module item");
+                return false;
+            }
+            m.move(new Point(ran.Next(activateResp.X + 10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y + 20, activateResp.Y + activateResp.Height - 10)));
+            Thread.Sleep(200);
+            m.click(false);
+            Thread.Sleep(ran.Next(500, 700));
+            pm.synchronize(m);
+            return menu.click(MenuHandler.MENUITEMS.UNLOADTO);
+
+        }
+
+
         /// <summary>
         /// Activate the high slot located at position num
         /// </summary>
@@ -629,9 +686,10 @@ namespace Eryan.Wrappers
         /// <returns>True on sucess, false otherwise</returns>
         public Boolean activateHighPowerSlot(int num)
         {
-            InterfaceResponse activateResp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETHIGHSLOT, num + "", Response.RESPONSES.INTERFACERESPONSE);
             if (!hasHighSlot(num))
                 return false;
+
+            InterfaceResponse activateResp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETHIGHSLOT, num + "", Response.RESPONSES.INTERFACERESPONSE);
 
             if (activateResp == null)
             {
@@ -652,11 +710,11 @@ namespace Eryan.Wrappers
         /// <returns>True on sucess, false otherwise</returns>
         public Boolean activateMedPowerSlot(int num)
         {
-            InterfaceResponse activateResp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETMEDSLOT, num + "", Response.RESPONSES.INTERFACERESPONSE);
-
             if (!hasMedSlot(num))
                 return false;
-            
+
+            InterfaceResponse activateResp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETMEDSLOT, num + "", Response.RESPONSES.INTERFACERESPONSE);
+    
             if (activateResp == null)
             {
                 Console.WriteLine("Can't find module item");
@@ -676,10 +734,11 @@ namespace Eryan.Wrappers
         /// <returns>True on sucess, false otherwise</returns>
         public Boolean activateLowPowerSlot(int num)
         {
-            InterfaceResponse activateResp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETLOWSLOT, num + "", Response.RESPONSES.INTERFACERESPONSE);
             if (!hasLowSlot(num))
                 return false;
-            
+
+            InterfaceResponse activateResp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETLOWSLOT, num + "", Response.RESPONSES.INTERFACERESPONSE);
+
             if (activateResp == null)
             {
                 Console.WriteLine("Can't find module item");

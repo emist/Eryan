@@ -204,6 +204,22 @@ namespace Eryan.InputHandler
             /// Load Default
             /// </summary>
             public const string LOADDEFAULT = "Load Default";
+
+            /// <summary>
+            /// Unload To Cargohold
+            /// </summary>
+            public const string UNLOADTO = "Unload To";
+
+            /// <summary>
+            /// Reload All
+            /// </summary>
+            public const string RELOADALL = "Reload All";
+
+            /// <summary>
+            /// Reload
+            /// </summary>
+            public const string Reload = "Reload";
+        
         }
         
         /// <summary>
