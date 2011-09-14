@@ -29,9 +29,8 @@ namespace Eryan.Input
         /// </summary>
         protected uint pid = 0;
 
-
         [DllImport("user32.dll", EntryPoint = "PostMessageA", SetLastError = true)]
-        protected static extern bool PostMessage(IntPtr hwnd, uint Msg, long wParam, long lParam);
+        protected static extern bool PostMessage(IntPtr hwnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
         [DllImport("user32.dll", EntryPoint = "GetWindowThreadProcessId", SetLastError = true,
                   CharSet = CharSet.Unicode, ExactSpelling = true,
@@ -55,7 +54,7 @@ namespace Eryan.Input
         internal static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
 
         [DllImport("user32.dll")]
-        public static extern uint MapVirtualKey(uint uCode, uint uMapType);
+        public static extern IntPtr MapVirtualKey(IntPtr uCode, IntPtr uMapType);
 
         /// <summary>
         /// Associate this device to a windows handler
