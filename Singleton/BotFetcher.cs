@@ -40,6 +40,15 @@ namespace Eryan.Singleton
         }
 
         /// <summary>
+        /// Return a reference to the bot list- Not thread safe
+        /// </summary>
+        /// <returns>the bot list</returns>
+        public static List<Bot> getBots()
+        {
+            return bots;
+        }
+
+        /// <summary>
         /// Registers a bot with the singleton
         /// </summary>
         /// <param name="b">The reference to the bot to be registered</param>
