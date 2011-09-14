@@ -282,6 +282,22 @@ namespace Eryan.Input
             keytranslator['x'] = VKeysScan.VK_X;
             keytranslator['y'] = VKeysScan.VK_Y;
             keytranslator['z'] = VKeysScan.VK_Z;
+
+
+            keytranslator[(char)VKeys.VK_BACK] = VKeysScan.VK_BACK;
+            keytranslator[(char)VKeys.VK_TAB] = VKeysScan.VK_TAB;
+            keytranslator[(char)VKeys.VK_RETURN] = VKeysScan.VK_RETURN;
+            keytranslator[(char)VKeys.VK_MENU] = VKeysScan.VK_MENU;
+            keytranslator[(char)VKeys.VK_CAPITAL] = VKeysScan.VK_CAPITAL;
+            keytranslator[(char)VKeys.VK_ESCAPE] = VKeysScan.VK_ESCAPE;
+            keytranslator[(char)VKeys.VK_SPACE] = VKeysScan.VK_SPACE;
+            keytranslator[(char)VKeys.VK_DELETE] = VKeysScan.VK_DELETE;
+            keytranslator[(char)VKeys.VK_SUBTRACT] = VKeysScan.VK_SUBTRACT;
+            keytranslator[(char)VKeys.VK_DECIMAL] = VKeysScan.VK_DECIMAL;
+            keytranslator[(char)VKeys.VK_DOWN] = VKeysScan.VK_DOWN;
+            keytranslator[(char)VKeys.VK_UP] = VKeysScan.VK_UP;
+            keytranslator[(char)VKeys.VK_LEFT] = VKeysScan.VK_LEFT; 
+            keytranslator[(char)VKeys.VK_RIGHT] = VKeysScan.VK_RIGHT;
         }
 
         [DllImport("user32.dll")]
@@ -309,6 +325,9 @@ namespace Eryan.Input
         {
             VKeysScan scancode = 0x0;
             VKeys fkey = 0x0;
+
+            if (key > 12)
+                return;
 
             switch (key)
             {
@@ -388,7 +407,7 @@ namespace Eryan.Input
 
             if (appWin != IntPtr.Zero)
             {
-                PostMessage(appWin, WM_KEYDOWN, (IntPtr)key, (IntPtr)scancode);
+                PostMessage(appWin, WM_KEYDOWN, (IntPtr)fkey, (IntPtr)scancode);
                 Thread.Sleep(300);
             }
             
@@ -398,7 +417,7 @@ namespace Eryan.Input
         {
             if (appWin != IntPtr.Zero)
             {
-                PostMessage(appWin, WM_KEYDOWN, (IntPtr)VkKeyScan(key), (IntPtr)0x0014001);
+                PostMessage(appWin, WM_KEYDOWN, (IntPtr)VkKeyScan(key), (IntPtr)keytranslator[key.ToString().ToLower()[0]]);
             }
         }
 
@@ -406,7 +425,7 @@ namespace Eryan.Input
         {
             if (appWin != IntPtr.Zero)
             {
-                PostMessage(appWin, WM_KEYUP, (IntPtr)VkKeyScan(key), (IntPtr)0x0014001);
+                PostMessage(appWin, WM_KEYUP, (IntPtr)VkKeyScan(key), (IntPtr)keytranslator[key.ToString().ToLower()[0]]);
             }
         }
 
@@ -420,8 +439,6 @@ namespace Eryan.Input
         {
             StringBuilder sb = new StringBuilder(text.Length + 10);
 
-
-
             if (appWin != IntPtr.Zero)
             {
 
@@ -432,13 +449,13 @@ namespace Eryan.Input
                         //PostMessage(appWin, WM_KEYDOWN, (long)VKeys.VK_SHIFT, 0x00140001);
                         keybd_event((byte)VKeys.VK_SHIFT, 0, 0, 0);
                         Thread.Sleep(550);
-                        PostMessage(appWin, WM_KEYDOWN, (IntPtr)VkKeyScan(c), (IntPtr)0x00140001);
+                        PostMessage(appWin, WM_KEYDOWN, (IntPtr)VkKeyScan(c), (IntPtr)keytranslator[c.ToString().ToLower()[0]]);
                         Thread.Sleep(550);
                         keybd_event((byte)VKeys.VK_SHIFT, 0, 0x2, 0);
                         //PostMessage(appWin, WM_KEYUP, (long)VKeys.VK_SHIFT, 0x00140001);
                     }
 
-                    PostMessage(appWin, WM_KEYDOWN, (IntPtr)VkKeyScan(c), (IntPtr)0x00140001);
+                    PostMessage(appWin, WM_KEYDOWN, (IntPtr)VkKeyScan(c), (IntPtr)keytranslator[c]);
                     System.Threading.Thread.Sleep(random.Next(minWait, maxWait));
                 }
 
@@ -450,12 +467,23 @@ namespace Eryan.Input
         /// Sends the given keypress to the EVE client
         /// </summary>
         /// <param name="key">The character to send</param>
-        public void sendChar(char key)
+        public void sendChar(char c)
         {
-
             if (appWin != IntPtr.Zero)
             {
-                PostMessage(appWin, WM_KEYDOWN, (IntPtr)VkKeyScan(key), (IntPtr)0x00140001);
+                if ((int)c < 91 && (int)c > 64)
+                {
+                    //PostMessage(appWin, WM_KEYDOWN, (long)VKeys.VK_SHIFT, 0x00140001);
+                    keybd_event((byte)VKeys.VK_SHIFT, 0, 0, 0);
+                    Thread.Sleep(550);
+                    PostMessage(appWin, WM_KEYDOWN, (IntPtr)VkKeyScan(c), (IntPtr)keytranslator[c.ToString().ToLower()[0]]);
+                    Thread.Sleep(550);
+                    keybd_event((byte)VKeys.VK_SHIFT, 0, 0x2, 0);
+                    //PostMessage(appWin, WM_KEYUP, (long)VKeys.VK_SHIFT, 0x00140001);
+                }
+                else
+                    PostMessage(appWin, WM_KEYDOWN, (IntPtr)VkKeyScan(c), (IntPtr)keytranslator[c]);
+                System.Threading.Thread.Sleep(60);
             }
         }
 
@@ -470,7 +498,7 @@ namespace Eryan.Input
 
             keybd_event((byte)VKeys.VK_CONTROL, 0, 0, 0);
             Thread.Sleep(100);
-            PostMessage(appWin, WM_KEYDOWN, (IntPtr)VkKeyScan(c), (IntPtr)0);
+            PostMessage(appWin, WM_KEYDOWN, (IntPtr)VkKeyScan(c), (IntPtr)keytranslator[c.ToString().ToLower()[0]]);
             Thread.Sleep(300);
             keybd_event((byte)VKeys.VK_CONTROL, 0, 0x2, 0);
         }
@@ -509,13 +537,13 @@ namespace Eryan.Input
                         //PostMessage(appWin, WM_KEYDOWN, (long)VKeys.VK_SHIFT, 0x00140001);
                         keybd_event((byte)VKeys.VK_SHIFT, 0, 0, 0);
                         Thread.Sleep(550);
-                        PostMessage(appWin, WM_KEYDOWN, (IntPtr)VkKeyScan(c), (IntPtr)0x00140001);
+                        PostMessage(appWin, WM_KEYDOWN, (IntPtr)VkKeyScan(c), (IntPtr)keytranslator[c.ToString().ToLower()[0]]);
                         Thread.Sleep(550);
                         keybd_event((byte)VKeys.VK_SHIFT, 0, 0x2, 0);
                         //PostMessage(appWin, WM_KEYUP, (long)VKeys.VK_SHIFT, 0x00140001);
                     }
                     else
-                        PostMessage(appWin, WM_KEYDOWN, (IntPtr)VkKeyScan(c), (IntPtr)0x00140001);
+                        PostMessage(appWin, WM_KEYDOWN, (IntPtr)VkKeyScan(c), (IntPtr)keytranslator[c]);
                     System.Threading.Thread.Sleep(60);
                     
                 }
