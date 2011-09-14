@@ -6,6 +6,7 @@ using System.Threading;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+
 using Syringe;
 using System.Text;
 using System.IO;
@@ -68,61 +69,6 @@ namespace Eryan
             {
                 Thread.Sleep(300);
             }
-
-            
-            /////DEBUGGING STUFF
-
- 
-            /*
-            Executor injector = new Executor();
-            String dll = "C:\\Black.dll";
-            injector.Inject(dll, "ExeFile");
-
-            if (injector.getSyringe() == null)
-                return;
-
-            injector.getSyringe().CallExport(dll, "dropServer");
-
-
-            //Communicator comm = new Communicator("\\\\.\\pipe\\TestChannel");
-
-
-            injector.getSyringe().CallExport(dll, "startServer");
-
-            /*
-            Response resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYNAMELOGIN, "username", Response.RESPONSES.INTERFACERESPONSE);
-            if (resp == null)
-                return;
-
-            
-            resp.HandleResponse();
-            */
-
-            /*
-            Response resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYTEXTLOGIN, "Username", Response.RESPONSES.INTERFACERESPONSE);
-            if (resp == null)
-                return;
-
-            resp.HandleResponse();
-            */
-
-
-            /*
-            Response resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYTEXTMENU, "BOURYNES VII - ASTEROID BELT 1", Response.RESPONSES.INTERFACERESPONSE);
-            if (resp == null)
-                return;
-
-            resp.HandleResponse();
-            
-            
-            Console.WriteLine("Response name " + ((List<string>)resp.Data)[0]) ;
-
-            while (true)
-            {
-                Thread.Sleep(1000);
-            }
-            */
-
             
             cWindow.createBot();
 
@@ -134,10 +80,7 @@ namespace Eryan
             
             
             WindowHandler BotHandle = bot1.getHandle();
-
-
-
-            
+           
             while (true)
             {
                 
@@ -149,8 +92,8 @@ namespace Eryan
                 System.Threading.Thread.Sleep(1000);
             }
             
-
         }
-
+        
+       
     }
 }
