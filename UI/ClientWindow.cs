@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
+
 using Eryan.Singleton;
+
 
 namespace Eryan.UI
 {
@@ -171,7 +174,9 @@ namespace Eryan.UI
             //this.Size = new Size(700, 800);
             //this.AutoSize = true;
 
-            
+            this.FormClosing += new FormClosingEventHandler(ClientWindow_FormClosing);
+            this.FormClosed += new FormClosedEventHandler(ClientWindow_FormClosed);
+
             this.tabControl1.TabPages[0].AutoScroll = true;
             runButton.Click += runButton_Click;
             mouseInput.Click += mouseInput_Click;
@@ -179,6 +184,33 @@ namespace Eryan.UI
             sDialog = new OpenFileDialog();
             sDialog.Filter = "DLL Files (*.dll)|*.dll";
 
+        }
+
+        private void ClientWindow_FormClosed(Object sender, FormClosedEventArgs e)
+        {
+            Console.WriteLine("Killing process");
+            foreach (Bot bot in BotFetcher.getBots())
+            {
+                Process p = Process.GetProcessById((int)bot.getPid());
+                Console.WriteLine("Killing process " + bot.getPid());
+                if (p != null)
+                    p.Kill();
+            }
+            Application.Exit();
+        }
+
+
+        private void ClientWindow_FormClosing(Object sender, FormClosingEventArgs e)
+        {
+            Console.WriteLine("Killing process");
+            foreach (Bot bot in BotFetcher.getBots())
+            {
+                Process p = Process.GetProcessById((int)bot.getPid());
+                Console.WriteLine("Killing process " + bot.getPid());
+                if (p != null)
+                    p.Kill();
+            }
+               
         }
 
         /// <summary>
