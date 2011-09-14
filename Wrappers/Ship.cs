@@ -163,7 +163,7 @@ namespace Eryan.Wrappers
             if (sresp == null)
                 return -1;
 
-            return (double)sresp.Data / 1000;
+            return Convert.ToDouble((string)sresp.Data) / 1000;
         }
 
         /// <summary>
