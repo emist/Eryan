@@ -490,7 +490,7 @@ namespace Eryan.UI
                         
 
 
-                        injector.getSyringe().CallExport(dll, "startServer");
+                        //injector.getSyringe().CallExport(dll, "startServer");
                             
                         injector.getSyringe().CallExport(dll, "dropServer", mes);
                         
@@ -1050,6 +1050,10 @@ namespace Eryan.UI
             get
             {
                 return logViewer;
+            }
+            set
+            {
+                logViewer = value;
             }
         }
 
