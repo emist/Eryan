@@ -726,6 +726,8 @@ namespace Eryan.Wrappers
             return true;
         }
 
+
+
         /// <summary>
         /// Check if the ship has the given med slot
         /// </summary>
@@ -912,6 +914,17 @@ namespace Eryan.Wrappers
                 return null;
             }
             return (List<Item>)resp.Data;
+        }
+
+        /// <summary>
+        /// Check if the cargo window is open
+        /// </summary>
+        /// <returns>True if its open, false otherwise</returns>
+        public bool isCargoOpen()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPHANGAR, Response.RESPONSES.INTERFACERESPONSE);
+            return iresp != null;
+            
         }
     }
 }

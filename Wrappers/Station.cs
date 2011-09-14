@@ -160,6 +160,16 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Check if the hangar is open
+        /// </summary>
+        /// <returns>Returns true if it is, false otherwise</returns>
+        public bool isHangarOpen()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETSTATIONHANGAR, Response.RESPONSES.INTERFACERESPONSE);
+            return iresp != null;
+        }
+
+        /// <summary>
         /// Open the address book
         /// </summary>
         /// <returns>True on success, false otherwise</returns>
