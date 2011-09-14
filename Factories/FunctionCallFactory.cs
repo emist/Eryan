@@ -375,6 +375,11 @@ namespace Eryan.Factories
             /// </summary>
             public const string GETSHIPCAPACITOR = "getShipCapacitor";
 
+            /// <summary>
+            /// Get the overview distance header
+            /// </summary>
+            public const string GETOVERVIEWDISTANCEHEADER = "getOverviewDistanceHeader";
+
         }
 
 
