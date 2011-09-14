@@ -129,6 +129,48 @@ namespace Eryan.InputHandler
         }
 
         /// <summary>
+        /// Check if the overview is sorted by distance in ascending order
+        /// </summary>
+        /// <returns>True if it is, false otherwise</returns>
+        public bool isSortedByDistanceAsc()
+        {
+ 
+            readOverView();
+
+            foreach (OverViewEntry tmp in Items)
+            {
+                foreach (OverViewEntry entry in Items)
+                {
+                    if (tmp.Y == 0 || entry.Y == 0)
+                    {
+                        continue;
+                    }
+
+                    if (tmp.Distance > entry.Distance)
+                        if (tmp.Y < entry.Y)
+                            return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool toggleDistanceSort()
+        {
+            InterfaceResponse activateResp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETOVERVIEWDISTANCEHEADER, Response.RESPONSES.INTERFACERESPONSE);
+            if (activateResp == null)
+                return false;
+
+            m.move(new Point(ran.Next(activateResp.X + 10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y + 3, activateResp.Y + activateResp.Height - 3)));
+            Thread.Sleep(ran.Next(300, 400));
+            m.click(true);
+            pm.synchronize(m);
+            return true;
+        }
+
+
+
+        /// <summary>
         /// Select the given overview profile
         /// </summary>
         /// <param name="profile">The name of the overview profile to select</param>
