@@ -99,6 +99,11 @@ namespace Eryan.Script
         public Util.Logger ELogger;
 
         /// <summary>
+        /// The script's agent handler
+        /// </summary>
+        public AgentHandler EAgentHandler;
+
+        /// <summary>
         /// Internal use, the Bot will initialize the script with its input handlers once its loaded into memory
         /// </summary>
         /// <param name="bot">The reference to the bot's windowhandler</param>
@@ -118,6 +123,7 @@ namespace Eryan.Script
             this.EDrawingArea = bot.DrawingArea;
             this.ELogger = bot.LOGGER;
             this.ELogger.ScriptName = name;
+            this.EAgentHandler = bot.AGENT;
             ERandom = new Random();
             
         }
