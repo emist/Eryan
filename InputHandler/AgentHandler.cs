@@ -160,13 +160,12 @@ namespace Eryan.InputHandler
         /// <returns>The mission text or null otherwise</returns>
         public string getMissionText()
         {
-            StringResponse sresp = (StringResponse)com.sendCall("getAgentMissionText", Response.RESPONSES.STRINGRESPONSE);
+            StringResponse sresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETAGENTMISSIONTEXT, Response.RESPONSES.STRINGRESPONSE);
             if (sresp == null)
                 return null;
 
             return (string)sresp.Data;
         }
-
 
     }
 }

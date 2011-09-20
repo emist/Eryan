@@ -187,6 +187,26 @@ namespace Eryan.Wrappers
         }
 
 
+        /// <summary>
+        /// Interact with the given agent
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public bool interactAgent(string name)
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETAGENT, name, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+                return false;
+
+            m.move(new Point(ran.Next(iresp.X + 10, iresp.X + iresp.Width - 10), ran.Next(iresp.Y + 3, iresp.Y + iresp.Height - 3)));
+            Thread.Sleep(ran.Next(300, 400));
+            m.click(true);
+            Thread.Sleep(ran.Next(10, 40));
+            m.click(true);
+            pm.synchronize(m);
+            return true;
+        }
+        
 
         /// <summary>
         /// Open the address book
