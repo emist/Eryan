@@ -380,6 +380,53 @@ namespace Eryan.Factories
             /// </summary>
             public const string GETOVERVIEWDISTANCEHEADER = "getOverviewDistanceHeader";
 
+            /// <summary>
+            /// Get the "Agent" tab in the station
+            /// </summary>
+            public const string GETSTATIONAGENTTAB = "getStationAgentTab";
+
+            /// <summary>
+            /// Get the agent by name
+            /// </summary>
+            public const string GETAGENT = "getAgent";
+
+            /// <summary>
+            /// Get the "Request Mission" button
+            /// </summary>
+            public const string GETAGENTREQMISSIONBTN = "getAgentReqMissionBtn";
+
+            /// <summary>
+            /// Get the "Accept Mission" button
+            /// </summary>
+            public const string GETAGENTMISSIONACCEPTBTN = "getAgentMissionAcceptBtn";
+
+            /// <summary>
+            /// Get the "Decline Mission" button
+            /// </summary>
+            public const string GETAGENTDELAYMISSIONBTN = "getAgentMissionDeclineBtn";
+
+            /// <summary>
+            /// Get the "Quit mission" button
+            /// </summary>
+            public const string GETAGENTMISSIONQUITBTN = "getAgentMissionQuitBtn";
+
+            /// <summary>
+            /// Get the "Complete Mission" button
+            /// </summary>
+            public const string GETAGENTMISSIONCOMPLETEBTN = "getAgentMissionCompleteBtn";
+
+            /// <summary>
+            /// Get the mission text
+            /// </summary>
+            public const string GETAGENTMISSIONTEXT = "getAgentMissionText";
+
+            /// <summary>
+            /// Get the "Close" mission button
+            /// </summary>
+            public const string GETAGENTMISSIONCLOSEBTN = "getAgentMissionCloseBtn";
+
+
+
         }
 
 

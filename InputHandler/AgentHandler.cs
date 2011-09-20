@@ -154,5 +154,19 @@ namespace Eryan.InputHandler
             return true;
         }
 
+        /// <summary>
+        /// Get the mission text from the agent
+        /// </summary>
+        /// <returns>The mission text or null otherwise</returns>
+        public string getMissionText()
+        {
+            StringResponse sresp = (StringResponse)com.sendCall("getAgentMissionText", Response.RESPONSES.STRINGRESPONSE);
+            if (sresp == null)
+                return null;
+
+            return (string)sresp.Data;
+        }
+
+
     }
 }

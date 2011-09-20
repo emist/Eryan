@@ -82,6 +82,7 @@
     <Compile Include="BaseSubject.cs" />
     <Compile Include="ConfigHandler.cs" />
     <Compile Include="Factories\ResponseFactory.cs" />
+    <Compile Include="InputHandler\AgentHandler.cs" />
     <Compile Include="InputHandler\Camera.cs" />
     <Compile Include="InputHandler\ChatHandler.cs" />
     <Compile Include="InputHandler\InputHandler.cs" />
