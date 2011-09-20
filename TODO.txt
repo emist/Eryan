@@ -1,0 +1,13 @@
+FRAMEWORK
+Wrappers/Ship.cs
+  Activating grouped modules
+  Activating/deactiving modules in single calls
+
+Wrappers/OverViewEntry.cs
+  Use unique identifiers as primary identification
+
+
+DLL
+Request
+  Function: isModuleGrouped or variation
+  Data: unique identifiers for overview
