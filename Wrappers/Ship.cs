@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -680,11 +680,11 @@ namespace Eryan.Wrappers
 
 
         /// <summary>
-        /// Activate the high slot located at position num
+        /// Toggle the high slot located at position num
         /// </summary>
-        /// <param name="num">The position of the high slot to activate</param>
+        /// <param name="num">The position of the high slot to toggle</param>
         /// <returns>True on sucess, false otherwise</returns>
-        public Boolean activateHighPowerSlot(int num)
+        public Boolean toggleHighPowerSlot(int num)
         {
             if (!hasHighSlot(num))
                 return false;
@@ -704,11 +704,11 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
-        /// Activate the med slot located at position num
+        /// Toggle the med slot located at position num
         /// </summary>
-        /// <param name="num">The position of the med slot to activate</param>
+        /// <param name="num">The position of the med slot to toggle</param>
         /// <returns>True on sucess, false otherwise</returns>
-        public Boolean activateMedPowerSlot(int num)
+        public Boolean toggleMedPowerSlot(int num)
         {
             if (!hasMedSlot(num))
                 return false;
@@ -728,11 +728,11 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
-        /// Activate the low slot located at position num
+        /// Toggle the low slot located at position num
         /// </summary>
-        /// <param name="num">The position of the low slot to activate</param>
+        /// <param name="num">The position of the low slot to toggle</param>
         /// <returns>True on sucess, false otherwise</returns>
-        public Boolean activateLowPowerSlot(int num)
+        public Boolean toggleLowPowerSlot(int num)
         {
             if (!hasLowSlot(num))
                 return false;
@@ -749,6 +749,102 @@ namespace Eryan.Wrappers
             m.click(true);
             pm.synchronize(m);
             return true;
+        }
+        
+        /// <summary>
+        /// Activate the high slot located at position num
+        /// </summary>
+        /// <param name="num">The position of the high slot to activate</param>
+        /// <returns>True on sucess, false otherwise</returns>
+        public Boolean activateHighPowerSlot(int num)
+        {
+            if (!hasHighSlot(num))
+                return false;
+            
+            if (isHighSlotActive(num))
+                return false;
+
+            return toggleHighPowerSlot(num);
+        }
+        
+        /// <summary>
+        /// Deactivate the high slot located at position num
+        /// </summary>
+        /// <param name="num">The position of the high slot to deactivate</param>
+        /// <returns>True on sucess, false otherwise</returns>
+        public Boolean deactivateHighPowerSlot(int num)
+        {
+            if (!hasHighSlot(num))
+                return false;
+            
+            if (!isHighSlotActive(num))
+                return false;
+
+            return toggleHighPowerSlot(num);
+        }
+        
+        /// <summary>
+        /// Activate the med slot located at position num
+        /// </summary>
+        /// <param name="num">The position of the med slot to activate</param>
+        /// <returns>True on sucess, false otherwise</returns>
+        public Boolean activateMedPowerSlot(int num)
+        {
+            if (!hasMedSlot(num))
+                return false;
+            
+            if (isMedSlotActive(num))
+                return false;
+
+            return toggleMedPowerSlot(num);
+        }
+        
+        /// <summary>
+        /// Deactivate the med slot located at position num
+        /// </summary>
+        /// <param name="num">The position of the med slot to deactivate</param>
+        /// <returns>True on sucess, false otherwise</returns>
+        public Boolean deactivateMedPowerSlot(int num)
+        {
+            if (!hasMedSlot(num))
+                return false;
+            
+            if (!isMedSlotActive(num))
+                return false;
+
+            return toggleMedPowerSlot(num);
+        }
+        
+        /// <summary>
+        /// Activate the low slot located at position num
+        /// </summary>
+        /// <param name="num">The position of the low slot to activate</param>
+        /// <returns>True on sucess, false otherwise</returns>
+        public Boolean activateLowPowerSlot(int num)
+        {
+            if (!hasLowSlot(num))
+                return false;
+            
+            if (isLowSlotActive(num))
+                return false;
+
+            return toggleLowPowerSlot(num);
+        }
+        
+        /// <summary>
+        /// Deactivate the low slot located at position num
+        /// </summary>
+        /// <param name="num">The position of the low slot to deactivate</param>
+        /// <returns>True on sucess, false otherwise</returns>
+        public Boolean deactivateLowPowerSlot(int num)
+        {
+            if (!hasLowSlot(num))
+                return false;
+            
+            if (!isLowSlotActive(num))
+                return false;
+
+            return toggleLowPowerSlot(num);
         }
 
         /// <summary>
