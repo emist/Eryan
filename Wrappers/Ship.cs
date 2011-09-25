@@ -400,7 +400,7 @@ namespace Eryan.Wrappers
             }
             else
             {
-                Regex reg_euro = new Regex("[0-9]*,*[0-9]+" + @"." + "[0-9]+" + @"/");
+                Regex reg_euro = new Regex("[0-9]*.*[0-9]+" + @"," + "[0-9]+" + @"/");
                 string result = reg.Match((string)tresp.Data).Value;
                 if (result.Length > 0)
                 {
