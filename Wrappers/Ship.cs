@@ -398,6 +398,24 @@ namespace Eryan.Wrappers
                     return -1;
                 }
             }
+            else
+            {
+                Regex reg_euro = new Regex("[0-9]*,*[0-9]+" + @"." + "[0-9]+" + @"/");
+                string result = reg.Match((string)tresp.Data).Value;
+                if (result.Length > 0)
+                {
+                    try
+                    {
+                        result = result.Substring(0, result.Length - 1);
+                        return Convert.ToDouble(result);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                        return -1;
+                    }
+                }
+            }
             return -1;
         }
 
