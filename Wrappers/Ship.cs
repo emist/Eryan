@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +23,7 @@ namespace Eryan.Wrappers
     public class Ship
     {
         OverviewHandler overviewhandler;
+        MenuHandler menuhandler;
         Communicator com;
         MenuHandler menu;
         PreciseMouse pm;
@@ -525,6 +526,17 @@ namespace Eryan.Wrappers
             pm.synchronize(m);
             return true;
         }
+
+        /// <summary>
+        /// Open menu on a given target
+        /// </summary>
+        /// <param name="target">The target entry to open a menu on</param>
+        /// <returns>True on success, false otherwise</returns>
+        public bool openTargetMenu(TargetEntry target)
+        {
+            return menuhandler.open(target);
+        }
+
         /// <summary>
         /// Engage active target with drones in space
         /// </summary>
