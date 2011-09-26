@@ -53,6 +53,7 @@ namespace Eryan.UI
         AccountManager accManager;
         private LogViewer logViewer;
         private Logger logger;
+        private AgentHandler aHandler;
 
         private static Random random = new Random((int)DateTime.Now.Ticks);
         private string RandomString(int size)
@@ -320,6 +321,7 @@ namespace Eryan.UI
             accManager = new AccountManager();
             logViewer = new LogViewer();
             logger = new Logger(this, "a");
+            
 
             Process p = null;
 
@@ -472,6 +474,7 @@ namespace Eryan.UI
                         eveSession = new Session(this);
                         cam = new Camera(this);
                         local = new LocalHandler(this);
+                        aHandler = new AgentHandler(this);
                         mes = new MessageStruct() { Text = pipename };
 
                         backgroundScripts = new List<Scriptable>();
@@ -1062,6 +1065,14 @@ namespace Eryan.UI
             get
             {
                 return logger;
+            }
+        }
+
+        public AgentHandler AGENT
+        {
+            get
+            {
+                return aHandler;
             }
         }
 
