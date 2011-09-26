@@ -270,10 +270,9 @@ namespace Eryan.InputHandler
             Point pt = new Point(random.Next(entry.X, entry.X + entry.Width), random.Next(entry.Y, entry.Y + entry.Height - 5));
             m.move(pt);
             pm.synchronize(m);
-            m.click(true);
-            Thread.Sleep(300);
+            Thread.Sleep(random.Next(300,400));
             m.click(false);
-            Thread.Sleep(600);
+            Thread.Sleep(random.Next(500, 600));
             return true;
         }
 
