@@ -28,6 +28,7 @@ namespace Eryan.Wrappers
         WindowHandler wh;
         AddressBook addBook;
         LocalHandler local;
+        int localCount;
 
 
         /// <summary>
@@ -515,9 +516,7 @@ namespace Eryan.Wrappers
         /// <returns>Returns true if there is hostiles in local, false otherwise</returns>
         public Boolean isLocalHostile()
         {
-            local.userlistScrollToTop();
-            local.userlistScrollToBottom();
-
+            initializeLocal();
             BooleanResponse tresp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.CHECKLOCAL, Response.RESPONSES.BOOLEANRESPONSE);
             if (tresp == null)
             {
@@ -525,6 +524,19 @@ namespace Eryan.Wrappers
                 return true;
             }
             return ((Boolean)tresp.Data);
+        }
+
+        /// <summary>
+        /// Initialize local against population count
+        /// </summary>
+        public void initializeLocal()
+        {
+            int tLocal = getLocalCount();
+            if (tLocal != localCount) {
+                local.userlistScrollToTop();
+                local.userlistScrollToBottom();
+                localCount = tLocal;
+            }
         }
 
         /// <summary>
