@@ -517,6 +517,10 @@ namespace Eryan.Wrappers
         public Boolean isLocalHostile()
         {
             initializeLocal();
+            if (getLocalCount() == 1)
+            {
+                return false;
+            }
             BooleanResponse tresp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.CHECKLOCAL, Response.RESPONSES.BOOLEANRESPONSE);
             if (tresp == null)
             {
