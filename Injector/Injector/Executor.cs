@@ -35,7 +35,9 @@ namespace Eryan
 
             Console.WriteLine("Trying to inject " + dll + " into " + process);
             MessageStruct messageData = new MessageStruct() { Text = "Custom Message", Caption = "Custom Message Box" };
-            syringe = new Injector(Process.GetProcessesByName(process)[0]);
+            Process[] processes = Process.GetProcessesByName(process);
+            Array.Sort(processes, delegate(Process x, Process y) { return -1 * (x.StartTime.CompareTo(y.StartTime)); });
+            syringe = new Injector(processes[0]);
             syringe.InjectLibrary(dll);
             Console.WriteLine(dll + " injected into " + process);
          
