@@ -506,7 +506,16 @@ namespace Eryan.Wrappers
 
             Regex reg = new Regex("[0-9]+");
 
-            return Convert.ToInt32(reg.Match((string)sresp.Data).Value);
+            Match match = reg.Match((string)sresp.Data);
+
+            if (match.Success)
+            {
+                return Convert.ToInt32(match.Value);
+            }
+            else
+            {
+                return 1;
+            }
         }
 
 
