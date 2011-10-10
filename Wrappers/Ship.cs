@@ -636,7 +636,7 @@ namespace Eryan.Wrappers
         /// Returns the cargo capacity of your ship
         /// </summary>
         /// <returns>Capacity or -1 on error</returns>
-        public int getShipCapacity()
+        public double getShipCapacity()
         {
                   
             StringResponse tresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPCAPACITY, Response.RESPONSES.STRINGRESPONSE);
@@ -654,7 +654,7 @@ namespace Eryan.Wrappers
                 try
                 {
                     result = result.Substring(1, result.Length - 1);
-                    return Convert.ToInt32(result);
+                    return Convert.ToDouble(result);
                 }
                 catch (Exception e)
                 {
