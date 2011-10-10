@@ -245,7 +245,6 @@ namespace Eryan.Wrappers
                         Thread.Sleep(ran.Next(150, 190));
                     }
                     pm.synchronize(m);
-
                 }
 
                 if (currText == "")
@@ -283,31 +282,36 @@ namespace Eryan.Wrappers
         /// <returns>True on succes, false otherwise</returns>
         public bool login(string username, string password)
         {
+
             InterfaceResponse pentry = getPasswordBox();
             if (pentry == null)
                 return false;
 
-            populateEdit(pentry, password);
+            while (!checkEdit(pentry, password))
+            {
 
-            pentry = getPasswordBox();
-            if (pentry == null)
-                return false;
+                populateEdit(pentry, password);
 
-            if (!checkEdit(pentry, password))
-                return false;
+                pentry = getPasswordBox();
+                if (pentry == null)
+                    return false;
 
+            }
+
+            
             InterfaceResponse uentry = getUsernameBox();
             if (uentry == null)
                 return false;
 
-            populateEdit(uentry, username);
+            while (!checkEdit(uentry, username))
+            {
+                populateEdit(uentry, username);
 
-            uentry = getUsernameBox();
-            if (uentry == null)
-                return false;
+                uentry = getUsernameBox();
+                if (uentry == null)
+                    return false;
 
-            if (!checkEdit(uentry, username))
-                return false;
+            }
 
             Button connect = getConnectButton();
 
