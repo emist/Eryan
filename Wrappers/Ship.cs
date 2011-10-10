@@ -556,6 +556,29 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Expand local drones menu
+        /// </summary>
+        /// <returns>False if factory error, true otherwise</returns>
+        public bool expandLocalDrones()
+        {
+            InterfaceResponse tresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETDRONESINSPACETAB, Response.RESPONSES.INTERFACERESPONSE);
+            if (tresp == null)
+            {
+                Console.WriteLine("Couldn't retrieve drone tab");
+                return false;
+            }
+            InterfaceEntry ientry = new InterfaceEntry(tresp.X, tresp.Y, tresp.Width, tresp.Height);
+            Point pt = new Point(ran.Next(ientry.X, ientry.X + ientry.Width), ran.Next(ientry.Y, ientry.Y + ientry.Height - 5));
+            m.move(pt);
+            pm.synchronize(m);
+            Thread.Sleep(ran.Next(300, 400));
+            m.click(true);
+            Thread.Sleep(ran.Next(500, 600));
+
+            return true;
+        }
+
+        /// <summary>
         /// Returns the ship's current available cargo volume
         /// </summary>
         /// <returns>The ammount of volume available or -1 on error</returns>

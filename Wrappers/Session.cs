@@ -28,6 +28,7 @@ namespace Eryan.Wrappers
         WindowHandler wh;
         AddressBook addBook;
         LocalHandler local;
+        int localCount;
 
 
         /// <summary>
@@ -509,7 +510,16 @@ namespace Eryan.Wrappers
 
             Regex reg = new Regex("[0-9]+");
 
-            return Convert.ToInt32(reg.Match((string)sresp.Data).Value);
+            Match match = reg.Match((string)sresp.Data);
+
+            if (match.Success)
+            {
+                return Convert.ToInt32(match.Value);
+            }
+            else
+            {
+                return 1;
+            }
         }
 
 
@@ -519,9 +529,11 @@ namespace Eryan.Wrappers
         /// <returns>Returns true if there is hostiles in local, false otherwise</returns>
         public Boolean isLocalHostile()
         {
-            local.userlistScrollToTop();
-            local.userlistScrollToBottom();
-
+            initializeLocal();
+            if (getLocalCount() == 1)
+            {
+                return false;
+            }
             BooleanResponse tresp = (BooleanResponse)com.sendCall(FunctionCallFactory.CALLS.CHECKLOCAL, Response.RESPONSES.BOOLEANRESPONSE);
             if (tresp == null)
             {
@@ -529,6 +541,19 @@ namespace Eryan.Wrappers
                 return true;
             }
             return ((Boolean)tresp.Data);
+        }
+
+        /// <summary>
+        /// Initialize local against population count
+        /// </summary>
+        public void initializeLocal()
+        {
+            int tLocal = getLocalCount();
+            if (tLocal != localCount) {
+                local.userlistScrollToTop();
+                local.userlistScrollToBottom();
+                localCount = tLocal;
+            }
         }
 
         /// <summary>
