@@ -188,7 +188,16 @@ namespace Eryan
                 return null;
             }
 
-            Scriptable scriptInstance = (Scriptable)Activator.CreateInstance(script);
+            Scriptable scriptInstance =  null;
+
+            try
+            {
+                scriptInstance = (Scriptable)Activator.CreateInstance(script);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Load Error" + e.ToString());
+            }
 
             this.script = scriptInstance;
             return scriptInstance;
