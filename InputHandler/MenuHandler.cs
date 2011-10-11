@@ -219,6 +219,11 @@ namespace Eryan.InputHandler
             /// Reload
             /// </summary>
             public const string Reload = "Reload";
+
+            /// <summary>
+            /// Scan Range
+            /// </summary>
+            public const string SCANRANGE = "Scan Range";
         
         }
         

@@ -131,11 +131,76 @@ namespace Eryan.Wrappers
             return success;
         }
 
+        /// <summary>
+        /// Approach an entry
+        /// </summary>
+        /// <param name="entry">The name of the entry</param>
+        /// <returns>true on success, false otherwise</returns>
         public Boolean approach(string entry)
         {
             bool success = overviewhandler.openMenu(entry);
             menu.click(MenuHandler.MENUITEMS.APPROACH);
             return success;
+        }
+
+
+        /// <summary>
+        /// Get the interface entry for the probe entry in the probe window. Returns null on failure
+        /// </summary>
+        /// <param name="name">The name of the probe entry</param>
+        public InterfaceResponse getProbeEntry(string name)
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETPROBE, name, Response.RESPONSES.INTERFACERESPONSE);
+            return iresp;
+        }
+
+        /// <summary>
+        /// Sets the scan distance on the given probe to the given dist. Valid distances are 0.25, 0.5, 1.0, 2.0, 4.0 etc.
+        /// </summary>
+        /// <param name="probe">The number of the probe entry to set</param>
+        /// <param name="dist">The distance in AUs</param>
+        public void setProbeDistance(int probe, double dist)
+        {
+            InterfaceResponse iresp = getProbeEntry("Probe " + probe);
+            if (iresp == null)
+                return;
+
+            m.move(new Point(ran.Next(iresp.X + 5, iresp.X + iresp.Width - 5), ran.Next(iresp.Y + 5, iresp.Y + iresp.Height - 5)));
+            Thread.Sleep(ran.Next(200, 300));
+            m.click(false);
+            menu.select(MenuHandler.MENUITEMS.SCANRANGE);
+            Thread.Sleep(ran.Next(200,300));
+            menu.click(dist + "");
+            pm.synchronize(m);
+        }
+
+        /// <summary>
+        /// Get the interface entry for the probe result 
+        /// </summary>
+        /// <param name="name">The name of the result type</param>
+        /// <returns>The interfaceResponse for the entry, or null on error</returns>
+        public InterfaceResponse getProbeResult(string name)
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETPROBERESULT, name, Response.RESPONSES.INTERFACERESPONSE);
+            return iresp;
+        }
+
+        /// <summary>
+        /// Warp to the given probe result on zero
+        /// </summary>
+        /// <param name="name">The name of the anomaly group to warp to</param>
+        public void warpToZeroProbeResult(string name)
+        {
+            InterfaceResponse iresp = getProbeResult(name);
+            if (iresp == null)
+                return;
+
+            m.move(new Point(ran.Next(iresp.X + 5, iresp.X + iresp.Width - 5), ran.Next(iresp.Y + 5, iresp.Y + iresp.Height - 5)));
+            Thread.Sleep(ran.Next(200, 300));
+            m.click(false);
+            Thread.Sleep(ran.Next(200, 300));
+            menu.click(MenuHandler.MENUITEMS.WARPTOZERO);
+            pm.synchronize(m);
         }
 
         /// <summary>

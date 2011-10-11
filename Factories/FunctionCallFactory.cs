@@ -425,7 +425,25 @@ namespace Eryan.Factories
             /// </summary>
             public const string GETAGENTMISSIONCLOSEBTN = "getAgentMissionCloseBtn";
 
+            /// <summary>
+            /// Get the recover probes button
+            /// </summary>
+            public const string GETRECOVERPROBESBUTTON = "getRecoverProbesButton";
 
+            /// <summary>
+            /// Get the analyze button
+            /// </summary>
+            public const string GETANALYZEPROBESBUTTON = "getAnalyzeProbesButton";
+
+            /// <summary>
+            /// Get the probe entry with the given probe name 
+            /// </summary>
+            public const string GETPROBE = "getProbe";
+
+            /// <summary>
+            /// Get the probe result entry with the given name
+            /// </summary>
+            public const string GETPROBERESULT = "getProbeResult";
 
         }
 
