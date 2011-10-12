@@ -96,6 +96,22 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Open the scanning window
+        /// </summary>
+        /// <returns>True on success, false otherwise</returns>
+        public Boolean openScanner()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETPROBERESULT, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp != null)
+            {
+                return true;
+            }
+
+            kb.sendAltCharacter('d');
+            return true;
+        }
+
+        /// <summary>
         /// Target the given overview entry
         /// </summary>
         /// <param name="entry">The overview entry to target</param>
