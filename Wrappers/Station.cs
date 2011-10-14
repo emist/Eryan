@@ -230,6 +230,50 @@ namespace Eryan.Wrappers
 
 
         /// <summary>
+        /// Select all the cargo
+        /// </summary>
+        /// <returns>Selects all the cargo</returns>
+        public bool selectAllCargo()
+        {
+            List<Rectangle> recs = new List<Rectangle>();
+
+            ItemResponse items = (ItemResponse)com.sendCall(FunctionCallFactory.CALLS.GETCARGOLIST, Response.RESPONSES.ITEMRESPONSE);
+            if (items == null)
+            {
+                Console.WriteLine("cargolist is null");
+                return false;
+            }
+
+            foreach (Item it in (List<Item>)items.Data)
+            {
+                recs.Add(new Rectangle(it.X, it.Y, it.Width, it.Height));
+            }
+
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETSHIPHANGAR, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                Console.WriteLine("hangar is null");
+                return false;
+            }
+
+            Point pt = new Point(ran.Next(iresp.X, iresp.X + iresp.Width), ran.Next(iresp.Y + 30, iresp.Y + iresp.Height));
+
+
+
+            while (!mh.isEmpty(recs, pt))
+                pt = new Point(ran.Next(iresp.X, iresp.X + iresp.Width), ran.Next(iresp.Y, iresp.Y + iresp.Height));
+
+            mh.open(pt);
+            Thread.Sleep(ran.Next(200, 300));
+            mh.select(MenuHandler.MENUITEMS.SELECTALL);
+            Thread.Sleep(ran.Next(200, 300));
+            mh.click(MenuHandler.MENUITEMS.SELECTALL);
+            Thread.Sleep(ran.Next(100, 200));
+            return true;
+        }
+
+
+        /// <summary>
         /// Deposits all items in your cargo to the station hangar
         /// </summary>
         /// <returns>True if sucess, false otherwise</returns>
@@ -249,9 +293,11 @@ namespace Eryan.Wrappers
                 return false;
             }
 
-            foreach (Item it in (List<Item>)items.Data)
+            if (((List<Item>)items.Data).Count > 0)
             {
-                m.move(new Point(ran.Next(it.X, it.X+it.Width), ran.Next(it.Y, it.Y+it.Height)));
+                Item it = ((List<Item>)items.Data)[0];
+                selectAllCargo();
+                m.move(new Point(ran.Next(it.X, it.X + it.Width), ran.Next(it.Y, it.Y + it.Height)));
                 Thread.Sleep(500);
                 m.drag(new Point(ran.Next(stationHangar.X, stationHangar.X + stationHangar.Width), ran.Next(stationHangar.Y, stationHangar.Y + stationHangar.Height)));
             }
