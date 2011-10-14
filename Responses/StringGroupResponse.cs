@@ -23,6 +23,13 @@ namespace Eryan.Responses
             }
         }
 
+        public List<string> Data
+        {
+            get
+            {
+                return labels;
+            }
+        }
 
     }
 }

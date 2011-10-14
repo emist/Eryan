@@ -228,7 +228,11 @@ namespace Eryan.InputHandler
             /// Scan Range
             /// </summary>
             public const string SCANRANGE = "Scan Range";
-        
+
+            /// <summary>
+            /// Select all
+            /// </summary>
+            public const string SELECTALL = "Select All";
         }
         
         /// <summary>
