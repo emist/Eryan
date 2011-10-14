@@ -1015,6 +1015,34 @@ namespace Eryan.Wrappers
             return true;
         }
 
+        /// <summary>
+        /// Get the attributes of the given high slot
+        /// </summary>
+        /// <param name="num">The number of the high slot as fitted to the ship</param>
+        /// <returns>A list of attributes or null on failure</returns>
+        public List<string> getHighSlotAttributes(int num)
+        {
+            StringGroupResponse sgresp = (StringGroupResponse)com.sendCall(FunctionCallFactory.CALLS.GETHIGHSLOTATTRIBUTES, num + "", Response.RESPONSES.STRINGGROUPRESPONSE);
+            if (sgresp == null)
+                return null;
+
+            return (List<string>)sgresp.Data;
+        }
+
+        /// <summary>
+        /// Returns high slot status information, must be called after hovering the cursor over the module
+        /// </summary>
+        /// <param name="slot">The number of the high slot as fitted to the ship</param>
+        /// <returns>A string of attributes or null on failure</returns>
+        public string getHighSlotModuleInfo(int slot)
+        {
+            StringResponse sresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETHIGHSLOTMODULEINFO, slot + "", Response.RESPONSES.STRINGRESPONSE);
+            if (sresp == null)
+                return null;
+
+            return (string)sresp.Data;
+        }
+
 
 
         /// <summary>
