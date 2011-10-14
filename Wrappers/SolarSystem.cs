@@ -25,7 +25,7 @@ namespace Eryan.Wrappers
         public SolarSystem(string name, string unparsedEntry)
         {
             this.name = name;
-            Regex reg = new Regex("[0-1].[0-9]");
+            Regex reg = new Regex("-?[0-1].[0-9]");
             string entry = reg.Match(unparsedEntry).Value;
             if (entry != "")
             {

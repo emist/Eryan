@@ -624,7 +624,7 @@ namespace Eryan.Wrappers
         /// Expand local drones menu
         /// </summary>
         /// <returns>False if factory error, true otherwise</returns>
-        public bool expandLocalDrones()
+        public bool toggleLocalDrones()
         {
             InterfaceResponse tresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETDRONESINSPACETAB, Response.RESPONSES.INTERFACERESPONSE);
             if (tresp == null)
