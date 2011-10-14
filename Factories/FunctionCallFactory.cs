@@ -445,6 +445,15 @@ namespace Eryan.Factories
             /// </summary>
             public const string GETPROBERESULT = "getProbeResult";
 
+            /// <summary>
+            /// Get the attributes of the given high slot
+            /// </summary>
+            public const string GETHIGHSLOTATTRIBUTES = "getHighSlotAttributes";
+
+            /// <summary>
+            /// Returns highslot status information, must be called after hovering the cursor over the module
+            /// </summary>
+            public const string GETHIGHSLOTMODULEINFO = "getHighSlotModuleInfo";
         }
 
 
