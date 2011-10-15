@@ -15,6 +15,7 @@ namespace Eryan.Responses
         List<MarketSearchEntry> data;
         TargetList TargetObject;
 
+
         /// <summary>
         /// Concrete response for target list replies
         /// </summary>
@@ -31,6 +32,14 @@ namespace Eryan.Responses
                 Console.WriteLine(entry.Text.TopLeftY);
                 Console.WriteLine(entry.Text.Width);
                 Console.WriteLine(entry.Text.Height);
+            }
+        }
+
+        public List<MarketSearchEntry> Data
+        {
+            get
+            {
+                return data;
             }
         }
 
