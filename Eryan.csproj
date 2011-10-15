@@ -97,6 +97,7 @@
     <Compile Include="IPC\Communicator.cs" />
     <Compile Include="Responses\ItemResponse.cs" />
     <Compile Include="Responses\MarketListResponse.cs" />
+    <Compile Include="Responses\MarketSearchResponse.cs" />
     <Compile Include="Responses\MenuResponse.cs" />
     <Compile Include="Responses\StringGroupResponse.cs" />
     <Compile Include="Responses\StringResposne.cs" />
@@ -221,6 +222,7 @@
     <Compile Include="Wrappers\InterfaceEntry.cs" />
     <Compile Include="Wrappers\Item.cs" />
     <Compile Include="Wrappers\MarketEntry.cs" />
+    <Compile Include="Wrappers\MarketSearchEntry.cs" />
     <Compile Include="Wrappers\MenuEntry.cs" />
     <Compile Include="Wrappers\OverViewEntry.cs" />
     <Compile Include="Wrappers\SelectedItem.cs" />

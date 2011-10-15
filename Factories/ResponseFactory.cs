@@ -62,6 +62,11 @@ namespace Eryan.Factories
                     return new MarketListResponse(response);
                 }
 
+                if (responsetype.Equals(Response.RESPONSES.MARKETSEARCHRESPONSE))
+                {
+                    return new MarketSearchResponse(response);
+                }
+
                 Console.WriteLine("Unidentified Response, not Built");
 
                 return null;
