@@ -115,6 +115,10 @@ namespace Eryan.InputHandler
             /// </summary>
             public const string APPROACH = "Approach";
             /// <summary>
+            /// Orbit
+            /// </summary>
+            public const string ORBIT = "Orbit";
+            /// <summary>
             /// Look At
             /// </summary>
             public const string LOOKAT = "Look At";
