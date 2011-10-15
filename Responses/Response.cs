@@ -62,6 +62,7 @@ namespace Eryan.Responses
             /// </summary>
             public const string STRINGGROUPRESPONSE = "StringGroupResponse";
 
+            public const string MARKETLISTRESPONSE = "MarketListResponse";
         }
 
         /// <summary>

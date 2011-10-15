@@ -50,6 +50,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Google.ProtocolBuffers, Version=2.3.0.277, Culture=neutral, PublicKeyToken=17b3b1f090c3ea48, processorArchitecture=MSIL" />
+    <Reference Include="jabber-net, Version=2.1.0.702, Culture=neutral, PublicKeyToken=924c5b18328d6f09, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Downloads\JabberNet-Source-2.1.0.710\JabberNet-2.1.0.710\bin5\Debug\jabber-net.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -92,6 +96,7 @@
     <Compile Include="Input\PreciseMouse.cs" />
     <Compile Include="IPC\Communicator.cs" />
     <Compile Include="Responses\ItemResponse.cs" />
+    <Compile Include="Responses\MarketListResponse.cs" />
     <Compile Include="Responses\MenuResponse.cs" />
     <Compile Include="Responses\StringGroupResponse.cs" />
     <Compile Include="Responses\StringResposne.cs" />
@@ -215,6 +220,7 @@
     <Compile Include="Wrappers\Button.cs" />
     <Compile Include="Wrappers\InterfaceEntry.cs" />
     <Compile Include="Wrappers\Item.cs" />
+    <Compile Include="Wrappers\MarketEntry.cs" />
     <Compile Include="Wrappers\MenuEntry.cs" />
     <Compile Include="Wrappers\OverViewEntry.cs" />
     <Compile Include="Wrappers\SelectedItem.cs" />
