@@ -96,6 +96,41 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
+        /// Begin scanning from the probe window
+        /// </summary>
+        public void probeScan()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETANALYZEPROBESBUTTON, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                return;
+            }
+
+            m.move(new Point(ran.Next(iresp.X + 5, iresp.X + iresp.Width - 5), ran.Next(iresp.Y + 5, iresp.Y + iresp.Height - 5)));
+            Thread.Sleep(ran.Next(200, 300));
+            m.click(true);
+            pm.synchronize(m);
+        }
+
+        /// <summary>
+        /// Recovers the probes in space
+        /// </summary>
+        public void recoverProbe()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETRECOVERPROBESBUTTON, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                return;
+            }
+
+            m.move(new Point(ran.Next(iresp.X + 5, iresp.X + iresp.Width - 5), ran.Next(iresp.Y + 5, iresp.Y + iresp.Height - 5)));
+            Thread.Sleep(ran.Next(200, 300));
+            m.click(true);
+            pm.synchronize(m);
+        }
+
+
+        /// <summary>
         /// Open the scanning window
         /// </summary>
         /// <returns>True on success, false otherwise</returns>
@@ -1030,20 +1065,49 @@ namespace Eryan.Wrappers
         }
 
         /// <summary>
-        /// Returns high slot status information, must be called after hovering the cursor over the module
+        /// Returns a Module representation wrapped in an Eryan.Wrapper.Module
         /// </summary>
-        /// <param name="slot">The number of the high slot as fitted to the ship</param>
-        /// <returns>A string of attributes or null on failure</returns>
-        public string getHighSlotModuleInfo(int slot)
+        /// <param name="slot">The slot to get info on</param>
+        /// <returns>A module or null</returns>
+        public Module getHighSlotModuleInfo(int slot)
         {
+
             StringResponse sresp = (StringResponse)com.sendCall(FunctionCallFactory.CALLS.GETHIGHSLOTMODULEINFO, slot + "", Response.RESPONSES.STRINGRESPONSE);
             if (sresp == null)
-                return null;
+            {
+                InterfaceResponse activateResp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETHIGHSLOT, slot + "", Response.RESPONSES.INTERFACERESPONSE);
 
-            return (string)sresp.Data;
+                if (activateResp == null)
+                {
+                    Console.WriteLine("Can't find module item");
+                    return null;
+                }
+                m.move(new Point(ran.Next(activateResp.X + 10, activateResp.X + activateResp.Width - 10), ran.Next(activateResp.Y + 20, activateResp.Y + activateResp.Height - 10)));
+                Thread.Sleep(200);
+                pm.synchronize(m);
+
+            }
+
+            string info = ((string)sresp.Data).Replace("<br>", "|");
+
+            List<string> ilist = info.Split('|').ToList<string>();
+            string type = ilist[0].Substring(6, ilist[0].Length - 6);
+            string status = ilist[1].Substring(8, ilist[1].Length - 8);
+            Regex reg = new Regex("[0-9]+");
+
+            string qty = reg.Match(ilist[2]).Value;
+            int chargeqty = 0;
+            if (!qty.Equals(""))
+                chargeqty = Convert.ToInt32(reg.Match(ilist[2]).Value);
+            reg = new Regex(@"([()a-zA-Z\s])+");
+            string charge = reg.Match(ilist[2].Substring(12, ilist[2].Length - 12)).Value;
+            string overload = ilist[3].Substring(17, ilist[3].Length - 17);
+            string shortcut = ilist[4].Substring(10, ilist[4].Length - 10);
+
+            Module mod = new Module(type, status, chargeqty, charge, overload, shortcut);
+
+            return mod;
         }
-
-
 
         /// <summary>
         /// Check if the ship has the given med slot
