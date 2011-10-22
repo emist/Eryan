@@ -454,6 +454,11 @@ namespace Eryan.Factories
             /// Returns highslot status information, must be called after hovering the cursor over the module
             /// </summary>
             public const string GETHIGHSLOTMODULEINFO = "getHighSlotModuleInfo";
+
+            /// <summary>
+            /// Return the injured drone
+            /// </summary>
+            public const string GETINJUREDDRONE = "getInjuredDrone";
         }
 
 

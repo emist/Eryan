@@ -299,6 +299,23 @@ namespace Eryan.Wrappers
             return  Convert.ToDouble((string)sresp.Data);
         }
 
+
+        /// <summary>
+        /// Get an injured drone if any. Needs the drone tab expanded to work
+        /// </summary>
+        /// <returns>The drone interface resposne on success, null on failure</returns>
+        public InterfaceResponse getInjuredDrone()
+        {
+            InterfaceResponse drone = (InterfaceResponse)com.sendCall("getInjuredDrone", Response.RESPONSES.INTERFACERESPONSE);
+            if (drone == null)
+            {
+                Console.WriteLine("drone is null");
+                return null;
+            }
+
+            return drone;
+        }
+
         /// <summary>
         /// Find out if the drones are fighting something
         /// </summary>
