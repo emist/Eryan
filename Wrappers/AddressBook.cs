@@ -43,6 +43,16 @@ namespace Eryan.Wrappers
             return new Button("OK", iresp.X, iresp.Y, iresp.Height, iresp.Width);
         }
 
+        private Button getSubmitButton()
+        {
+            InterfaceResponse iresp = (InterfaceResponse)com.sendCall(FunctionCallFactory.CALLS.GETMODALSUBMITBUTTON, Response.RESPONSES.INTERFACERESPONSE);
+            if (iresp == null)
+            {
+                return null;
+            }
+
+            return new Button("Submit", iresp.X, iresp.Y, iresp.Height, iresp.Width);
+        }
         /// <summary>
         /// Open the address book
         /// </summary>
@@ -156,11 +166,11 @@ namespace Eryan.Wrappers
             clickAddressBookBMButton();
             Thread.Sleep(ran.Next(200, 300));
 
-            Button ok = getOkButton();
-            if (ok == null)
+            Button submit = getSubmitButton();
+            if (submit == null)
                 return false;
 
-            bool outcome = click(ok);
+            bool outcome = click(submit);
             while (isOpen())
             {
                 close();
