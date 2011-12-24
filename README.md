@@ -9,7 +9,7 @@ experience.
 
 Download the latest source code with:
 
-`git clone git://github.com/emist/Eryan.git`
+`git clone git@github.com:emist/Eryan.git`
 
 Keep your source up to date with:
 
@@ -36,13 +36,12 @@ automated DMCA claims, no content is under the copyright of CCP Games. The code 
 purely for educational purposes by the authors as freedom of expression.
 
 <h2>EULA</h2>
-
 Eryan
 END USER LICENSE AGREEMENT
 
 Thank you for your interest in the Eryan automation platform("the software"). Before you can use this software you must covenant and agree to the following terms: 
 
-This End User License Agreement ("EULA") describes the terms and conditions under which you may install and use the Software. The authors may amend this EULA from time to time by posting an amended version at http://github.com/emist/Eryan. If you accept this EULA, the then-current version of this EULA shall apply each time you use the software.
+This End User License Agreement ("EULA") describes the terms and conditions under which you may install and use the Software. The authors may amend this EULA from time to time by posting an amended version at http://github.com/emist/Eryan/EULA.txt. If you accept this EULA, the then-current version of this EULA shall apply each time you use the software.
 
 By clicking the "ACCEPT" button below, (or if you bypass or otherwise disable the "ACCEPT" button, and still install, copy, download, access or otherwise use the Software), you accept the terms and conditions in the EULA. If you do not accept the terms and conditions in the EULA, you must click the "DECLINE" button and discontinue use of the Software. 
 
@@ -63,7 +62,8 @@ By clicking the "ACCEPT" button below, (or if you bypass or otherwise disable th
       B. Good Faith
 	You agree to observe every covenant of this EULA. You also covenant that you do not have a contractual relationship with
 	CCP games.
-	You covenant that you understand that this software violates Eve Online's EULA if used in conjunction with an active Eve Online account.
+	While this software does not violate the Eve Online EULA, you understand that the use of this software along with scripts 
+	that serve to automate gameplay is a violation of the Eve Online EULA.
 	You further covenant that if you use this software in breach of Eve Online's EULA you do so out of your own free will and 
 	have not been encouraged or incited to do so by the software author(s).
 
