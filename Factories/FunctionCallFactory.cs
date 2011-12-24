@@ -140,6 +140,11 @@ namespace Eryan.Factories
             public const string GETMODALCANCELBUTTON = "getModalCancelButton";
 
             /// <summary>
+            /// Get the Submit button of a modal window
+            /// </summary>
+            public const string GETMODALSUBMITBUTTON = "getModalSubmitButton";
+
+            /// <summary>
             /// Get the OK button of a modal window if present
             /// </summary>
             public const string GETMODALOKBUTTON = "getModalOkButton";
@@ -461,7 +466,7 @@ namespace Eryan.Factories
             public const string GETINJUREDDRONE = "getInjuredDrone";
         }
 
-
+      
        /// <summary>
        /// Builds a functionCall object with no parameters
        /// </summary>
@@ -469,11 +474,12 @@ namespace Eryan.Factories
        /// <returns>The serializeable functionCall object</returns>
         public eveobjects.functionCall build(string function)
         {
+            
             this.function = new eveobjects.functionCall();
             eveobjects.functionCall.Builder builder = this.function.ToBuilder();
             builder.Name = function;
             return builder.Build();
-
+            
         }
 
         /// <summary>
