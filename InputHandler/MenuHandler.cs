@@ -285,7 +285,7 @@ namespace Eryan.InputHandler
             pm.synchronize(m);
             Thread.Sleep(random.Next(300,400));
             m.click(false);
-            Thread.Sleep(random.Next(500, 600));
+            Thread.Sleep(random.Next(1500, 1600));
             return true;
         }
 
@@ -407,6 +407,7 @@ namespace Eryan.InputHandler
             Thread.Sleep(random.Next(200, 300));
             pm.synchronize(m);
             m.click(false);
+            Thread.Sleep(random.Next(300, 600));
         }
 
         /// <summary>
@@ -484,7 +485,7 @@ namespace Eryan.InputHandler
                 
             }
             
-            InterfaceResponse resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYTEXTMENU, menuItem.ToUpper(), Response.RESPONSES.INTERFACERESPONSE);
+            InterfaceResponse resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYTEXTMENU, menuItem, Response.RESPONSES.INTERFACERESPONSE);
             if (resp == null)
             {
                 if(isMenuOpen())
@@ -519,7 +520,7 @@ namespace Eryan.InputHandler
                 return false;
 
 
-            InterfaceResponse resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYTEXTMENU, menuItem.ToUpper(), Response.RESPONSES.INTERFACERESPONSE);
+            InterfaceResponse resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYTEXTMENU, menuItem, Response.RESPONSES.INTERFACERESPONSE);
             if (resp == null)
                 return false;
 
