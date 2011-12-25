@@ -28,3 +28,24 @@ C:\Users\emist\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\Google.Proto
 C:\Users\emist\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\Injector.pdb
 C:\Users\emist\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\Eryan.pdb
 C:\Users\emist\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\Eryan.xml
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\obj\Debug\TestScript.dll
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\obj\Debug\TestScript.pdb
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\TestScript.dll
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\TestScript.pdb
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\Eryan.exe
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\jabber-net.dll
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\Google.ProtocolBuffers.dll
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\Injector.dll
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\Syringe.dll
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\netlib.Dns.dll
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\zlib.net.dll
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\Eryan.pdb
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\Eryan.xml
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\jabber-net.pdb
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\Google.ProtocolBuffers.pdb
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\Google.ProtocolBuffers.xml
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\Injector.pdb
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\Syringe.pdb
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\netlib.Dns.pdb
+C:\Documents and Settings\Administrator\Eryan\Script\Scripts\TestScript\TestScript\bin\Debug\netlib.Dns.xml

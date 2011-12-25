@@ -6,26 +6,58 @@ using System.Threading;
 using System.Drawing;
 using System.Text.RegularExpressions;
 
+
 using Eryan;
 using Eryan.Script;
 using Eryan.Factories;
 using Eryan.Responses;
 using Eryan.Wrappers;
 using Eryan.InputHandler;
+using Eryan.Input;
+using jabber;
+using jabber.client;
+
+//Artic monkeys-Dancing shoes
 
 namespace Script
 {
     public class Script : Scriptable
     {
-        double maxRange = -1.0;
-        int dist = 0;
+        Random ran = new Random();
+        Queue<string> commandQ = new Queue<string>();
+        jabber.client.JabberClient jc = new jabber.client.JabberClient();
+        const string TARGET = "USERNAME@jabber.org";
+        const bool VERBOSE = true;
 
-        private bool approaching = false;
-
-        public enum State { MINING, TOMINING, TOSTATION, DEPOSITING, LOADING, INCURSION, ERROR, DEFENDING };
+        static ManualResetEvent done = new ManualResetEvent(false);
 
         public override Boolean onStart()
         {
+            Name = "UnitTest";
+            ESession.disableAutoLogin();
+
+            try
+            {
+
+                JID j = new JID("eryanbot@jabber.org");
+                jc.User = j.User;
+                jc.Server = j.Server;
+                jc.Password = "hellohello";
+                jc.AutoPresence = true;
+                jc.AutoRoster = false;
+                jc.AutoReconnect = -1;
+
+                jc.OnError += new bedrock.ExceptionHandler(j_OnError);
+                jc.OnMessage += new MessageHandler(jc_OnMessage);
+                bedrock.net.AsyncSocket.UntrustedRootOK = true;
+
+                jc.Connect();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR");
+            }
             return true;
         }
 
@@ -34,283 +66,493 @@ namespace Script
             return true;
         }
 
-        public State getState()
+        static void j_OnError(object sender, Exception ex)
         {
+            // There was an error!
+            Console.WriteLine("Error: " + ex.ToString());
 
-            if (ESession.isLoading())
-                return State.LOADING;
-
-            if (ESession.isIncursionOngoing())
-                return State.INCURSION;
-
-            //If we're fucked up dock up
-            if (!MyShip.isDocked())
-            {
-                if (MyShip.getShiledPercentage() < 50)
-                    return State.TOSTATION;
-            }
-
-            OverViewEntry gurista = EOverViewHandler.getEntry("Gurista");
-            if (gurista != null)
-            {
-                if (gurista.Distance < 3000)
-                    return State.DEFENDING;
-            }
-
-            if (MyShip.getCargoFilled() > 0 && MyShip.isDocked())
-                return State.DEPOSITING;
-
-            //If we got space in the cargo and we're not docked we must mine or go to mine
-            if (MyShip.getCargoSpaceRemaining() > 10)
-            {
-                if (!MyShip.isDocked())
-                {
-                    //if no asteroids go mine, else we're mining
-                    if (!EOverViewHandler.isInOverView("Asteroid"))
-                    {
-                        Console.WriteLine("TOMINING");
-                        return State.TOMINING;
-                    }
-                    else
-                    {
-                        Console.WriteLine("MINING");
-                        return State.MINING;
-                    }
-                }
-                if (MyShip.isDocked())
-                {
-                    return State.TOMINING;
-                }
-            }
-
-            //If we're out of space if we're at station we deposit, otherwise we go to station
-            if (MyShip.getCargoSpaceRemaining() < 10)
-            {
-                if (MyShip.isDocked())
-                {
-                    Console.WriteLine("DEPOSITING");
-                    return State.DEPOSITING;
-                }
-                else
-                {
-                    Console.WriteLine("TOSTATION");
-                    return State.TOSTATION;
-                }
-            }
-
-            //For undefined behavior
-            return State.ERROR;
+            // Shut down.
+            done.Set();
         }
 
+
+        void jc_OnMessage(object sender, jabber.protocol.client.Message msg)
+        {
+            Console.WriteLine(msg.Body);
+
+            commandQ.Enqueue(msg.Body);
+
+            /*
+            if (msg.Body.Equals("LOL"))
+                MyShip.unDock();
+
+            if (msg.Body.Equals("WARP"))
+            {
+                commandQ.Add("WARP");
+            }
+            if (msg.Body.Equals("TARGET"))
+            {
+                commandQ.Add("TARGET");
+            }
+            */
+
+
+        }
 
         public override int run()
         {
             ECommunicator.connect();
             EMouse.Speed = 30;
-            EPreciseMouse.Speed = 20;
+            EPreciseMouse.Speed = 30;
+            ESession.disableAutoLogin();
+            
 
-            if (maxRange < 0)
-                maxRange = MyShip.getHighSlotTargetingRange(1);
-
-            switch (getState())
+            if (commandQ.Count > 0)
             {
+
+                string command = commandQ.Dequeue();
+
+                if (command.Equals(""))
+                    return 500;
+
+                Console.WriteLine(command);
+
+                if(command.Equals("getOverView"))
+                {
+                    MyShip.getOverView();
+                    Console.WriteLine("overview");
+                }
+
+                if (command.Equals("warpToZeroAsteroidBelt"))
+                {
+                    MyShip.warpToZeroAsteroidBelt("I");
+                }
+
+                if (command.Equals("openCargo"))
+                {
+                    MyShip.openCargo();
+                }
+
+                if (command.Equals("probeScan"))
+                {
+                    MyShip.probeScan();
+                }
+
+                if (command.Equals("recoverProbe"))
+                {
+                    MyShip.recoverProbe();
+                }
+
+                if (command.Equals("openScanner"))
+                {
+                    MyShip.openScanner();
+                }
+
+                if (command.Equals("target"))
+                {
+                    MyShip.target("Asteroid");
+                }
+
+                if (command.Equals("approach"))
+                {
+                    MyShip.approach("Asteroid");
+                }
+
+                if (command.Equals("getProbeEntry"))
+                {
+                    MyShip.getProbeEntry("heaven");
+                }
+
+                if (command.Equals("getProbeDistance"))
+                {
+                    MyShip.setProbeDistance(1, 0.25);
+                }
+
+                if (command.Equals("getProbeResult"))
+                {
+                    MyShip.getProbeResult("");
+                }
+
+                if (command.Equals("warpToZeroProbeResult"))
+                {
+                    MyShip.warpToZeroProbeResult("");
+                }
+
+                if (command.Equals("getTargetList"))
+                {
+                    MyShip.getTargetList();
+                }
+
+                if (command.Equals("getHighSlotCycleDuration"))
+                {
+                    MyShip.getHighSlotCycleDuration(1);
+                }
+
+                if (command.Equals("getMiningAmount"))
+                {
+                    MyShip.getMiningAmount(1);
+                }
+
+                if (command.Equals("getInjuredDrone"))
+                {
+                    MyShip.getInjuredDrone();
+                }
+
+                if (command.Equals("areDronesEngaged"))
+                {
+                    MyShip.areDronesEngaged();
+                }
+
+                if (command.Equals("stackCargo"))
+                {
+                    MyShip.stackCargo();
+                }
+
+                if (command.Equals("getSelectedItem"))
+                {
+                    MyShip.getSelectedItem();
+                }
+
+                if (command.Equals("getStructurePercentage"))
+                {
+                    MyShip.getStructurePercentage();
+                }
+
+                if (command.Equals("getCapacitorPercentage"))
+                {
+                    MyShip.getCapacitorPercentage();
+                }
+
+                if (command.Equals("getArmorPercentage"))
+                {
+                    MyShip.getArmorPercentage();
+                }
+
+                if (command.Equals("getCargoFilled"))
+                {
+                    MyShip.getCargoFilled();
+                }
+
+                if (command.Equals("launchDrones"))
+                {
+                    MyShip.launchDrones();
+                }
+
+                if (command.Equals("retrieveDrones"))
+                {
+                    MyShip.retrieveDrones();
+                }
+                if (command.Equals("hasDronesInSpace"))
+                {
+                    MyShip.hasDronesInSpace();
+                }
+
+                if (command.Equals("hasAvailableDrones"))
+                {
+                    MyShip.hasAvailableDrones();
+                }
+
+                if (command.Equals("setActiveTarget"))
+                {
+                    //MyShip.setActiveTarget(
+                }
+
+                if (command.Equals("openTargetMenu"))
+                {
+                    //MyShip.openTargetMenu(
+                }
+
+                if (command.Equals("engageDrones"))
+                {
+                    MyShip.engageDrones();
+                }
+
+                if (command.Equals("toggleLocalDrones"))
+                {
+                    MyShip.toggleLocalDrones();
+                }
+
+                if (command.Equals("getCargoSpaceRemaining"))
+                {
+                    MyShip.getCargoSpaceRemaining();
+                }
+
+                if (command.Equals("getShipCapacity"))
+                {
+                    MyShip.getShipCapacity();
+                }
+
+                if (command.Equals("stop"))
+                {
+                    MyShip.stop();
+                }
+
+                if (command.Equals("loadAmmo"))
+                {
+                    MyShip.loadAmmo(1, "lead");
+                }
+
+                if(command.Equals("unloadAmmo"))
+                {
+                    MyShip.unloadAmmo(1);
+                }
+
+                if(command.Equals("toggleHighPowerSlot"))
+                {
+                    MyShip.toggleHighPowerSlot(1);
+                }
+
+                if (command.Equals("toggleMedPowerSlot"))
+                {
+                    MyShip.toggleMedPowerSlot(1);
+                }
+
+                if (command.Equals("toggleLowPowerSlot"))
+                {
+                    MyShip.toggleLowPowerSlot(1);
+                }
+
+                if (command.Equals("activateHighPowerSlot"))
+                {
+                    MyShip.activateHighPowerSlot(1);
+                }
+
+                if (command.Equals("deactivateHighPowerSlot"))
+                {
+                    MyShip.deactivateHighPowerSlot(1);
+                }
+
+                if (command.Equals("activateMedPowerSlot"))
+                {
+                    MyShip.activateMedPowerSlot(1);
+                }
+
+                if (command.Equals("deactivateMedPowerSlot"))
+                {
+                    MyShip.deactivateLowPowerSlot(1);
+                }
+
+                if (command.Equals("activateLowPowerSlot"))
+                {
+                    MyShip.activateLowPowerSlot(1);
+                }
+
+                if (command.Equals("deactivateLowPowerSlot"))
+                {
+                    MyShip.deactivateLowPowerSlot(1);
+                }
+
+                if (command.Equals("getHighSlotTargetingRange"))
+                {
+                    MyShip.getHighSlotTargetingRange(1);
+                }
+
+                if (command.Equals("hasHighSlot"))
+                {
+                    MyShip.hasHighSlot(1);
+                }
+
+                if (command.Equals("getHighSlotAttributes"))
+                {
+                    MyShip.getHighSlotAttributes(1);
+                }
+
+                if (command.Equals("getHighSlotModuleInfo"))
+                {
+                    MyShip.getHighSlotModuleInfo(1);
+                }
+
+                if (command.Equals("hasMedSlot"))
+                {
+                    MyShip.hasMedSlot(1);
+                }
+
+                if (command.Equals("hasLowSlot"))
+                {
+                    MyShip.hasLowSlot(1);
+                }
+
+                if (command.Equals("isHighSlotActive"))
+                {
+                    MyShip.isHighSlotActive(1);
+                }
+
+                if (command.Equals("isMedSlotActive"))
+                {
+                    MyShip.isMedSlotActive(1);
+                }
+
+                if (command.Equals("isLowSlotActive"))
+                {
+                    MyShip.isLowSlotActive(1);
+                }
+
+                if (command.Equals("getSpeed"))
+                {
+                    MyShip.getSpeed();
+                }
+
+                if (command.Equals("warpToZero"))
+                {
+                    MyShip.warpToZero();
+                }
+
+                if (command.Equals("isDocked"))
+                {
+                    MyShip.isDocked();
+                }
+
+                if (command.Equals("unDock"))
+                {
+                    MyShip.unDock();
+                }
+
+                if (command.Equals("dock"))
+                {
+                    MyShip.dock("I");
+                }
+
+                if (command.Equals("getCargo"))
+                {
+                    MyShip.getCargo();
+                }
+
                 
-                case State.LOADING:
-                    return 1000;
+                //station
+                if (command.Equals("isItemInHangar"))
+                {
+                    EStationHandler.isItemInHangar("tritanium");
+                }
+                if (command.Equals("withdrawItem"))
+                {
+                    EStationHandler.withdrawItem("Tritanium");
+                }
 
-                case State.INCURSION:
-                    if (!MyShip.isDocked())
-                    {
-                        if (MyShip.getSpeed() != Ship.WARPSPEED)
-                        {
-                            if (MyShip.hasDronesInSpace())
-                            {
-                                MyShip.retrieveDrones();
-                                return 600;
-                            }
-                            EMenuHandler.select(MenuHandler.MENUITEMS.STATIONS);
-                            Thread.Sleep(600);
-                            EMenuHandler.select("VII");
-                            Thread.Sleep(600);
-                            EMenuHandler.click(MenuHandler.MENUITEMS.DOCK);
-                            return 3000;
-                        }
-                        return 1000;
-                    }
-                    else
-                    {
-                        Console.WriteLine("INCURSION");
-                        return 2000;
-                    }
-                case State.TOSTATION:
-                    if (MyShip.getSpeed() != Ship.WARPSPEED)
-                    {
-                        if (MyShip.hasDronesInSpace())
-                        {
-                            MyShip.retrieveDrones();
-                            return 600;
-                        }
+                if (command.Equals("stackHangarItems"))
+                {
+                    EStationHandler.stackHangarItems();
+                }
+                if (command.Equals("isHangarOpen"))
+                {
+                    EStationHandler.isHangarOpen();
+                }
+                if (command.Equals("selectAgentTab"))
+                {
+                    EStationHandler.selectAgentTab();
+                }
+                if (command.Equals("openHangar"))
+                {
+                    EStationHandler.openHangar();
+                }
 
-                        EMenuHandler.select(MenuHandler.MENUITEMS.STATIONS);
-                        Thread.Sleep(600);
-                        EMenuHandler.select("VII");
-                        Thread.Sleep(600);
-                        EMenuHandler.click(MenuHandler.MENUITEMS.DOCK);
-                        return 3000;
-                    }
-                    return 300;
-                    
-                case State.TOMINING:
-                    if (MyShip.isDocked())
-                    {
-                        MyShip.unDock();
-                        return 30000;
-                    }
-                    if (MyShip.getSpeed() != Ship.WARPSPEED)
-                    {
-                        if (MyShip.hasDronesInSpace())
-                        {
-                            MyShip.retrieveDrones();
-                            return 600;
-                        }
-                        EMenuHandler.select(MenuHandler.MENUITEMS.ASTEROIDBELTS);
-                        Thread.Sleep(600);
-                        //EMenuHandler.select(MenuHandler.MENUITEMS.BELT1);
-                        Random rand = new Random();
-                        List<MenuEntry> belts = EMenuHandler.getBelts();
-                        Console.WriteLine(belts.Count);
-                        MenuEntry belt = belts[rand.Next(0, belts.Count - 1)];
-                        EMenuHandler.select(belts[rand.Next(0, belts.Count - 1)]);
-                        Thread.Sleep(600);
-                        EMenuHandler.click(MenuHandler.MENUITEMS.WARPTOZERO);
-                        return 1000;
-                    }
-                    return 300;    
+                if (command.Equals("selectAllCargo"))
+                {
+                    EStationHandler.selectAllCargo();
+                }
 
-                case State.DEFENDING:
-                    OverViewEntry gurista = EOverViewHandler.getEntry("Gurista");
-                    if (gurista != null)
-                    {
-                        List<TargetEntry> mytargets = MyShip.getTargetList();
-                        TargetEntry guristaEntry = null;
-
-                        foreach(TargetEntry entry in mytargets)
-                        {
-                            if(entry.Name.Contains("Gurista"))
-                                guristaEntry = entry;
-                        }
-
-                        if (guristaEntry == null)
-                        {
-                            MyShip.target(gurista);
-                            return 5000;
-                        }
-                        else
-                        {
-                            foreach (TargetEntry entry in mytargets)
-                            {
-                                if (entry.Name.Contains("Gurista"))
-                                {
-                                    if (entry.Distance < 30000)
-                                    {
-                                        SelectedItem sitem = MyShip.getSelectedItem();
-                                        
-                                        if (sitem != null)
-                                        {
-                                            if (!MyShip.getSelectedItem().Name.Contains("Gurista"))
-                                            {
-                                                MyShip.setActiveTarget(entry);
-                                                Thread.Sleep(300);
-                                            }
-                                        }
-                                        else
-                                        {
-                                            MyShip.setActiveTarget(entry);
-                                            Thread.Sleep(300);
-                                        }
-
-                                        if (MyShip.hasDronesInSpace())
-                                        {
-                                            MyShip.engageDrones();
-                                            return 2000;
-                                        }
-                                        else
-                                        {
-                                            MyShip.launchDrones();
-                                            return 600;
-                                        }
-                                    }
-                                }
-                            }
-
-                            return 600;                
-                        }
-                        
-                    }
-                    return 600;
-                case State.MINING:
-                    OverViewEntry asteroid;
-                    if ( (asteroid = EOverViewHandler.getEntry("Asteroid")) != null)
-                    {
-                        asteroid = EOverViewHandler.getEntry("Asteroid");
-                        if (asteroid.Distance >= maxRange)
-                        {
-                            Console.WriteLine("Distance greater than " + maxRange);
-                            if (MyShip.getSpeed() < 10)
-                            {
-                                MyShip.approach(asteroid);
-                                dist = asteroid.Distance;
-                                EMouse.click(true);
-                            }
-                            
-                            return 4000;
-                        }
-                        List<TargetEntry> mytargets = MyShip.getTargetList();
-                        if (mytargets.Count < 1)
-                        {
-                            Console.WriteLine("Targeting");
-                            MyShip.target(asteroid);
-                            return 5000;
-                        }
-                        else
-                        {
-
-                            Console.WriteLine(mytargets[0].Distance);
-                            if (mytargets[0].Distance >= maxRange)
-                            {
-                                if (MyShip.getSpeed() < 50 || dist > asteroid.Distance)
-                                {
-                                    EMenuHandler.open(mytargets[0]);
-                                    Thread.Sleep(500);
-                                    EMenuHandler.click(MenuHandler.MENUITEMS.APPROACH);
-                                    dist = mytargets[0].Distance;
-                                }
-                                return 300;
-                            }
-                            else
-                            {
-                                if(MyShip.getSpeed() > 50)
-                                    MyShip.stop();
-                            }
-                            if (!MyShip.isHighSlotActive(2))
-                                MyShip.activateHighPowerSlot(2);
-                            if (!MyShip.isHighSlotActive(1))
-                                MyShip.activateHighPowerSlot(1);
-                            return 600;
-                        }
-                    
-                    }
-                    return 300;
-                case State.DEPOSITING:
+                if (command.Equals("depositAll"))
+                {
                     EStationHandler.depositAll();
-                    return 1000;
-                case State.ERROR:
-                    Console.WriteLine("ERROR state");
-                    return 1000;
+                }
+
+                if (command.Equals("isDocked"))
+                {
+                    EStationHandler.isDocked();
+                }
+
+                if (command.Equals("unDock"))
+                {
+                    EStationHandler.undock();
+                }
+
+                if (command.Equals("isLoading"))
+                {
+                    ESession.isLoading();
+                }
+
+                if (command.Equals("isSystemMenuOpen"))
+                {
+                    ESession.isSystemMenuOpen();
+                }
+
+                if (command.Equals("getNoButton"))
+                {
+                    ESession.getNoButton();
+                }
+
+                if (command.Equals("atLogin"))
+                {
+                    ESession.atLogin();
+                }
+
+                if (command.Equals("atCharSel"))
+                {
+                    ESession.atCharSel();
+                }
+                if (command.Equals("bookmarkInSpace"))
+                {
+                    ESession.bookMarkInSpace();
+                }
+
+                if (command.Equals("getEnterButton"))
+                {
+                    ESession.getEnterButton();
+                }
+                if (command.Equals("getConnectButton"))
+                {
+                    ESession.getConnectButton();
+                }
+
+                if (command.Equals("logout"))
+                {
+                    ESession.logout();
+                }
+
+                if (command.Equals("openSystemMenu"))
+                {
+                    ESession.openSystemMenu();
+                }
+
+                if (command.Equals("getLocalCount"))
+                {
+                    ESession.getLocalCount();
+                }
+                if (command.Equals("initializeLocal"))
+                {
+                    ESession.initializeLocal();
+                }
+
+                if (command.Equals("getSolarSystem"))
+                {
+                    ESession.getSolarSystem();
+                }
+
+                
+
+   
+                command = "";
+
+                /*
+                if (commandQ[0].Equals("WARP"))
+                {
+                    EMenuHandler.select(MenuHandler.MENUITEMS.ASTEROIDBELTS);
+                    Thread.Sleep(300);
+                    EMenuHandler.select(MenuHandler.MENUITEMS.BELT1);
+                    Thread.Sleep(300);
+                    EMenuHandler.click(MenuHandler.MENUITEMS.WARPTOZERO);
+                    commandQ.Remove("WARP");
+                }
+                if (commandQ[0].Equals("TARGET"))
+                {
+                    MyShip.target("Scordite");
+                    commandQ.Remove("TARGET");
+                }
+                */
+                
             }
 
-            return 300;           
-        }
+            return 2000;
 
+        }
     }
 }
