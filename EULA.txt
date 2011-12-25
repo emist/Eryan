@@ -24,7 +24,8 @@ By clicking the "ACCEPT" button below, (or if you bypass or otherwise disable th
       B. Good Faith
 	You agree to observe every covenant of this EULA. You also covenant that you do not have a contractual relationship with
 	CCP games.
-	You covenant that you understand that this software violates Eve Online's EULA if used in conjunction with an active Eve Online account.
+	While this software does not violate the Eve Online EULA, you understand that the use of this software along with scripts 
+	that serve to automate gameplay is a violation of the Eve Online EULA.
 	You further covenant that if you use this software in breach of Eve Online's EULA you do so out of your own free will and 
 	have not been encouraged or incited to do so by the software author(s).
 
