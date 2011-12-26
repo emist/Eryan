@@ -147,27 +147,27 @@ namespace Eryan.InputHandler
             /// <summary>
             /// Warp to zero element
             /// </summary>
-            public const string WARPTOZERO = "Warp to within 0 m";
+            public const string WARPTOZERO = "Warp to Within 0 m";
 
             /// <summary>
             /// Warp to location
             /// </summary>
-            public const string WARPTOLOCATION = "WARP TO LOCATION";
+            public const string WARPTOLOCATION = "Warp to Location";
 
             /// <summary>
             /// Warp to within 10
             /// </summary>
-            public const string WARPWITHIN10 = "WITHIN 10 KM";
+            public const string WARPWITHIN10 = "Within 10 km";
 
-            public const string WARPWITHIN20 = "WITHIN 20 KM";
+            public const string WARPWITHIN20 = "Within 20 km";
 
-            public const string WARPWITHIN30 = "WITHIN 30 KM";
+            public const string WARPWITHIN30 = "Within 30 km";
 
-            public const string WARPWITHIN50 = "WITHIN 50 KM";
+            public const string WARPWITHIN50 = "Within 50 km";
 
-            public const string WARPWITHIN70 = "WITHIN 70 KM";
+            public const string WARPWITHIN70 = "Within 70 km";
 
-            public const string WARPWITHIN100 = "WITHIN 100 KM";
+            public const string WARPWITHIN100 = "Within 100 km";
 
             /// <summary>
             /// Unlock Target
