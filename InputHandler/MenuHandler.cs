@@ -137,7 +137,7 @@ namespace Eryan.InputHandler
             /// <summary>
             /// Bookmark Location
             /// </summary>
-            public const string BOOKMARKLOCATION = "Bookmark Location";
+            public const string BOOKMARKLOCATION = "Save Location";
 
             /// <summary>
             /// Dock

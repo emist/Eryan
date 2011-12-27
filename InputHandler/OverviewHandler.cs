@@ -334,7 +334,7 @@ namespace Eryan.InputHandler
         /// <returns>True on success, false otherwise</returns>
         public string bookmark(string entryName)
         {
-            InterfaceResponse iresp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETMODALOKBUTTON, Response.RESPONSES.INTERFACERESPONSE);
+            InterfaceResponse iresp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETMODALSUBMITBUTTON, Response.RESPONSES.INTERFACERESPONSE);
             if (iresp != null)
                 return null;
 
@@ -342,23 +342,28 @@ namespace Eryan.InputHandler
             Thread.Sleep(400);
 
             mh.click(MenuHandler.MENUITEMS.BOOKMARKLOCATION);
-            Thread.Sleep(600);
+            Thread.Sleep(ran.Next(1000, 1500));
 
-            iresp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETMODALOKBUTTON, Response.RESPONSES.INTERFACERESPONSE);
+            
+            iresp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.GETMODALSUBMITBUTTON, Response.RESPONSES.INTERFACERESPONSE);
             if (iresp == null)
                 return null;
+            
 
             StringResponse bmname = (StringResponse)comm.sendCall(FunctionCallFactory.CALLS.GETBOOKMARKFIELDNAME, Response.RESPONSES.STRINGRESPONSE);
             if (bmname == null)
                 return null;
+            
 
             string name = (string)bmname.Data;
+            
 
             m.move(new Point(ran.Next(iresp.X + 5, iresp.X + iresp.Width - 5), ran.Next(iresp.Y + 5, iresp.Y + iresp.Height - 5)));
             Thread.Sleep(300);
             m.click(true);
             pm.synchronize(m);
-
+            Thread.Sleep(300);
+            
             return name;
         }
 
