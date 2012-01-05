@@ -190,6 +190,26 @@ namespace Eryan.InputHandler
         }
 
         /// <summary>
+        /// Select the given overview profile
+        /// </summary>
+        /// <param name="profile">The name of the overview profile to select</param>
+        /// <param name="defaultProfile">True if the profile is a default one, false if its custom</param>
+        /// <returns>true on success, fale otherwise</returns>
+        public bool selectProfile(string profile, bool defaultProfile)
+        {
+            if (defaultProfile)
+                return selectProfile(profile);
+            openOverviewSelect();
+            Thread.Sleep(ran.Next(200, 400));
+
+            if (!mh.isMenuOpen())
+                return false;
+
+            mh.click("Load " + profile);
+            return true;
+        }
+
+        /// <summary>
         /// Get the currently selected overview profile
         /// </summary>
         /// <returns>The name of the profile or null on failure</returns>
