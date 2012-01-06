@@ -445,18 +445,23 @@ namespace Eryan.InputHandler
         }
 
         /// <summary>
-        /// Select the given string in the currently open menu
+        /// Select the menu item as an exact match
         /// </summary>
-        /// <param name="menuItem">The text in the menu to select</param>
-        /// <returns>True if success, false otherwise</returns>
-        public bool select(string menuItem)
+        /// <param name="menuItem">the name of the menu item to search for</param>
+        /// <returns>true on success, false on failure</returns>
+        public bool selectExact(string menuItem)
+        {
+            return selectVariable(menuItem, false);
+        }
+
+        private bool selectVariable(string menuItem, bool exact)
         {
 
             Thread.Sleep(300);
 
             if (!comm.connect())
                 return false;
-            
+
             BooleanResponse menuOpen = (BooleanResponse)comm.sendCall(FunctionCallFactory.CALLS.ISMENUOPEN, Response.RESPONSES.BOOLEANRESPONSE);
             if (menuOpen == null)
             {
@@ -482,27 +487,44 @@ namespace Eryan.InputHandler
                 Thread.Sleep(300);
                 m.click(false);
                 Thread.Sleep(600);
-                
+
             }
-            
-            InterfaceResponse resp = (InterfaceResponse)comm.sendCall(FunctionCallFactory.CALLS.FINDBYTEXTMENU, menuItem, Response.RESPONSES.INTERFACERESPONSE);
+
+            string call;
+
+            if (exact)
+                call = FunctionCallFactory.CALLS.FINDBYTEXTMENUEXACT;
+            else
+                call = FunctionCallFactory.CALLS.FINDBYTEXTMENU;
+
+            InterfaceResponse resp = (InterfaceResponse)comm.sendCall(call, menuItem, Response.RESPONSES.INTERFACERESPONSE);
             if (resp == null)
             {
-                if(isMenuOpen())
+                if (isMenuOpen())
                     kb.sendChar((char)KeyBoard.VKeys.VK_ESCAPE);
                 return false;
             }
 
             pm.MissChance = 100;
             pm.Speed = 5;
- 
+
             pm.move(10, resp.X + 5, pm.getY(), 0, 0, 0);
-            pm.move(10, resp.Width/2 + resp.X, resp.Y + 5, 0, 0, 0);
+            pm.move(10, resp.Width / 2 + resp.X, resp.Y + 5, 0, 0, 0);
 
             //Synchronize both mouse devices
             m.synchronize(pm);
-            
+
             return true;
+        }
+
+        /// <summary>
+        /// Select the given string in the currently open menu
+        /// </summary>
+        /// <param name="menuItem">The text in the menu to select</param>
+        /// <returns>True if success, false otherwise</returns>
+        public bool select(string menuItem)
+        {
+            return selectVariable(menuItem, false);
         }
 
 

@@ -34,6 +34,10 @@ namespace Eryan.Factories
             /// </summary>
             public const string FINDBYTEXTMENU = "findByTextMenu";
             /// <summary>
+            /// Find the item by text on the menu, exact match
+            /// </summary>
+            public const string FINDBYTEXTMENUEXACT = "findByTextMenuExact";
+            /// <summary>
             /// Call to get the InflightInterface
             /// </summary>
             public const string GETINFLIGHTINTERFACE = "getInflightInterface";
