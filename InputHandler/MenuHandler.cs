@@ -150,6 +150,11 @@ namespace Eryan.InputHandler
             public const string WARPTOZERO = "Warp to Within 0 m";
 
             /// <summary>
+            /// Warp to zero on location
+            /// </summary>
+            public const string WARPTOZEROLOCATION = "Warp to Location Within 0 m";
+
+            /// <summary>
             /// Warp to location
             /// </summary>
             public const string WARPTOLOCATION = "Warp to Location";
